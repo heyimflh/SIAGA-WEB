@@ -1,11 +1,11 @@
-import { Suspense, useRef, useMemo, useCallback } from 'react';
+import { Suspense, useRef, useMemo, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
-/* ── Lightweight particle field (single layer, fewer particles) ── */
+/* ── Lightweight particle field ── */
 function Particles() {
-  const count = 100;
+  const count = 80; // Reduced from 100
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
@@ -44,19 +44,17 @@ function Particles() {
   return <points ref={ref} geometry={geo} material={mat} frustumCulled={false} />;
 }
 
-/* ── Drone model with aggressive cursor tracking ── */
+/* ── Drone model with cursor tracking ── */
 function DroneModel() {
   const { scene } = useGLTF('/models/drone.glb');
   const groupRef = useRef();
   const entryProgress = useRef(0);
 
-  // Pre-process: find propellers, disable frustum culling, simplify materials
   const propellers = useMemo(() => {
     const props = [];
     scene.traverse((child) => {
       if (child.isMesh) {
         child.frustumCulled = false;
-        // Simplify material for performance
         if (child.material) {
           child.material.envMapIntensity = 0.5;
         }
@@ -80,13 +78,13 @@ function DroneModel() {
       const s = e * 5.0;
       groupRef.current.scale.set(s, s, s);
       groupRef.current.position.y = 2 * (1 - e);
-      return; // Skip heavy tracking during entry
+      return;
     }
 
     /* Floating bob */
     groupRef.current.position.y = Math.sin(t * 0.6) * 0.15;
 
-    /* Aggressive cursor tracking — "staring" effect */
+    /* Cursor tracking */
     const g = groupRef.current;
     g.rotation.y += (mouse.x * 0.7 - g.rotation.y) * 0.12;
     g.rotation.x += (-mouse.y * 0.35 - g.rotation.x) * 0.12;
@@ -118,25 +116,24 @@ function ShadowPlane() {
   );
 }
 
-/* ── Adaptive DPR for performance ── */
-function PerformanceMonitor() {
-  const { gl } = useThree();
-  const frameCount = useRef(0);
-  const lastTime = useRef(performance.now());
+/* ── Frame limiter — pauses rendering when canvas is off-screen ── */
+function FrameLimiter({ isVisible }) {
+  const { gl, invalidate } = useThree();
 
-  useFrame(() => {
-    frameCount.current++;
-    const now = performance.now();
-    if (now - lastTime.current >= 2000) {
-      const fps = (frameCount.current / (now - lastTime.current)) * 1000;
-      // If FPS drops below 30, reduce pixel ratio
-      if (fps < 30) {
-        gl.setPixelRatio(1);
-      }
-      frameCount.current = 0;
-      lastTime.current = now;
+  useEffect(() => {
+    if (!isVisible) {
+      // When not visible, stop the render loop to save GPU
+      gl.setAnimationLoop(null);
+    } else {
+      // Resume rendering when visible
+      gl.setAnimationLoop(() => {
+        invalidate();
+      });
     }
-  });
+    return () => {
+      gl.setAnimationLoop(null);
+    };
+  }, [isVisible, gl, invalidate]);
 
   return null;
 }
@@ -145,37 +142,53 @@ useGLTF.preload('/models/drone.glb');
 
 /* ── Canvas wrapper — optimized for performance ── */
 export default function Scene() {
+  const wrapperRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(true);
+
+  // Use IntersectionObserver to detect when canvas is off-screen
+  useEffect(() => {
+    const el = wrapperRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0, rootMargin: '100px' }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <Canvas
-      camera={{ position: [0, 0.3, 4], fov: 35 }}
-      style={{ background: 'transparent' }}
-      gl={{
-        antialias: false,       // Big perf gain
-        alpha: true,
-        powerPreference: 'high-performance',
-        stencil: false,
-        depth: true,
-      }}
-      dpr={[1, 1.5]}            // Cap at 1.5x instead of 2x
-      flat                       // Disable tone mapping for perf
-      performance={{ min: 0.5 }} // Allow frame skipping
-    >
-      {/* Simplified lighting — fewer lights = faster */}
-      <ambientLight intensity={1.2} />
-      <directionalLight position={[5, 10, 5]} intensity={2.5} />
-      <pointLight position={[0, -2, 3]} intensity={0.8} color="#00B4D8" />
+    <div ref={wrapperRef} style={{ width: '100%', height: '100%' }}>
+      <Canvas
+        camera={{ position: [0, 0.3, 4], fov: 35 }}
+        style={{ background: 'transparent' }}
+        gl={{
+          antialias: false,
+          alpha: true,
+          powerPreference: 'high-performance',
+          stencil: false,
+          depth: true,
+        }}
+        dpr={[1, 1.5]}
+        flat
+        frameloop={isVisible ? 'always' : 'never'}
+      >
+        {/* Simplified lighting */}
+        <ambientLight intensity={1.2} />
+        <directionalLight position={[5, 10, 5]} intensity={2.5} />
+        <pointLight position={[0, -2, 3]} intensity={0.8} color="#00B4D8" />
 
-      <Suspense fallback={null}>
-        <DroneModel />
-        <ShadowPlane />
-      </Suspense>
+        <Suspense fallback={null}>
+          <DroneModel />
+          <ShadowPlane />
+        </Suspense>
 
-      <Particles />
-      <PerformanceMonitor />
-
-      {/* REMOVED: EffectComposer, Bloom, Vignette, Environment
-          These were the #1 performance killers.
-          The drone still looks great with direct lighting. */}
-    </Canvas>
+        <Particles />
+      </Canvas>
+    </div>
   );
 }

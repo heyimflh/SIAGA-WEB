@@ -19,18 +19,26 @@ export default function Hero() {
     };
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
 
+    // Cache DOM queries outside the loop
+    let floaters = null;
+    let sphere = null;
+
     const animateParallax = () => {
       targetX += (mouseX - targetX) * 0.05;
       targetY += (mouseY - targetY) * 0.05;
 
       if (containerRef.current) {
-        const floaters = containerRef.current.querySelectorAll('.hero-floater');
-        floaters.forEach((floater, i) => {
+        if (!floaters) floaters = containerRef.current.querySelectorAll('.hero-floater');
+        if (!sphere) sphere = containerRef.current.querySelector('.hero-gradient-sphere');
+
+        // Use direct style.transform instead of gsap.set for less overhead
+        for (let i = 0; i < floaters.length; i++) {
           const speed = (i + 1) * 12;
-          gsap.set(floater, { x: targetX * speed, y: targetY * speed });
-        });
-        const sphere = containerRef.current.querySelector('.hero-gradient-sphere');
-        if (sphere) gsap.set(sphere, { x: targetX * -30, y: targetY * -30 });
+          floaters[i].style.transform = `translate3d(${targetX * speed}px, ${targetY * speed}px, 0)`;
+        }
+        if (sphere) {
+          sphere.style.transform = `translate3d(${targetX * -30}px, ${targetY * -30}px, 0)`;
+        }
       }
       rafId = requestAnimationFrame(animateParallax);
     };
@@ -89,12 +97,7 @@ export default function Hero() {
         2.3
       );
 
-      // Trust bar
-      tl.fromTo('.hero-trust-bar',
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7 },
-        2.6
-      );
+      // Trust bar removed — now using dedicated StatsBar section
 
       // Scroll indicator
       tl.to('.hero-scroll-indicator', { opacity: 1, duration: 0.6 }, 3.0);
@@ -205,28 +208,7 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Trust bar */}
-      <div className="hero-trust-bar">
-        <div className="trust-item">
-          <span className="trust-number">500+</span>
-          <span className="trust-label">Pilot Tersertifikasi</span>
-        </div>
-        <div className="trust-sep" />
-        <div className="trust-item">
-          <span className="trust-number">1.200+</span>
-          <span className="trust-label">Menara Terinspeksi</span>
-        </div>
-        <div className="trust-sep" />
-        <div className="trust-item">
-          <span className="trust-number">47</span>
-          <span className="trust-label">Kota Aktif</span>
-        </div>
-        <div className="trust-sep" />
-        <div className="trust-item">
-          <span className="trust-number">99.8%</span>
-          <span className="trust-label">Uptime Platform</span>
-        </div>
-      </div>
+      {/* Trust bar removed — stats now in dedicated StatsBar section */}
 
       {/* Scroll indicator */}
       <div className="hero-scroll-indicator">

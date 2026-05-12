@@ -19,15 +19,15 @@ export default function CustomCursor() {
     const onMouseMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      // Dot follows instantly
-      dot.style.transform = `translate(${mouseX - 2.5}px, ${mouseY - 2.5}px)`;
+      // Dot follows instantly — use translate3d for GPU
+      dot.style.transform = `translate3d(${mouseX - 2.5}px, ${mouseY - 2.5}px, 0)`;
     };
 
     const animate = () => {
       // Ring follows with smooth lag
       ringX += (mouseX - ringX) * 0.15;
       ringY += (mouseY - ringY) * 0.15;
-      ring.style.transform = `translate(${ringX - 12}px, ${ringY - 12}px) scale(${isHovering ? 1.5 : 1})`;
+      ring.style.transform = `translate3d(${ringX - 12}px, ${ringY - 12}px, 0) scale(${isHovering ? 1.5 : 1})`;
       raf = requestAnimationFrame(animate);
     };
 
@@ -70,8 +70,8 @@ export default function CustomCursor() {
     };
 
     window.addEventListener('mousemove', onMouseMove, { passive: true });
-    document.addEventListener('mouseover', handleMouseOver);
-    document.addEventListener('mouseout', handleMouseOut);
+    document.addEventListener('mouseover', handleMouseOver, { passive: true });
+    document.addEventListener('mouseout', handleMouseOut, { passive: true });
     raf = requestAnimationFrame(animate);
 
     return () => {

@@ -266,51 +266,100 @@ Count-up: `react-countup` + `enableScrollSpy: true`, easing `easeOutExpo`, duras
 
 ---
 
-## 🔥 SECTION 3 — DRONE ANATOMY EXPLODED VIEW
+## 🛠️ UPDATED PLAN: SECTION 3 — THE DRONE ANATOMY (SEQUENCE EDITION)
 
-*Background: `--bg-primary` (#FBFDFF). GSAP ScrollTrigger `pin: true`, `end: "+=300%"*`
+**Core Technology:** HTML5 Canvas + GSAP ScrollTrigger + Observer
 
-**Fase 0 — Drone Utuh (0% scroll):**
-Drone muncul utuh di tengah, auto-rotate Y pelan. Teks kiri: nama model + deskripsi singkat.
+**Assets:** 240 Optimized Frames (JPG)
 
-**Fase 1 — Exploded View (0% → 40%):**
+**Duration:** `end: "+=600%"` (Kita butuh scroll yang lebih panjang agar transisinya terasa mewah/tidak terburu-buru).
+
+---
+
+### 🟢 FASE 0: The Pinned Canvas (Setup)
+
+* **Background:** `#FBFDFF` (Bersih, Technical White).
+* **Canvas:** Fixed di tengah layar. Gambar pertama (Frame 1) di-render sebagai "Hero State".
+* **Initial UI:** Di sisi kiri muncul teks besar yang elegan:
+`<h1>Precision Reimagined.</h1>`
+`<span>Scroll to dissect the future of flight.</span>`
+
+---
+
+### 🔵 FASE 1: The Great Disruption (0% → 40% Scroll)
+
+* **Animation:** Gambar bergerak dari **Frame 1 ke Frame 80** (Proses drone meledak/terbongkar).
+* **GSAP Logic:** `scrub: 1.5` (Memberikan efek *inertia* yang halus saat user berhenti men-scroll).
+* **UI Interaction:**
+* Teks utama perlahan *fade out* dan *slide up*.
+* Garis-garis **SVG Path** (Callout Lines) mulai muncul secara organik saat komponen berpisah.
+* **Label Teknis** muncul di ujung garis (Contoh: "Carbon Fiber Shell", "High-Torque Motors").
+
+
+
+---
+
+### 🟡 FASE 2: The Deep Anatomy / Highlight (40% → 75% Scroll)
+
+* **Animation:** Gambar bergerak dari **Frame 81 ke Frame 130** (Detail internal: GPS, Board, Kamera).
+* **Special Effect:** Saat scroll berada di area ini, background sedikit menggelap (`#FBFDFF` → `#F1F4F8`) untuk memfokuskan mata pada komponen internal yang terekspos.
+* **Technical Callouts (Floating UI):**
+Di sisi kanan/kiri, muncul teks spek secara bertahap (*staggered*):
+1. **45MP Full-Frame Sensor** (Muncul saat gimbal terekspos penuh).
+2. **Dual-Antenna RTK** (Muncul saat modul GPS bulat di atas terangkat).
+3. **Core Processors** (Muncul saat main board hitam terlihat).
+
+
+* **Interactive Spot:** Garis-garis callout memiliki efek "glow" kecil berwarna `--brand-blue` yang berdenyut pelan.
+
+---
+
+### 🔴 FASE 3: Solidification & Power Up (75% → 100% Scroll)
+
+* **Animation:** Gambar bergerak dari **Frame 131 ke Frame 160** (Drone menyatu kembali).
+* **Momentum:** Gerakan menyatu dibuat lebih cepat di akhir untuk memberikan kesan "snap" (presisi).
+* **The "Reveal":** Begitu drone utuh kembali (Frame 160), lampu LED pada drone (dalam gambar) diberikan efek **CSS Filter Drop-shadow (Cyan)** agar terlihat seolah-olah drone baru saja dinyalakan.
+* **Final UI:** Teks "Ready for Deployment" muncul di tengah dengan tombol **[Explore More Features]**.
+
+---
+
+### 🧠 STRATEGI KODING (GSAP SNIPPET)
+
+Agar performanya "Awwwards Winning", gunakan logika **Preload & Draw**:
 
 ```javascript
-// Setiap komponen berpisah seiring ScrollTrigger.progress (scrub: 1.5)
-gsap.to(armFL.position, { x: -3.5, y: 1.5, scrollTrigger: { scrub: 1.5 }})
-gsap.to(armFR.position, { x: 3.5, y: 1.5, scrollTrigger: { scrub: 1.5 }})
-gsap.to(armBL.position, { x: -3.5, y: -1.5, scrollTrigger: { scrub: 1.5 }})
-gsap.to(armBR.position, { x: 3.5, y: -1.5, scrollTrigger: { scrub: 1.5 }})
-gsap.to(camera3d.position, { y: -3.0, z: 1.0, scrollTrigger: { scrub: 1.5 }})
-gsap.to(battery.position, { z: -2.5, scrollTrigger: { scrub: 1.5 }})
-gsap.to(gimbal.position, { z: 1.5, scrollTrigger: { scrub: 1.5 }})
+// Logika Mapping Frame ke Scroll
+let drone = { frame: 0 };
+let images = []; // Array berisi 160 objek Image()
+
+// GSAP ScrollTrigger
+gsap.to(drone, {
+    frame: 159, // Frame terakhir
+    snap: "frame",
+    ease: "none",
+    scrollTrigger: {
+        trigger: ".section-3",
+        start: "top top",
+        end: "+=600%",
+        pin: true, // Tahan section agar tidak bergeser saat animasi jalan
+        scrub: 1.2,
+    },
+    onUpdate: () => renderCanvas(drone.frame) // Gambar ke canvas setiap update
+});
+
+// Syncronizing Labels dengan Frame tertentu
+gsap.from(".label-camera", {
+    opacity: 0,
+    x: -20,
+    scrollTrigger: {
+        trigger: ".section-3",
+        start: "30% top", // Muncul saat scroll sudah 30%
+        end: "50% top",
+        scrub: true
+    }
+});
 
 ```
-
-SVG callout lines (overlay) dari tiap komponen ke label — garis putus-putus `--brand-blue`. Background bersih membuat ini terlihat seperti **technical blueprint premium**.
-
-**Fase 2 — Highlight Kamera & Sensor (40% → 70%):**
-Komponen lain: `opacity: 0.2`, abu-abu. Kamera + gimbal: tetap solid, scale `1.1x`, emissive cyan lebih terang.
-
-Teks kiri muncul stagger (crossfade dari teks sebelumnya):
-
-```
-📷  Zenmuse P1 — 45MP Full-Frame
-    Akurasi ±1.5cm RTK
-
-📡  OcuSync 3 Enterprise
-    Transmisi 15km, anti-interference
-
-🔋  Flight Time 55 Menit
-    TB60 Intelligent, hot-swap capable
-
-📐  RTK GNSS Positioning
-    Akurasi horizontal 1cm + 1ppm
-
-```
-
-**Fase 3 — Kembali Utuh (70% → 100%):**
-Semua komponen kembali ke posisi semula dengan scrub. Opacity kembali 1.0. Drone rotate sedikit lebih cepat saat menyatu — efek "menghidupkan mesin".
 
 ---
 
