@@ -1,93 +1,132 @@
 import { useEffect, useRef } from 'react';
 
+const INTERACTIVE_SELECTOR = 'a, button, [role="button"], input, textarea, select, .clickable, .nav-link, .nav-cta, .btn-hero-primary, .btn-hero-secondary, label';
+
 export default function CustomCursor() {
+  const containerRef = useRef(null);
   const ringRef = useRef(null);
   const dotRef = useRef(null);
 
   useEffect(() => {
+    // Skip on touch devices
+    const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+    if (isTouchDevice) {
+      document.documentElement.style.cursor = '';
+      return;
+    }
+
+    // Skip if prefers-reduced-motion
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const container = containerRef.current;
     const ring = ringRef.current;
     const dot = dotRef.current;
-    if (!ring || !dot) return;
+    if (!container || !ring || !dot) return;
 
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let ringX = mouseX;
-    let ringY = mouseY;
-    let isHovering = false;
+    let mouseX = -100;
+    let mouseY = -100;
+    let ringX = -100;
+    let ringY = -100;
+    let visible = false;
+    let hovering = false;
+    let clicking = false;
     let raf;
 
-    const onMouseMove = (e) => {
+    // Smoothing factor for ring
+    const LERP = prefersReduced ? 1 : 0.14;
+
+    const onPointerMove = (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      // Dot follows instantly — use translate3d for GPU
-      dot.style.transform = `translate3d(${mouseX - 2.5}px, ${mouseY - 2.5}px, 0)`;
+
+      if (!visible) {
+        visible = true;
+        container.classList.add('is-visible');
+      }
+
+      // Dot follows instantly
+      dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+    };
+
+    const onPointerLeave = () => {
+      visible = false;
+      container.classList.remove('is-visible');
+    };
+
+    const onPointerEnter = () => {
+      visible = true;
+      container.classList.add('is-visible');
+    };
+
+    const onPointerOver = (e) => {
+      const target = e.target;
+      if (target.closest(INTERACTIVE_SELECTOR)) {
+        if (!hovering) {
+          hovering = true;
+          container.classList.add('is-hovering');
+        }
+      }
+    };
+
+    const onPointerOut = (e) => {
+      const target = e.target;
+      if (target.closest(INTERACTIVE_SELECTOR)) {
+        // Check if we're still inside an interactive element
+        const related = e.relatedTarget;
+        if (!related || !related.closest(INTERACTIVE_SELECTOR)) {
+          hovering = false;
+          container.classList.remove('is-hovering');
+        }
+      }
+    };
+
+    const onPointerDown = () => {
+      clicking = true;
+      container.classList.add('is-clicking');
+    };
+
+    const onPointerUp = () => {
+      clicking = false;
+      container.classList.remove('is-clicking');
     };
 
     const animate = () => {
-      // Ring follows with smooth lag
-      ringX += (mouseX - ringX) * 0.15;
-      ringY += (mouseY - ringY) * 0.15;
-      ring.style.transform = `translate3d(${ringX - 12}px, ${ringY - 12}px, 0) scale(${isHovering ? 1.5 : 1})`;
+      // Ring lerps toward mouse
+      ringX += (mouseX - ringX) * LERP;
+      ringY += (mouseY - ringY) * LERP;
+
+      ring.style.transform = `translate3d(${ringX}px, ${ringY}px, 0) translate(-50%, -50%)`;
+
       raf = requestAnimationFrame(animate);
     };
 
-    const handleMouseOver = (e) => {
-      const t = e.target;
-      if (t.closest('a') || t.closest('button') || t.tagName === 'A' || t.tagName === 'BUTTON') {
-        isHovering = true;
-        ring.style.background = 'rgba(10, 37, 64, 0.05)';
-        ring.style.borderColor = 'rgba(10, 37, 64, 0.2)';
-        ring.style.width = '36px';
-        ring.style.height = '36px';
-        dot.style.opacity = '0';
-      }
-      if (t.tagName === 'CANVAS') {
-        isHovering = true;
-        ring.style.background = 'transparent';
-        ring.style.borderColor = 'rgba(10, 37, 64, 0.1)';
-        ring.style.width = '48px';
-        ring.style.height = '48px';
-      }
-    };
+    // Attach listeners
+    document.addEventListener('pointermove', onPointerMove, { passive: true });
+    document.addEventListener('pointerleave', onPointerLeave);
+    document.addEventListener('pointerenter', onPointerEnter);
+    document.addEventListener('pointerover', onPointerOver, { passive: true });
+    document.addEventListener('pointerout', onPointerOut, { passive: true });
+    document.addEventListener('pointerdown', onPointerDown);
+    document.addEventListener('pointerup', onPointerUp);
 
-    const handleMouseOut = (e) => {
-      const t = e.target;
-      if (t.closest('a') || t.closest('button') || t.tagName === 'A' || t.tagName === 'BUTTON') {
-        isHovering = false;
-        ring.style.background = 'transparent';
-        ring.style.borderColor = 'rgba(10, 37, 64, 0.3)';
-        ring.style.width = '24px';
-        ring.style.height = '24px';
-        dot.style.opacity = '1';
-      }
-      if (t.tagName === 'CANVAS') {
-        isHovering = false;
-        ring.style.background = 'transparent';
-        ring.style.borderColor = 'rgba(10, 37, 64, 0.3)';
-        ring.style.width = '24px';
-        ring.style.height = '24px';
-      }
-    };
-
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
-    document.addEventListener('mouseover', handleMouseOver, { passive: true });
-    document.addEventListener('mouseout', handleMouseOut, { passive: true });
     raf = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-      document.removeEventListener('mouseover', handleMouseOver);
-      document.removeEventListener('mouseout', handleMouseOut);
+      document.removeEventListener('pointermove', onPointerMove);
+      document.removeEventListener('pointerleave', onPointerLeave);
+      document.removeEventListener('pointerenter', onPointerEnter);
+      document.removeEventListener('pointerover', onPointerOver);
+      document.removeEventListener('pointerout', onPointerOut);
+      document.removeEventListener('pointerdown', onPointerDown);
+      document.removeEventListener('pointerup', onPointerUp);
       cancelAnimationFrame(raf);
     };
   }, []);
 
   return (
-    <>
-      {/* Outer ring — trails behind with smooth lag */}
-      <div ref={ringRef} className="cursor-ring" />
-      {/* Inner dot — snaps to cursor instantly */}
-      <div ref={dotRef} className="cursor-dot" />
-    </>
+    <div ref={containerRef} className="siaga-cursor" aria-hidden="true">
+      <div ref={ringRef} className="siaga-cursor__ring" />
+      <div ref={dotRef} className="siaga-cursor__dot" />
+    </div>
   );
 }

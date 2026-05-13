@@ -1,49 +1,157 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [onDark, setOnDark] = useState(false);
+  const headerRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 60);
+
+      // Detect if navbar logo overlaps a dark section
+      const logoEl = document.querySelector('.brand-float__img');
+      if (!logoEl) return;
+      const logoRect = logoEl.getBoundingClientRect();
+      const logoCenterY = logoRect.top + logoRect.height / 2;
+      const logoCenterX = logoRect.left + logoRect.width / 2;
+
+      const darkSections = document.querySelectorAll('.psx-section, .closing-section');
+      let isOverDark = false;
+      for (const section of darkSections) {
+        const rect = section.getBoundingClientRect();
+        if (logoCenterY >= rect.top && logoCenterY <= rect.bottom &&
+            logoCenterX >= rect.left && logoCenterX <= rect.right) {
+          isOverDark = true;
+          break;
+        }
+      }
+      setOnDark(isOverDark);
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    gsap.fromTo(
-      '.navbar',
-      { yPercent: -100, opacity: 0 },
-      { yPercent: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 1.8 }
-    );
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        '.brand-float',
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 2.0 }
+      );
+      gsap.fromTo(
+        '.nav-pill',
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 2.1 }
+      );
+      gsap.fromTo(
+        '.nav-actions',
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 2.2 }
+      );
+      gsap.fromTo(
+        '.nav-mobile-toggle',
+        { y: -20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', delay: 2.1 }
+      );
+    }, headerRef);
+
+    return () => ctx.revert();
   }, []);
 
+  // Close mobile menu on resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 768) setMobileOpen(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
+
+  const handleNavClick = () => {
+    setMobileOpen(false);
+  };
+
   return (
-    <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
-      <a href="/" className="nav-logo">
-        <img
-          src="/images/logo/siaga-full.png"
-          alt="SIAGA"
-          className="nav-logo-img"
-        />
-      </a>
+    <>
+      <header
+        ref={headerRef}
+        className={`site-header ${scrolled ? 'is-scrolled' : ''} ${onDark ? 'on-dark' : ''}`}
+      >
+        <div className="nav-container">
+          {/* Left — Floating Logo */}
+          <a href="/" className="brand-float">
+            <img
+              src="/images/logo/siaga-full.png"
+              alt="SIAGA"
+              className="brand-float__img"
+            />
+          </a>
 
-      <ul className="nav-links">
-        <li><a href="#fitur" className="nav-link">Fitur</a></li>
-        <li><a href="#cara-kerja" className="nav-link">Cara Kerja</a></li>
-        <li><a href="#sektor" className="nav-link">Sektor</a></li>
-        <li><a href="#testimoni" className="nav-link">Testimoni</a></li>
-      </ul>
+          {/* Center — Floating Navigation Pill */}
+          <nav className="nav-pill">
+            <ul className="nav-pill__links">
+              <li><a href="#fitur" className="nav-link">Fitur</a></li>
+              <li><a href="#cara-kerja" className="nav-link">Cara Kerja</a></li>
+              <li><a href="#sektor" className="nav-link">Sektor</a></li>
+              <li><a href="#testimoni" className="nav-link">Testimoni</a></li>
+            </ul>
+          </nav>
 
-      <div className="nav-actions">
-        <a href="#login" className="btn btn-ghost">Masuk</a>
-        <a href="#register" className="btn btn-nav-primary">
-          Coba Gratis
-          <span className="btn-nav-arrow">→</span>
-        </a>
+          {/* Right — Floating Actions */}
+          <div className="nav-actions">
+            <a href="#login" className="login-link">Masuk</a>
+            <a href="#register" className="nav-cta">
+              <span>Coba Gratis</span>
+              <svg className="nav-cta__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            className={`nav-mobile-toggle ${mobileOpen ? 'nav-mobile-toggle--active' : ''}`}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={mobileOpen}
+          >
+            <span className="nav-mobile-toggle__line"></span>
+            <span className="nav-mobile-toggle__line"></span>
+            <span className="nav-mobile-toggle__line"></span>
+          </button>
+        </div>
+      </header>
+
+      {/* Mobile Menu Panel */}
+      <div className={`nav-mobile-panel ${mobileOpen ? 'nav-mobile-panel--open' : ''}`}>
+        <div className="nav-mobile-panel__inner">
+          <ul className="nav-mobile-panel__links">
+            <li><a href="#fitur" className="nav-mobile-panel__link" onClick={handleNavClick}>Fitur</a></li>
+            <li><a href="#cara-kerja" className="nav-mobile-panel__link" onClick={handleNavClick}>Cara Kerja</a></li>
+            <li><a href="#sektor" className="nav-mobile-panel__link" onClick={handleNavClick}>Sektor</a></li>
+            <li><a href="#testimoni" className="nav-mobile-panel__link" onClick={handleNavClick}>Testimoni</a></li>
+          </ul>
+          <div className="nav-mobile-panel__actions">
+            <a href="#login" className="nav-mobile-panel__ghost" onClick={handleNavClick}>Masuk</a>
+            <a href="#register" className="nav-mobile-panel__cta" onClick={handleNavClick}>
+              <span>Coba Gratis</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
       </div>
-    </nav>
+    </>
   );
 }
