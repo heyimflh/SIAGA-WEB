@@ -18,7 +18,7 @@ export default function Navbar() {
       const logoCenterY = logoRect.top + logoRect.height / 2;
       const logoCenterX = logoRect.left + logoRect.width / 2;
 
-      const darkSections = document.querySelectorAll('.psx-section, .closing-section');
+      const darkSections = document.querySelectorAll('.closing-section');
       let isOverDark = false;
       for (const section of darkSections) {
         const rect = section.getBoundingClientRect();

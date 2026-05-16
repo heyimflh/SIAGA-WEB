@@ -1,12 +1,19 @@
 /* ════════════════════════════════════════════════════════
-   PROBLEM × SOLUTION — Premium Cinematic Design
-   Chainzoku Vision-style showcase cards
+   PROBLEM × SOLUTION — Light Mode Design
+   Selaras dengan tema warna halaman lain
    ════════════════════════════════════════════════════════ */
 
 /* ── Section ── */
 .psx-section {
   position: relative;
-  background: #030608;
+  background: linear-gradient(
+    180deg,
+    rgba(248, 252, 255, 1) 0%,
+    rgba(240, 248, 255, 1) 25%,
+    rgba(232, 244, 253, 0.95) 50%,
+    rgba(240, 248, 255, 1) 75%,
+    rgba(248, 252, 255, 1) 100%
+  );
   padding: 180px 0 160px;
   overflow: hidden;
   z-index: 1;
@@ -24,17 +31,17 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(0,60,180,0.05) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 50% at 20% 100%, rgba(229,57,53,0.03) 0%, transparent 60%),
-    linear-gradient(180deg, #030608 0%, #060c18 50%, #030608 100%);
+    radial-gradient(circle at 18% 20%, rgba(0, 194, 255, 0.06) 0%, transparent 36%),
+    radial-gradient(circle at 80% 75%, rgba(0, 98, 214, 0.05) 0%, transparent 40%),
+    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(0,98,214,0.03) 0%, transparent 70%);
 }
 
 .psx-bg-grain {
   position: absolute;
   inset: 0;
-  opacity: 0.035;
+  opacity: 0.02;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: overlay;
+  mix-blend-mode: multiply;
 }
 
 .psx-bg-orb {
@@ -84,8 +91,8 @@
   background-image:
     repeating-linear-gradient(
       90deg,
-      rgba(255,255,255,0.015) 0px,
-      rgba(255,255,255,0.015) 1px,
+      rgba(10,37,64,0.03) 0px,
+      rgba(10,37,64,0.03) 1px,
       transparent 1px,
       transparent 120px
     );
@@ -108,9 +115,9 @@
   display: inline-block;
   font-family: 'SF Mono', 'Fira Code', 'JetBrains Mono', monospace;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.3em;
-  color: rgba(255,255,255,0.25);
+  color: #4A6885;
   margin-bottom: 32px;
   opacity: 0;
 }
@@ -121,7 +128,7 @@
   font-weight: 400;
   line-height: 0.88;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: #0A2540;
   text-transform: uppercase;
   margin-bottom: 32px;
   opacity: 0;
@@ -146,7 +153,7 @@
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.8;
-  color: rgba(255,255,255,0.35);
+  color: #4A6885;
   max-width: 520px;
   margin: 0 auto;
   opacity: 0;
@@ -160,10 +167,10 @@
   gap: 12px;
   font-family: 'SF Mono', 'Fira Code', monospace;
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  color: #0A2540;
   margin-bottom: 40px;
   padding: 0 6%;
 }
@@ -176,12 +183,12 @@
 
 .psx-dot-red {
   background: #E53935;
-  box-shadow: 0 0 12px rgba(229,57,53,0.6), 0 0 4px rgba(229,57,53,0.8);
+  box-shadow: 0 0 12px rgba(229,57,53,0.4), 0 0 4px rgba(229,57,53,0.6);
 }
 
 .psx-dot-blue {
   background: #0062D6;
-  box-shadow: 0 0 12px rgba(0,98,214,0.6), 0 0 4px rgba(0,98,214,0.8);
+  box-shadow: 0 0 12px rgba(0,98,214,0.4), 0 0 4px rgba(0,98,214,0.6);
 }
 
 
@@ -208,17 +215,17 @@
   align-items: center;
   gap: 32px;
   padding: 36px 6%;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(10,37,64,0.08);
   opacity: 0;
   transition: background 0.4s ease;
 }
 
 .psx-row-problem:first-child {
-  border-top: 1px solid rgba(255,255,255,0.04);
+  border-top: 1px solid rgba(10,37,64,0.08);
 }
 
 .psx-row-problem:hover {
-  background: rgba(229,57,53,0.02);
+  background: rgba(229,57,53,0.03);
 }
 
 .psx-row-problem:hover .psx-row-line {
@@ -227,17 +234,17 @@
 
 .psx-row-problem:hover .psx-row-stat {
   color: #E53935;
-  text-shadow: 0 0 40px rgba(229,57,53,0.4);
+  text-shadow: none;
 }
 
 .psx-row-problem:hover .psx-row-id {
-  color: rgba(229,57,53,0.6);
+  color: rgba(229,57,53,0.4);
 }
 
 .psx-row-id {
   font-family: 'Bebas Neue', var(--font-display), sans-serif;
   font-size: 42px;
-  color: rgba(255,255,255,0.06);
+  color: rgba(10,37,64,0.15);
   line-height: 1;
   transition: color 0.4s ease;
 }
@@ -245,7 +252,7 @@
 .psx-row-stat {
   font-family: 'Bebas Neue', var(--font-display), sans-serif;
   font-size: 38px;
-  color: rgba(229,57,53,0.6);
+  color: #D32F2F;
   line-height: 1;
   letter-spacing: -0.02em;
   transition: all 0.4s ease;
@@ -261,7 +268,7 @@
   font-family: var(--font-display);
   font-size: 18px;
   font-weight: 700;
-  color: rgba(255,255,255,0.85);
+  color: #0A2540;
   letter-spacing: -0.01em;
 }
 
@@ -269,7 +276,7 @@
   font-family: var(--font-body);
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(255,255,255,0.3);
+  color: #4A6885;
   max-width: 480px;
 }
 
@@ -279,7 +286,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, rgba(229,57,53,0.5), rgba(229,57,53,0.1), transparent);
+  background: linear-gradient(90deg, rgba(229,57,53,0.4), rgba(229,57,53,0.1), transparent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.6s cubic-bezier(.16,1,.3,1);
@@ -314,7 +321,7 @@
   font-family: 'Bebas Neue', var(--font-display), sans-serif;
   font-size: clamp(24px, 3vw, 36px);
   letter-spacing: 0.15em;
-  color: rgba(255,255,255,0.12);
+  color: rgba(10,37,64,0.25);
   text-transform: uppercase;
   opacity: 0;
 }
@@ -358,24 +365,24 @@
   transform-style: preserve-3d;
   perspective: 1000px;
   box-shadow:
-    0 30px 80px rgba(0,0,0,0.5),
-    0 0 0 1px rgba(255,255,255,0.05),
-    0 0 60px color-mix(in srgb, var(--accent) 15%, transparent);
+    0 30px 80px rgba(10,37,64,0.12),
+    0 0 0 1px rgba(10,37,64,0.06),
+    0 0 60px color-mix(in srgb, var(--accent) 8%, transparent);
   transition: transform 0.6s cubic-bezier(.16,1,.3,1), box-shadow 0.6s ease;
 }
 
 .psx-vcard:hover {
   transform: rotateY(-3deg) rotateX(2deg) scale(1.02);
   box-shadow:
-    0 40px 100px rgba(0,0,0,0.6),
-    0 0 0 1px rgba(255,255,255,0.08),
-    0 0 80px color-mix(in srgb, var(--accent) 20%, transparent);
+    0 40px 100px rgba(10,37,64,0.16),
+    0 0 0 1px rgba(10,37,64,0.08),
+    0 0 80px color-mix(in srgb, var(--accent) 12%, transparent);
 }
 
 .psx-vcard-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(160deg, #0a1628 0%, #060d1a 100%);
+  background: linear-gradient(160deg, #F1F5F9 0%, #E8F4FD 100%);
   z-index: 0;
 }
 
@@ -405,10 +412,10 @@
   z-index: 2;
   background: linear-gradient(
     180deg,
-    rgba(3,6,8,0.1) 0%,
-    rgba(3,6,8,0.2) 40%,
-    rgba(3,6,8,0.7) 85%,
-    rgba(3,6,8,0.85) 100%
+    rgba(248,248,246,0.0) 0%,
+    rgba(248,248,246,0.05) 40%,
+    rgba(10,37,64,0.4) 85%,
+    rgba(10,37,64,0.6) 100%
   );
   border-radius: 24px;
 }
@@ -421,7 +428,7 @@
   font-size: 140px;
   line-height: 0.75;
   color: var(--accent);
-  opacity: 0.25;
+  opacity: 0.3;
   z-index: 3;
   letter-spacing: -0.04em;
   text-shadow: 0 0 40px color-mix(in srgb, var(--accent) 30%, transparent);
@@ -436,7 +443,7 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   color: var(--accent);
-  background: rgba(3,6,8,0.6);
+  background: rgba(255,255,255,0.85);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
@@ -491,19 +498,19 @@
   height: 44px;
   border-radius: 50%;
   border: none;
-  background: #CCFF00;
-  color: #030608;
+  background: #0062D6;
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s cubic-bezier(.16,1,.3,1);
-  box-shadow: 0 4px 20px rgba(204,255,0,0.2);
+  box-shadow: 0 4px 20px rgba(0,98,214,0.25);
 }
 
 .psx-nav-btn:hover {
   transform: scale(1.1);
-  box-shadow: 0 6px 30px rgba(204,255,0,0.35);
+  box-shadow: 0 6px 30px rgba(0,98,214,0.35);
 }
 
 .psx-nav-btn:active {
@@ -514,17 +521,18 @@
   font-family: 'SF Mono', 'Fira Code', monospace;
   font-size: 13px;
   font-weight: 600;
-  color: rgba(255,255,255,0.5);
+  color: #4A6885;
   letter-spacing: 0.1em;
 }
 
 .psx-nav-current {
-  color: #ffffff;
+  color: #0A2540;
+  font-weight: 700;
 }
 
 .psx-nav-sep {
   margin: 0 4px;
-  color: rgba(255,255,255,0.2);
+  color: rgba(10,37,64,0.3);
 }
 
 
@@ -539,7 +547,7 @@
   font-family: 'Bebas Neue', var(--font-display), sans-serif;
   font-size: clamp(60px, 7vw, 90px);
   line-height: 0.85;
-  color: rgba(255,255,255,0.06);
+  color: rgba(10,37,64,0.1);
   margin-bottom: 12px;
 }
 
@@ -547,7 +555,7 @@
   font-family: 'Bebas Neue', var(--font-display), sans-serif;
   font-size: clamp(42px, 5vw, 64px);
   line-height: 0.95;
-  color: #ffffff;
+  color: #0A2540;
   text-transform: uppercase;
   letter-spacing: -0.02em;
   margin-bottom: 28px;
@@ -559,8 +567,8 @@
 
 .psx-showcase-hl {
   display: inline-block;
-  background: var(--hl-color, #CCFF00);
-  color: #030608;
+  background: var(--hl-color, #0062D6);
+  color: #ffffff;
   padding: 4px 16px 6px;
   border-radius: 4px;
   font-family: 'Bebas Neue', var(--font-display), sans-serif;
@@ -573,7 +581,7 @@
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.8;
-  color: rgba(255,255,255,0.45);
+  color: #4A6885;
   max-width: 440px;
   margin-bottom: 32px;
 }
@@ -584,9 +592,9 @@
   font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
+  color: #0A2540;
+  background: rgba(0,98,214,0.06);
+  border: 1px solid rgba(0,98,214,0.12);
   padding: 8px 16px;
   border-radius: 100px;
   width: fit-content;
@@ -608,7 +616,7 @@
 .psx-cta-line {
   width: 1px;
   height: 80px;
-  background: linear-gradient(180deg, rgba(0,98,214,0.4), transparent);
+  background: linear-gradient(180deg, rgba(0,98,214,0.3), transparent);
   margin: 0 auto 40px;
 }
 
@@ -616,14 +624,14 @@
   font-family: 'Bebas Neue', var(--font-display), sans-serif;
   font-size: clamp(28px, 4vw, 48px);
   letter-spacing: 0.08em;
-  color: rgba(255,255,255,0.7);
+  color: #0A2540;
   margin-bottom: 12px;
 }
 
 .psx-cta-sub {
   font-family: var(--font-body);
   font-size: 14px;
-  color: rgba(255,255,255,0.2);
+  color: #4A6885;
   letter-spacing: 0.05em;
 }
 

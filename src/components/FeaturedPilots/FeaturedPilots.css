@@ -1,0 +1,670 @@
+/* ════════════════════════════════════════════════════════
+   SECTION — FEATURED PILOTS
+   Supply-side marketplace — Premium Glassmorphism
+   ════════════════════════════════════════════════════════ */
+
+.fp-section {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+  isolation: isolate;
+  /* Richer background with more color so glass effect is visible */
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(0, 98, 214, 0.14), transparent 50%),
+    radial-gradient(ellipse 70% 50% at 80% 70%, rgba(0, 180, 216, 0.12), transparent 50%),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(124, 58, 237, 0.04), transparent 50%),
+    linear-gradient(135deg, rgba(232, 244, 253, 0.85) 0%, rgba(241, 245, 249, 0.6) 40%, rgba(248, 252, 255, 0.5) 100%);
+}
+
+/* ── Ambient glow — large blue orb top-left ── */
+.fp-section::before {
+  content: '';
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  left: -100px;
+  top: -5%;
+  background: radial-gradient(circle, rgba(0, 98, 214, 0.22), transparent 60%);
+  filter: blur(60px);
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: -1;
+  animation: fpGlowFloat 14s ease-in-out infinite alternate;
+}
+
+/* ── Ambient glow — cyan orb bottom-right ── */
+.fp-section::after {
+  content: '';
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  right: -150px;
+  bottom: -10%;
+  background: radial-gradient(circle, rgba(0, 180, 216, 0.18), transparent 60%);
+  filter: blur(70px);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: -1;
+  animation: fpGlowFloat 18s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes fpGlowFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(15px, -12px) scale(1.08); }
+}
+
+/* ── Container ── */
+.fp-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 6%;
+}
+
+/* ── Header ── */
+.fp-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  gap: 24px;
+}
+
+.fp-header-text {
+  max-width: 600px;
+}
+
+.fp-headline {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.fp-subheadline {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.fp-header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: gap 0.3s var(--ease-out);
+  flex-shrink: 0;
+}
+
+.fp-header-cta:hover {
+  gap: 10px;
+}
+
+.fp-header-cta svg {
+  transition: transform 0.3s var(--ease-out);
+}
+
+.fp-header-cta:hover svg {
+  transform: translateX(3px);
+}
+
+/* ── Filters ── */
+.fp-filters {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.fp-filter-chip {
+  padding: 8px 18px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+  white-space: nowrap;
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  box-shadow: 0 2px 8px rgba(10, 37, 64, 0.04);
+}
+
+.fp-filter-chip:hover {
+  border-color: rgba(0, 98, 214, 0.3);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 4px 16px rgba(0, 98, 214, 0.08);
+}
+
+.fp-filter-chip--active {
+  background: var(--brand-blue);
+  color: var(--text-inverse);
+  border-color: var(--brand-blue);
+  box-shadow: 0 4px 16px rgba(0, 98, 214, 0.30);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.fp-filter-chip--active:hover {
+  background: #0055c4;
+  border-color: #0055c4;
+  color: var(--text-inverse);
+}
+
+/* ── Scroll Wrapper ── */
+.fp-scroll-wrapper {
+  position: relative;
+  margin: 0 -6%;
+  padding: 0 6%;
+}
+
+.fp-scroll-mask {
+  display: none;
+}
+
+/* ── Scroll Container ── */
+.fp-scroll {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 16px 4px 28px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 3%,
+    black 92%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 3%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+.fp-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.fp-scroll--active {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+/* ════════════════════════════════════════════════════════
+   GLASSMORPHISM PILOT CARD — Premium frosted glass
+   ════════════════════════════════════════════════════════ */
+.fp-card {
+  position: relative;
+  min-width: 270px;
+  max-width: 270px;
+  background: rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  border-radius: 24px;
+  padding: 32px 24px 24px;
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  box-shadow:
+    0 12px 40px rgba(15, 23, 42, 0.08),
+    0 4px 12px rgba(0, 98, 214, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.15);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s ease,
+              border-color 0.4s ease,
+              background 0.4s ease;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  overflow: hidden;
+}
+
+/* Top edge refraction highlight */
+.fp-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 1) 20%,
+    rgba(180, 220, 255, 0.6) 50%,
+    rgba(255, 255, 255, 1) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Inner glow at bottom */
+.fp-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  height: 50%;
+  background: radial-gradient(ellipse at bottom center, rgba(0, 98, 214, 0.04), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fp-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 30px 80px rgba(0, 98, 214, 0.14),
+    0 12px 32px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.25),
+    0 0 0 1px rgba(0, 98, 214, 0.06);
+}
+
+.fp-card:hover .fp-card-avatar {
+  transform: scale(1.08);
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.18);
+}
+
+.fp-card:hover .fp-card-cta svg {
+  transform: translateX(4px);
+}
+
+/* ── Verified Badge ── */
+.fp-card-badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.25);
+  border-radius: 8px;
+  box-shadow: 0 0 16px rgba(0, 180, 216, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 4;
+}
+
+.fp-card-badge svg {
+  color: var(--brand-cyan);
+}
+
+.fp-card-badge span {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--brand-cyan);
+  letter-spacing: 0.04em;
+}
+
+/* ── Avatar ── */
+.fp-card-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.4s ease;
+  box-shadow: 0 6px 20px rgba(10, 37, 64, 0.15);
+  position: relative;
+  z-index: 2;
+}
+
+.fp-card-avatar span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: white;
+  letter-spacing: -0.02em;
+}
+
+/* ── Name ── */
+.fp-card-name {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Location ── */
+.fp-card-location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-bottom: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.fp-card-location svg {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+/* ── Specialization Chips ── */
+.fp-card-specs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.fp-spec-chip {
+  padding: 4px 12px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  background: rgba(0, 98, 214, 0.06);
+  border: 1px solid rgba(0, 98, 214, 0.12);
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+/* ── Stats ── */
+.fp-card-stats {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.fp-stat-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.fp-stat-sep {
+  color: var(--text-tertiary);
+  font-size: 12px;
+}
+
+.fp-stat-missions {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* ── Drone ── */
+.fp-card-drone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  position: relative;
+  z-index: 2;
+}
+
+.fp-card-drone svg {
+  color: var(--brand-blue);
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+/* ── Price ── */
+.fp-card-price {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
+}
+
+.fp-card-price svg {
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+/* ── Card CTA ── */
+.fp-card-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  text-decoration: none;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 98, 214, 0.08);
+  transition: gap 0.3s var(--ease-out);
+  position: relative;
+  z-index: 2;
+}
+
+.fp-card-cta:hover {
+  gap: 10px;
+}
+
+.fp-card-cta svg {
+  transition: transform 0.3s var(--ease-out);
+}
+
+/* ── Bottom CTA ── */
+.fp-bottom-cta {
+  display: none;
+  text-align: center;
+  margin-top: 32px;
+}
+
+.fp-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--brand-blue);
+  background: rgba(255, 255, 255, 0.4);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.35s var(--ease-out);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  box-shadow:
+    0 4px 16px rgba(15, 23, 42, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+.fp-cta-btn:hover {
+  background: rgba(255, 255, 255, 0.6);
+  border-color: rgba(0, 98, 214, 0.2);
+  box-shadow:
+    0 12px 32px rgba(0, 98, 214, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.fp-cta-btn svg {
+  transition: transform 0.3s var(--ease-out);
+}
+
+.fp-cta-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* ════════════════════════════════════════════════════════
+   FALLBACK
+   ════════════════════════════════════════════════════════ */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .fp-card {
+    background: rgba(255, 255, 255, 0.88);
+  }
+  .fp-filter-chip {
+    background: rgba(255, 255, 255, 0.85);
+  }
+  .fp-cta-btn {
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .fp-section {
+    padding: 96px 0;
+  }
+  .fp-container {
+    padding: 0 5%;
+  }
+  .fp-scroll-wrapper {
+    margin: 0 -5%;
+    padding: 0 5%;
+  }
+  .fp-card {
+    min-width: 250px;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .fp-section {
+    padding: 80px 0;
+  }
+  .fp-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .fp-header-cta {
+    display: none;
+  }
+  .fp-bottom-cta {
+    display: block;
+  }
+  .fp-filters {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .fp-filters::-webkit-scrollbar {
+    display: none;
+  }
+  .fp-card {
+    min-width: 240px;
+    max-width: 240px;
+  }
+  .fp-scroll-mask {
+    display: none;
+  }
+  .fp-section::before {
+    width: 400px;
+    height: 400px;
+    filter: blur(50px);
+  }
+  .fp-section::after {
+    width: 400px;
+    height: 400px;
+    filter: blur(50px);
+  }
+}
+
+@media (max-width: 480px) {
+  .fp-section {
+    padding: 64px 0;
+  }
+  .fp-headline {
+    font-size: 26px;
+  }
+  .fp-card {
+    min-width: 220px;
+    max-width: 220px;
+    padding: 28px 18px 20px;
+  }
+  .fp-card-avatar {
+    width: 56px;
+    height: 56px;
+  }
+  .fp-card-avatar span {
+    font-size: 18px;
+  }
+  .fp-section::before,
+  .fp-section::after {
+    display: none;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .fp-card {
+    transition: none;
+  }
+  .fp-card:hover {
+    transform: none;
+  }
+  .fp-card-avatar {
+    transition: none;
+  }
+  .fp-filter-chip {
+    transition: none;
+  }
+  .fp-scroll {
+    scroll-behavior: auto;
+  }
+  .fp-section::before,
+  .fp-section::after {
+    animation: none;
+  }
+}

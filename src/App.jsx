@@ -5,11 +5,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import StatsBar from './components/StatsBar';
-import DroneAnatomy from './components/DroneAnatomy';
+import DualAudience from './components/DualAudience/DualAudience';
 import ProblemSolution from './components/ProblemSolution';
 import { JobRadarSection } from './components/JobRadarMap';
+import LiveProjects from './components/LiveProjects/LiveProjects';
+import FeaturedPilots from './components/FeaturedPilots/FeaturedPilots';
+import ServiceCategories from './components/ServiceCategories/ServiceCategories';
 import HowItWorks from './components/HowItWorks';
+import TrustSafety from './components/TrustSafety/TrustSafety';
 import SektorKredibilitas from './components/SektorKredibilitas';
+import Pricing from './components/Pricing/Pricing';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
 import ClosingSection from './components/ClosingSection';
@@ -61,11 +66,16 @@ function App() {
       <main>
         <Hero />
         <StatsBar />
-        <DroneAnatomy />
+        <DualAudience />
         <ProblemSolution />
         <JobRadarSection />
+        <LiveProjects />
+        <FeaturedPilots />
+        <ServiceCategories />
         <HowItWorks />
+        <TrustSafety />
         <SektorKredibilitas />
+        <Pricing />
         <ClosingSection>
           <FinalCTA />
           <Footer />

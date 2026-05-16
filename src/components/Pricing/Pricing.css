@@ -1,0 +1,496 @@
+/* ════════════════════════════════════════════════════════
+   SECTION — PRICING & KOMISI TRANSPARAN
+   Last objection killer before FinalCTA
+   ════════════════════════════════════════════════════════ */
+
+.pr-section {
+  position: relative;
+  padding: 120px 0;
+  overflow: hidden;
+  isolation: isolate;
+  background:
+    radial-gradient(ellipse 60% 50% at 25% 40%, rgba(0, 98, 214, 0.05), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 75% 60%, rgba(0, 180, 216, 0.04), transparent 50%),
+    var(--bg-secondary);
+}
+
+/* ── Background ── */
+.pr-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pr-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 98, 214, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 98, 214, 0.02) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.5;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
+}
+
+/* ── Container ── */
+.pr-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 6%;
+}
+
+/* ── Header ── */
+.pr-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.pr-eyebrow {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin-bottom: 16px;
+  padding: 6px 14px;
+  background: rgba(0, 98, 214, 0.06);
+  border: 1px solid rgba(0, 98, 214, 0.1);
+  border-radius: 100px;
+}
+
+.pr-headline {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.8vw, 46px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.pr-subheadline {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* ── Cards Layout ── */
+.pr-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-bottom: 56px;
+}
+
+/* ════════════════════════════════════════════════════════
+   PRICING CARD
+   ════════════════════════════════════════════════════════ */
+.pr-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-light);
+  border-radius: 24px;
+  padding: 36px 32px;
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.5s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.pr-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 50px rgba(0, 98, 214, 0.08),
+    0 8px 24px rgba(15, 23, 42, 0.05);
+}
+
+/* ── Enterprise accent ── */
+.pr-card--enterprise {
+  border-top: 3px solid var(--brand-blue);
+}
+
+/* ── Pilot accent ── */
+.pr-card--pilot {
+  border-top: 3px solid var(--brand-cyan);
+}
+
+/* ── Card Header ── */
+.pr-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.pr-card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: rgba(0, 98, 214, 0.08);
+  border: 1px solid rgba(0, 98, 214, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--brand-blue);
+}
+
+.pr-card-icon--cyan {
+  background: rgba(0, 180, 216, 0.08);
+  border-color: rgba(0, 180, 216, 0.08);
+  color: var(--brand-cyan);
+}
+
+.pr-card-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+}
+
+.pr-card-label--cyan {
+  color: var(--brand-cyan);
+}
+
+/* ── Pricing ── */
+.pr-card-pricing {
+  margin-bottom: 20px;
+}
+
+.pr-card-price {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.5vw, 32px);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.pr-card-price-sub {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+/* ── Highlight Badge ── */
+.pr-card-highlight {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  width: fit-content;
+}
+
+.pr-card-highlight--blue {
+  background: rgba(0, 98, 214, 0.06);
+  color: var(--brand-blue);
+  border: 1px solid rgba(0, 98, 214, 0.1);
+}
+
+.pr-card-highlight--blue span {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.pr-card-highlight--cyan {
+  background: rgba(0, 180, 216, 0.06);
+  color: var(--brand-cyan);
+  border: 1px solid rgba(0, 180, 216, 0.1);
+}
+
+.pr-highlight-number {
+  font-weight: 800;
+  font-size: 16px;
+}
+
+/* ── Features ── */
+.pr-card-features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+  flex: 1;
+}
+
+.pr-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.pr-feature svg {
+  color: var(--color-success);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* ── CTA ── */
+.pr-card-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 24px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: none;
+  text-decoration: none;
+  transition: all 0.35s var(--ease-out);
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.pr-card-cta--primary {
+  color: var(--text-inverse);
+  background: linear-gradient(135deg, var(--brand-blue) 0%, #0055c4 100%);
+  box-shadow: 0 4px 16px rgba(0, 98, 214, 0.25);
+}
+
+.pr-card-cta--primary:hover {
+  background: linear-gradient(135deg, #0055c4 0%, #004aad 100%);
+  box-shadow: 0 8px 28px rgba(0, 98, 214, 0.40);
+  transform: translateY(-2px);
+}
+
+.pr-card-cta--secondary {
+  color: var(--brand-blue);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1.5px solid rgba(0, 98, 214, 0.18);
+  box-shadow: 0 2px 8px rgba(0, 98, 214, 0.06);
+}
+
+.pr-card-cta--secondary:hover {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(0, 98, 214, 0.3);
+  box-shadow: 0 6px 20px rgba(0, 98, 214, 0.12);
+  transform: translateY(-2px);
+}
+
+.pr-card-cta svg {
+  transition: transform 0.3s var(--ease-out);
+}
+
+.pr-card-cta:hover svg {
+  transform: translateX(3px);
+}
+
+/* ── Mini Tiers ── */
+.pr-tiers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-light);
+}
+
+.pr-tier {
+  text-align: center;
+  padding: 12px 8px;
+  border-radius: 10px;
+  background: rgba(0, 98, 214, 0.02);
+  border: 1px solid rgba(0, 98, 214, 0.04);
+}
+
+.pr-tier-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.pr-tier-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.pr-tier-price {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.pr-tier-desc {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--text-tertiary);
+  line-height: 1.4;
+}
+
+/* ════════════════════════════════════════════════════════
+   NEGATIVE FRAMING CHIPS
+   ════════════════════════════════════════════════════════ */
+.pr-negative {
+  text-align: center;
+}
+
+.pr-negative-title {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.pr-negative-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pr-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--border-light);
+  border-radius: 100px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.pr-chip svg {
+  color: var(--color-danger);
+  opacity: 0.7;
+}
+
+/* ════════════════════════════════════════════════════════
+   FALLBACK
+   ════════════════════════════════════════════════════════ */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .pr-card {
+    background: rgba(255, 255, 255, 0.95);
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .pr-section {
+    padding: 96px 0;
+  }
+  .pr-container {
+    padding: 0 5%;
+  }
+  .pr-cards {
+    gap: 20px;
+  }
+  .pr-card {
+    padding: 28px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .pr-section {
+    padding: 80px 0;
+  }
+  .pr-header {
+    margin-bottom: 48px;
+  }
+  .pr-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .pr-card {
+    padding: 28px 24px;
+  }
+  .pr-tiers {
+    gap: 6px;
+  }
+  .pr-negative-chips {
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pr-section {
+    padding: 64px 0;
+  }
+  .pr-headline {
+    font-size: 26px;
+  }
+  .pr-card {
+    padding: 24px 20px;
+    border-radius: 20px;
+  }
+  .pr-card-price {
+    font-size: 24px;
+  }
+  .pr-tiers {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .pr-tier {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding: 10px 12px;
+  }
+  .pr-tier-top {
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  .pr-chip {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}
+
+/* ════════════════════════════════════════════════════════
+   REDUCED MOTION
+   ════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .pr-card {
+    transition: none;
+  }
+  .pr-card:hover {
+    transform: none;
+  }
+  .pr-card-cta {
+    transition: none;
+  }
+  .pr-card-cta:hover {
+    transform: none;
+  }
+  .pr-card-cta svg {
+    transition: none;
+  }
+}
