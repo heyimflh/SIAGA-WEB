@@ -6,8 +6,8 @@ This plan implements performance optimizations for the SIAGA landing page — a 
 
 ## Tasks
 
-- [ ] 1. Create shared utility hooks and infrastructure
-  - [ ] 1.1 Create the `useVisibility` hook (IntersectionManager)
+- [x] 1. Create shared utility hooks and infrastructure
+  - [x] 1.1 Create the `useVisibility` hook (IntersectionManager)
     - Create `src/hooks/useVisibility.js` implementing IntersectionObserver-based visibility detection
     - Accept a ref and options object with `rootMargin` (minimum "100px") and `threshold`
     - Return a boolean `isVisible` state
@@ -15,7 +15,7 @@ This plan implements performance optimizations for the SIAGA landing page — a 
     - Disconnect observer on unmount
     - _Requirements: 6.5, 7.1, 7.2_
 
-  - [ ] 1.2 Create the priority-based frame loading utility
+  - [x] 1.2 Create the priority-based frame loading utility
     - Create `src/utils/frameLoader.js` implementing the priority queue for 240-frame loading
     - Implement priority ordering: frame 0 first, every 10th frame, last frame, then gap-fill
     - Implement concurrency limiter capping at 6 simultaneous image requests
@@ -43,8 +43,8 @@ This plan implements performance optimizations for the SIAGA landing page — a 
     - Generate observer configs, verify rootMargin is at least "100px"
     - **Validates: Requirements 6.5**
 
-- [ ] 2. Optimize the Drone Anatomy Frame Sequence component
-  - [ ] 2.1 Refactor `src/components/DroneAnatomy.jsx` with optimized frame rendering
+- [x] 2. Optimize the Drone Anatomy Frame Sequence component
+  - [x] 2.1 Refactor `src/components/DroneAnatomy.jsx` with optimized frame rendering
     - Integrate the priority-based frame loader from `src/utils/frameLoader.js`
     - Implement requestAnimationFrame-based rendering that skips redundant draws when frame index hasn't changed
     - Cap canvas DPR at 1.5x using `Math.min(window.devicePixelRatio, 1.5)`
@@ -64,11 +64,11 @@ This plan implements performance optimizations for the SIAGA landing page — a 
     - Generate visibility state sequences, verify all rAF callbacks cancelled and timelines paused when hidden
     - **Validates: Requirements 1.4, 2.1, 7.1, 7.2**
 
-- [ ] 3. Checkpoint - Ensure all tests pass
+- [~] 3. Checkpoint - Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 4. Optimize the 3D Scene Renderer
-  - [ ] 4.1 Refactor `src/components/Scene.jsx` with WebGL optimizations
+- [x] 4. Optimize the 3D Scene Renderer
+  - [x] 4.1 Refactor `src/components/Scene.jsx` with WebGL optimizations
     - Set Canvas props: `antialias={false}`, `stencil={false}` (via `gl` prop)
     - Set `dpr={[1, 1.5]}` on Canvas to clamp device pixel ratio
     - Integrate `useVisibility` hook to toggle `frameloop` between "always" and "never"
@@ -77,20 +77,20 @@ This plan implements performance optimizations for the SIAGA landing page — a 
     - Add `useGLTF.preload('/models/drone.glb')` at module level (outside component)
     - _Requirements: 2.1, 2.2, 2.3, 2.4, 2.5, 4.4_
 
-  - [ ] 4.2 Implement dynamic import for Three.js code-splitting
+  - [x] 4.2 Implement dynamic import for Three.js code-splitting
     - Modify `src/components/Hero.jsx` to use `React.lazy()` for the Scene component
     - Add a Suspense boundary with a lightweight fallback (preserving layout dimensions)
     - Ensure Three.js, @react-three/fiber, and @react-three/drei are split into a separate chunk
     - _Requirements: 8.3_
 
-- [ ] 5. Optimize Scroll Engine and Animation Controller
-  - [ ] 5.1 Refactor Lenis + ScrollTrigger integration in `src/App.jsx`
+- [x] 5. Optimize Scroll Engine and Animation Controller
+  - [x] 5.1 Refactor Lenis + ScrollTrigger integration in `src/App.jsx`
     - Configure Lenis with `duration: 1.0`
     - Synchronize Lenis with GSAP ScrollTrigger via the scroll event callback (`ScrollTrigger.update()`)
     - Ensure proper cleanup: destroy Lenis instance and kill ScrollTrigger on unmount
     - _Requirements: 3.1_
 
-  - [ ] 5.2 Refactor scroll-triggered animations across all section components
+  - [x] 5.2 Refactor scroll-triggered animations across all section components
     - Wrap all GSAP animations in `gsap.context()` and call `context.revert()` on unmount
     - Set `toggleActions: "play none none reverse"` on all ScrollTrigger instances
     - Replace any `top`, `left`, `width`, `height`, `margin`, `padding` animations with `transform`/`opacity` equivalents
@@ -98,7 +98,7 @@ This plan implements performance optimizations for the SIAGA landing page — a 
     - Apply to: `HowItWorks.jsx`, `ProblemSolution.jsx`, `SektorKredibilitas.jsx`, `ClosingSection.jsx`, `FinalCTA.jsx`, `StatsBar.jsx`
     - _Requirements: 3.2, 3.3, 3.4, 9.4_
 
-  - [ ] 5.3 Optimize Hero section parallax effect
+  - [x] 5.3 Optimize Hero section parallax effect
     - Replace `gsap.set()` per-frame calls with direct `style.transform = translate3d(...)` assignment
     - Mark the mousemove event listener as `{ passive: true }`
     - Cache DOM element references outside the animation loop
@@ -114,11 +114,11 @@ This plan implements performance optimizations for the SIAGA landing page — a 
     - Generate animation parameter sets, verify duration, easing, distance, and direction are preserved after optimization
     - **Validates: Requirements 9.4**
 
-- [ ] 6. Checkpoint - Ensure all tests pass
+- [~] 6. Checkpoint - Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 7. Optimize Custom Cursor and Event Listeners
-  - [ ] 7.1 Refactor `src/components/CustomCursor.jsx`
+- [x] 7. Optimize Custom Cursor and Event Listeners
+  - [x] 7.1 Refactor `src/components/CustomCursor.jsx`
     - Add touch device detection: skip initialization entirely when `(hover: none), (pointer: coarse)` matches
     - Use passive event listeners for `pointermove` and `pointerover`: `{ passive: true }`
     - Implement single rAF loop with lerp-based interpolation (factor 0.14)
@@ -141,14 +141,14 @@ This plan implements performance optimizations for the SIAGA landing page — a 
     - Simulate mount/unmount cycles, verify zero dangling event listeners and cancelled rAF callbacks
     - **Validates: Requirements 3.4, 5.5**
 
-- [ ] 8. Optimize Image Loading and Layout Stability
-  - [ ] 8.1 Apply lazy loading and layout stability to all below-fold image components
+- [x] 8. Optimize Image Loading and Layout Stability
+  - [x] 8.1 Apply lazy loading and layout stability to all below-fold image components
     - Add `loading="lazy"` to all below-fold images in: `ServiceCategories`, `FeaturedPilots`, `ProblemSolution`, `SektorKredibilitas`, `DualAudience`, `LiveProjects`
     - Add explicit `width`/`height` attributes or CSS `aspect-ratio` to all image containers
     - Ensure hero background, logo, and nav images do NOT have lazy loading (above-fold priority)
     - _Requirements: 4.1, 4.2, 4.5, 6.1_
 
-  - [ ] 8.2 Add preconnect links and font optimization in `index.html`
+  - [x] 8.2 Add preconnect links and font optimization in `index.html`
     - Add `<link rel="preconnect" href="https://fonts.googleapis.com">` to document head
     - Add `<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>` to document head
     - Verify Google Fonts URL includes `&display=swap` parameter for font-display: swap
@@ -164,8 +164,8 @@ This plan implements performance optimizations for the SIAGA landing page — a 
     - Generate container configurations for dynamically loaded content, verify explicit dimensions exist
     - **Validates: Requirements 4.5, 6.1**
 
-- [ ] 9. Optimize Vite Build Configuration
-  - [ ] 9.1 Update `vite.config.js` with chunk splitting and build optimizations
+- [x] 9. Optimize Vite Build Configuration
+  - [x] 9.1 Update `vite.config.js` with chunk splitting and build optimizations
     - Add `build.rollupOptions.output.manualChunks` to split Three.js/R3F into `three-vendor` chunk
     - Add GSAP into `gsap-vendor` chunk
     - Enable `cssCodeSplit: true`
@@ -173,20 +173,20 @@ This plan implements performance optimizations for the SIAGA landing page — a 
     - Do NOT add any new dependencies to package.json
     - _Requirements: 8.1, 8.2, 8.3, 8.4, 8.5_
 
-  - [ ] 9.2 Verify named imports and remove dead code
+  - [x] 9.2 Verify named imports and remove dead code
     - Audit all `lucide-react` imports to ensure named imports (not barrel imports)
     - Remove any unused CSS rules, dead code paths, or commented-out code blocks
     - Verify tree-shaking effectiveness for icon libraries
     - _Requirements: 8.1, 8.4_
 
-- [ ] 10. Integration wiring and final verification
-  - [ ] 10.1 Wire visibility-based pausing across all section components
+- [x] 10. Integration wiring and final verification
+  - [x] 10.1 Wire visibility-based pausing across all section components
     - Integrate `useVisibility` hook into all heavy sections: `HowItWorks`, `ProblemSolution`, `SektorKredibilitas`, `ClosingSection`, `FinalCTA`
     - Pause GSAP timelines when sections are not visible
     - Ensure only the active pinned section (DroneAnatomy) runs high-frequency updates during scroll
     - _Requirements: 7.1, 7.3_
 
-  - [ ] 10.2 Verify visual preservation and no console errors
+  - [x] 10.2 Verify visual preservation and no console errors
     - Run production build and verify no console errors, warnings, or unhandled promise rejections
     - Verify all existing interactions (hover effects, click handlers, sliders, carousels, navigation) function identically
     - Verify responsiveness at 1920px, 768px, and 375px viewports
@@ -199,7 +199,7 @@ This plan implements performance optimizations for the SIAGA landing page — a 
     - Verify 60 FPS during continuous scroll (no more than 3 consecutive dropped frames)
     - _Requirements: 10.1, 10.2, 10.3, 10.4, 10.5, 10.6, 10.7_
 
-- [ ] 11. Final checkpoint - Ensure all tests pass
+- [~] 11. Final checkpoint - Ensure all tests pass
   - Ensure all tests pass, ask the user if questions arise.
 
 ## Notes

@@ -209,6 +209,7 @@ function TestimonialRotator() {
               <img
                 src={current.avatar}
                 alt={`Avatar ${current.name}`}
+                loading="lazy"
                 onError={(e) => {
                   // Fallback to monogram if image fails
                   e.target.parentElement.style.display = 'none';

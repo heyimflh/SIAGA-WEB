@@ -1,0 +1,160 @@
+/**
+ * ClientDashboardPage.css — SIAGA Client Command Center.
+ *
+ * Premium animated gradient background with radial glows,
+ * design tokens, and refined layout system.
+ */
+
+/* ─── Design Tokens ─── */
+.dashboard-shell {
+  --color-primary: #071A34;
+  --color-accent: #106DFF;
+  --color-accent-cyan: #00BFEA;
+  --color-surface: #F8FBFF;
+  --color-warning: #F59E0B;
+  --color-success: #10B981;
+  --color-danger: #EF4444;
+  --text-primary: #071A34;
+  --text-secondary: #58708E;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(180, 220, 245, 0.4);
+  --glass-shadow: 0 8px 32px rgba(10, 40, 80, 0.06);
+  --radius-card: 24px;
+  --radius-pill: 14px;
+
+  /* Typography */
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+
+  /* Full viewport shell */
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(160deg, #F0F7FF 0%, #E8F4FD 30%, #F8FBFF 70%, #FFFFFF 100%);
+  position: relative;
+}
+
+/* Animated radial glow — top right */
+.dashboard-shell::before {
+  content: '';
+  position: fixed;
+  top: -15%;
+  right: -8%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(16, 109, 255, 0.07) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  animation: glow-float 12s ease-in-out infinite alternate;
+}
+
+/* Animated radial glow — bottom left */
+.dashboard-shell::after {
+  content: '';
+  position: fixed;
+  bottom: -12%;
+  left: -6%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 191, 234, 0.06) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  animation: glow-float 15s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes glow-float {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(30px, -20px) scale(1.08); }
+}
+
+/* ============================================================
+   MAIN CONTENT GRID — Map (~65%) + Activity (~35%) side-by-side
+   ============================================================ */
+.dashboard-main-content {
+  display: block;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 1280px) {
+  .dashboard-main-content {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+    align-items: start;
+  }
+}
+
+.dashboard-main-content__primary {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  min-width: 0;
+}
+
+.dashboard-main-content__aside {
+  margin-top: 2rem;
+}
+
+@media (min-width: 1280px) {
+  .dashboard-main-content__aside {
+    position: sticky;
+    top: 88px;
+    max-height: calc(100vh - 104px);
+    overflow-y: auto;
+    margin-top: 0;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(16, 109, 255, 0.2) transparent;
+  }
+
+  .dashboard-main-content__aside::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .dashboard-main-content__aside::-webkit-scrollbar-thumb {
+    background: rgba(16, 109, 255, 0.2);
+    border-radius: 4px;
+  }
+}
+
+/* ============================================================
+   SECTION WRAPPERS — Visual hierarchy headers
+   ============================================================ */
+.dashboard-section {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 2rem;
+}
+
+.dashboard-section__title {
+  font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+  padding-left: 0.25rem;
+  letter-spacing: -0.01em;
+  position: relative;
+}
+
+.dashboard-section__title::before {
+  content: '';
+  position: absolute;
+  left: -0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 60%;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #106DFF, #00BFEA);
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  .dashboard-shell::before,
+  .dashboard-shell::after {
+    animation: none;
+  }
+}

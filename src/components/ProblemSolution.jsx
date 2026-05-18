@@ -111,11 +111,23 @@ function SolutionShowcase() {
         <div className="psx-vcard" ref={cardRef} style={{ '--accent': current.color }}>
           <div className="psx-vcard-bg" />
           <div className="psx-vcard-image">
-            <img src={current.image} alt={current.title} />
+            <img src={current.image} alt={current.title} loading="lazy" />
           </div>
           <div className="psx-vcard-overlay" />
           <div className="psx-vcard-number">{current.id}</div>
           <div className="psx-vcard-label">{current.tag}</div>
+
+          {/* Mobile-only inline title — appears inside card on small screens */}
+          <div className="psx-vcard-mobile-title" aria-hidden="true">
+            <span className="psx-vcard-mobile-eyebrow">THE SOLUTION</span>
+            <span className="psx-vcard-mobile-name">
+              {current.title}
+              <span className="psx-vcard-mobile-hl" style={{ '--hl-color': current.color }}>
+                {' '}{current.highlight}
+              </span>
+            </span>
+          </div>
+
           <div className="psx-vcard-corner psx-vc-tl" />
           <div className="psx-vcard-corner psx-vc-tr" />
           <div className="psx-vcard-corner psx-vc-bl" />

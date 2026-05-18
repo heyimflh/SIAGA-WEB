@@ -1231,4 +1231,233 @@
     gap: 4px;
     text-align: center;
   }
+
+  .demo-card {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  .demo-card__body {
+    padding: 16px;
+  }
+
+  .hiw-form-body {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .hiw-form-submit {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .hiw-connector-line {
+    height: 32px;
+  }
+
+  .hiw-section {
+    padding-bottom: 60px;
+  }
+}
+
+/* ─── Extra small mobile (360px and below) ─── */
+@media (max-width: 360px) {
+  .hiw-header {
+    padding: 64px 4% 40px;
+  }
+
+  .hiw-heading {
+    font-size: 26px;
+    margin-bottom: 14px;
+  }
+
+  .hiw-subheading {
+    font-size: 14px;
+  }
+
+  .hiw-steps-container {
+    padding: 0 14px;
+  }
+
+  .hiw-step-row {
+    gap: 24px;
+    padding: 28px 0;
+  }
+
+  .hiw-step-number span {
+    font-size: 38px;
+  }
+
+  .hiw-step-label-tag {
+    font-size: 9px;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+  }
+
+  .hiw-step-title {
+    font-size: 19px;
+    margin-bottom: 12px;
+  }
+
+  .hiw-step-desc {
+    font-size: 13px;
+    line-height: 1.65;
+    margin-bottom: 18px;
+  }
+
+  .hiw-feature-item {
+    font-size: 12.5px;
+    gap: 10px;
+  }
+
+  .hiw-feature-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+  }
+
+  /* Demo card — minimum viable layout */
+  .demo-card {
+    border-radius: 14px;
+  }
+
+  .demo-card__header {
+    padding: 10px 14px;
+  }
+
+  .demo-card__title {
+    font-size: 11px;
+  }
+
+  .demo-card__body {
+    padding: 14px;
+  }
+
+  /* Form mockup */
+  .hiw-form-body {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .hiw-form-field label {
+    font-size: 10px;
+  }
+
+  .hiw-field-input,
+  .hiw-field-select {
+    padding: 9px 12px;
+  }
+
+  .hiw-field-text {
+    font-size: 12px;
+  }
+
+  .hiw-form-map {
+    height: 60px;
+  }
+
+  .hiw-map-placeholder {
+    font-size: 12px;
+  }
+
+  .hiw-form-submit {
+    padding: 11px 16px;
+    font-size: 12.5px;
+  }
+
+  /* Pilot cards */
+  .hiw-pilot-card {
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .hiw-pilot-info h4 {
+    font-size: 13px;
+  }
+
+  .hiw-pilot-spec {
+    font-size: 11px;
+  }
+
+  .hiw-pilot-rating {
+    font-size: 11px;
+  }
+
+  .hiw-pilot-missions {
+    font-size: 10px;
+  }
+
+  .hiw-pilot-badge-best {
+    font-size: 8px;
+    padding: 3px 8px;
+  }
+
+  /* Dashboard */
+  .hiw-dash-body {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .hiw-dash-progress-header {
+    font-size: 11px;
+  }
+
+  .hiw-dash-metric {
+    padding: 10px 6px;
+  }
+
+  .hiw-dash-metric-value {
+    font-size: 13px;
+  }
+
+  .hiw-dash-metric-label {
+    font-size: 9px;
+  }
+
+  .hiw-dash-feed-item {
+    padding: 8px 12px;
+    font-size: 11px;
+    gap: 8px;
+  }
+
+  .hiw-dash-feed-time {
+    font-size: 9px;
+  }
+
+  /* Report */
+  .hiw-report-card {
+    padding: 16px;
+    border-radius: 14px;
+  }
+
+  .hiw-report-card-header h4 {
+    font-size: 13px;
+  }
+
+  .hiw-report-card-header p {
+    font-size: 10px;
+  }
+
+  .hiw-report-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .hiw-report-generate-btn {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .hiw-report-impact {
+    padding: 12px 16px;
+  }
+
+  .hiw-impact-from {
+    font-size: 13px;
+  }
+
+  .hiw-impact-to {
+    font-size: 18px;
+  }
 }

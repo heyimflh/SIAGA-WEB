@@ -1,12 +1,21 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, Suspense, lazy } from 'react';
+import { Link } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ArrowRight, Camera, Radio, BatteryFull, Crosshair } from 'lucide-react';
-import Scene from './Scene';
+import { useVisibility } from '../hooks/useVisibility';
+
+const Scene = lazy(() => import('./Scene'));
 
 export default function Hero() {
   const containerRef = useRef(null);
+  const isVisible = useVisibility(containerRef, { rootMargin: '100px' });
+  const isVisibleRef = useRef(isVisible);
+  isVisibleRef.current = isVisible;
 
   useEffect(() => {
+    // Disable parallax on touch devices
+    const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
+
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -17,13 +26,22 @@ export default function Hero() {
       mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
       mouseY = (e.clientY / window.innerHeight - 0.5) * 2;
     };
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+
+    if (!isTouchDevice) {
+      window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    }
 
     // Cache DOM queries outside the loop
     let floaters = null;
     let sphere = null;
 
     const animateParallax = () => {
+      // Skip parallax on touch devices or when hero is off-screen
+      if (isTouchDevice || !isVisibleRef.current) {
+        rafId = requestAnimationFrame(animateParallax);
+        return;
+      }
+
       targetX += (mouseX - targetX) * 0.05;
       targetY += (mouseY - targetY) * 0.05;
 
@@ -160,19 +178,21 @@ export default function Hero() {
         </p>
 
         <div className="hero-cta-group">
-          <a href="#hire" className="btn btn-hero-primary">
+          <Link to="/register?role=client" className="btn btn-hero-primary">
             <span>Hire a Pilot</span>
             <ArrowRight size={18} strokeWidth={2.5} />
-          </a>
-          <a href="#join" className="btn btn-hero-secondary">
+          </Link>
+          <Link to="/register?role=pilot" className="btn btn-hero-secondary">
             Bergabung sebagai Pilot
-          </a>
+          </Link>
         </div>
       </div>
 
       {/* ── 3D drone scene ── */}
       <div className="hero-3d-container">
-        <Scene />
+        <Suspense fallback={<div style={{ width: '100%', height: '100%' }} />}>
+          <Scene />
+        </Suspense>
 
         {/* Floating spec badges */}
         <div className="hero-spec-badge badge-cam">

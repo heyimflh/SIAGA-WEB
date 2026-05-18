@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { categories } from './categories-data';
 import './ServiceCategories.css';
 
@@ -53,7 +53,6 @@ function ServiceCategories() {
     if (prefersReduced) return;
 
     const ctx = gsap.context(() => {
-      // Header fade-up
       gsap.fromTo(
         headerRef.current,
         { y: 30, opacity: 0 },
@@ -70,21 +69,21 @@ function ServiceCategories() {
         }
       );
 
-      // Cards stagger fade-up
       const cards = cardsRef.current.filter(Boolean);
       if (cards.length) {
         gsap.fromTo(
           cards,
-          { y: 40, opacity: 0 },
+          { y: 50, opacity: 0, scale: 0.96 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.6,
-            stagger: 0.1,
+            scale: 1,
+            duration: 0.7,
+            stagger: 0.08,
             ease: 'power3.out',
             scrollTrigger: {
               trigger: sectionRef.current,
-              start: 'top 65%',
+              start: 'top 60%',
               toggleActions: 'play none none reverse',
             },
           }
@@ -97,9 +96,11 @@ function ServiceCategories() {
 
   return (
     <section className="sc-section" ref={sectionRef}>
-      {/* Background pattern */}
+      {/* Background effects */}
       <div className="sc-bg" aria-hidden="true">
         <div className="sc-bg-grid" />
+        <div className="sc-bg-glow sc-bg-glow--1" />
+        <div className="sc-bg-glow sc-bg-glow--2" />
       </div>
 
       <div className="sc-container">
@@ -115,50 +116,57 @@ function ServiceCategories() {
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="sc-grid">
+        {/* Bento Grid */}
+        <div className="sc-bento">
           {categories.map((cat, index) => {
             const Icon = cat.icon;
+            const isLarge = index === 0 || index === 3;
             return (
               <div
                 key={cat.id}
-                className="sc-card"
+                className={`sc-bento-card ${isLarge ? 'sc-bento-card--large' : 'sc-bento-card--small'}`}
                 ref={(el) => (cardsRef.current[index] = el)}
+                style={{ '--card-accent': cat.accent }}
               >
-                {/* Visual Header — Real Photo Thumbnail */}
-                <div className="sc-card-visual">
+                {/* Image */}
+                <div className="sc-bento-img">
                   <img
                     src={cat.thumbnail}
                     alt={cat.name}
-                    className="sc-card-thumbnail"
                     loading="lazy"
                   />
-                  <div className="sc-card-visual-overlay" />
-                  <div className="sc-card-icon-float">
-                    <Icon size={24} strokeWidth={1.5} />
-                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="sc-card-content">
-                  <h3 className="sc-card-title">{cat.name}</h3>
-                  <p className="sc-card-desc">{cat.description}</p>
+                {/* Dark overlay */}
+                <div className="sc-bento-overlay" />
 
-                  {/* Liquidity proof */}
-                  <div className="sc-card-meta">
-                    <span className="sc-card-pilots">
-                      <AnimatedCount end={cat.pilots} /> pilot tersedia
-                    </span>
-                    <span className="sc-card-sep">·</span>
-                    <span className="sc-card-price">
-                      mulai {cat.startingPrice}
-                    </span>
+                {/* Content */}
+                <div className="sc-bento-content">
+                  {/* Icon badge - top left */}
+                  <div className="sc-bento-icon">
+                    <Icon size={18} strokeWidth={2} />
                   </div>
 
-                  {/* CTA */}
-                  <a href="#" className="sc-card-cta">
-                    Posting Inspeksi
-                    <ArrowRight size={14} strokeWidth={2} />
+                  {/* Info block at bottom */}
+                  <div className="sc-bento-info">
+                    <h3 className="sc-bento-title">{cat.name}</h3>
+
+                    {/* Description - only on large cards always visible, small cards on hover */}
+                    <p className="sc-bento-desc">{cat.description}</p>
+
+                    {/* Meta line - clean single row */}
+                    <div className="sc-bento-meta">
+                      <span className="sc-bento-pilots">
+                        <AnimatedCount end={cat.pilots} /> pilot
+                      </span>
+                      <span className="sc-bento-dot">·</span>
+                      <span className="sc-bento-price">{cat.startingPrice}</span>
+                    </div>
+                  </div>
+
+                  {/* Hover CTA arrow */}
+                  <a href="#" className="sc-bento-cta" aria-label={`Lihat detail ${cat.name}`}>
+                    <ArrowUpRight size={18} strokeWidth={2.5} />
                   </a>
                 </div>
               </div>
@@ -172,6 +180,7 @@ function ServiceCategories() {
             Mulai Posting Inspeksi
             <ArrowRight size={16} strokeWidth={2} />
           </a>
+          <p className="sc-cta-sub">Gratis posting • Tanpa komitmen</p>
         </div>
       </div>
     </section>

@@ -1,0 +1,150 @@
+/**
+ * AssetMonitoringMap.css — Premium glass map stage.
+ *
+ * Elevated glass wrapper with refined pin markers,
+ * smooth overlay positioning, and premium depth.
+ */
+
+/* =========================================================================
+   Map Section Container — Premium glass stage
+   ========================================================================= */
+
+.asset-monitoring-map {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--color-primary, #071A34);
+  border: 1px solid rgba(180, 220, 245, 0.4);
+  box-shadow:
+    0 16px 48px rgba(10, 40, 80, 0.1),
+    0 4px 12px rgba(10, 40, 80, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.asset-monitoring-map__container {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+}
+
+/* Override Mapbox default canvas styles within our container */
+.asset-monitoring-map__container .mapboxgl-canvas {
+  outline: none;
+}
+
+/* =========================================================================
+   Asset Pin Markers
+   ========================================================================= */
+
+.asset-pin {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2.5px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+}
+
+.asset-pin:hover {
+  transform: scale(1.4);
+  z-index: 10;
+}
+
+.asset-pin:focus-visible {
+  outline: 2px solid #22D3EE;
+  outline-offset: 3px;
+}
+
+/* Status colors */
+.asset-pin--aman {
+  background-color: #10B981;
+  box-shadow: 0 3px 12px rgba(16, 185, 129, 0.45);
+}
+
+.asset-pin--perlu_perhatian {
+  background-color: #F59E0B;
+  box-shadow: 0 3px 12px rgba(245, 158, 11, 0.45);
+}
+
+.asset-pin--kritis {
+  background-color: #EF4444;
+  box-shadow: 0 3px 12px rgba(239, 68, 68, 0.45);
+}
+
+/* =========================================================================
+   Pulse Animation (kritis status only)
+   ========================================================================= */
+
+.asset-pin--pulse::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: #EF4444;
+  opacity: 0.4;
+  animation: asset-pulse 1.6s ease-out infinite;
+  pointer-events: none;
+}
+
+@keyframes asset-pulse {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+/* Pause pulse animation for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .asset-pin--pulse::after {
+    animation-play-state: paused;
+  }
+}
+
+/* =========================================================================
+   Overlay Positioning (Legend, Filter, FloatingStats)
+   ========================================================================= */
+
+.asset-monitoring-map .map-legend {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+}
+
+.asset-monitoring-map .map-filter {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 5;
+}
+
+.asset-monitoring-map .map-floating-stats {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+/* =========================================================================
+   Responsive
+   ========================================================================= */
+
+@media (max-width: 767px) {
+  .asset-monitoring-map {
+    height: 380px;
+    border-radius: 20px;
+  }
+
+  .asset-monitoring-map__container {
+    border-radius: 20px;
+  }
+}

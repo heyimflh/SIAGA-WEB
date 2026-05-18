@@ -1,5 +1,5 @@
 import { Suspense, useRef, useMemo, useEffect, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
@@ -114,28 +114,6 @@ function ShadowPlane() {
       <meshBasicMaterial color="#0A2540" transparent opacity={0.05} />
     </mesh>
   );
-}
-
-/* ── Frame limiter — pauses rendering when canvas is off-screen ── */
-function FrameLimiter({ isVisible }) {
-  const { gl, invalidate } = useThree();
-
-  useEffect(() => {
-    if (!isVisible) {
-      // When not visible, stop the render loop to save GPU
-      gl.setAnimationLoop(null);
-    } else {
-      // Resume rendering when visible
-      gl.setAnimationLoop(() => {
-        invalidate();
-      });
-    }
-    return () => {
-      gl.setAnimationLoop(null);
-    };
-  }, [isVisible, gl, invalidate]);
-
-  return null;
 }
 
 useGLTF.preload('/models/drone.glb');

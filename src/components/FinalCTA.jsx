@@ -15,52 +15,54 @@ function FinalCTA() {
     const content = contentRef.current;
     if (!section || !content) return;
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 75%',
-        end: 'top 30%',
-        toggleActions: 'play none none none',
-      },
-    });
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 75%',
+          end: 'top 30%',
+          toggleActions: 'play none none reverse',
+        },
+      });
 
-    tl.fromTo(
-      '.fcta__eyebrow',
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }
-    )
-      .fromTo(
-        '.fcta__title',
-        { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-        '-=0.3'
+      tl.fromTo(
+        '.fcta__eyebrow',
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }
       )
-      .fromTo(
-        '.fcta__subtitle',
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
-        '-=0.4'
-      )
-      .fromTo(
-        '.fcta__actions',
-        { opacity: 0, y: 20, scale: 0.96 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power3.out' },
-        '-=0.3'
-      )
-      .fromTo(
-        '.fcta__trust',
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
-        '-=0.2'
-      )
-      .fromTo(
-        '.fcta__login',
-        { opacity: 0 },
-        { opacity: 1, duration: 0.4, ease: 'power2.out' },
-        '-=0.1'
-      );
+        .fromTo(
+          '.fcta__title',
+          { opacity: 0, y: 40 },
+          { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+          '-=0.3'
+        )
+        .fromTo(
+          '.fcta__subtitle',
+          { opacity: 0, y: 24 },
+          { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' },
+          '-=0.4'
+        )
+        .fromTo(
+          '.fcta__actions',
+          { opacity: 0, y: 20, scale: 0.96 },
+          { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'power3.out' },
+          '-=0.3'
+        )
+        .fromTo(
+          '.fcta__trust',
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' },
+          '-=0.2'
+        )
+        .fromTo(
+          '.fcta__login',
+          { opacity: 0 },
+          { opacity: 1, duration: 0.4, ease: 'power2.out' },
+          '-=0.1'
+        );
+    }, sectionRef);
 
-    return () => tl.kill();
+    return () => ctx.revert();
   }, []);
 
   return (

@@ -144,6 +144,7 @@ function VerifiedVisual() {
             src="/images/avatars/Pilot1.jpeg"
             alt=""
             className="ts-verified-avatar-img"
+            loading="lazy"
           />
           <div className="ts-verified-badge" ref={badgeRef}>
             <BadgeCheck size={12} strokeWidth={2.5} />
@@ -280,6 +281,7 @@ function RatingVisual() {
               src="/images/avatars/Pilot2.jpeg"
               alt=""
               className="ts-rating-avatar-img"
+              loading="lazy"
             />
           </div>
           <span className="ts-rating-label">Pilot</span>

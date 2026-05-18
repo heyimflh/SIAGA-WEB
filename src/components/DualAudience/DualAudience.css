@@ -521,3 +521,112 @@
     animation: none;
   }
 }
+
+/* ─── Extra small mobile (360px and below) ─── */
+@media (max-width: 360px) {
+  .da-section {
+    padding: 56px 0;
+  }
+
+  .da-container {
+    padding: 0 16px;
+  }
+
+  .da-header {
+    margin-bottom: 36px;
+  }
+
+  .da-headline {
+    font-size: 24px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+
+  .da-subheadline {
+    font-size: 13.5px;
+    line-height: 1.6;
+  }
+
+  /* Panel inner — tighter padding */
+  .da-panel-inner {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+
+  .da-panel-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 16px;
+  }
+
+  .da-panel-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .da-panel-label {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+
+  .da-panel-title {
+    font-size: 17px;
+    line-height: 1.25;
+    margin-bottom: 18px;
+  }
+
+  .da-panel-bullets {
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .da-bullet {
+    font-size: 12.5px;
+    gap: 8px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+
+  .da-bullet svg {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .da-panel-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 12px 18px;
+    font-size: 13px;
+    border-radius: 10px;
+  }
+
+  .da-panel-stat {
+    margin-top: 18px;
+    padding-top: 14px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .da-stat-number {
+    font-size: 18px;
+  }
+
+  .da-stat-text {
+    font-size: 12px;
+  }
+
+  /* Center node smaller */
+  .da-center-node {
+    width: 44px;
+    height: 44px;
+  }
+
+  .da-center-node svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .da-divider {
+    padding: 16px 0;
+  }
+}

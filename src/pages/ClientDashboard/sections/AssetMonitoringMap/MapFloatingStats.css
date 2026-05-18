@@ -1,0 +1,66 @@
+/**
+ * MapFloatingStats.css — Glass floating stats strip.
+ *
+ * Premium dark glass strip with refined typography and status glow accents.
+ */
+
+.map-floating-stats {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(7, 26, 52, 0.82);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border-radius: 14px;
+  padding: 10px 22px;
+  pointer-events: none;
+  border: 1px solid rgba(120, 210, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.map-floating-stats__item {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+}
+
+.map-floating-stats__item strong {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.map-floating-stats__item--kritis strong {
+  color: #EF4444;
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.map-floating-stats__item--perlu-perhatian strong {
+  color: #F59E0B;
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+}
+
+.map-floating-stats__separator {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 0.8rem;
+}
+
+/* Responsive: stack vertically on very small screens */
+@media (max-width: 480px) {
+  .map-floating-stats {
+    flex-direction: column;
+    gap: 6px;
+    padding: 10px 14px;
+    border-radius: 12px;
+  }
+
+  .map-floating-stats__separator {
+    display: none;
+  }
+}

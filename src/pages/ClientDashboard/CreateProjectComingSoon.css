@@ -1,0 +1,67 @@
+/**
+ * CreateProjectComingSoon.css — styles for the Coming Soon placeholder page.
+ *
+ * Uses Design_Tokens via dashboard-shell scope aliases:
+ *   --color-primary, --color-accent, --color-surface
+ *
+ * Spec: .kiro/specs/client-dashboard
+ * Requirements: 17.2, 17.3
+ */
+
+.coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 160px);
+  padding: 2rem;
+  text-align: center;
+  gap: 1rem;
+}
+
+.coming-soon__icon {
+  color: var(--color-accent, #00D2FF);
+  margin-bottom: 0.5rem;
+}
+
+.coming-soon__title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary, #0A192F);
+  margin: 0;
+}
+
+.coming-soon__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  color: #5a6a7a;
+  margin: 0;
+  max-width: 400px;
+}
+
+.coming-soon__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #00D2FF 0%, #00b4d8 100%);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.coming-soon__btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 210, 255, 0.3);
+}
+
+.coming-soon__btn:focus-visible {
+  outline: 2px solid var(--color-accent, #00D2FF);
+  outline-offset: 2px;
+}

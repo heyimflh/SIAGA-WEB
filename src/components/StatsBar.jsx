@@ -108,56 +108,57 @@ function StatsBar() {
     const items = statRefs.current.filter(Boolean);
     const decor = decorRef.current;
 
-    // Main section entrance
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 85%',
-        end: 'top 40%',
-        toggleActions: 'play none none reverse',
-      },
-    });
-
-    // Container slide up with glass effect
-    tl.fromTo(
-      container,
-      {
-        y: 60,
-        opacity: 0,
-        scale: 0.96,
-      },
-      {
-        y: 0,
-        opacity: 1,
-        scale: 1,
-        duration: 1,
-        ease: 'power3.out',
-      }
-    );
-
-    // Decorative elements
-    if (decor?.children?.length) {
-      tl.fromTo(
-        Array.from(decor.children),
-        { scale: 0, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.1,
-          ease: 'back.out(1.7)',
+    const ctx = gsap.context(() => {
+      // Main section entrance
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 85%',
+          end: 'top 40%',
+          toggleActions: 'play none none reverse',
         },
-        '-=0.5'
-      );
-    }
+      });
 
-    // Stagger stat items
-    if (items.length) {
+      // Container slide up with glass effect
       tl.fromTo(
-        items,
+        container,
         {
-          y: 30,
+          y: 60,
           opacity: 0,
+          scale: 0.96,
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          ease: 'power3.out',
+        }
+      );
+
+      // Decorative elements
+      if (decor?.children?.length) {
+        tl.fromTo(
+          Array.from(decor.children),
+          { scale: 0, opacity: 0 },
+          {
+            scale: 1,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: 'back.out(1.7)',
+          },
+          '-=0.5'
+        );
+      }
+
+      // Stagger stat items
+      if (items.length) {
+        tl.fromTo(
+          items,
+          {
+            y: 30,
+            opacity: 0,
         },
         {
           y: 0,
@@ -190,9 +191,9 @@ function StatsBar() {
     // NOTE: Removed parallax scrub on orbs — too costly per-frame during scroll.
     // The CSS keyframe animation on orbs is sufficient for visual interest.
 
-    return () => {
-      tl.kill();
-    };
+    }, sectionRef);
+
+    return () => ctx.revert();
   }, []);
 
   return (

@@ -1,0 +1,107 @@
+/**
+ * AssetMapFallback.css — Styles for the map fallback component.
+ *
+ * Requirements: 5.17, 5.18, 15.5, 15.5a
+ * Uses dashboard-scoped CSS variables (--color-primary, --color-accent, --color-surface).
+ */
+
+.asset-map-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+  max-height: 560px;
+  border-radius: 12px;
+  width: 100%;
+}
+
+/* --- Loading variant --- */
+.asset-map-fallback--loading {
+  background: var(--color-primary, #0A192F);
+  gap: 1rem;
+}
+
+.asset-map-fallback__spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--color-accent, #00D2FF);
+  border-radius: 50%;
+  animation: fallback-spin 0.8s linear infinite;
+}
+
+@keyframes fallback-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.asset-map-fallback__text {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* --- Error variant --- */
+.asset-map-fallback--error {
+  background: var(--color-surface, #F4F7F6);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  gap: 1rem;
+}
+
+.asset-map-fallback__message {
+  color: var(--text-primary, #1a1a2e);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.asset-map-fallback__asset-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+.asset-map-fallback__asset-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  font-size: 0.875rem;
+  color: var(--text-primary, #1a1a2e);
+}
+
+.asset-map-fallback__asset-item:last-child {
+  border-bottom: none;
+}
+
+.asset-map-fallback__asset-name {
+  font-weight: 500;
+}
+
+.asset-map-fallback__asset-status {
+  text-transform: capitalize;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.asset-map-fallback__asset-status--aman {
+  color: var(--color-success, #00C48C);
+}
+
+.asset-map-fallback__asset-status--perlu_perhatian {
+  color: var(--color-warning, #F57C00);
+}
+
+.asset-map-fallback__asset-status--kritis {
+  color: var(--color-danger, #FF4C4C);
+}
+
+/* --- Bare variant --- */
+.asset-map-fallback--bare {
+  background: var(--color-surface, #F4F7F6);
+  color: var(--text-primary, #1a1a2e);
+  font-size: 0.9rem;
+}

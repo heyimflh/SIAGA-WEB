@@ -100,35 +100,35 @@ function Footer() {
     const wordmark = footer.querySelector('.sf-wordmark');
     const bottomBar = footer.querySelector('.sf-bottom');
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: footer,
-        start: 'top 88%',
-        toggleActions: 'play none none none',
-      },
-    });
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: footer,
+          start: 'top 88%',
+          toggleActions: 'play none none reverse',
+        },
+      });
 
-    tl.fromTo(
-      topArea,
-      { opacity: 0, y: 24 },
-      { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }
-    )
-      .fromTo(
-        wordmark,
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
-        '-=0.3'
+      tl.fromTo(
+        topArea,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }
       )
-      .fromTo(
-        bottomBar,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5, ease: 'power2.out' },
-        '-=0.3'
-      );
+        .fromTo(
+          wordmark,
+          { opacity: 0, y: 16 },
+          { opacity: 1, y: 0, duration: 0.8, ease: 'power2.out' },
+          '-=0.3'
+        )
+        .fromTo(
+          bottomBar,
+          { opacity: 0 },
+          { opacity: 1, duration: 0.5, ease: 'power2.out' },
+          '-=0.3'
+        );
+    }, footerRef);
 
-    return () => {
-      tl.kill();
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
