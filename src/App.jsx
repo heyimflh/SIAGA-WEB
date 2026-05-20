@@ -21,11 +21,6 @@ import BiddingPage from './pages/ClientDashboard/BiddingPage';
 import SettingsPage from './pages/ClientDashboard/SettingsPage';
 import ReportGeneratorPage from './pages/ReportGenerator/ReportGeneratorPage.jsx';
 import PilotDashboardPage from './pages/PilotDashboard/PilotDashboardPage.jsx';
-import PilotBidsPage from './pages/PilotDashboard/PilotBidsPage.jsx';
-import PilotProjectsPage from './pages/PilotDashboard/PilotProjectsPage.jsx';
-import PilotWorkspacePage from './pages/PilotDashboard/PilotWorkspacePage.jsx';
-import PilotEarningsPage from './pages/PilotDashboard/PilotEarningsPage.jsx';
-import PilotSettingsPage from './pages/PilotDashboard/PilotSettingsPage.jsx';
 import JobRadarPage from './pages/JobRadar/JobRadarPage.jsx';
 import ProjectDetailPage from './pages/ProjectDetail/ProjectDetailPage.jsx';
 import BrowsePilotsPage from './pages/BrowsePilots/BrowsePilotsPage.jsx';
@@ -176,61 +171,6 @@ function AnimatedRoutes() {
             <ProtectedRoute requestedRole="pilot">
               <PageTransition routeKey="job-radar">
                 <JobRadarPage />
-              </PageTransition>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/dashboard/pilot/bids"
-          element={
-            <ProtectedRoute requestedRole="pilot">
-              <PageTransition routeKey="pilot-bids">
-                <PilotBidsPage />
-              </PageTransition>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/dashboard/pilot/projects"
-          element={
-            <ProtectedRoute requestedRole="pilot">
-              <PageTransition routeKey="pilot-projects">
-                <PilotProjectsPage />
-              </PageTransition>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/dashboard/pilot/workspace"
-          element={
-            <ProtectedRoute requestedRole="pilot">
-              <PageTransition routeKey="pilot-workspace">
-                <PilotWorkspacePage />
-              </PageTransition>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/dashboard/pilot/earnings"
-          element={
-            <ProtectedRoute requestedRole="pilot">
-              <PageTransition routeKey="pilot-earnings">
-                <PilotEarningsPage />
-              </PageTransition>
-            </ProtectedRoute>
-          }
-        />
-
-        <Route
-          path="/dashboard/pilot/settings"
-          element={
-            <ProtectedRoute requestedRole="pilot">
-              <PageTransition routeKey="pilot-settings">
-                <PilotSettingsPage />
               </PageTransition>
             </ProtectedRoute>
           }

@@ -2,12 +2,12 @@
  * PilotSidebar — Cockpit Navigation for Pilot Dashboard.
  *
  * Three variants: full (desktop), icon (tablet), drawer (mobile).
- * Uses useLocation for active state detection.
  * Feature: pilot-dashboard
+ * Validates: Requirements 3
  */
 
 import { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   LayoutDashboard,
   Radar,
@@ -24,28 +24,22 @@ import { useAuth } from '../../../auth/AuthContext';
 import './PilotSidebar.css';
 
 const PILOT_MENU = [
-  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard/pilot', exact: true },
-  { id: 'job-radar', label: 'Job Radar', icon: Radar, to: '/dashboard/pilot/job-radar' },
-  { id: 'bid-saya', label: 'Bid Saya', icon: Send, to: '/dashboard/pilot/bids' },
-  { id: 'proyek-aktif', label: 'Proyek Aktif', icon: FolderOpen, to: '/dashboard/pilot/projects' },
-  { id: 'workspace', label: 'Workspace', icon: Upload, to: '/dashboard/pilot/workspace' },
-  { id: 'earnings', label: 'Earnings', icon: Wallet, to: '/dashboard/pilot/earnings' },
-  { id: 'pengaturan', label: 'Pengaturan', icon: Settings, to: '/dashboard/pilot/settings' },
+  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard/pilot', active: true },
+  { id: 'job-radar', label: 'Job Radar', icon: Radar, to: '/dashboard/pilot/job-radar', disabled: false },
+  { id: 'bid-saya', label: 'Bid Saya', icon: Send, to: '#', disabled: true },
+  { id: 'proyek-aktif', label: 'Proyek Aktif', icon: FolderOpen, to: '#', disabled: true },
+  { id: 'workspace', label: 'Workspace', icon: Upload, to: '#', disabled: true },
+  { id: 'earnings', label: 'Earnings', icon: Wallet, to: '#', disabled: true },
+  { id: 'pengaturan', label: 'Pengaturan', icon: Settings, to: '#', disabled: true },
 ];
 
 function PilotSidebar({ pilotName, avatarUrl, isVerified, variant = 'full', drawerOpen, onDrawerClose }) {
   const { logout } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
   const [logoutError, setLogoutError] = useState('');
 
   const isIconOnly = variant === 'icon';
   const isDrawer = variant === 'drawer';
-
-  function isItemActive(item) {
-    if (item.exact) return location.pathname === item.to;
-    return location.pathname.startsWith(item.to);
-  }
 
   async function handleLogout() {
     setLogoutError('');
@@ -117,13 +111,42 @@ function PilotSidebar({ pilotName, avatarUrl, isVerified, variant = 'full', draw
         <ul className="pilot-sidebar__menu" role="list">
           {PILOT_MENU.map((item) => {
             const IconComp = item.icon;
-            const active = isItemActive(item);
+            if (item.active) {
+              return (
+                <li key={item.id} className="pilot-sidebar__menu-item">
+                  <Link
+                    to={item.to}
+                    className="pilot-sidebar__menu-link pilot-sidebar__menu-link--active"
+                    aria-current="page"
+                    title={isIconOnly ? item.label : undefined}
+                  >
+                    <IconComp size={20} aria-hidden="true" />
+                    {!isIconOnly && <span className="pilot-sidebar__menu-label">{item.label}</span>}
+                  </Link>
+                </li>
+              );
+            }
+            if (item.disabled) {
+              return (
+                <li key={item.id} className="pilot-sidebar__menu-item">
+                  <button
+                    type="button"
+                    className="pilot-sidebar__menu-link pilot-sidebar__menu-link--disabled"
+                    disabled
+                    title="Segera tersedia"
+                    aria-disabled="true"
+                  >
+                    <IconComp size={20} aria-hidden="true" />
+                    {!isIconOnly && <span className="pilot-sidebar__menu-label">{item.label}</span>}
+                  </button>
+                </li>
+              );
+            }
             return (
               <li key={item.id} className="pilot-sidebar__menu-item">
                 <Link
                   to={item.to}
-                  className={`pilot-sidebar__menu-link ${active ? 'pilot-sidebar__menu-link--active' : ''}`}
-                  aria-current={active ? 'page' : undefined}
+                  className="pilot-sidebar__menu-link"
                   title={isIconOnly ? item.label : undefined}
                 >
                   <IconComp size={20} aria-hidden="true" />
