@@ -1,0 +1,29 @@
+/* HowItWorksPage — page-level styles
+   Warna biru lebih cerah, terinspirasi dari gradient background-hero-section.png
+   yang menggunakan transisi dari biru langit cerah ke biru medium */
+.how-it-works-page {
+  --hiw-sky: #1B8FD9;
+  --hiw-sky-light: #3DA8E8;
+  --hiw-sky-deep: #0D6AB8;
+  --hiw-navy: #0A2540;
+  --hiw-deep-blue: #0E4A8A;
+  --hiw-cyan: #00D4FF;
+  --hiw-electric: #2196F3;
+  --hiw-surface: #F0F8FF;
+  --hiw-surface-soft: #E3F2FD;
+  --hiw-text: #071A2E;
+  --hiw-muted: #5A7A96;
+
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Light sections — gradient biru cerah yang lebih hidup */
+.how-it-works-page .wf-simulation,
+.how-it-works-page .srp,
+.how-it-works-page .rbb {
+  background:
+    radial-gradient(ellipse at top right, rgba(29,143,217,0.08), transparent 40%),
+    radial-gradient(ellipse at bottom left, rgba(33,150,243,0.06), transparent 35%),
+    linear-gradient(180deg, #F0F8FF 0%, #E3F2FD 40%, #F0F8FF 100%);
+}

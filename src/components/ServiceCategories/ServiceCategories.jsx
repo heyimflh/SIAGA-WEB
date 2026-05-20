@@ -1,8 +1,10 @@
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { categories } from './categories-data';
+import { getRegisterPath } from '../../routes/appRoutes';
 import './ServiceCategories.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -165,9 +167,9 @@ function ServiceCategories() {
                   </div>
 
                   {/* Hover CTA arrow */}
-                  <a href="#" className="sc-bento-cta" aria-label={`Lihat detail ${cat.name}`}>
+                  <Link to={getRegisterPath('client')} className="sc-bento-cta" aria-label={`Lihat detail ${cat.name}`}>
                     <ArrowUpRight size={18} strokeWidth={2.5} />
-                  </a>
+                  </Link>
                 </div>
               </div>
             );
@@ -176,10 +178,10 @@ function ServiceCategories() {
 
         {/* Bottom CTA */}
         <div className="sc-bottom-cta">
-          <a href="#" className="sc-cta-btn">
+          <Link to={getRegisterPath('client')} className="sc-cta-btn">
             Mulai Posting Inspeksi
             <ArrowRight size={16} strokeWidth={2} />
-          </a>
+          </Link>
           <p className="sc-cta-sub">Gratis posting • Tanpa komitmen</p>
         </div>
       </div>

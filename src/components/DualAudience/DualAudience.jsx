@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -8,6 +9,7 @@ import {
   ArrowRight,
   ArrowLeftRight,
 } from 'lucide-react';
+import { getRegisterPath } from '../../routes/appRoutes';
 import './DualAudience.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -154,7 +156,7 @@ function DualAudience() {
   }, []);
 
   return (
-    <section className="da-section" ref={sectionRef}>
+    <section className="da-section" id="fitur" ref={sectionRef}>
       {/* Background subtle pattern */}
       <div className="da-bg" aria-hidden="true">
         <div className="da-bg-grid" />
@@ -197,10 +199,10 @@ function DualAudience() {
                   </li>
                 ))}
               </ul>
-              <a href="#" className="da-panel-cta">
+              <Link to={getRegisterPath('client')} className="da-panel-cta">
                 Posting Proyek
                 <ArrowRight size={16} strokeWidth={2} />
-              </a>
+              </Link>
               <div className="da-panel-stat">
                 <span className="da-stat-number">
                   <AnimatedStat end={47} />
@@ -241,10 +243,10 @@ function DualAudience() {
                   </li>
                 ))}
               </ul>
-              <a href="#" className="da-panel-cta da-panel-cta--alt">
+              <Link to={getRegisterPath('pilot')} className="da-panel-cta da-panel-cta--alt">
                 Daftar Sebagai Pilot
                 <ArrowRight size={16} strokeWidth={2} />
-              </a>
+              </Link>
               <div className="da-panel-stat">
                 <span className="da-stat-text">Pilot pertama bid rata-rata</span>
                 <span className="da-stat-number">

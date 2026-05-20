@@ -1,0 +1,150 @@
+/* ═══════════════════════════════════════════════════════
+   Report Stepper — Aerospace-Tech Glass Rail
+   ═══════════════════════════════════════════════════════ */
+
+.report-stepper {
+  margin-top: 1.5rem;
+}
+
+/* Desktop */
+.report-stepper__desktop {
+  display: block;
+}
+
+.report-stepper__mobile {
+  display: none;
+}
+
+.report-stepper__rail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(10, 37, 64, 0.06);
+  border-radius: var(--radius-lg, 20px);
+  padding: 1rem 2rem;
+  gap: 0;
+  box-shadow: 0 4px 16px rgba(10, 37, 64, 0.04);
+}
+
+.report-stepper__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+/* Connector */
+.report-stepper__connector {
+  position: absolute;
+  top: 18px;
+  right: 50%;
+  width: 100%;
+  height: 2px;
+  background: rgba(10, 37, 64, 0.08);
+  z-index: 0;
+  transition: background 0.4s ease;
+}
+
+.report-stepper__connector--filled {
+  background: linear-gradient(90deg, var(--brand-cyan, #00B4D8), var(--brand-blue, #0062D6));
+}
+
+/* Node */
+.report-stepper__node {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid rgba(10, 37, 64, 0.1);
+  color: var(--text-tertiary, #8BA3BE);
+  transition: all 0.3s var(--ease-out, cubic-bezier(.16,1,.3,1));
+}
+
+.report-stepper__node--active {
+  background: linear-gradient(135deg, var(--brand-cyan, #00B4D8), var(--brand-blue, #0062D6));
+  border-color: transparent;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 180, 216, 0.35);
+}
+
+.report-stepper__node--completed {
+  background: var(--color-success, #00897B);
+  border-color: transparent;
+  color: white;
+}
+
+/* Pulse ring */
+.report-stepper__pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--brand-cyan, #00B4D8);
+  opacity: 0;
+  animation: stepper-pulse 2s ease-in-out infinite;
+}
+
+@keyframes stepper-pulse {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.15); }
+}
+
+/* Label */
+.report-stepper__label {
+  margin-top: 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--text-tertiary, #8BA3BE);
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.report-stepper__label--active {
+  color: var(--brand-cyan, #00B4D8);
+  font-weight: 600;
+}
+
+.report-stepper__label--completed {
+  color: var(--color-success, #00897B);
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .report-stepper__desktop {
+    display: none;
+  }
+
+  .report-stepper__mobile {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(10, 37, 64, 0.06);
+    border-radius: var(--radius-md, 12px);
+    padding: 0.75rem 1.25rem;
+  }
+
+  .report-stepper__mobile-step {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--brand-cyan, #00B4D8);
+    background: rgba(0, 180, 216, 0.08);
+    border-radius: 100px;
+    padding: 0.25rem 0.6rem;
+  }
+
+  .report-stepper__mobile-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--brand-navy, #0A2540);
+  }
+}

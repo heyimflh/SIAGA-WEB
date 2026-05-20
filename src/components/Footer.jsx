@@ -1,45 +1,48 @@
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ROUTES, getRegisterPath, getLoginRedirectPath } from '../routes/appRoutes';
 import './Footer.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const footerLinks = [
   {
+    title: 'Produk',
+    links: [
+      { label: 'Beranda', to: ROUTES.home },
+      { label: 'Cara Kerja', to: ROUTES.howItWorks },
+      { label: 'Harga', to: ROUTES.pricing },
+      { label: 'Pilot UAV', to: ROUTES.pilots },
+      { label: 'Job Radar', to: getLoginRedirectPath(ROUTES.pilotJobRadar) },
+    ],
+  },
+  {
+    title: 'Untuk Client',
+    links: [
+      { label: 'Mulai sebagai Client', to: getRegisterPath('client') },
+      { label: 'Lihat Paket Harga', to: ROUTES.pricing },
+      { label: 'Lihat Pilot', to: ROUTES.pilots },
+      { label: 'Generate Report', to: getLoginRedirectPath(ROUTES.clientReportGenerator) },
+    ],
+  },
+  {
+    title: 'Untuk Pilot',
+    links: [
+      { label: 'Gabung sebagai Pilot', to: getRegisterPath('pilot') },
+      { label: 'Login Pilot', to: ROUTES.login },
+      { label: 'Job Radar', to: getLoginRedirectPath(ROUTES.pilotJobRadar) },
+      { label: 'Dashboard Pilot', to: getLoginRedirectPath(ROUTES.pilotDashboard) },
+    ],
+  },
+  {
     title: 'Platform',
     links: [
-      { label: 'Fitur', href: '#fitur' },
-      { label: 'Cara Kerja', href: '#cara-kerja' },
-      { label: 'Sektor', href: '#sektor' },
-      { label: 'Testimoni', href: '#testimoni' },
-    ],
-  },
-  {
-    title: 'Solusi',
-    links: [
-      { label: 'Inspeksi Tower', href: '#' },
-      { label: 'Infrastruktur Energi', href: '#' },
-      { label: 'Jalan & Jembatan', href: '#' },
-      { label: 'Monitoring Aset', href: '#' },
-    ],
-  },
-  {
-    title: 'Perusahaan',
-    links: [
-      { label: 'Tentang SIAGA', href: '#' },
-      { label: 'Pilot Partner', href: '#' },
-      { label: 'Karier', href: '#' },
-      { label: 'Kontak', href: '#' },
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      { label: 'Privacy Policy', href: '#' },
-      { label: 'Terms of Service', href: '#' },
-      { label: 'Security', href: '#' },
-      { label: 'Compliance', href: '#' },
+      { label: 'Login', to: ROUTES.login },
+      { label: 'Register', to: ROUTES.register },
+      { label: 'Trust & Safety', to: `${ROUTES.pricing}#security` },
+      { label: 'Cara Kerja', to: ROUTES.howItWorks },
     ],
   },
 ];
@@ -173,9 +176,9 @@ function Footer() {
                   <ul className="sf-links__list">
                     {col.links.map((link) => (
                       <li key={link.label}>
-                        <a href={link.href} className="sf-links__item">
+                        <Link to={link.to} className="sf-links__item">
                           {link.label}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>

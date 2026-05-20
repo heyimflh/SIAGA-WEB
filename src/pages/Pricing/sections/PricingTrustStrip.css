@@ -1,0 +1,5 @@
+.pts { padding: 1.25rem 1.5rem; background: rgba(0,212,255,0.03); border-bottom: 1px solid rgba(0,212,255,0.06); }
+.pts__container { max-width: 1100px; margin: 0 auto; display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem; }
+.pts__item { display: flex; align-items: center; gap: 0.5rem; font-family: 'Inter', sans-serif; font-size: 0.82rem; font-weight: 500; color: #071A2E; }
+.pts__icon { font-size: 1rem; }
+@media (max-width: 640px) { .pts__container { gap: 1rem; } .pts__item { font-size: 0.75rem; } }

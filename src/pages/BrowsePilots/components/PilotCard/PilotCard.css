@@ -1,0 +1,295 @@
+/* ════════════════════════════════════════════════════════
+   PILOT CARD — Premium Marketplace Card
+   ════════════════════════════════════════════════════════ */
+
+.pilot-card {
+  position: relative;
+  background: var(--pilots-card-bg);
+  border: 1px solid var(--pilots-card-border);
+  border-radius: 24px;
+  padding: 28px 24px 24px;
+  box-shadow:
+    0 4px 16px rgba(10, 37, 64, 0.04),
+    0 1px 3px rgba(10, 37, 64, 0.03);
+  transition: transform 0.35s var(--ease-out), box-shadow 0.35s, border-color 0.35s;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow: hidden;
+}
+
+/* Top accent gradient line */
+.pilot-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 3px;
+  background: linear-gradient(90deg, #00B4D8, #2F63F4, #8EA5FF);
+  border-radius: 0 0 4px 4px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.pilot-card:hover::before {
+  opacity: 1;
+}
+
+.pilot-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--pilots-card-hover-shadow);
+  border-color: var(--pilots-card-hover-border);
+}
+
+/* ── Identity ── */
+.pilot-card__identity {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.pilot-card__avatar {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+  background: linear-gradient(135deg, #2F63F4, #00B4D8);
+  box-shadow: 0 4px 12px rgba(0, 98, 214, 0.15);
+}
+
+.pilot-card__avatar--verified {
+  box-shadow:
+    0 0 0 3px #FFFFFF,
+    0 0 0 5px var(--pilots-verified-color),
+    0 4px 12px rgba(0, 180, 216, 0.2);
+}
+
+.pilot-card__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pilot-card__initials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  color: #FFFFFF;
+}
+
+.pilot-card__info { flex: 1; min-width: 0; }
+
+.pilot-card__name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pilot-card__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.pilot-card__verified-icon {
+  color: var(--pilots-verified-color);
+  flex-shrink: 0;
+}
+
+.pilot-card__location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  margin-top: 3px;
+}
+
+.pilot-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+
+/* ── Trust Badges ── */
+.pilot-card__trust {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pilot-card__badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(0, 137, 123, 0.08), rgba(0, 180, 216, 0.06));
+  color: var(--color-success);
+  border: 1px solid rgba(0, 137, 123, 0.12);
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+}
+
+/* ── Specializations ── */
+.pilot-card__specs {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pilot-card__spec {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(47, 99, 244, 0.05);
+  color: var(--brand-blue);
+  border: 1px solid rgba(47, 99, 244, 0.1);
+}
+
+/* ── Bio ── */
+.pilot-card__bio {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  margin: 0;
+}
+
+/* ── Stats — Mini metric pills ── */
+.pilot-card__stats {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pilot-card__stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 5px 10px;
+  background: rgba(241, 245, 249, 0.8);
+  border-radius: 8px;
+  border: 1px solid rgba(10, 37, 64, 0.04);
+}
+
+.pilot-card__stat svg {
+  color: var(--brand-cyan);
+  opacity: 0.8;
+}
+
+/* ── Portfolio Thumbnails ── */
+.pilot-card__portfolio {
+  display: flex;
+  gap: 6px;
+}
+
+.pilot-card__thumb {
+  width: 68px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(10, 37, 64, 0.06);
+  transition: transform 0.3s var(--ease-out);
+}
+
+.pilot-card:hover .pilot-card__thumb {
+  transform: scale(1.04);
+}
+
+/* ── Actions ── */
+.pilot-card__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(10, 37, 64, 0.05);
+}
+
+.pilot-card__btn {
+  flex: 1;
+  padding: 11px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.25s var(--ease-out);
+  text-align: center;
+}
+
+.pilot-card__btn--outline {
+  background: transparent;
+  border: 1.5px solid rgba(0, 180, 216, 0.4);
+  color: var(--brand-cyan);
+}
+
+.pilot-card__btn--outline:hover {
+  background: rgba(0, 180, 216, 0.06);
+  border-color: var(--brand-cyan);
+  box-shadow: 0 2px 8px rgba(0, 180, 216, 0.1);
+}
+
+.pilot-card__btn--primary {
+  background: linear-gradient(135deg, #00B4D8, #00D2FF);
+  border: 1.5px solid transparent;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 180, 216, 0.2);
+}
+
+.pilot-card__btn--primary:hover {
+  box-shadow: 0 6px 20px rgba(0, 180, 216, 0.3);
+  transform: translateY(-1px);
+}
+
+.pilot-card__btn--disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.pilot-card__btn--disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+@media (max-width: 480px) {
+  .pilot-card {
+    padding: 20px 16px 18px;
+    border-radius: 18px;
+  }
+  .pilot-card__portfolio {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pilot-card {
+    transition: none;
+  }
+  .pilot-card:hover {
+    transform: none;
+  }
+  .pilot-card:hover .pilot-card__thumb {
+    transform: none;
+  }
+}

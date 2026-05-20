@@ -1,0 +1,27 @@
+/* PricingPage — SIAGA Transparent Pricing Console */
+.pricing-page {
+  --pr-navy: #031525;
+  --pr-deep-blue: #0D6AB8;
+  --pr-sky: #1B8FD9;
+  --pr-cyan: #00D4FF;
+  --pr-electric: #2196F3;
+  --pr-surface: #F0F8FF;
+  --pr-text: #071A2E;
+  --pr-muted: #60758A;
+  --pr-amber: #F5A623;
+
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Light sections background */
+.pricing-page .pc,
+.pricing-page .prs,
+.pricing-page .fct,
+.pricing-page .faq-kb,
+.pricing-page .stb {
+  background:
+    radial-gradient(ellipse at top right, rgba(0,212,255,0.05), transparent 40%),
+    radial-gradient(ellipse at bottom left, rgba(33,150,243,0.04), transparent 35%),
+    linear-gradient(180deg, #F0F8FF 0%, #E3F2FD 40%, #F0F8FF 100%);
+}

@@ -1,0 +1,298 @@
+/* Mission Control Hero — with real project background slideshow + blue sky overlay */
+.mch {
+  position: relative;
+  overflow: hidden;
+  padding: 7.5rem 2rem 5rem;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+}
+
+/* Background slideshow */
+.mch__slideshow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.mch__slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+  will-change: opacity;
+}
+
+.mch__slide--active {
+  opacity: 1;
+}
+
+/* Blue sky overlay — tipis agar gambar project terlihat jelas */
+.mch__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(
+      160deg,
+      rgba(13, 106, 184, 0.55) 0%,
+      rgba(27, 143, 217, 0.45) 25%,
+      rgba(14, 74, 138, 0.5) 50%,
+      rgba(10, 37, 64, 0.7) 80%,
+      rgba(5, 21, 37, 0.8) 100%
+    );
+}
+
+/* Background layers (on top of overlay) */
+.mch__bg { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.mch__grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.mch__orb {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.12), transparent 70%);
+}
+.mch__orb--1 { width: 600px; height: 600px; top: -20%; right: -8%; }
+.mch__orb--2 { width: 350px; height: 350px; bottom: -10%; left: -5%; background: radial-gradient(circle, rgba(33,150,243,0.1), transparent 70%); }
+
+/* Container */
+.mch__container {
+  max-width: 1320px; margin: 0 auto; width: 100%;
+  display: grid; grid-template-columns: 1fr 1.1fr; gap: 3.5rem; align-items: center;
+  position: relative; z-index: 3;
+}
+
+/* Content column */
+.mch__content {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.mch--visible .mch__content { opacity: 1; transform: translateY(0); }
+
+.mch__breadcrumb {
+  font-family: 'Inter', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-bottom: 1.5rem;
+}
+.mch__breadcrumb-link { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.mch__breadcrumb-link:hover { color: #00D4FF; }
+.mch__breadcrumb-sep { margin: 0 0.4rem; }
+.mch__breadcrumb-current { color: #fff; }
+
+.mch__badge {
+  display: inline-block; font-family: 'Inter', sans-serif;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+  color: #00D4FF; background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.25);
+  padding: 0.4rem 1rem; border-radius: 999px; margin-bottom: 1.5rem;
+}
+
+.mch__title {
+  font-family: 'Montserrat', sans-serif; font-weight: 800;
+  font-size: clamp(2.2rem, 4.8vw, 3.5rem); color: #fff; line-height: 1.12; margin: 0 0 1.25rem;
+}
+.mch__title-accent {
+  background: linear-gradient(90deg, #00D4FF, #61DAFB);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mch__subtitle {
+  font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 400;
+  color: rgba(255,255,255,0.7); line-height: 1.75; max-width: 520px; margin: 0 0 2rem;
+}
+
+.mch__ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.75rem; }
+.mch__cta {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 700;
+  text-decoration: none; padding: 0.85rem 1.75rem; border-radius: 999px;
+  transition: transform 0.2s, box-shadow 0.2s; min-height: 44px;
+}
+.mch__cta:focus-visible { outline: 2px solid #00D4FF; outline-offset: 3px; }
+.mch__cta--primary {
+  background: linear-gradient(135deg, #00D4FF, #2196F3); color: #fff;
+  box-shadow: 0 8px 32px rgba(0,212,255,0.3);
+}
+.mch__cta--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(0,212,255,0.4); }
+.mch__cta--secondary {
+  background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.25);
+  backdrop-filter: blur(4px);
+}
+.mch__cta--secondary:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+
+.mch__chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.mch__chip {
+  font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+  padding: 0.35rem 0.8rem; border-radius: 999px;
+}
+
+/* Slide indicators */
+.mch__indicators {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 0.5rem; z-index: 4;
+}
+.mch__indicator {
+  width: 8px; height: 8px; border-radius: 50%; border: none; cursor: pointer;
+  background: rgba(255,255,255,0.3); transition: all 0.3s;
+  padding: 0; min-height: auto;
+}
+.mch__indicator--active {
+  background: #00D4FF; width: 24px; border-radius: 4px;
+  box-shadow: 0 0 8px rgba(0,212,255,0.4);
+}
+
+/* Preview column — Mission Control Card */
+.mch__preview {
+  opacity: 0; transform: translateY(36px) scale(0.97);
+  transition: opacity 1s ease 0.25s, transform 1s ease 0.25s;
+}
+.mch--visible .mch__preview { opacity: 1; transform: translateY(0) scale(1); }
+
+.mch__preview-card {
+  background: rgba(5,21,37,0.85); backdrop-filter: blur(16px);
+  border: 1px solid rgba(0,212,255,0.18); border-radius: 20px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.4), 0 0 60px rgba(0,212,255,0.06);
+  overflow: hidden;
+}
+
+.mch__preview-header {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.75rem 1.25rem; background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mch__preview-dots { display: flex; gap: 5px; }
+.mch__preview-dots span { width: 9px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0.12); }
+.mch__preview-dots span:nth-child(1) { background: #FF5F57; }
+.mch__preview-dots span:nth-child(2) { background: #FFBD2E; }
+.mch__preview-dots span:nth-child(3) { background: #28CA41; }
+.mch__preview-title {
+  flex: 1; text-align: center; font-family: 'Inter', sans-serif;
+  font-size: 0.7rem; font-weight: 500; color: rgba(255,255,255,0.4);
+}
+
+.mch__preview-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.9rem; }
+
+/* Project info */
+.mch__preview-project { display: flex; flex-direction: column; gap: 0.3rem; }
+.mch__preview-project-name {
+  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.92rem; color: #fff;
+}
+.mch__preview-project-loc {
+  display: flex; align-items: center; gap: 0.35rem;
+  font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.4);
+}
+.mch__preview-status {
+  display: inline-flex; align-items: center; gap: 0.35rem; width: fit-content;
+  font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 600; color: #00D4FF;
+  background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
+  padding: 0.25rem 0.65rem; border-radius: 999px; margin-top: 0.2rem;
+}
+.mch__preview-status-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: #00D4FF;
+  animation: mch-pulse 2s ease-in-out infinite;
+}
+
+/* Progress */
+.mch__preview-progress-header {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;
+}
+.mch__preview-progress-header span { font-family: 'Inter', sans-serif; font-size: 0.68rem; color: rgba(255,255,255,0.4); }
+.mch__preview-progress-pct { color: #00D4FF !important; font-weight: 600; }
+.mch__preview-progress-bar {
+  height: 4px; border-radius: 2px; background: rgba(255,255,255,0.06);
+}
+.mch__preview-progress-fill {
+  width: 65%; height: 100%; border-radius: 2px;
+  background: linear-gradient(90deg, #00D4FF, #2196F3);
+}
+
+/* Mini map */
+.mch__preview-map {
+  position: relative; height: 72px; border-radius: 10px; overflow: hidden;
+  background: rgba(0,212,255,0.03); border: 1px solid rgba(0,212,255,0.08);
+}
+.mch__preview-map-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,212,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,255,0.06) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.mch__preview-map-route { position: absolute; inset: 4px; }
+.mch__preview-map-pin {
+  position: absolute; top: 30%; left: 60%; width: 8px; height: 8px;
+  border-radius: 50%; background: #00D4FF;
+  box-shadow: 0 0 12px rgba(0,212,255,0.5);
+  animation: mch-pulse 2.5s ease-in-out infinite;
+}
+
+/* Pilot card */
+.mch__preview-pilot {
+  display: flex; align-items: center; gap: 0.6rem;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 10px; padding: 0.6rem 0.8rem;
+}
+.mch__preview-pilot-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, #2196F3, #00D4FF);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif; font-size: 0.6rem; font-weight: 700; color: #fff;
+}
+.mch__preview-pilot-info { flex: 1; display: flex; flex-direction: column; }
+.mch__preview-pilot-name { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 600; color: #fff; }
+.mch__preview-pilot-spec { font-family: 'Inter', sans-serif; font-size: 0.62rem; color: rgba(255,255,255,0.4); }
+.mch__preview-pilot-badge {
+  display: flex; align-items: center; gap: 0.25rem;
+  font-family: 'Inter', sans-serif; font-size: 0.58rem; font-weight: 600; color: #00D4FF;
+  background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.2);
+  padding: 0.2rem 0.5rem; border-radius: 999px;
+}
+
+/* Telemetry */
+.mch__preview-telemetry { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
+.mch__preview-tele-item {
+  display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 8px; padding: 0.5rem 0.3rem;
+}
+.mch__preview-tele-val { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.82rem; color: #fff; }
+.mch__preview-tele-label { font-family: 'Inter', sans-serif; font-size: 0.55rem; color: rgba(255,255,255,0.4); }
+.mch__preview-tele-item--alert .mch__preview-tele-val { color: #F5B942; }
+
+/* Report status */
+.mch__preview-report {
+  display: flex; align-items: center; gap: 0.5rem;
+  font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.6);
+  background: rgba(0,212,255,0.04); border: 1px solid rgba(0,212,255,0.1);
+  border-radius: 8px; padding: 0.55rem 0.8rem;
+}
+
+@keyframes mch-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.3); }
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .mch__container { grid-template-columns: 1fr; gap: 2.5rem; }
+  .mch__preview { max-width: 520px; }
+  .mch { padding: 6.5rem 1.5rem 4rem; min-height: auto; }
+}
+@media (max-width: 768px) {
+  .mch { padding: 5.5rem 1rem 3rem; }
+  .mch__ctas { flex-direction: column; }
+  .mch__cta { width: 100%; text-align: center; }
+  .mch__preview-telemetry { grid-template-columns: repeat(2, 1fr); }
+  .mch__indicators { bottom: 1.5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mch__slide { transition: none; }
+  .mch__preview-status-dot, .mch__preview-map-pin { animation: none; }
+  .mch__content, .mch__preview { transition: none; opacity: 1; transform: none; }
+}

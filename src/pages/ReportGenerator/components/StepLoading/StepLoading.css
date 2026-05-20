@@ -1,0 +1,234 @@
+/* ═══════════════════════════════════════════════════════
+   Step Loading — Cinematic AI Geospatial Processing
+   ═══════════════════════════════════════════════════════ */
+
+.step-loading {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-loading__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #050E1A 0%, #0A2540 50%, #071A34 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  gap: 2rem;
+  overflow: hidden;
+}
+
+/* ─── Background Grid ─── */
+.step-loading__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 180, 216, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 216, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: gridPan 20s linear infinite;
+}
+
+@keyframes gridPan {
+  from { transform: translate(0, 0); }
+  to { transform: translate(50px, 50px); }
+}
+
+/* ─── Radar ─── */
+.step-loading__radar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 180, 216, 0.1);
+  box-shadow:
+    0 0 0 60px transparent,
+    0 0 0 61px rgba(0, 180, 216, 0.06),
+    0 0 0 120px transparent,
+    0 0 0 121px rgba(0, 180, 216, 0.04),
+    0 0 0 180px transparent,
+    0 0 0 181px rgba(0, 180, 216, 0.02);
+  animation: radarPulse 3s ease-in-out infinite;
+}
+
+@keyframes radarPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ─── Drone Track ─── */
+.step-loading__drone-track {
+  position: relative;
+  width: 80%;
+  max-width: 600px;
+  height: 60px;
+  z-index: 2;
+}
+
+.step-loading__drone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--brand-cyan, #00B4D8);
+  filter: drop-shadow(0 0 8px rgba(0, 180, 216, 0.6));
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.step-loading__scan-beam {
+  position: absolute;
+  top: 36px;
+  left: 16px;
+  width: 2px;
+  height: 24px;
+  background: linear-gradient(180deg, rgba(0, 180, 216, 0.8), transparent);
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+/* ─── Technical Chips ─── */
+.step-loading__chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 600px;
+  z-index: 2;
+}
+
+.step-loading__chip {
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(0, 180, 216, 0.9);
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.15);
+  border-radius: 100px;
+  padding: 0.3rem 0.7rem;
+  animation: chipFadeIn 0.4s ease both;
+}
+
+@keyframes chipFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Progress Bar ─── */
+.step-loading__progress-area {
+  width: 80%;
+  max-width: 500px;
+  z-index: 2;
+}
+
+.step-loading__progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.step-loading__progress-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #00B4D8, #0062D6);
+  border-radius: 100px;
+  transform-origin: left;
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.step-loading__progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.step-loading__progress-percent {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: white;
+  font-family: var(--font-display);
+}
+
+.step-loading__progress-stage {
+  font-size: 0.78rem;
+  color: rgba(0, 180, 216, 0.8);
+  font-weight: 500;
+}
+
+/* ─── Technical Log ─── */
+.step-loading__log {
+  width: 80%;
+  max-width: 500px;
+  max-height: 140px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.step-loading__log-line {
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  color: rgba(0, 180, 216, 0.5);
+  padding: 0.15rem 0;
+  animation: logFadeIn 0.3s ease both;
+}
+
+@keyframes logFadeIn {
+  from { opacity: 0; transform: translateX(-4px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .step-loading__overlay {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .step-loading__drone-track {
+    width: 90%;
+  }
+
+  .step-loading__progress-area {
+    width: 90%;
+  }
+
+  .step-loading__log {
+    width: 90%;
+    max-height: 100px;
+  }
+
+  .step-loading__radar {
+    width: 200px;
+    height: 200px;
+  }
+
+  .step-loading__chips {
+    gap: 0.35rem;
+  }
+
+  .step-loading__chip {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .step-loading__log {
+    display: none;
+  }
+
+  .step-loading__chips {
+    max-width: 100%;
+  }
+}

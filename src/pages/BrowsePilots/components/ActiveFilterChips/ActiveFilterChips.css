@@ -1,0 +1,44 @@
+.pilots-active-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.pilots-active-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--brand-cyan);
+  background: rgba(0, 180, 216, 0.06);
+  border: 1px solid rgba(0, 180, 216, 0.18);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s var(--ease-out);
+}
+
+.pilots-active-chip:hover {
+  background: rgba(0, 180, 216, 0.12);
+  border-color: rgba(0, 180, 216, 0.35);
+  transform: scale(1.03);
+}
+
+.pilots-active-chip--clear {
+  color: var(--color-danger);
+  background: rgba(229, 57, 53, 0.05);
+  border-color: rgba(229, 57, 53, 0.15);
+}
+
+.pilots-active-chip--clear:hover {
+  background: rgba(229, 57, 53, 0.1);
+  border-color: rgba(229, 57, 53, 0.3);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pilots-active-chip:hover {
+    transform: none;
+  }
+}

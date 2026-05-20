@@ -1,0 +1,31 @@
+/**
+ * PilotDashboardPage.css — Scoped design tokens and global page styles.
+ * Feature: pilot-dashboard
+ */
+
+.pilot-dashboard {
+  --pilot-navy: #0A192F;
+  --pilot-navy-deep: #06111F;
+  --pilot-navy-soft: #102A45;
+  --pilot-cyan: #00D2FF;
+  --pilot-cyan-soft: rgba(0, 210, 255, 0.14);
+  --pilot-cyan-border: rgba(0, 210, 255, 0.24);
+  --pilot-surface: #F4F7F6;
+  --pilot-surface-soft: #EEF8FF;
+  --pilot-card: rgba(255, 255, 255, 0.88);
+  --pilot-card-strong: #FFFFFF;
+  --pilot-text-main: #0A192F;
+  --pilot-text-muted: #60758D;
+  --pilot-text-soft: #8BA2B8;
+  --pilot-shadow-sm: 0 8px 24px rgba(10, 25, 47, 0.08);
+  --pilot-shadow-md: 0 18px 48px rgba(10, 25, 47, 0.12);
+  --pilot-shadow-cyan: 0 18px 56px rgba(0, 210, 255, 0.16);
+  --pilot-radius-md: 16px;
+  --pilot-radius-lg: 24px;
+  --pilot-radius-xl: 32px;
+
+  font-family: 'Inter', sans-serif;
+  color: var(--pilot-text-main);
+  min-height: 100vh;
+  width: 100%;
+}

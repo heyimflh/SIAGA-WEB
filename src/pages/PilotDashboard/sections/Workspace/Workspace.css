@@ -1,0 +1,76 @@
+.workspace { margin-bottom: 2.5rem; position: relative; z-index: 1; }
+.workspace__header { margin-bottom: 1.5rem; }
+.workspace__label { font-size: 0.6875rem; font-weight: 700; color: #00A3CC; letter-spacing: 0.08em; text-transform: uppercase; }
+.workspace__title { font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 700; color: #0A192F; margin: 0.25rem 0 0.375rem; }
+.workspace__subtitle { font-size: 0.8125rem; color: #60758D; margin: 0; }
+
+.workspace__project-select { margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+.workspace__select-label { font-size: 0.8125rem; font-weight: 600; color: #0A192F; }
+.workspace__select { padding: 0.5rem 1rem; border-radius: 12px; border: 1px solid rgba(0, 210, 255, 0.15); background: rgba(255, 255, 255, 0.9); font-size: 0.8125rem; color: #0A192F; min-width: 200px; }
+.workspace__select:focus-visible { outline: 2px solid #00D2FF; outline-offset: 2px; }
+
+.workspace__upload-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 2.5rem 2rem;
+  border: 2px dashed rgba(0, 210, 255, 0.3);
+  border-radius: 20px;
+  background: rgba(0, 210, 255, 0.02);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.workspace__upload-area:hover { border-color: rgba(0, 210, 255, 0.5); background: rgba(0, 210, 255, 0.04); }
+.workspace__upload-area--drag-over { border-color: #00D2FF; background: rgba(0, 210, 255, 0.08); box-shadow: 0 0 24px rgba(0, 210, 255, 0.15); }
+.workspace__upload-area:focus-visible { outline: 2px solid #00D2FF; outline-offset: 2px; }
+
+.workspace__upload-icon { color: #00A3CC; }
+.workspace__upload-text { font-size: 0.875rem; color: #60758D; text-align: center; }
+.workspace__file-input { display: none; }
+
+.workspace__file-chips { display: flex; flex-wrap: wrap; gap: 0.375rem; justify-content: center; }
+.workspace__chip { padding: 0.2rem 0.5rem; border-radius: 6px; background: rgba(0, 210, 255, 0.08); color: #0088CC; font-size: 0.6875rem; font-weight: 600; }
+
+.workspace__error { color: #FF4C4C; font-size: 0.8125rem; font-weight: 500; margin: 0.5rem 0; padding: 0.5rem 0.75rem; background: rgba(255, 76, 76, 0.06); border-radius: 8px; }
+
+.workspace__file-list { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1rem; }
+
+.file-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 12px;
+  border: 1px solid rgba(0, 210, 255, 0.06);
+}
+
+.file-entry__icon { color: #00A3CC; flex-shrink: 0; }
+.file-entry__info { flex: 1; display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; }
+.file-entry__name { font-size: 0.8125rem; font-weight: 600; color: #0A192F; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.file-entry__meta { font-size: 0.6875rem; color: #60758D; }
+
+.file-entry__delete { border: none; background: transparent; color: #60758D; cursor: pointer; padding: 0.25rem; border-radius: 6px; transition: color 0.2s ease; }
+.file-entry__delete:hover { color: #FF4C4C; }
+.file-entry__delete:focus-visible { outline: 2px solid #00D2FF; outline-offset: 2px; }
+
+.file-entry__progress { height: 4px; background: rgba(10, 25, 47, 0.06); border-radius: 999px; overflow: hidden; }
+.file-entry__progress-fill { height: 100%; background: linear-gradient(90deg, #00D2FF, #0088CC); border-radius: 999px; transition: width 0.3s ease; }
+
+.file-entry__error { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #FF4C4C; }
+.file-entry__retry { display: inline-flex; align-items: center; gap: 0.25rem; border: none; background: transparent; color: #0088CC; font-size: 0.75rem; font-weight: 600; cursor: pointer; }
+
+.workspace__storage { display: flex; align-items: center; gap: 0.5rem; font-size: 0.75rem; color: #60758D; margin-top: 0.75rem; }
+.workspace__storage-bar { flex: 1; max-width: 200px; height: 4px; background: rgba(10, 25, 47, 0.06); border-radius: 999px; overflow: hidden; }
+.workspace__storage-fill { height: 100%; background: linear-gradient(90deg, #00D2FF, #0088CC); border-radius: 999px; }
+
+.workspace__empty { text-align: center; padding: 3rem 2rem; background: rgba(255, 255, 255, 0.6); border-radius: 16px; border: 1px dashed rgba(0, 210, 255, 0.2); }
+.workspace__empty p { color: #60758D; margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .workspace__upload-area { transition: none; }
+}

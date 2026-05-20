@@ -1,8 +1,10 @@
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { MapPin, Wallet, Users, Clock, ArrowRight } from 'lucide-react';
 import { projects } from './projects-data';
+import { getRegisterPath } from '../../routes/appRoutes';
 import './LiveProjects.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -153,10 +155,10 @@ function LiveProjects() {
                   </div>
                 </div>
 
-                <a href="#" className="lp-card-cta">
+                <Link to={getRegisterPath('client')} className="lp-card-cta">
                   Lihat Detail
                   <ArrowRight size={14} strokeWidth={2} />
-                </a>
+                </Link>
               </div>
             );
           })}
@@ -164,10 +166,10 @@ function LiveProjects() {
 
         {/* Bottom CTA */}
         <div className="lp-bottom-cta">
-          <a href="#" className="lp-cta-btn">
+          <Link to={getRegisterPath('client')} className="lp-cta-btn">
             Lihat Semua Proyek Aktif
             <ArrowRight size={16} strokeWidth={2} />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,0 +1,91 @@
+/* ═══════════════════════════════════════════════════════
+   Toast Notification
+   ═══════════════════════════════════════════════════════ */
+
+.toast-notification {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 10001;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--radius-md, 12px);
+  box-shadow: 0 8px 32px rgba(10, 37, 64, 0.12);
+  border: 1px solid rgba(10, 37, 64, 0.06);
+  animation: toastSlideIn 0.3s var(--ease-out, cubic-bezier(.16,1,.3,1));
+  max-width: 360px;
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.toast-notification--success {
+  border-left: 3px solid var(--color-success, #00897B);
+}
+
+.toast-notification--success .toast-notification__icon {
+  color: var(--color-success, #00897B);
+}
+
+.toast-notification--error {
+  border-left: 3px solid var(--color-danger, #E53935);
+}
+
+.toast-notification--error .toast-notification__icon {
+  color: var(--color-danger, #E53935);
+}
+
+.toast-notification--info {
+  border-left: 3px solid var(--brand-cyan, #00B4D8);
+}
+
+.toast-notification--info .toast-notification__icon {
+  color: var(--brand-cyan, #00B4D8);
+}
+
+.toast-notification__icon {
+  flex-shrink: 0;
+}
+
+.toast-notification__message {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--brand-navy, #0A2540);
+  flex: 1;
+}
+
+.toast-notification__close {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(10, 37, 64, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary, #8BA3BE);
+  transition: background 0.2s ease;
+}
+
+.toast-notification__close:hover {
+  background: rgba(10, 37, 64, 0.08);
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 768px) {
+  .toast-notification {
+    top: auto;
+    bottom: 1.5rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+}

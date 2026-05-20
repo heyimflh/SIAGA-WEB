@@ -1,0 +1,107 @@
+/**
+ * Pricing tier data for SIAGA Pricing Page.
+ * Three tiers: Basic, Professional, Enterprise.
+ */
+export const pricingTiers = [
+  {
+    id: 'basic',
+    label: 'Basic',
+    badge: 'Starter',
+    subtitle: 'Untuk validasi awal dan proyek inspeksi kecil.',
+    bestFor: 'Client baru, uji coba platform, proyek kecil, dan kebutuhan laporan sederhana.',
+    price: 'Rp 0',
+    pricePeriod: '/ proyek',
+    features: [
+      'Posting proyek pertama',
+      'Pilot matching dasar',
+      'Escrow payment protected',
+      'Basic PDF report',
+      'Email support',
+    ],
+    cta: { text: 'Mulai Gratis', href: '/register?role=client' },
+    style: 'basic',
+  },
+  {
+    id: 'professional',
+    label: 'Professional',
+    badge: 'Most Popular',
+    subtitle: 'Untuk operasional inspeksi aktif dan monitoring proyek rutin.',
+    bestFor: 'Perusahaan kecil-menengah, proyek inspeksi berkala, dashboard monitoring, dan laporan PDF lengkap.',
+    price: 'Rp 500.000',
+    pricePeriod: '/ bulan',
+    features: [
+      'Unlimited project',
+      'Priority pilot matching',
+      'Real-time monitoring dashboard',
+      'Advanced PDF report',
+      'Defect issue tracking',
+      'API access basic',
+      'Team collaboration',
+      'Analytics dashboard',
+    ],
+    cta: { text: 'Pilih Professional', href: '/register?role=client&plan=pro' },
+    style: 'professional',
+  },
+  {
+    id: 'enterprise',
+    label: 'Enterprise',
+    badge: 'Custom',
+    subtitle: 'Untuk organisasi besar, kebutuhan custom, dan integrasi sistem.',
+    bestFor: 'BUMN, perusahaan besar, multi-lokasi, SLA khusus, custom workflow, dan integrasi API.',
+    price: 'Custom',
+    pricePeriod: 'Pricing',
+    features: [
+      'Semua fitur Professional',
+      'Dedicated Account Manager',
+      'Custom integration',
+      'SLA 99.9%',
+      'On-premise deployment option',
+      'Custom workflow automation',
+      'Enterprise data governance',
+      'White-label report',
+      'Compliance & audit support',
+    ],
+    cta: { text: 'Hubungi Sales', href: '/register?role=client&plan=enterprise' },
+    style: 'enterprise',
+  },
+];
+
+export const planRecommendations = [
+  {
+    id: 'rec-basic',
+    question: 'Baru mencoba SIAGA?',
+    plan: 'Basic',
+    copy: 'Mulai dari project kecil dan pahami workflow inspeksi digital tanpa biaya awal.',
+    cta: { text: 'Pilih Basic', href: '/register?role=client' },
+  },
+  {
+    id: 'rec-pro',
+    question: 'Rutin mengelola inspeksi?',
+    plan: 'Professional',
+    copy: 'Gunakan dashboard monitoring, laporan lanjutan, dan kolaborasi tim.',
+    cta: { text: 'Pilih Professional', href: '/register?role=client&plan=pro' },
+  },
+  {
+    id: 'rec-ent',
+    question: 'Butuh workflow custom?',
+    plan: 'Enterprise',
+    copy: 'Dapatkan SLA, integrasi sistem, dan konfigurasi sesuai kebutuhan organisasi.',
+    cta: { text: 'Hubungi Sales', href: '/register?role=client&plan=enterprise' },
+  },
+];
+
+export const featureComparison = [
+  { feature: 'Posting proyek', basic: true, professional: true, enterprise: true },
+  { feature: 'Pilot matching', basic: 'Dasar', professional: 'Priority', enterprise: 'Dedicated pool' },
+  { feature: 'Escrow payment', basic: true, professional: true, enterprise: true },
+  { feature: 'Live monitoring', basic: false, professional: true, enterprise: true },
+  { feature: 'PDF report', basic: 'Basic', professional: 'Advanced', enterprise: 'White-label' },
+  { feature: 'Dashboard analytics', basic: false, professional: true, enterprise: true },
+  { feature: 'Team collaboration', basic: false, professional: true, enterprise: true },
+  { feature: 'Priority support', basic: false, professional: '24/7', enterprise: 'Dedicated AM' },
+  { feature: 'SLA custom', basic: false, professional: false, enterprise: '99.9%' },
+  { feature: 'API integration', basic: false, professional: 'Basic', enterprise: 'Full' },
+  { feature: 'Multi-project management', basic: false, professional: true, enterprise: true },
+  { feature: 'White-label report', basic: false, professional: false, enterprise: true },
+  { feature: 'Dedicated account manager', basic: false, professional: false, enterprise: true },
+];

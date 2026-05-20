@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { validateLogin } from '../../auth/validators.js';
 import { useAuth } from '../../auth/AuthContext.jsx';
 import { roleToDashboardPath } from '../../auth/routes.js';
@@ -37,6 +37,7 @@ function hasFieldErrors(errors) {
 export default function LoginForm({ role, onLoadingChange }) {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -117,9 +118,27 @@ export default function LoginForm({ role, onLoadingChange }) {
 
     if (!failed) {
       login({ role, email });
+      // Check for redirect query param
+      const redirectTarget = searchParams.get('redirect');
+      if (redirectTarget) {
+        // Validate redirect target matches the user's role
+        const isClientRoute = redirectTarget.startsWith('/dashboard/client');
+        const isPilotRoute = redirectTarget.startsWith('/dashboard/pilot');
+        const isSharedRoute = redirectTarget.startsWith('/project/');
+        const roleMatches =
+          (role === 'client' && (isClientRoute || isSharedRoute)) ||
+          (role === 'pilot' && (isPilotRoute || isSharedRoute)) ||
+          (!isClientRoute && !isPilotRoute && !isSharedRoute);
+
+        if (roleMatches) {
+          navigate(decodeURIComponent(redirectTarget), { replace: true });
+          return;
+        }
+      }
+      // Default: go to role's dashboard
       const dashboardPath = roleToDashboardPath(role);
       if (dashboardPath) {
-        navigate(dashboardPath);
+        navigate(dashboardPath, { replace: true });
       }
       return;
     }

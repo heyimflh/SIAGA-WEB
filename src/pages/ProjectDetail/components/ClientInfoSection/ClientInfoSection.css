@@ -1,0 +1,58 @@
+.pd-client-info__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #071A34;
+  margin: 0 0 16px;
+}
+.pd-client-info__card {
+  background: rgba(255,255,255,0.76);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(180,220,245,0.4);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: 0 12px 40px rgba(10,40,80,0.06);
+}
+.pd-client-info__header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+.pd-client-info__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(0,210,255,0.08);
+  color: #00D2FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pd-client-info__name {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #071A34;
+  margin: 0 0 4px;
+}
+.pd-client-info__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #00D2FF;
+}
+.pd-client-info__stats {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.pd-client-info__stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: #58708E;
+}

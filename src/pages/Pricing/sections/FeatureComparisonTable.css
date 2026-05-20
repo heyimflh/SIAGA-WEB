@@ -1,0 +1,17 @@
+.fct { padding: 5rem 1.5rem; }
+.fct__container { max-width: 900px; margin: 0 auto; }
+.fct__wrapper { overflow-x: auto; margin-top: 2rem; border-radius: 16px; border: 1px solid rgba(10,37,64,0.06); background: #fff; box-shadow: 0 4px 20px rgba(10,37,64,0.04); }
+.fct__table { width: 100%; border-collapse: collapse; min-width: 600px; }
+.fct__th { font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 700; color: #071A2E; padding: 1rem 1.25rem; text-align: center; border-bottom: 1px solid rgba(10,37,64,0.06); background: #F4FAFF; }
+.fct__th--feature { text-align: left; width: 35%; }
+.fct__th--pro { background: rgba(0,212,255,0.06); color: #0B7CFF; }
+.fct__th--ent { background: rgba(245,166,35,0.04); color: #D4890A; }
+.fct__row:hover { background: rgba(0,212,255,0.02); }
+.fct__td { font-family: 'Inter', sans-serif; font-size: 0.82rem; color: #071A2E; padding: 0.85rem 1.25rem; text-align: center; border-bottom: 1px solid rgba(10,37,64,0.04); }
+.fct__td--feature { text-align: left; font-weight: 500; }
+.fct__td--pro { background: rgba(0,212,255,0.02); }
+.fct__td--ent { background: rgba(245,166,35,0.01); }
+.fct__check { color: #0B7CFF; font-weight: 700; font-size: 1rem; }
+.fct__dash { color: #C0C8D4; }
+.fct__text { font-size: 0.75rem; color: #60758A; }
+@media (max-width: 768px) { .fct { padding: 3.5rem 1rem; } .fct__wrapper { border-radius: 12px; } }

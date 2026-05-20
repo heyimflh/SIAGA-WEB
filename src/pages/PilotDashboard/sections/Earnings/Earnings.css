@@ -1,0 +1,68 @@
+.earnings { margin-bottom: 2.5rem; position: relative; z-index: 1; }
+.earnings__header { margin-bottom: 1.5rem; }
+.earnings__label { font-size: 0.6875rem; font-weight: 700; color: #00A3CC; letter-spacing: 0.08em; text-transform: uppercase; }
+.earnings__title { font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif; font-size: 1.25rem; font-weight: 700; color: #0A192F; margin: 0.25rem 0 0.375rem; }
+.earnings__subtitle { font-size: 0.8125rem; color: #60758D; margin: 0; }
+
+.earnings__summary { display: grid; grid-template-columns: 1fr 1.5fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+@media (max-width: 767px) { .earnings__summary { grid-template-columns: 1fr; } }
+
+.earnings__total-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 210, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(10, 25, 47, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.earnings__total-label { font-size: 0.75rem; font-weight: 600; color: #60758D; text-transform: uppercase; letter-spacing: 0.04em; }
+.earnings__total-value { font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif; font-size: 1.75rem; font-weight: 800; color: #0A192F; }
+
+.earnings__mom { display: flex; align-items: center; gap: 0.375rem; }
+.earnings__mom-text { font-size: 0.75rem; font-weight: 600; }
+.earnings__mom-text--up { color: #00C48C; }
+.earnings__mom-text--down { color: #FF4C4C; }
+
+.earnings__chart-wrap {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 1.25rem;
+  border: 1px solid rgba(0, 210, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(10, 25, 47, 0.06);
+}
+
+.earnings__chart-loading { padding: 2rem; text-align: center; color: #60758D; font-size: 0.8125rem; }
+
+/* Payment Table */
+.payment-table__wrap {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 1.25rem;
+  border: 1px solid rgba(0, 210, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(10, 25, 47, 0.06);
+  overflow-x: auto;
+}
+
+.payment-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
+.payment-table th { text-align: left; padding: 0.75rem 0.5rem; color: #60758D; font-weight: 600; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid rgba(10, 25, 47, 0.06); }
+.payment-table td { padding: 0.75rem 0.5rem; color: #0A192F; border-bottom: 1px solid rgba(10, 25, 47, 0.03); }
+.payment-table__nilai { font-weight: 600; white-space: nowrap; }
+
+.payment-table__status { padding: 0.2rem 0.5rem; border-radius: 999px; font-size: 0.6875rem; font-weight: 600; }
+.payment-table__status--success { background: rgba(0, 196, 140, 0.12); color: #00896B; }
+.payment-table__status--warning { background: rgba(245, 185, 66, 0.12); color: #D4930A; }
+.payment-table__status--cyan { background: rgba(0, 210, 255, 0.12); color: #0088CC; }
+
+.earnings__empty { text-align: center; padding: 3rem 2rem; background: rgba(255, 255, 255, 0.6); border-radius: 16px; border: 1px dashed rgba(0, 210, 255, 0.2); }
+.earnings__empty p { color: #60758D; margin: 0; }
+
+@media (max-width: 767px) {
+  .payment-table { font-size: 0.75rem; }
+  .payment-table th, .payment-table td { padding: 0.5rem 0.375rem; }
+}

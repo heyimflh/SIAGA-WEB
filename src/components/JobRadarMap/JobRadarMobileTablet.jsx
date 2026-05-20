@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import mapboxgl from 'mapbox-gl';
@@ -16,6 +17,7 @@ import {
   Wifi,
 } from 'lucide-react';
 import { pinData, mapConfig, statsData, liveAlerts } from './pinData';
+import { getRegisterPath } from '../../routes/appRoutes';
 import './JobRadarMobileTablet.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -422,10 +424,10 @@ export default function JobRadarMobileTablet() {
           </div>
 
           {/* CTA */}
-          <a href="#" className="mrcc-radar-cta">
+          <Link to={getRegisterPath('pilot')} className="mrcc-radar-cta">
             <span>Jelajahi Semua Proyek</span>
             <ArrowRight size={16} strokeWidth={2.2} />
-          </a>
+          </Link>
         </div>
 
         {/* 6. Live Activity Card */}

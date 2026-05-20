@@ -1,0 +1,11 @@
+.pd-bidding {
+  background: rgba(255,255,255,0.76);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(180,220,245,0.4);
+  border-radius: 24px;
+  padding: 36px;
+  box-shadow: 0 16px 50px rgba(10,40,80,0.07);
+}
+@media (max-width: 768px) {
+  .pd-bidding { padding: 20px 16px; border-radius: 20px; }
+}

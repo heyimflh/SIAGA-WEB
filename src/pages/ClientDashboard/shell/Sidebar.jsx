@@ -13,7 +13,7 @@
  */
 
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
   LayoutDashboard,
   FolderKanban,
@@ -29,15 +29,14 @@ import './Sidebar.css';
 
 /**
  * Konstanta menu sidebar sesuai design.
- * Item selain Dashboard di-render sebagai <button disabled> dengan tooltip.
  */
 const SIDEBAR_MENU = [
-  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard/client', active: true },
-  { id: 'proyek', label: 'Proyek', icon: FolderKanban, to: '#', disabled: true },
-  { id: 'asset-map', label: 'Asset Map', icon: Map, to: '#', disabled: true },
-  { id: 'bidding', label: 'Bidding', icon: Gavel, to: '#', disabled: true },
-  { id: 'laporan', label: 'Laporan', icon: FileText, to: '#', disabled: true },
-  { id: 'pengaturan', label: 'Pengaturan', icon: Settings, to: '#', disabled: true },
+  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard/client', exact: true },
+  { id: 'proyek', label: 'Proyek', icon: FolderKanban, to: '/dashboard/client/projects' },
+  { id: 'asset-map', label: 'Asset Map', icon: Map, to: '/dashboard/client/asset-map' },
+  { id: 'bidding', label: 'Bidding', icon: Gavel, to: '/dashboard/client/bidding' },
+  { id: 'laporan', label: 'Laporan', icon: FileText, to: '/dashboard/client/report-generator' },
+  { id: 'pengaturan', label: 'Pengaturan', icon: Settings, to: '/dashboard/client/settings' },
 ];
 
 /**
@@ -53,10 +52,19 @@ function getInitials(name) {
 function Sidebar({ companyName, variant = 'full', drawerOpen, onDrawerClose, onLogout }) {
   const { logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const [logoutError, setLogoutError] = useState('');
 
   const isIconOnly = variant === 'icon';
   const isDrawer = variant === 'drawer';
+
+  // Determine which menu item is active based on current path
+  function isItemActive(item) {
+    if (item.exact) {
+      return location.pathname === item.to;
+    }
+    return location.pathname.startsWith(item.to);
+  }
 
   async function handleLogout() {
     setLogoutError('');
@@ -121,37 +129,19 @@ function Sidebar({ companyName, variant = 'full', drawerOpen, onDrawerClose, onL
         <ul className="sidebar__menu" role="list">
           {SIDEBAR_MENU.map((item) => {
             const IconComponent = item.icon;
+            const active = isItemActive(item);
 
-            if (item.active) {
-              // Dashboard — active item (Req 2.7, 2.8, 13.5)
-              return (
-                <li key={item.id} className="sidebar__menu-item">
-                  <Link
-                    to={item.to}
-                    className="sidebar__menu-link sidebar__menu-link--active"
-                    aria-current="page"
-                    title={isIconOnly ? item.label : undefined}
-                  >
-                    <IconComponent size={20} aria-hidden="true" />
-                    {!isIconOnly && <span className="sidebar__menu-label">{item.label}</span>}
-                  </Link>
-                </li>
-              );
-            }
-
-            // Disabled items (Req 2.5 — "Segera tersedia" tooltip)
             return (
               <li key={item.id} className="sidebar__menu-item">
-                <button
-                  type="button"
-                  className="sidebar__menu-link sidebar__menu-link--disabled"
-                  disabled
-                  title="Segera tersedia"
-                  aria-disabled="true"
+                <Link
+                  to={item.to}
+                  className={`sidebar__menu-link ${active ? 'sidebar__menu-link--active' : ''}`}
+                  aria-current={active ? 'page' : undefined}
+                  title={isIconOnly ? item.label : undefined}
                 >
                   <IconComponent size={20} aria-hidden="true" />
                   {!isIconOnly && <span className="sidebar__menu-label">{item.label}</span>}
-                </button>
+                </Link>
               </li>
             );
           })}

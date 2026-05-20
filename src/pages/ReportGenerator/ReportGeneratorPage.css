@@ -1,0 +1,71 @@
+/* ═══════════════════════════════════════════════════════
+   Report Generator Page — Cinematic AI Geospatial Shell
+   ═══════════════════════════════════════════════════════ */
+
+.report-generator-page {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  padding: 2rem 1.5rem 4rem;
+}
+
+/* ─── Cinematic Background ─── */
+.report-generator-page__bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.report-generator-page__bg-glow {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 60vw;
+  height: 60vw;
+  max-width: 800px;
+  max-height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 180, 216, 0.08) 0%, transparent 70%);
+  filter: blur(60px);
+}
+
+.report-generator-page__bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 180, 216, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 180, 216, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.6;
+}
+
+/* ─── Container ─── */
+.report-generator-page__container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ─── Step Content ─── */
+.report-generator-page__content {
+  margin-top: 2rem;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .report-generator-page {
+    padding: 1rem 1rem 3rem;
+  }
+
+  .report-generator-page__content {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .report-generator-page {
+    padding: 0.75rem 0.75rem 2rem;
+  }
+}

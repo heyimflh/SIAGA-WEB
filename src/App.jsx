@@ -8,14 +8,29 @@ import {
 import { AnimatePresence } from 'framer-motion';
 import AuthProvider from './auth/AuthContext.jsx';
 import ProtectedRoute from './auth/ProtectedRoute.jsx';
+import ScrollToHash from './components/ScrollToHash.jsx';
 import LandingPage from './pages/LandingPage.jsx';
 import LoginPage from './pages/LoginPage/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage/RegisterPage.jsx';
 import ClientDashboardPage from './pages/ClientDashboard/ClientDashboardPage';
 import DashboardErrorBoundary from './pages/ClientDashboard/DashboardErrorBoundary';
 import CreateProjectComingSoon from './pages/ClientDashboard/CreateProjectComingSoon';
-import PilotDashboard from './pages/DashboardPlaceholder/PilotDashboard.jsx';
+import ProjectListPage from './pages/ClientDashboard/ProjectListPage';
+import AssetMapPage from './pages/ClientDashboard/AssetMapPage';
+import BiddingPage from './pages/ClientDashboard/BiddingPage';
+import SettingsPage from './pages/ClientDashboard/SettingsPage';
+import ReportGeneratorPage from './pages/ReportGenerator/ReportGeneratorPage.jsx';
+import PilotDashboardPage from './pages/PilotDashboard/PilotDashboardPage.jsx';
+import PilotBidsPage from './pages/PilotDashboard/PilotBidsPage.jsx';
+import PilotProjectsPage from './pages/PilotDashboard/PilotProjectsPage.jsx';
+import PilotWorkspacePage from './pages/PilotDashboard/PilotWorkspacePage.jsx';
+import PilotEarningsPage from './pages/PilotDashboard/PilotEarningsPage.jsx';
+import PilotSettingsPage from './pages/PilotDashboard/PilotSettingsPage.jsx';
 import JobRadarPage from './pages/JobRadar/JobRadarPage.jsx';
+import ProjectDetailPage from './pages/ProjectDetail/ProjectDetailPage.jsx';
+import BrowsePilotsPage from './pages/BrowsePilots/BrowsePilotsPage.jsx';
+import HowItWorksPage from './pages/HowItWorks/HowItWorksPage.jsx';
+import PricingPage from './pages/Pricing/PricingPage.jsx';
 import PageTransition from './components/PageTransition.jsx';
 import CustomCursor from './components/CustomCursor';
 import './index.css';
@@ -59,6 +74,15 @@ function AnimatedRoutes() {
         />
 
         <Route
+          path="/pilots"
+          element={
+            <PageTransition routeKey="browse-pilots">
+              <BrowsePilotsPage />
+            </PageTransition>
+          }
+        />
+
+        <Route
           path="/dashboard/client"
           element={
             <ProtectedRoute requestedRole="client">
@@ -83,10 +107,65 @@ function AnimatedRoutes() {
         />
 
         <Route
+          path="/dashboard/client/projects"
+          element={
+            <ProtectedRoute requestedRole="client">
+              <PageTransition routeKey="client-projects">
+                <ProjectListPage />
+              </PageTransition>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/client/asset-map"
+          element={
+            <ProtectedRoute requestedRole="client">
+              <AssetMapPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/client/bidding"
+          element={
+            <ProtectedRoute requestedRole="client">
+              <PageTransition routeKey="client-bidding">
+                <BiddingPage />
+              </PageTransition>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/client/settings"
+          element={
+            <ProtectedRoute requestedRole="client">
+              <PageTransition routeKey="client-settings">
+                <SettingsPage />
+              </PageTransition>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/client/report-generator"
+          element={
+            <ProtectedRoute requestedRole="client">
+              <PageTransition routeKey="report-generator">
+                <ReportGeneratorPage />
+              </PageTransition>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/dashboard/pilot"
           element={
             <ProtectedRoute requestedRole="pilot">
-              <PilotDashboard />
+              <PageTransition routeKey="dashboard-pilot">
+                <PilotDashboardPage />
+              </PageTransition>
             </ProtectedRoute>
           }
         />
@@ -99,6 +178,90 @@ function AnimatedRoutes() {
                 <JobRadarPage />
               </PageTransition>
             </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/pilot/bids"
+          element={
+            <ProtectedRoute requestedRole="pilot">
+              <PageTransition routeKey="pilot-bids">
+                <PilotBidsPage />
+              </PageTransition>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/pilot/projects"
+          element={
+            <ProtectedRoute requestedRole="pilot">
+              <PageTransition routeKey="pilot-projects">
+                <PilotProjectsPage />
+              </PageTransition>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/pilot/workspace"
+          element={
+            <ProtectedRoute requestedRole="pilot">
+              <PageTransition routeKey="pilot-workspace">
+                <PilotWorkspacePage />
+              </PageTransition>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/pilot/earnings"
+          element={
+            <ProtectedRoute requestedRole="pilot">
+              <PageTransition routeKey="pilot-earnings">
+                <PilotEarningsPage />
+              </PageTransition>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/dashboard/pilot/settings"
+          element={
+            <ProtectedRoute requestedRole="pilot">
+              <PageTransition routeKey="pilot-settings">
+                <PilotSettingsPage />
+              </PageTransition>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/project/:projectId"
+          element={
+            <ProtectedRoute requestedRole={["client", "pilot"]}>
+              <PageTransition routeKey="project-detail">
+                <ProjectDetailPage />
+              </PageTransition>
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/how-it-works"
+          element={
+            <PageTransition routeKey="how-it-works">
+              <HowItWorksPage />
+            </PageTransition>
+          }
+        />
+
+        <Route
+          path="/pricing"
+          element={
+            <PageTransition routeKey="pricing">
+              <PricingPage />
+            </PageTransition>
           }
         />
 
@@ -135,6 +298,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <CustomCursor />
+        <ScrollToHash />
         <AnimatedRoutes />
       </AuthProvider>
     </BrowserRouter>

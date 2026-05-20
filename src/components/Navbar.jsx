@@ -1,11 +1,17 @@
 import { useEffect, useState, useRef } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
+import { ROUTES, getRegisterPath } from '../routes/appRoutes';
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [onDark, setOnDark] = useState(false);
   const headerRef = useRef(null);
+  const location = useLocation();
+
+  // Determine if we're on the landing page (for section anchors)
+  const isLanding = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -81,6 +87,9 @@ export default function Navbar() {
     setMobileOpen(false);
   };
 
+  // Helper: section links use full path from non-landing pages
+  const sectionHref = (hash) => isLanding ? `#${hash}` : `/#${hash}`;
+
   return (
     <>
       <header
@@ -89,33 +98,33 @@ export default function Navbar() {
       >
         <div className="nav-container">
           {/* Left — Floating Logo */}
-          <a href="/" className="brand-float">
+          <Link to={ROUTES.home} className="brand-float">
             <img
               src="/images/logo/siaga-full.png"
               alt="SIAGA"
               className="brand-float__img"
             />
-          </a>
+          </Link>
 
           {/* Center — Floating Navigation Pill */}
           <nav className="nav-pill">
             <ul className="nav-pill__links">
-              <li><a href="#fitur" className="nav-link">Fitur</a></li>
-              <li><a href="#cara-kerja" className="nav-link">Cara Kerja</a></li>
-              <li><a href="#sektor" className="nav-link">Sektor</a></li>
-              <li><a href="#testimoni" className="nav-link">Testimoni</a></li>
+              <li><a href={sectionHref('fitur')} className="nav-link">Fitur</a></li>
+              <li><Link to={ROUTES.howItWorks} className="nav-link">Cara Kerja</Link></li>
+              <li><Link to={ROUTES.pricing} className="nav-link">Harga</Link></li>
+              <li><Link to={ROUTES.pilots} className="nav-link">Pilot</Link></li>
             </ul>
           </nav>
 
           {/* Right — Floating Actions */}
           <div className="nav-actions">
-            <a href="#login" className="login-link">Masuk</a>
-            <a href="#register" className="nav-cta">
+            <Link to={ROUTES.login} className="login-link">Masuk</Link>
+            <Link to={getRegisterPath('client')} className="nav-cta">
               <span>Coba Gratis</span>
               <svg className="nav-cta__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
-            </a>
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -136,19 +145,19 @@ export default function Navbar() {
       <div className={`nav-mobile-panel ${mobileOpen ? 'nav-mobile-panel--open' : ''}`}>
         <div className="nav-mobile-panel__inner">
           <ul className="nav-mobile-panel__links">
-            <li><a href="#fitur" className="nav-mobile-panel__link" onClick={handleNavClick}>Fitur</a></li>
-            <li><a href="#cara-kerja" className="nav-mobile-panel__link" onClick={handleNavClick}>Cara Kerja</a></li>
-            <li><a href="#sektor" className="nav-mobile-panel__link" onClick={handleNavClick}>Sektor</a></li>
-            <li><a href="#testimoni" className="nav-mobile-panel__link" onClick={handleNavClick}>Testimoni</a></li>
+            <li><a href={sectionHref('fitur')} className="nav-mobile-panel__link" onClick={handleNavClick}>Fitur</a></li>
+            <li><Link to={ROUTES.howItWorks} className="nav-mobile-panel__link" onClick={handleNavClick}>Cara Kerja</Link></li>
+            <li><Link to={ROUTES.pricing} className="nav-mobile-panel__link" onClick={handleNavClick}>Harga</Link></li>
+            <li><Link to={ROUTES.pilots} className="nav-mobile-panel__link" onClick={handleNavClick}>Pilot</Link></li>
           </ul>
           <div className="nav-mobile-panel__actions">
-            <a href="#login" className="nav-mobile-panel__ghost" onClick={handleNavClick}>Masuk</a>
-            <a href="#register" className="nav-mobile-panel__cta" onClick={handleNavClick}>
+            <Link to={ROUTES.login} className="nav-mobile-panel__ghost" onClick={handleNavClick}>Masuk</Link>
+            <Link to={getRegisterPath('client')} className="nav-mobile-panel__cta" onClick={handleNavClick}>
               <span>Coba Gratis</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -10,6 +11,7 @@ import {
   Wallet,
 } from 'lucide-react';
 import { pilots, filterCategories } from './pilots-data';
+import { ROUTES } from '../../routes/appRoutes';
 import './FeaturedPilots.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -171,7 +173,7 @@ function FeaturedPilots() {
               misi, dan perangkat profesional yang sudah diverifikasi.
             </p>
           </div>
-          <a href="#" className="fp-header-cta">
+          <a href="/pilots" className="fp-header-cta">
             Lihat Semua Pilot
             <ArrowRight size={16} strokeWidth={2} />
           </a>
@@ -252,10 +254,10 @@ function FeaturedPilots() {
                 </div>
 
                 {/* CTA */}
-                <a href="#" className="fp-card-cta">
+                <Link to={ROUTES.pilots} className="fp-card-cta">
                   Lihat Profil
                   <ArrowRight size={13} strokeWidth={2} />
-                </a>
+                </Link>
               </div>
             ))}
           </div>
@@ -263,7 +265,7 @@ function FeaturedPilots() {
 
         {/* Bottom CTA (mobile) */}
         <div className="fp-bottom-cta">
-          <a href="#" className="fp-cta-btn">
+          <a href="/pilots" className="fp-cta-btn">
             Lihat Semua Pilot
             <ArrowRight size={16} strokeWidth={2} />
           </a>

@@ -1,7 +1,9 @@
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, Shield, Users, Zap, CreditCard } from 'lucide-react';
+import { ROUTES, getRegisterPath } from '../routes/appRoutes';
 import './FinalCTA.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -101,10 +103,10 @@ function FinalCTA() {
 
         {/* CTA Actions */}
         <div className="fcta__actions">
-          <a href="#" className="fcta__btn-primary">
+          <Link to={getRegisterPath('client')} className="fcta__btn-primary">
             <span>Daftar Gratis Sekarang</span>
             <ArrowRight size={18} strokeWidth={2.5} />
-          </a>
+          </Link>
         </div>
 
         {/* Trust chips */}
@@ -130,10 +132,10 @@ function FinalCTA() {
         {/* Secondary login */}
         <p className="fcta__login">
           Sudah punya akun?{' '}
-          <a href="#" className="fcta__login-link">
+          <Link to={ROUTES.login} className="fcta__login-link">
             Masuk di sini
             <ArrowRight size={13} strokeWidth={2.5} />
-          </a>
+          </Link>
         </p>
       </div>
 

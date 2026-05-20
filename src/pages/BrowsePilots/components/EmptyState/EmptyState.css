@@ -1,0 +1,59 @@
+.pilots-empty {
+  text-align: center;
+  padding: 72px 24px;
+}
+
+.pilots-empty__icon {
+  color: var(--brand-cyan);
+  opacity: 0.5;
+  margin-bottom: 24px;
+}
+
+.pilots-empty__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+
+.pilots-empty__helper {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+}
+
+.pilots-empty__reset {
+  padding: 13px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  border: 2px solid rgba(0, 180, 216, 0.3);
+  border-radius: 12px;
+  background: rgba(0, 180, 216, 0.03);
+  color: var(--brand-cyan);
+  cursor: pointer;
+  margin-bottom: 28px;
+  transition: all 0.2s;
+}
+
+.pilots-empty__reset:hover {
+  background: rgba(0, 180, 216, 0.08);
+  border-color: var(--brand-cyan);
+}
+
+.pilots-empty__suggestions {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pilots-empty__chip {
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 999px;
+  background: rgba(241, 245, 249, 0.9);
+  color: var(--text-secondary);
+  border: 1px solid rgba(10, 37, 64, 0.06);
+}

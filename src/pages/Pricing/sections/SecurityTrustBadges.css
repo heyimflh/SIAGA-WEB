@@ -1,0 +1,25 @@
+/* SecurityTrustBadges — Security Certification Strip */
+.stb { padding: 5rem 1.5rem; }
+.stb__container { max-width: 1100px; margin: 0 auto; }
+.stb__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-top: 2rem; }
+
+.stb__card {
+  background: #fff; border: 1px solid rgba(0,212,255,0.08); border-radius: 20px;
+  padding: 1.75rem 1.25rem; text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.stb__card:hover { transform: translateY(-4px); border-color: rgba(0,212,255,0.25); box-shadow: 0 12px 40px rgba(0,212,255,0.06); }
+
+.stb__icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(0,212,255,0.06); border: 1px solid rgba(0,212,255,0.12);
+  color: #0B7CFF; margin-bottom: 1rem;
+}
+.stb__label { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.85rem; color: #071A2E; margin: 0 0 0.4rem; }
+.stb__desc { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: #60758A; line-height: 1.5; margin: 0; }
+
+@media (max-width: 1024px) { .stb__grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .stb { padding: 3.5rem 1rem; } .stb__grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } .stb__card { padding: 1.5rem 1rem; border-radius: 16px; } }
+@media (max-width: 400px) { .stb__grid { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .stb__card { transition: none; } }

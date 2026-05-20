@@ -1,4 +1,5 @@
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -8,6 +9,7 @@ import {
   Building2,
   Plane,
 } from 'lucide-react';
+import { getRegisterPath } from '../../routes/appRoutes';
 import './Pricing.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -223,10 +225,10 @@ function Pricing() {
             </ul>
 
             {/* CTA */}
-            <a href="#" className="pr-card-cta pr-card-cta--primary">
+            <Link to={getRegisterPath('client')} className="pr-card-cta pr-card-cta--primary">
               Posting Proyek
               <ArrowRight size={16} strokeWidth={2} />
-            </a>
+            </Link>
 
             {/* Mini Tiers */}
             <div className="pr-tiers">
@@ -274,10 +276,10 @@ function Pricing() {
             </ul>
 
             {/* CTA */}
-            <a href="#" className="pr-card-cta pr-card-cta--secondary">
+            <Link to={getRegisterPath('pilot')} className="pr-card-cta pr-card-cta--secondary">
               Daftar Sebagai Pilot
               <ArrowRight size={16} strokeWidth={2} />
-            </a>
+            </Link>
 
             {/* Mini Tiers */}
             <div className="pr-tiers">

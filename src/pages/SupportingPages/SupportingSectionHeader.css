@@ -1,0 +1,74 @@
+/* SupportingSectionHeader — shared section header for Supporting Pages */
+.supporting-section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.supporting-section-header--left {
+  text-align: left;
+}
+
+.supporting-section-header__eyebrow {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #00D2FF;
+  margin-bottom: 0.75rem;
+}
+
+.supporting-section-header__accent {
+  display: block;
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #00D2FF, #2F63F4);
+  margin: 0 auto 1rem;
+}
+
+.supporting-section-header--left .supporting-section-header__accent {
+  margin-left: 0;
+}
+
+.supporting-section-header__title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  color: #0A192F;
+  line-height: 1.2;
+  margin: 0 0 1rem;
+}
+
+.supporting-section-header__subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #60758D;
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.supporting-section-header--left .supporting-section-header__subtitle {
+  margin-left: 0;
+}
+
+/* Dark variant for sections with blue/navy background */
+.supporting-section-header--dark .supporting-section-header__title {
+  color: #FFFFFF;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.supporting-section-header--dark .supporting-section-header__subtitle {
+  color: rgba(255,255,255,0.8);
+}
+
+.supporting-section-header--dark .supporting-section-header__eyebrow {
+  color: #B8E8FF;
+}
+
+.supporting-section-header--dark .supporting-section-header__accent {
+  background: linear-gradient(90deg, #fff, rgba(255,255,255,0.6));
+}

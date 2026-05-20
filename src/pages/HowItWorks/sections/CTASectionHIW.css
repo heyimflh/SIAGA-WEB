@@ -1,0 +1,61 @@
+/* CTASectionHIW — Final conversion CTA (inside ClosingSection wrapper) */
+.cta-hiw {
+  position: relative;
+  overflow: hidden;
+  padding: 5.5rem 1.5rem;
+  text-align: center;
+  /* No background — inherits from ClosingSection dark canvas */
+}
+
+.cta-hiw__bg { position: absolute; inset: 0; pointer-events: none; }
+.cta-hiw__grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+.cta-hiw__glow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,212,255,0.08), transparent 70%);
+}
+
+.cta-hiw__container { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+
+.cta-hiw__title {
+  font-family: 'Montserrat', sans-serif; font-weight: 700;
+  font-size: clamp(1.75rem, 4vw, 2.5rem); color: #fff; margin: 0 0 1rem; line-height: 1.2;
+}
+.cta-hiw__subtitle {
+  font-family: 'Inter', sans-serif; font-size: 1.05rem; color: rgba(255,255,255,0.6);
+  line-height: 1.7; margin: 0 0 2rem; max-width: 560px; margin-left: auto; margin-right: auto;
+}
+
+.cta-hiw__chips { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+.cta-hiw__chip {
+  font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; color: #fff;
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+  padding: 0.35rem 0.85rem; border-radius: 999px;
+}
+
+.cta-hiw__buttons { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.75rem; }
+.cta-hiw__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: 'Inter', sans-serif; font-size: 0.9rem; font-weight: 700;
+  text-decoration: none; padding: 0.85rem 2rem; border-radius: 999px;
+  transition: transform 0.2s, box-shadow 0.2s; min-height: 44px;
+}
+.cta-hiw__btn:focus-visible { outline: 2px solid #00D4FF; outline-offset: 3px; }
+.cta-hiw__btn--primary {
+  background: linear-gradient(135deg, #00D4FF, #0B7CFF); color: #fff;
+  box-shadow: 0 8px 32px rgba(0,212,255,0.3);
+}
+.cta-hiw__btn--primary:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(0,212,255,0.4); }
+.cta-hiw__btn--secondary { background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(0,212,255,0.3); }
+.cta-hiw__btn--secondary:hover { background: rgba(0,212,255,0.08); transform: translateY(-2px); }
+
+@media (max-width: 768px) {
+  .cta-hiw { padding: 4rem 1rem; }
+  .cta-hiw__buttons { flex-direction: column; align-items: stretch; }
+  .cta-hiw__btn { width: 100%; text-align: center; }
+}
+@media (prefers-reduced-motion: reduce) { .cta-hiw__btn { transition: none; } }

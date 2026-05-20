@@ -1,0 +1,462 @@
+/* ═══════════════════════════════════════════════════════
+   Step Download — Official Report Certificate
+   ═══════════════════════════════════════════════════════ */
+
+.step-download {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.step-download__card {
+  background: rgba(255, 255, 255, 0.86);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 180, 216, 0.12);
+  border-radius: var(--radius-lg, 20px);
+  padding: 2.5rem;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow:
+    0 24px 70px rgba(10, 37, 64, 0.1),
+    0 4px 16px rgba(0, 180, 216, 0.06);
+  animation: cardBounceIn 0.5s var(--ease-spring, cubic-bezier(.34,1.56,.64,1));
+}
+
+@keyframes cardBounceIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Badge */
+.step-download__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-success, #00897B);
+  background: rgba(0, 137, 123, 0.08);
+  border: 1px solid rgba(0, 137, 123, 0.15);
+  border-radius: 100px;
+  padding: 0.35rem 0.8rem;
+  margin-bottom: 1.25rem;
+}
+
+.step-download__title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--brand-navy, #0A2540);
+  margin-bottom: 1.5rem;
+}
+
+/* Thumbnail */
+.step-download__thumbnail {
+  width: 120px;
+  height: 160px;
+  margin: 0 auto 1.5rem;
+  background: white;
+  border: 1px solid rgba(10, 37, 64, 0.08);
+  border-radius: var(--radius-sm, 6px);
+  padding: 0.75rem;
+  box-shadow: 0 8px 24px rgba(10, 37, 64, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.step-download__thumbnail--image {
+  width: 160px;
+  height: 200px;
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.step-download__thumbnail--image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.step-download__thumb-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(10, 37, 64, 0.7) 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 0.75rem;
+}
+
+.step-download__thumb-brand {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.1em;
+}
+
+.step-download__thumb-header {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 800;
+  color: var(--brand-cyan, #00B4D8);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid rgba(0, 180, 216, 0.2);
+}
+
+.step-download__thumb-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.step-download__thumb-line {
+  height: 3px;
+  background: rgba(10, 37, 64, 0.08);
+  border-radius: 2px;
+}
+
+.step-download__thumb-line--short {
+  width: 60%;
+}
+
+.step-download__thumb-block {
+  flex: 1;
+  background: rgba(10, 37, 64, 0.03);
+  border-radius: 3px;
+  border: 1px dashed rgba(10, 37, 64, 0.06);
+  margin-top: 0.3rem;
+}
+
+/* Info */
+.step-download__info {
+  text-align: left;
+  margin-bottom: 1.25rem;
+}
+
+.step-download__info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid rgba(10, 37, 64, 0.04);
+}
+
+.step-download__info-label {
+  font-size: 0.78rem;
+  color: var(--text-tertiary, #8BA3BE);
+}
+
+.step-download__info-value {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--brand-navy, #0A2540);
+}
+
+.step-download__info-value--mono {
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  color: var(--brand-cyan, #00B4D8);
+}
+
+/* Sections */
+.step-download__sections {
+  margin-bottom: 1.5rem;
+}
+
+.step-download__sections-label {
+  font-size: 0.72rem;
+  color: var(--text-tertiary, #8BA3BE);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.step-download__sections-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.step-download__section-chip {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: var(--brand-cyan, #00B4D8);
+  background: rgba(0, 180, 216, 0.06);
+  border: 1px solid rgba(0, 180, 216, 0.12);
+  border-radius: 100px;
+  padding: 0.2rem 0.5rem;
+}
+
+/* Actions */
+.step-download__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.step-download__btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.9rem;
+  background: linear-gradient(135deg, var(--brand-cyan, #00B4D8), var(--brand-blue, #0062D6));
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: var(--radius-md, 12px);
+  box-shadow: 0 8px 24px rgba(0, 180, 216, 0.3);
+  transition: all 0.2s ease;
+}
+
+.step-download__btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px rgba(0, 180, 216, 0.4);
+}
+
+.step-download__btn-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.75rem;
+  background: transparent;
+  border: 1.5px solid rgba(0, 180, 216, 0.3);
+  border-radius: var(--radius-md, 12px);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brand-cyan, #00B4D8);
+  transition: all 0.2s ease;
+}
+
+.step-download__btn-secondary:hover {
+  background: rgba(0, 180, 216, 0.04);
+  border-color: var(--brand-cyan, #00B4D8);
+}
+
+.step-download__btn-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.6rem;
+  background: transparent;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-tertiary, #8BA3BE);
+  transition: color 0.2s ease;
+}
+
+.step-download__btn-ghost:hover {
+  color: var(--text-secondary, #4A6885);
+}
+
+/* ═══════════════════════════════════════════════════════
+   PDF Preview Modal
+   ═══════════════════════════════════════════════════════ */
+
+.step-download__modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(5, 14, 26, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.step-download__modal {
+  position: relative;
+  width: 80vw;
+  max-width: 700px;
+  height: 80vh;
+  max-height: 600px;
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: var(--radius-lg, 20px);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 32px 80px rgba(10, 37, 64, 0.2);
+}
+
+.step-download__modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(10, 37, 64, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, #4A6885);
+  transition: background 0.2s ease;
+}
+
+.step-download__modal-close:hover {
+  background: rgba(10, 37, 64, 0.1);
+}
+
+.step-download__modal-page {
+  flex: 1;
+  background: white;
+  border: 1px solid rgba(10, 37, 64, 0.06);
+  border-radius: var(--radius-md, 12px);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 16px rgba(10, 37, 64, 0.04);
+}
+
+.step-download__modal-page-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid rgba(0, 180, 216, 0.2);
+  margin-bottom: 1rem;
+}
+
+.step-download__modal-logo {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--brand-cyan, #00B4D8);
+}
+
+.step-download__modal-page-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brand-navy, #0A2540);
+}
+
+.step-download__modal-page-body {
+  flex: 1;
+}
+
+.step-download__modal-placeholder {
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 37, 64, 0.02);
+  border: 1px dashed rgba(10, 37, 64, 0.08);
+  border-radius: var(--radius-sm, 6px);
+}
+
+.step-download__modal-page-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-sm, 6px);
+}
+
+.step-download__modal-findings {
+  padding: 1rem;
+  background: rgba(10, 37, 64, 0.02);
+  border-radius: var(--radius-sm, 6px);
+  font-size: 0.82rem;
+  color: var(--text-secondary, #4A6885);
+  line-height: 1.8;
+}
+
+.step-download__modal-findings strong {
+  color: var(--brand-navy, #0A2540);
+}
+
+.step-download__btn-primary:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.step-download__modal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.step-download__modal-nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(10, 37, 64, 0.1);
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, #4A6885);
+  transition: all 0.2s ease;
+}
+
+.step-download__modal-nav-btn:hover:not(:disabled) {
+  border-color: var(--brand-cyan, #00B4D8);
+  color: var(--brand-cyan, #00B4D8);
+}
+
+.step-download__modal-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.step-download__modal-indicator {
+  font-size: 0.8rem;
+  color: var(--text-secondary, #4A6885);
+}
+
+.step-download__modal-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding: 0.6rem 1.5rem;
+  background: linear-gradient(135deg, var(--brand-cyan, #00B4D8), var(--brand-blue, #0062D6));
+  color: white;
+  font-weight: 600;
+  font-size: 0.82rem;
+  border: none;
+  border-radius: var(--radius-md, 12px);
+  align-self: center;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 768px) {
+  .step-download__card {
+    padding: 2rem 1.5rem;
+    max-width: 100%;
+  }
+
+  .step-download__modal-backdrop {
+    padding: 1rem;
+  }
+
+  .step-download__modal {
+    width: 95vw;
+    height: 85vh;
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .step-download__card {
+    padding: 1.5rem 1.25rem;
+    border-radius: var(--radius-md, 12px);
+  }
+
+  .step-download__title {
+    font-size: 1.3rem;
+  }
+}
