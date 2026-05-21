@@ -314,16 +314,21 @@
 @media (max-width: 767px) {
  .auth-layout-premium {
  background: linear-gradient(180deg, #F4FAFF 0%, #EAF4FF 48%, #FFFFFF 100%);
- height: 100vh;
- height: 100dvh;
+ min-height: 100vh;
+ min-height: 100dvh;
+ height: auto;
  overflow-y: auto;
+ overflow-x: hidden;
  }
 
  .auth-left-panel {
  padding: 20px 20px 16px;
- border-radius: 0 0 28px 28px;
- min-height: auto;
+ border-radius: 0 0 26px 26px;
+ height: auto;
+ min-height: unset;
+ max-height: unset;
  flex: 0 0 auto;
+ align-items: flex-start;
  }
 
  .auth-left-panel__content {
@@ -334,8 +339,8 @@
  }
 
  .auth-left-panel__logo {
- width: 100px;
- margin-bottom: 12px;
+ width: 88px;
+ margin-bottom: 8px;
  }
 
  .auth-left-panel__branding {
@@ -343,8 +348,9 @@
  }
 
  .auth-left-panel__headline {
- font-size: 1.4rem;
- line-height: 1.15;
+ font-size: clamp(1.25rem, 5.6vw, 1.5rem);
+ line-height: 1.12;
+ max-width: 320px;
  }
 
  .auth-left-panel__subheadline {
@@ -356,35 +362,23 @@
  }
 
  .auth-left-panel__drone-stage {
- height: 150px;
+ width: min(280px, 75vw);
+ height: clamp(120px, 35vw, 160px);
  flex: none;
- margin-top: 4px;
+ margin: 8px auto 0;
+ overflow: visible;
  }
 
- /* Hide most floating cards on mobile */
- .auth-floating-card--top-left,
- .auth-floating-card--bottom-left {
+ /* Keep the mobile hero decorative and form-focused. */
+ .auth-floating-cards {
  display: none;
  }
 
- .auth-floating-card--top-right,
- .auth-floating-card--bottom-right {
- padding: 8px 12px;
- border-radius: 12px;
- }
-
- .auth-floating-card__value {
- font-size: 0.9rem;
- }
-
- .auth-floating-card__label {
- font-size: 0.6rem;
- }
-
  .auth-right-panel {
- padding: 20px 20px 32px;
+ padding: 24px 20px 36px;
  background: transparent;
  flex: 1;
+ overflow: visible;
  }
 
  .auth-right-panel__bg-effects {
@@ -409,6 +403,21 @@
  .auth-left-panel__radar-ring--2 {
  width: 140px;
  height: 140px;
+ }
+}
+
+@media (max-width: 399px) {
+ .auth-left-panel {
+ padding: 16px 16px 14px;
+ }
+
+ .auth-left-panel__headline {
+ font-size: 1.2rem;
+ }
+
+ .auth-left-panel__drone-stage {
+ width: min(240px, 72vw);
+ height: clamp(100px, 30vw, 130px);
  }
 }
 

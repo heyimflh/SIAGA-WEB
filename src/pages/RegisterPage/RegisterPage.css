@@ -81,7 +81,102 @@
  * STEPPER — Premium Green-Cyan
  * ══════════════════════════════════════════════════════════════════ */
 .register-stepper {
- margin-bottom: 8px;
+ display: flex;
+ align-items: flex-start;
+ justify-content: space-between;
+ list-style: none;
+ margin: 0 0 8px;
+ padding: 0;
+ width: 100%;
+ gap: 8px;
+}
+
+.register-stepper__item {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ flex: 1;
+ min-width: 0;
+ position: relative;
+}
+
+.register-stepper__track {
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ position: relative;
+ width: 100%;
+ min-height: 34px;
+}
+
+.register-stepper__connector {
+ position: absolute;
+ top: 50%;
+ height: 2px;
+ transform: translateY(-50%);
+ background: #9CA3AF;
+ opacity: 0.35;
+ border-radius: 1px;
+}
+
+.register-stepper__connector--left {
+ left: 0;
+ right: 50%;
+ margin-right: 16px;
+}
+
+.register-stepper__connector--right {
+ left: 50%;
+ right: 0;
+ margin-left: 16px;
+}
+
+.register-stepper__connector--active {
+ background: #10B981;
+ opacity: 1;
+}
+
+.register-stepper__circle {
+ position: relative;
+ z-index: 1;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ width: 34px;
+ height: 34px;
+ border-radius: 50%;
+ background: rgba(255, 255, 255, 0.65);
+ color: #7890A0;
+ border: 1.5px solid rgba(120, 150, 160, 0.3);
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 700;
+ font-size: 13px;
+ transition: all 0.3s ease;
+}
+
+.register-stepper__circle--active {
+ background: linear-gradient(135deg, #10B981, #22D3EE);
+ color: #ffffff;
+ border-color: transparent;
+ box-shadow: 0 8px 24px rgba(16, 185, 129, 0.25);
+}
+
+.register-stepper__label {
+ margin-top: 8px;
+ font-family: 'Inter', sans-serif;
+ font-size: 11px;
+ font-weight: 500;
+ color: #7890A0;
+ text-align: center;
+ transition: color 0.2s ease;
+}
+
+.register-stepper__label--active {
+ color: #062B35;
+}
+
+.register-stepper__label--current {
+ font-weight: 600;
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -635,7 +730,7 @@
  * ══════════════════════════════════════════════════════════════════ */
 @media (max-width: 767px) {
  .register-card {
- padding: 24px 20px;
+ padding: 22px 20px 24px;
  border-radius: 28px;
  background: rgba(255, 255, 255, 0.80);
  border: 1px solid rgba(180, 235, 220, 0.5);
@@ -644,26 +739,110 @@
  }
 
  .register-card__logo { width: 80px; margin-bottom: 12px; }
- .register-card__heading { font-size: 1.4rem; }
- .register-card__subheading { font-size: 0.82rem; margin-bottom: 16px; }
- .register-card__step { margin-top: 16px; }
+ .register-card__heading { font-size: 1.3rem; }
+ .register-card__subheading { font-size: 0.8rem; line-height: 1.45; margin-bottom: 20px; }
+ .register-card__step { margin-top: 18px; }
+ .register-card__login-link { margin-top: 18px; font-size: 0.85rem; }
 
- .role-selector__heading { font-size: 1.15rem; }
- .role-selector__card { padding: 18px 16px; border-radius: 20px; }
- .role-selector__icon { width: 44px; height: 44px; border-radius: 12px; }
+ .register-stepper {
+ margin-top: 2px;
+ margin-bottom: 4px;
+ gap: 4px;
+ }
 
- .data-entry-form__heading { font-size: 1.15rem; }
- .data-entry-form__input { height: 48px; border-radius: 14px; font-size: 0.88rem; }
+ .register-stepper__track {
+ min-height: 36px;
+ }
+
+ .register-stepper__circle {
+ width: 36px;
+ height: 36px;
+ font-size: 13px;
+ }
+
+ .register-stepper__connector--left {
+ margin-right: 18px;
+ }
+
+ .register-stepper__connector--right {
+ margin-left: 18px;
+ }
+
+ .register-stepper__label {
+ margin-top: 7px;
+ font-size: 0.68rem;
+ line-height: 1.2;
+ }
+
+ .role-selector { gap: 0.9rem; }
+ .role-selector__heading { font-size: 1.2rem; line-height: 1.15; }
+ .role-selector__subheading { font-size: 0.86rem; line-height: 1.4; margin-bottom: 0.1rem; }
+ .role-selector__cards { gap: 12px; }
+ .role-selector__card {
+ min-height: 146px;
+ padding: 18px 16px;
+ border-radius: 22px;
+ gap: 9px;
+ }
+ .role-selector__icon { width: 48px; height: 48px; border-radius: 13px; }
+ .role-selector__icon svg { width: 42px; height: 42px; }
+ .role-selector__title { font-size: 1rem; }
+ .role-selector__description { font-size: 0.82rem; line-height: 1.38; }
+
+ .data-entry-form { gap: 1rem; }
+ .data-entry-form__heading { font-size: 1.2rem; line-height: 1.15; }
+ .data-entry-form__subheading { font-size: 0.86rem; line-height: 1.4; margin-top: -0.35rem; }
+ .data-entry-form__fields { gap: 16px; }
+ .data-entry-form__field { gap: 7px; }
+ .data-entry-form__label { font-size: 0.8rem; }
+ .data-entry-form__input { height: 52px; border-radius: 16px; font-size: 0.9rem; }
+ .data-entry-form__actions,
+ .verification-step__actions {
+ gap: 10px;
+ margin-top: 4px;
+ }
  .data-entry-form__back,
- .data-entry-form__submit { padding: 10px 18px; border-radius: 14px; font-size: 0.88rem; }
-
+ .data-entry-form__submit,
  .verification-step__back,
- .verification-step__submit { padding: 10px 18px; border-radius: 14px; font-size: 0.88rem; }
+ .verification-step__submit {
+ min-height: 52px;
+ flex: 1;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ padding: 0 18px;
+ border-radius: 16px;
+ font-size: 0.9rem;
+ text-align: center;
+ }
+
+ .verification-step { gap: 1rem; }
+ .verification-step__summary { padding: 16px; border-radius: 16px; }
+ .verification-step__summary-row {
+ display: grid;
+ grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+ gap: 10px;
+ font-size: 0.8rem;
+ }
+ .verification-step__terms { font-size: 0.82rem; }
+ .sidopi-upload__dropzone { padding: 22px 16px; border-radius: 18px; }
+ .sidopi-upload__label-title { font-size: 0.88rem; }
+ .sidopi-upload__label-hint { font-size: 0.76rem; line-height: 1.35; }
+ .sidopi-upload__file {
+ align-items: flex-start;
+ padding: 12px 14px;
+ border-radius: 14px;
+ }
+ .sidopi-upload__remove { flex-shrink: 0; }
 }
 
 @media (max-width: 399px) {
- .register-card { padding: 20px 16px; border-radius: 24px; }
+ .register-card { padding: 20px 16px 22px; border-radius: 24px; }
  .register-card__heading { font-size: 1.25rem; }
+ .register-card__subheading { font-size: 0.78rem; }
+ .register-stepper__circle { width: 34px; height: 34px; }
+ .register-stepper__label { font-size: 0.64rem; }
+ .role-selector__card { min-height: 140px; padding: 16px 14px; }
  .data-entry-form__actions { flex-direction: column; gap: 8px; }
  .data-entry-form__back,
  .data-entry-form__submit { width: 100%; text-align: center; }

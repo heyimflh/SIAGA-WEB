@@ -6,6 +6,11 @@ import * as THREE from 'three';
 // Re-export error boundary for convenience
 export { AuthDroneErrorBoundary as TowerErrorBoundary } from './AuthDroneErrorBoundary';
 
+function isCompactViewport() {
+ if (typeof window === 'undefined') return false;
+ return window.matchMedia('(max-width: 767px)').matches;
+}
+
 /* ──────────────────────────────────────────────────────────────
  * RegisterTowerScene — 3D Tower SUTET for Register Page
  * 
@@ -21,6 +26,7 @@ function TowerModel() {
  const { scene } = useGLTF('/models/tower.glb');
  const groupRef = useRef();
  const outerRef = useRef();
+ const compact = isCompactViewport();
 
  useEffect(() => {
  // Compute bounding box to auto-center and scale the model
@@ -30,7 +36,8 @@ function TowerModel() {
 
  // Normalize: fit the model into a ~3 unit tall space
  const maxDim = Math.max(size.x, size.y, size.z);
- const scale = maxDim > 0 ? 3 / maxDim : 1;
+ const targetHeight = compact ? 3.4 : 3;
+ const scale = maxDim > 0 ? targetHeight / maxDim : 1;
 
  if (groupRef.current) {
  groupRef.current.scale.setScalar(scale);
@@ -55,7 +62,7 @@ function TowerModel() {
  }
  }
  });
- }, [scene]);
+ }, [scene, compact]);
 
  useFrame(({ clock }) => {
  if (!outerRef.current) return;
@@ -105,9 +112,11 @@ useGLTF.preload('/models/tower.glb');
 
 /* ── Default export ───────────────────────────────────────────── */
 export default function RegisterTowerScene() {
+ const compact = isCompactViewport();
+
  return (
  <Canvas
- camera={{ position: [0, 0.5, 6], fov: 40 }}
+ camera={{ position: compact ? [0, 0.3, 5.5] : [0, 0.5, 6], fov: compact ? 34 : 40 }}
  style={{ background: 'transparent', width: '100%', height: '100%' }}
  gl={{
  antialias: true,

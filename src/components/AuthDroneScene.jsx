@@ -26,6 +26,11 @@ function isTouchDevice() {
  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 }
 
+function isCompactViewport() {
+ if (typeof window === 'undefined') return false;
+ return window.matchMedia('(max-width: 767px)').matches;
+}
+
 /* ── Mouse tracker component ──────────────────────────────────── */
 function MouseTracker({ mouseRef }) {
  const { gl } = useThree();
@@ -57,6 +62,8 @@ function DroneModel({ mouseRef }) {
  const { scene } = useGLTF('/models/drone2.glb');
  const groupRef = useRef();
  const isTouch = useMemo(() => isTouchDevice(), []);
+ const compact = useMemo(() => isCompactViewport(), []);
+ const modelScale = compact ? 0.48 : 0.48;
  const propellersRef = useRef([]);
 
  // Smooth target values
@@ -115,7 +122,7 @@ function DroneModel({ mouseRef }) {
  });
 
  return (
- <group ref={groupRef} scale={[0.48, 0.48, 0.48]} position={[0, 0, 0]}>
+ <group ref={groupRef} scale={[modelScale, modelScale, modelScale]} position={[0, 0, 0]}>
  <primitive object={scene} />
  </group>
  );
@@ -169,10 +176,11 @@ useGLTF.preload('/models/drone2.glb');
 /* ── Default export: the scene ────────────────────────────────── */
 export default function AuthDroneScene() {
  const mouseRef = useRef({ x: 0, y: 0 });
+ const compact = isCompactViewport();
 
  return (
  <Canvas
- camera={{ position: [0, 0.3, 3.2], fov: 45 }}
+ camera={{ position: compact ? [0, 0.2, 3.4] : [0, 0.3, 3.2], fov: compact ? 40 : 45 }}
  style={{ background: 'transparent', width: '100%', height: '100%' }}
  gl={{
  antialias: true,

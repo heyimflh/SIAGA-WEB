@@ -332,9 +332,11 @@
 @media (max-width: 767px) {
  .register-layout {
  background: linear-gradient(180deg, #F0FFFA 0%, #E6FFFB 45%, #FFFFFF 100%);
- height: 100vh;
- height: 100dvh;
+ min-height: 100vh;
+ min-height: 100dvh;
+ height: auto;
  overflow-y: auto;
+ overflow-x: hidden;
  flex-direction: column;
  }
 
@@ -342,10 +344,13 @@
  .register-right-panel {
  order: -1;
  padding: 20px 20px 16px;
- border-radius: 0 0 28px 28px;
+ border-radius: 0 0 26px 26px;
  flex: 0 0 auto;
- min-height: 200px;
- max-height: 240px;
+ height: auto;
+ min-height: unset;
+ max-height: unset;
+ align-items: flex-start;
+ overflow: visible;
  }
 
  .register-right-panel__content {
@@ -357,6 +362,7 @@
 
  .register-right-panel__header {
  justify-content: center;
+ margin-bottom: 8px;
  }
 
  .register-right-panel__logo {
@@ -364,13 +370,17 @@
  }
 
  .register-right-panel__badge {
- margin-bottom: 8px;
- font-size: 0.65rem;
+ margin-bottom: 0;
+ padding: 5px 12px;
+ font-size: 0.62rem;
+ line-height: 1;
  }
 
  .register-right-panel__headline {
- font-size: 1.2rem;
- margin-bottom: 6px;
+ font-size: clamp(1.28rem, 5.6vw, 1.55rem);
+ line-height: 1.12;
+ margin-bottom: 8px;
+ max-width: 330px;
  }
 
  .register-right-panel__subheadline {
@@ -378,38 +388,52 @@
  }
 
  .register-right-panel__tower-stage {
- height: 120px;
- min-height: 120px;
+ width: min(260px, 72vw);
+ height: clamp(130px, 38vw, 170px);
+ min-height: 130px;
  flex: none;
+ margin: 4px auto 0;
+ overflow: visible;
  }
 
- .register-floating-card--top-left,
- .register-floating-card--bottom-left {
+ .register-floating-cards {
  display: none;
  }
 
- .register-floating-card--top-right,
- .register-floating-card--bottom-right {
- padding: 6px 10px;
- border-radius: 10px;
- }
-
- .register-floating-card__value { font-size: 0.8rem; }
- .register-floating-card__label { font-size: 0.55rem; }
-
  .register-left-panel {
- padding: 20px 20px 32px;
+ padding: 24px 20px 36px;
  background: transparent;
  flex: 1;
- overflow-y: auto;
+ overflow: visible;
  }
 
  .register-left-panel__bg-effects { display: none; }
  .register-left-panel__content { max-width: 100%; }
 
- .register-right-panel__radial-glow { width: 250px; height: 250px; }
- .register-right-panel__radar-ring { width: 180px; height: 180px; }
- .register-right-panel__radar-ring--2 { width: 120px; height: 120px; }
+ .register-right-panel__radial-glow { width: 240px; height: 240px; top: 54%; }
+ .register-right-panel__radar-ring { width: 170px; height: 170px; top: 62%; }
+ .register-right-panel__radar-ring--2 { width: 116px; height: 116px; }
+}
+
+@media (max-width: 399px) {
+ .register-right-panel {
+ padding: 16px 16px 14px;
+ }
+
+ .register-right-panel__headline {
+ font-size: 1.22rem;
+ max-width: 300px;
+ }
+
+ .register-right-panel__tower-stage {
+ width: min(220px, 68vw);
+ height: clamp(110px, 32vw, 140px);
+ min-height: 110px;
+ }
+
+ .register-floating-cards {
+ display: none;
+ }
 }
 
 /* ══════════════════════════════════════════════════════════════════
