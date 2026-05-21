@@ -5,23 +5,23 @@
 .rbb__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
 
 .rbb__card {
-  background: rgba(255,255,255,0.95); border: 1px solid rgba(10,37,64,0.06);
-  border-radius: 24px; padding: 2rem 1.5rem;
-  box-shadow: 0 4px 16px rgba(10,37,64,0.04);
-  display: flex; flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+ background: rgba(255,255,255,0.95); border: 1px solid rgba(10,37,64,0.06);
+ border-radius: 24px; padding: 2rem 1.5rem;
+ box-shadow: 0 4px 16px rgba(10,37,64,0.04);
+ display: flex; flex-direction: column;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .rbb__card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(10,37,64,0.08); }
 
 .rbb__card-title {
-  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.15rem;
-  color: #071A2E; margin: 0 0 1.25rem;
+ font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.15rem;
+ color: #071A2E; margin: 0 0 1.25rem;
 }
 
 .rbb__card-features { list-style: none; padding: 0; margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
 .rbb__card-feature {
-  display: flex; align-items: center; gap: 0.6rem;
-  font-family: 'Inter', sans-serif; font-size: 0.88rem; color: #071A2E;
+ display: flex; align-items: center; gap: 0.6rem;
+ font-family: 'Inter', sans-serif; font-size: 0.88rem; color: #071A2E;
 }
 .rbb__card-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
 
@@ -34,10 +34,10 @@
 .rbb__card--amber .rbb__card-cta { background: transparent; color: #F5B942; border: 2px solid #F5B942; }
 
 .rbb__card-cta {
-  display: block; text-align: center;
-  font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700;
-  text-decoration: none; padding: 0.8rem 1.25rem; border-radius: 999px;
-  transition: transform 0.2s, box-shadow 0.2s; min-height: 44px;
+ display: block; text-align: center;
+ font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700;
+ text-decoration: none; padding: 0.8rem 1.25rem; border-radius: 999px;
+ transition: transform 0.2s, box-shadow 0.2s; min-height: 44px;
 }
 .rbb__card-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
 .rbb__card-cta:focus-visible { outline: 2px solid #00D4FF; outline-offset: 3px; }

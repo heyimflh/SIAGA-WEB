@@ -33,73 +33,73 @@ gsap.registerPlugin(ScrollTrigger);
  * transitions snappy.
  *
  * Notes:
- *   - `CustomCursor` is intentionally NOT rendered here — it lives at the App
- *     root so it stays mounted across route changes (Requirement 2.11).
- *   - The fixed background (`fixed-bg`) is rendered here because it's part of
- *     the landing-page visual language and shouldn't bleed into auth screens.
+ * - `CustomCursor` is intentionally NOT rendered here — it lives at the App
+ * root so it stays mounted across route changes .
+ * - The fixed background (`fixed-bg`) is rendered here because it's part of
+ * the landing-page visual language and shouldn't bleed into auth screens.
  */
 export default function LandingPage() {
-  const isDesktop = useMediaQuery('(min-width: 1024px)');
+ const isDesktop = useMediaQuery('(min-width: 1024px)');
 
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.0,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      direction: 'vertical',
-      gestureDirection: 'vertical',
-      smooth: true,
-      mouseMultiplier: 0.8,
-      smoothTouch: false,
-      touchMultiplier: 1.8,
-      infinite: false,
-    });
+ useEffect(() => {
+ const lenis = new Lenis({
+ duration: 1.0,
+ easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+ direction: 'vertical',
+ gestureDirection: 'vertical',
+ smooth: true,
+ mouseMultiplier: 0.8,
+ smoothTouch: false,
+ touchMultiplier: 1.8,
+ infinite: false,
+ });
 
-    // Sync Lenis ↔ GSAP ScrollTrigger
-    lenis.on('scroll', ScrollTrigger.update);
+ // Sync Lenis ↔ GSAP ScrollTrigger
+ lenis.on('scroll', ScrollTrigger.update);
 
-    // Use requestAnimationFrame for buttery smooth performance
-    let rafId;
-    function raf(time) {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    }
-    rafId = requestAnimationFrame(raf);
+ // Use requestAnimationFrame for buttery smooth performance
+ let rafId;
+ function raf(time) {
+ lenis.raf(time);
+ rafId = requestAnimationFrame(raf);
+ }
+ rafId = requestAnimationFrame(raf);
 
-    return () => {
-      cancelAnimationFrame(rafId);
-      lenis.destroy();
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
+ return () => {
+ cancelAnimationFrame(rafId);
+ lenis.destroy();
+ ScrollTrigger.getAll().forEach((t) => t.kill());
+ };
+ }, []);
 
-  return (
-    <>
-      {/* Fixed Background — grid + concentric circles, stays still while content scrolls */}
-      <div className="fixed-bg" aria-hidden="true">
-        <div className="fixed-bg__grid" />
-        <div className="fixed-bg__circles" />
-        <div className="fixed-bg__crosshairs" />
-      </div>
+ return (
+ <>
+ {/* Fixed Background — grid + concentric circles, stays still while content scrolls */}
+ <div className="fixed-bg" aria-hidden="true">
+ <div className="fixed-bg__grid" />
+ <div className="fixed-bg__circles" />
+ <div className="fixed-bg__crosshairs" />
+ </div>
 
-      <Navbar />
-      <main>
-        {isDesktop ? <Hero /> : <HeroMobileTablet />}
-        <StatsBar />
-        <DualAudience />
-        <ProblemSolution />
-        {isDesktop ? <JobRadarSection /> : <JobRadarMobileTablet />}
-        <LiveProjects />
-        <FeaturedPilots />
-        <ServiceCategories />
-        <HowItWorks />
-        <TrustSafety />
-        <SektorKredibilitas />
-        <Pricing />
-        <ClosingSection>
-          <FinalCTA />
-          <Footer />
-        </ClosingSection>
-      </main>
-    </>
-  );
+ <Navbar />
+ <main>
+ {isDesktop ? <Hero /> : <HeroMobileTablet />}
+ <StatsBar />
+ <DualAudience />
+ <ProblemSolution />
+ {isDesktop ? <JobRadarSection /> : <JobRadarMobileTablet />}
+ <LiveProjects />
+ <FeaturedPilots />
+ <ServiceCategories />
+ <HowItWorks />
+ <TrustSafety />
+ <SektorKredibilitas />
+ <Pricing />
+ <ClosingSection>
+ <FinalCTA />
+ <Footer />
+ </ClosingSection>
+ </main>
+ </>
+ );
 }

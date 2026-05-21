@@ -1,32 +1,32 @@
 .pd-sticky-cta {
-  display: none;
+ display: none;
 }
 @media (max-width: 768px) {
-  .pd-sticky-cta {
-    display: block;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 14px 20px;
-    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
-    background: rgba(255,255,255,0.92);
-    backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(180,220,245,0.4);
-    z-index: 100;
-    box-shadow: 0 -4px 20px rgba(10,40,80,0.08);
-  }
-  .pd-sticky-cta__btn {
-    width: 100%;
-    padding: 14px 24px;
-    border: none;
-    border-radius: 14px;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: #fff;
-    background: linear-gradient(135deg, #00D2FF, #106DFF);
-    cursor: pointer;
-    box-shadow: 0 6px 24px rgba(0,210,255,0.25);
-  }
+ .pd-sticky-cta {
+ display: block;
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ right: 0;
+ padding: 14px 20px;
+ padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+ background: rgba(255,255,255,0.92);
+ backdrop-filter: blur(20px);
+ border-top: 1px solid rgba(180,220,245,0.4);
+ z-index: 100;
+ box-shadow: 0 -4px 20px rgba(10,40,80,0.08);
+ }
+ .pd-sticky-cta__btn {
+ width: 100%;
+ padding: 14px 24px;
+ border: none;
+ border-radius: 14px;
+ font-family: 'Inter', sans-serif;
+ font-weight: 700;
+ font-size: 0.95rem;
+ color: #fff;
+ background: linear-gradient(135deg, #00D2FF, #106DFF);
+ cursor: pointer;
+ box-shadow: 0 6px 24px rgba(0,210,255,0.25);
+ }
 }

@@ -1,197 +1,197 @@
 /* ══════════════════════════════════════════════════════
-   PinPopup — Glassmorphism Mission Preview Card
-   ══════════════════════════════════════════════════════ */
+ PinPopup — Glassmorphism Mission Preview Card
+ ══════════════════════════════════════════════════════ */
 
 .pin-popup {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 90;
-  pointer-events: auto;
-  animation: popupFadeIn 0.3s ease-out;
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ z-index: 90;
+ pointer-events: auto;
+ animation: popupFadeIn 0.3s ease-out;
 }
 
 @keyframes popupFadeIn {
-  from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
-  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+ from { opacity: 0; transform: translate(-50%, -50%) scale(0.95); }
+ to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
 .pin-popup__card {
-  position: relative;
-  width: 300px;
-  max-width: 90vw;
-  padding: 18px;
-  background: rgba(6, 26, 51, 0.88);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 210, 255, 0.25);
-  border-radius: 22px;
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 24px rgba(0, 210, 255, 0.08);
+ position: relative;
+ width: 300px;
+ max-width: 90vw;
+ padding: 18px;
+ background: rgba(6, 26, 51, 0.88);
+ backdrop-filter: blur(16px);
+ border: 1px solid rgba(0, 210, 255, 0.25);
+ border-radius: 22px;
+ box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 24px rgba(0, 210, 255, 0.08);
 }
 
 .pin-popup__close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 24px;
-  height: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  color: rgba(220, 240, 255, 0.6);
-  cursor: none;
-  transition: all 0.2s ease;
+ position: absolute;
+ top: 12px;
+ right: 12px;
+ width: 24px;
+ height: 24px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: rgba(255, 255, 255, 0.06);
+ border: 1px solid rgba(255, 255, 255, 0.1);
+ border-radius: 8px;
+ color: rgba(220, 240, 255, 0.6);
+ cursor: none;
+ transition: all 0.2s ease;
 }
 
 .pin-popup__close:hover {
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(245, 252, 255, 0.9);
+ background: rgba(255, 255, 255, 0.12);
+ color: rgba(245, 252, 255, 0.9);
 }
 
 .pin-popup__close:focus-visible {
-  outline: 2px solid #00D2FF;
-  outline-offset: 2px;
+ outline: 2px solid #00D2FF;
+ outline-offset: 2px;
 }
 
 .pin-popup__top {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ margin-bottom: 8px;
 }
 
 .pin-popup__status {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 10px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+ display: inline-flex;
+ align-items: center;
+ gap: 5px;
+ font-size: 10px;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: 0.04em;
 }
 
 .pin-popup__status-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  animation: statusPulse 2s ease-in-out infinite;
+ width: 6px;
+ height: 6px;
+ border-radius: 50%;
+ animation: statusPulse 2s ease-in-out infinite;
 }
 
 @keyframes statusPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+ 0%, 100% { opacity: 1; }
+ 50% { opacity: 0.4; }
 }
 
 .pin-popup__infra {
-  font-size: 10px;
-  font-weight: 500;
-  color: rgba(220, 240, 255, 0.5);
-  padding: 2px 6px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 4px;
+ font-size: 10px;
+ font-weight: 500;
+ color: rgba(220, 240, 255, 0.5);
+ padding: 2px 6px;
+ background: rgba(255, 255, 255, 0.05);
+ border-radius: 4px;
 }
 
 .pin-popup__name {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(245, 252, 255, 0.96);
-  margin: 0 0 6px;
-  line-height: 1.3;
-  padding-right: 24px;
+ font-family: 'Montserrat', sans-serif;
+ font-size: 14px;
+ font-weight: 600;
+ color: rgba(245, 252, 255, 0.96);
+ margin: 0 0 6px;
+ line-height: 1.3;
+ padding-right: 24px;
 }
 
 .pin-popup__location {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  color: rgba(220, 240, 255, 0.55);
-  margin-bottom: 10px;
+ display: flex;
+ align-items: center;
+ gap: 5px;
+ font-size: 11px;
+ color: rgba(220, 240, 255, 0.55);
+ margin-bottom: 10px;
 }
 
 .pin-popup__meta {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 14px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ flex-wrap: wrap;
+ margin-bottom: 14px;
 }
 
 .pin-popup__value {
-  font-size: 14px;
-  font-weight: 700;
-  color: #00D2FF;
+ font-size: 14px;
+ font-weight: 700;
+ color: #00D2FF;
 }
 
 .pin-popup__meta-item {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 10px;
-  color: rgba(220, 240, 255, 0.5);
+ display: flex;
+ align-items: center;
+ gap: 4px;
+ font-size: 10px;
+ color: rgba(220, 240, 255, 0.5);
 }
 
 .pin-popup__actions {
-  display: flex;
-  gap: 6px;
+ display: flex;
+ gap: 6px;
 }
 
 .pin-popup__btn {
-  flex: 1;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  padding: 8px 12px;
-  font-size: 11px;
-  font-weight: 600;
-  border: none;
-  border-radius: 10px;
-  cursor: none;
-  transition: all 0.2s ease;
+ flex: 1;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: 4px;
+ padding: 8px 12px;
+ font-size: 11px;
+ font-weight: 600;
+ border: none;
+ border-radius: 10px;
+ cursor: none;
+ transition: all 0.2s ease;
 }
 
 .pin-popup__btn--detail {
-  color: rgba(220, 240, 255, 0.8);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+ color: rgba(220, 240, 255, 0.8);
+ background: rgba(255, 255, 255, 0.06);
+ border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .pin-popup__btn--detail:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(0, 210, 255, 0.3);
-  color: #00D2FF;
+ background: rgba(255, 255, 255, 0.1);
+ border-color: rgba(0, 210, 255, 0.3);
+ color: #00D2FF;
 }
 
 .pin-popup__btn--bid {
-  color: #020B16;
-  background: linear-gradient(135deg, #00D2FF, #00B4D8);
-  font-weight: 700;
+ color: #020B16;
+ background: linear-gradient(135deg, #00D2FF, #00B4D8);
+ font-weight: 700;
 }
 
 .pin-popup__btn--bid:hover {
-  background: linear-gradient(135deg, #33DDFF, #00C8E8);
-  box-shadow: 0 4px 16px rgba(0, 210, 255, 0.3);
+ background: linear-gradient(135deg, #33DDFF, #00C8E8);
+ box-shadow: 0 4px 16px rgba(0, 210, 255, 0.3);
 }
 
 .pin-popup__btn:focus-visible {
-  outline: 2px solid #00D2FF;
-  outline-offset: 2px;
+ outline: 2px solid #00D2FF;
+ outline-offset: 2px;
 }
 
 /* Mobile */
 @media (max-width: 767px) {
-  .pin-popup__card {
-    width: 280px;
-    padding: 14px;
-    border-radius: 18px;
-  }
+ .pin-popup__card {
+ width: 280px;
+ padding: 14px;
+ border-radius: 18px;
+ }
 
-  .pin-popup__name {
-    font-size: 13px;
-  }
+ .pin-popup__name {
+ font-size: 13px;
+ }
 }

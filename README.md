@@ -1,16 +1,60 @@
-# React + Vite
+# SIAGA — Sistem Inspeksi Aerial Geospasial Andalan
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**SIAGA** is a professional B2B Service Marketplace designed to bridge the gap between critical infrastructure owners (Transmission Towers, Dams, Oil Refineries) and licensed professional UAV/Drone pilots. 
 
-Currently, two official plugins are available:
+This platform provides an end-to-end digital inspection ecosystem, ensuring national infrastructure safety through advanced geospatial monitoring and automated reporting.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## 🚀 Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Geospatial Job Radar**: A real-time interactive map for pilots to discover inspection projects across Indonesia using 3D terrain and atmospheric rendering.
+- **Client & Pilot Dashboards**: Role-based access with tailored workflows for project management and bidding.
+- **Asset Monitoring Dashboard**: Visualized asset health tracking (Red/Yellow/Green) with GPS-tagged inspection data.
+- **One-Click Report Generator**: Automates the compilation of complex geospatial data into professional PDF inspection reports in seconds.
+- **Trust & Verification**: Integrated verification system for SIDOPI-licensed pilots to ensure industrial-grade compliance.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠 Tech Stack
+
+- **Frontend**: React.js with Vite
+- **3D & Animation**: Three.js, React Three Fiber, GSAP, Framer Motion
+- **Maps**: Mapbox GL JS with 3D Terrain & Fog
+- **Styling**: Tailwind CSS & Custom CSS Variables (Design Tokens)
+- **State Management**: React Context API & Reducers
+- **Testing**: Vitest & React Testing Library
+
+---
+
+## 📦 Getting Started
+
+### Prerequisites
+- Node.js (Latest LTS recommended)
+- npm or yarn
+
+### Installation
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+3. Start the development server:
+   ```bash
+   npm run dev
+   ```
+
+### Build for Production
+```bash
+npm run build
+```
+
+---
+
+## 🌐 Project Context
+Developed for **SEFEST 2026** competition, focusing on **SDG 9: Industry, Innovation, and Infrastructure**. SIAGA aims to modernize infrastructure maintenance in Indonesia through young innovators and high-tech solutions.
+
+---
+
+## 📄 License
+Internal project for SEFEST 2026 Submission.

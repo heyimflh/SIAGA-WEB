@@ -28,7 +28,10 @@ dist-ssr
 .env.local
 .env.*.local
 
-# AI/Kiro specs
+# AI & Vibe Coding Traces (Internal Planning)
 .kiro/
+PRD.md
+Plan_Frontend.md
+puppeteer-debug.cjs
 
 .vercel

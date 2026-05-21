@@ -1,78 +1,78 @@
 .pd-related__title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #071A34;
-  margin: 0 0 4px;
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 700;
+ font-size: 1.3rem;
+ color: #071A34;
+ margin: 0 0 4px;
 }
 .pd-related__subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  color: #58708E;
-  margin: 0 0 20px;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.85rem;
+ color: #58708E;
+ margin: 0 0 20px;
 }
 .pd-related__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 16px;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+ gap: 16px;
 }
 .pd-related__card {
-  padding: 22px;
-  background: rgba(255,255,255,0.72);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(180,220,245,0.35);
-  border-radius: 18px;
-  cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+ padding: 22px;
+ background: rgba(255,255,255,0.72);
+ backdrop-filter: blur(16px);
+ border: 1px solid rgba(180,220,245,0.35);
+ border-radius: 18px;
+ cursor: pointer;
+ transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 .pd-related__card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 40px rgba(0,210,255,0.15);
-  border-color: rgba(0,210,255,0.4);
+ transform: translateY(-3px);
+ box-shadow: 0 12px 40px rgba(0,210,255,0.15);
+ border-color: rgba(0,210,255,0.4);
 }
 .pd-related__card:focus-visible {
-  outline: 2px solid #00D2FF;
-  outline-offset: 2px;
+ outline: 2px solid #00D2FF;
+ outline-offset: 2px;
 }
 .pd-related__card-header {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 10px;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ margin-bottom: 10px;
 }
 .pd-related__badge {
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  padding: 3px 10px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--badge-color) 12%, transparent);
-  color: var(--badge-color);
+ font-size: 0.68rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ padding: 3px 10px;
+ border-radius: 999px;
+ background: color-mix(in srgb, var(--badge-color) 12%, transparent);
+ color: var(--badge-color);
 }
 .pd-related__infra {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 0.72rem;
-  color: #58708E;
+ display: inline-flex;
+ align-items: center;
+ gap: 4px;
+ font-size: 0.72rem;
+ color: #58708E;
 }
 .pd-related__card-title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: #071A34;
-  margin: 0 0 10px;
-  line-height: 1.3;
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 700;
+ font-size: 0.95rem;
+ color: #071A34;
+ margin: 0 0 10px;
+ line-height: 1.3;
 }
 .pd-related__card-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.78rem;
-  color: #58708E;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ font-size: 0.78rem;
+ color: #58708E;
 }
 .pd-related__card-meta span { display: inline-flex; align-items: center; gap: 4px; }
 .pd-related__card-price { font-weight: 700; color: #071A34; }
 @media (max-width: 768px) {
-  .pd-related__grid { grid-template-columns: 1fr; }
+ .pd-related__grid { grid-template-columns: 1fr; }
 }

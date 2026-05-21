@@ -1,39 +1,39 @@
 .pd-breadcrumb {
-  margin-bottom: 20px;
+ margin-bottom: 20px;
 }
 .pd-breadcrumb__list {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  list-style: none;
-  padding: 10px 20px;
-  margin: 0;
-  background: rgba(255,255,255,0.72);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(180,220,245,0.45);
-  border-radius: 999px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  width: fit-content;
-  box-shadow: 0 4px 20px rgba(10,40,80,0.06);
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ list-style: none;
+ padding: 10px 20px;
+ margin: 0;
+ background: rgba(255,255,255,0.72);
+ backdrop-filter: blur(16px);
+ border: 1px solid rgba(180,220,245,0.45);
+ border-radius: 999px;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.85rem;
+ width: fit-content;
+ box-shadow: 0 4px 20px rgba(10,40,80,0.06);
 }
 .pd-breadcrumb__link {
-  color: #58708E;
-  text-decoration: none;
-  transition: color 0.2s;
+ color: #58708E;
+ text-decoration: none;
+ transition: color 0.2s;
 }
 .pd-breadcrumb__link:hover { color: #00D2FF; }
 .pd-breadcrumb__link--muted { color: #8AA0B8; cursor: default; }
 .pd-breadcrumb__sep { color: #8AA0B8; font-size: 0.9rem; }
 .pd-breadcrumb__current {
-  color: #071A34;
-  font-weight: 600;
-  max-width: 200px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+ color: #071A34;
+ font-weight: 600;
+ max-width: 200px;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
 }
 @media (max-width: 480px) {
-  .pd-breadcrumb__current { max-width: 120px; }
-  .pd-breadcrumb__list { padding: 8px 14px; font-size: 0.78rem; }
+ .pd-breadcrumb__current { max-width: 120px; }
+ .pd-breadcrumb__list { padding: 8px 14px; font-size: 0.78rem; }
 }

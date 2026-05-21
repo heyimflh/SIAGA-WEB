@@ -1,731 +1,731 @@
 /* ════════════════════════════════════════════════════════
-   SECTION 7 — SEKTOR & KREDIBILITAS
-   Premium Glassmorphism — Award-winning Light Mode
-   ════════════════════════════════════════════════════════ */
+ SECTION 7 — SEKTOR & KREDIBILITAS
+ Premium Glassmorphism — Award-winning Light Mode
+ ════════════════════════════════════════════════════════ */
 
 .sektor-section {
-  position: relative;
-  padding: 96px 6%;
-  overflow: hidden;
-  isolation: isolate;
-  background:
-    radial-gradient(circle at 16% 18%, rgba(0, 98, 214, 0.13), transparent 32%),
-    radial-gradient(circle at 84% 72%, rgba(0, 194, 255, 0.11), transparent 34%),
-    radial-gradient(circle at 50% 50%, rgba(0, 120, 230, 0.04), transparent 50%),
-    linear-gradient(180deg, rgba(251, 253, 255, 0.94), rgba(248, 252, 255, 0.78));
+ position: relative;
+ padding: 96px 6%;
+ overflow: hidden;
+ isolation: isolate;
+ background:
+ radial-gradient(circle at 16% 18%, rgba(0, 98, 214, 0.13), transparent 32%),
+ radial-gradient(circle at 84% 72%, rgba(0, 194, 255, 0.11), transparent 34%),
+ radial-gradient(circle at 50% 50%, rgba(0, 120, 230, 0.04), transparent 50%),
+ linear-gradient(180deg, rgba(251, 253, 255, 0.94), rgba(248, 252, 255, 0.78));
 }
 
 /* ── Ambient glow — top left blue orb ── */
 .sektor-section::before {
-  content: '';
-  position: absolute;
-  width: 560px;
-  height: 560px;
-  left: -140px;
-  top: 6%;
-  background: radial-gradient(circle, rgba(0, 98, 214, 0.18), transparent 65%);
-  filter: blur(80px);
-  opacity: 0.85;
-  pointer-events: none;
-  z-index: -1;
-  animation: sektorGlowFloat 14s ease-in-out infinite alternate;
+ content: '';
+ position: absolute;
+ width: 560px;
+ height: 560px;
+ left: -140px;
+ top: 6%;
+ background: radial-gradient(circle, rgba(0, 98, 214, 0.18), transparent 65%);
+ filter: blur(80px);
+ opacity: 0.85;
+ pointer-events: none;
+ z-index: -1;
+ animation: sektorGlowFloat 14s ease-in-out infinite alternate;
 }
 
 /* ── Ambient glow — bottom right cyan orb ── */
 .sektor-section::after {
-  content: '';
-  position: absolute;
-  width: 640px;
-  height: 640px;
-  right: -180px;
-  bottom: -5%;
-  background: radial-gradient(circle, rgba(0, 200, 240, 0.15), transparent 65%);
-  filter: blur(100px);
-  opacity: 0.8;
-  pointer-events: none;
-  z-index: -1;
-  animation: sektorGlowFloat 18s ease-in-out infinite alternate-reverse;
+ content: '';
+ position: absolute;
+ width: 640px;
+ height: 640px;
+ right: -180px;
+ bottom: -5%;
+ background: radial-gradient(circle, rgba(0, 200, 240, 0.15), transparent 65%);
+ filter: blur(100px);
+ opacity: 0.8;
+ pointer-events: none;
+ z-index: -1;
+ animation: sektorGlowFloat 18s ease-in-out infinite alternate-reverse;
 }
 
 @keyframes sektorGlowFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(12px, -10px) scale(1.06); }
+ 0% { transform: translate(0, 0) scale(1); }
+ 100% { transform: translate(12px, -10px) scale(1.06); }
 }
 
 /* ── Extra ambient orbs via dedicated elements ── */
 .sektor-ambient-orb {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: -1;
+ position: absolute;
+ border-radius: 50%;
+ pointer-events: none;
+ z-index: -1;
 }
 
 .sektor-ambient-orb--1 {
-  width: 380px;
-  height: 380px;
-  top: 40%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: radial-gradient(circle, rgba(0, 98, 214, 0.10), transparent 60%);
-  filter: blur(70px);
-  animation: sektorGlowFloat 16s ease-in-out infinite alternate;
+ width: 380px;
+ height: 380px;
+ top: 40%;
+ left: 50%;
+ transform: translateX(-50%);
+ background: radial-gradient(circle, rgba(0, 98, 214, 0.10), transparent 60%);
+ filter: blur(70px);
+ animation: sektorGlowFloat 16s ease-in-out infinite alternate;
 }
 
 .sektor-ambient-orb--2 {
-  width: 300px;
-  height: 300px;
-  top: 15%;
-  right: 10%;
-  background: radial-gradient(circle, rgba(0, 180, 216, 0.09), transparent 60%);
-  filter: blur(60px);
-  animation: sektorGlowFloat 12s ease-in-out infinite alternate-reverse 2s;
+ width: 300px;
+ height: 300px;
+ top: 15%;
+ right: 10%;
+ background: radial-gradient(circle, rgba(0, 180, 216, 0.09), transparent 60%);
+ filter: blur(60px);
+ animation: sektorGlowFloat 12s ease-in-out infinite alternate-reverse 2s;
 }
 
 .sektor-ambient-orb--3 {
-  width: 260px;
-  height: 260px;
-  bottom: 20%;
-  left: 8%;
-  background: radial-gradient(circle, rgba(0, 140, 255, 0.08), transparent 60%);
-  filter: blur(55px);
-  animation: sektorGlowFloat 10s ease-in-out infinite alternate 4s;
+ width: 260px;
+ height: 260px;
+ bottom: 20%;
+ left: 8%;
+ background: radial-gradient(circle, rgba(0, 140, 255, 0.08), transparent 60%);
+ filter: blur(55px);
+ animation: sektorGlowFloat 10s ease-in-out infinite alternate 4s;
 }
 
 /* ── Subtle CSS grid texture overlay ── */
 .sektor-grid-texture {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 98, 214, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 98, 214, 0.02) 1px, transparent 1px);
-  background-size: 64px 64px;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.7;
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
+ position: absolute;
+ inset: 0;
+ background-image:
+ linear-gradient(rgba(0, 98, 214, 0.02) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(0, 98, 214, 0.02) 1px, transparent 1px);
+ background-size: 64px 64px;
+ pointer-events: none;
+ z-index: -1;
+ opacity: 0.7;
+ mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
+ -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
 }
 
 /* ── Top glass refraction highlight ── */
 .sektor-glass-highlight {
-  position: absolute;
-  top: 0;
-  left: 5%;
-  right: 5%;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.95) 15%,
-    rgba(200, 230, 255, 0.7) 50%,
-    rgba(255, 255, 255, 0.95) 85%,
-    transparent 100%
-  );
-  z-index: 2;
-  pointer-events: none;
+ position: absolute;
+ top: 0;
+ left: 5%;
+ right: 5%;
+ height: 1px;
+ background: linear-gradient(
+ 90deg,
+ transparent 0%,
+ rgba(255, 255, 255, 0.95) 15%,
+ rgba(200, 230, 255, 0.7) 50%,
+ rgba(255, 255, 255, 0.95) 85%,
+ transparent 100%
+ );
+ z-index: 2;
+ pointer-events: none;
 }
 
 .sektor-glass-highlight-bottom {
-  top: auto;
-  bottom: 0;
-  opacity: 0.4;
+ top: auto;
+ bottom: 0;
+ opacity: 0.4;
 }
 
 /* ── Content container ── */
 .sektor-container {
-  position: relative;
-  max-width: 1160px;
-  margin: 0 auto;
-  z-index: 1;
+ position: relative;
+ max-width: 1160px;
+ margin: 0 auto;
+ z-index: 1;
 }
 
 /* ── Heading ── */
 .sektor-heading {
-  text-align: center;
-  margin-bottom: 64px;
+ text-align: center;
+ margin-bottom: 64px;
 }
 
 .sektor-heading h2 {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 52px);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  margin-bottom: 20px;
-  max-width: 680px;
-  margin-left: auto;
-  margin-right: auto;
+ font-family: var(--font-display);
+ font-size: clamp(32px, 4vw, 52px);
+ font-weight: 800;
+ line-height: 1.15;
+ letter-spacing: -0.03em;
+ color: var(--text-primary);
+ margin-bottom: 20px;
+ max-width: 680px;
+ margin-left: auto;
+ margin-right: auto;
 }
 
 .sektor-heading p {
-  font-family: var(--font-body);
-  font-size: clamp(15px, 1.2vw, 17px);
-  line-height: 1.7;
-  color: var(--text-secondary);
-  max-width: 540px;
-  margin: 0 auto;
+ font-family: var(--font-body);
+ font-size: clamp(15px, 1.2vw, 17px);
+ line-height: 1.7;
+ color: var(--text-secondary);
+ max-width: 540px;
+ margin: 0 auto;
 }
 
 /* ════════════════════════════════════════════════════════
-   SUB-SECTION A — METRIC BAR (Frosted Glass Card)
-   ════════════════════════════════════════════════════════ */
+ SUB-SECTION A — METRIC BAR (Frosted Glass Card)
+ ════════════════════════════════════════════════════════ */
 .sektor-metric-bar {
-  position: relative;
-  background: rgba(255, 255, 255, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 20px;
-  padding: 40px 48px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  box-shadow:
-    0 20px 60px rgba(15, 23, 42, 0.07),
-    0 8px 24px rgba(0, 98, 214, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  margin-bottom: 64px;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+ position: relative;
+ background: rgba(255, 255, 255, 0.55);
+ border: 1px solid rgba(255, 255, 255, 0.6);
+ border-radius: 20px;
+ padding: 40px 48px;
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 0;
+ box-shadow:
+ 0 20px 60px rgba(15, 23, 42, 0.07),
+ 0 8px 24px rgba(0, 98, 214, 0.04),
+ inset 0 1px 0 rgba(255, 255, 255, 0.7);
+ backdrop-filter: blur(20px) saturate(160%);
+ -webkit-backdrop-filter: blur(20px) saturate(160%);
+ margin-bottom: 64px;
+ opacity: 0;
+ transform: translateY(30px);
+ transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
 }
 
 /* Top highlight shimmer on metric bar */
 .sektor-metric-bar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 20px;
-  right: 20px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.9) 30%,
-    rgba(200, 230, 255, 0.6) 50%,
-    rgba(255, 255, 255, 0.9) 70%,
-    transparent
-  );
-  border-radius: 1px;
-  pointer-events: none;
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 20px;
+ right: 20px;
+ height: 1px;
+ background: linear-gradient(
+ 90deg,
+ transparent,
+ rgba(255, 255, 255, 0.9) 30%,
+ rgba(200, 230, 255, 0.6) 50%,
+ rgba(255, 255, 255, 0.9) 70%,
+ transparent
+ );
+ border-radius: 1px;
+ pointer-events: none;
 }
 
 .sektor-metric-bar.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+ opacity: 1;
+ transform: translateY(0);
 }
 
 .sektor-metric-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 12px 16px;
-  position: relative;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ text-align: center;
+ padding: 12px 16px;
+ position: relative;
 }
 
 .sektor-metric-item:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  top: 12%;
-  height: 76%;
-  width: 1px;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(0, 98, 214, 0.08) 20%,
-    rgba(0, 98, 214, 0.12) 50%,
-    rgba(0, 98, 214, 0.08) 80%,
-    transparent 100%
-  );
+ content: '';
+ position: absolute;
+ right: 0;
+ top: 12%;
+ height: 76%;
+ width: 1px;
+ background: linear-gradient(
+ 180deg,
+ transparent 0%,
+ rgba(0, 98, 214, 0.08) 20%,
+ rgba(0, 98, 214, 0.12) 50%,
+ rgba(0, 98, 214, 0.08) 80%,
+ transparent 100%
+ );
 }
 
 .sektor-metric-number {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(36px, 3.5vw, 52px);
-  color: var(--brand-blue);
-  letter-spacing: -0.04em;
-  line-height: 1;
-  margin-bottom: 8px;
+ font-family: var(--font-display);
+ font-weight: 800;
+ font-size: clamp(36px, 3.5vw, 52px);
+ color: var(--brand-blue);
+ letter-spacing: -0.04em;
+ line-height: 1;
+ margin-bottom: 8px;
 }
 
 .sektor-metric-suffix {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(24px, 2.2vw, 32px);
-  color: var(--brand-cyan);
+ font-family: var(--font-display);
+ font-weight: 700;
+ font-size: clamp(24px, 2.2vw, 32px);
+ color: var(--brand-cyan);
 }
 
 .sektor-metric-label {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 12px;
-  color: var(--text-secondary);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-top: 4px;
+ font-family: var(--font-body);
+ font-weight: 500;
+ font-size: 12px;
+ color: var(--text-secondary);
+ text-transform: uppercase;
+ letter-spacing: 0.06em;
+ margin-top: 4px;
 }
 
 /* ════════════════════════════════════════════════════════
-   SUB-SECTION B — TESTIMONIAL CARD (Floating Glass Panel)
-   ════════════════════════════════════════════════════════ */
+ SUB-SECTION B — TESTIMONIAL CARD (Floating Glass Panel)
+ ════════════════════════════════════════════════════════ */
 .sektor-testimonial-wrapper {
-  max-width: 680px;
-  margin: 0 auto 56px;
-  position: relative;
+ max-width: 680px;
+ margin: 0 auto 56px;
+ position: relative;
 }
 
 .sektor-testimonial-card {
-  position: relative;
-  background: rgba(255, 255, 255, 0.58);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  border-radius: 20px;
-  padding: 36px 40px;
-  box-shadow:
-    0 24px 80px rgba(15, 23, 42, 0.08),
-    0 8px 32px rgba(0, 98, 214, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(22px) saturate(170%);
-  -webkit-backdrop-filter: blur(22px) saturate(170%);
-  min-height: 240px;
-  overflow: hidden;
+ position: relative;
+ background: rgba(255, 255, 255, 0.58);
+ border: 1px solid rgba(255, 255, 255, 0.65);
+ border-radius: 20px;
+ padding: 36px 40px;
+ box-shadow:
+ 0 24px 80px rgba(15, 23, 42, 0.08),
+ 0 8px 32px rgba(0, 98, 214, 0.05),
+ inset 0 1px 0 rgba(255, 255, 255, 0.75);
+ backdrop-filter: blur(22px) saturate(170%);
+ -webkit-backdrop-filter: blur(22px) saturate(170%);
+ min-height: 240px;
+ overflow: hidden;
 }
 
 /* Top highlight on testimonial card */
 .sektor-testimonial-card::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 24px;
-  right: 24px;
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.95) 25%,
-    rgba(180, 220, 255, 0.5) 50%,
-    rgba(255, 255, 255, 0.95) 75%,
-    transparent
-  );
-  pointer-events: none;
-  z-index: 2;
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 24px;
+ right: 24px;
+ height: 1px;
+ background: linear-gradient(
+ 90deg,
+ transparent,
+ rgba(255, 255, 255, 0.95) 25%,
+ rgba(180, 220, 255, 0.5) 50%,
+ rgba(255, 255, 255, 0.95) 75%,
+ transparent
+ );
+ pointer-events: none;
+ z-index: 2;
 }
 
 /* Quote mark dekoratif */
 .sektor-testimonial-card::before {
-  content: '\201C';
-  position: absolute;
-  top: 16px;
-  left: 32px;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 80px;
-  color: rgba(0, 98, 214, 0.06);
-  line-height: 1;
-  pointer-events: none;
-  z-index: 0;
+ content: '\201C';
+ position: absolute;
+ top: 16px;
+ left: 32px;
+ font-family: var(--font-display);
+ font-weight: 900;
+ font-size: 80px;
+ color: rgba(0, 98, 214, 0.06);
+ line-height: 1;
+ pointer-events: none;
+ z-index: 0;
 }
 
 .sektor-testimonial-slide {
-  position: relative;
-  z-index: 1;
-  opacity: 1;
-  transition: opacity 0.5s ease-in-out;
+ position: relative;
+ z-index: 1;
+ opacity: 1;
+ transition: opacity 0.5s ease-in-out;
 }
 
 .sektor-testimonial-slide.fade-out {
-  opacity: 0;
+ opacity: 0;
 }
 
 .sektor-testimonial-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
+ display: flex;
+ align-items: center;
+ gap: 14px;
+ margin-bottom: 16px;
 }
 
 .sektor-avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
+ width: 52px;
+ height: 52px;
+ border-radius: 50%;
+ overflow: hidden;
+ flex-shrink: 0;
 }
 
 .sektor-avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
 }
 
 .sektor-avatar-monogram {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 18px;
-  color: white;
-  flex-shrink: 0;
+ width: 52px;
+ height: 52px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-family: var(--font-display);
+ font-weight: 700;
+ font-size: 18px;
+ color: white;
+ flex-shrink: 0;
 }
 
 .sektor-testimonial-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+ display: flex;
+ flex-direction: column;
+ gap: 2px;
 }
 
 .sektor-testimonial-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--text-primary);
+ font-family: var(--font-display);
+ font-weight: 700;
+ font-size: 15px;
+ color: var(--text-primary);
 }
 
 .sektor-testimonial-role {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 13px;
-  color: var(--text-secondary);
+ font-family: var(--font-body);
+ font-weight: 400;
+ font-size: 13px;
+ color: var(--text-secondary);
 }
 
 .sektor-testimonial-stars {
-  display: flex;
-  gap: 2px;
-  margin-bottom: 16px;
+ display: flex;
+ gap: 2px;
+ margin-bottom: 16px;
 }
 
 .sektor-testimonial-stars svg {
-  width: 16px;
-  height: 16px;
-  fill: #E5A100;
-  color: #E5A100;
+ width: 16px;
+ height: 16px;
+ fill: #E5A100;
+ color: #E5A100;
 }
 
 .sektor-testimonial-quote {
-  font-family: var(--font-body);
-  font-size: 15px;
-  line-height: 1.75;
-  color: var(--text-secondary);
-  font-style: italic;
+ font-family: var(--font-body);
+ font-size: 15px;
+ line-height: 1.75;
+ color: var(--text-secondary);
+ font-style: italic;
 }
 
 /* Dot indicator */
 .sektor-testimonial-dots {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 24px;
+ display: flex;
+ justify-content: center;
+ gap: 8px;
+ margin-top: 24px;
 }
 
 .sektor-testimonial-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  border: none;
-  background: rgba(10, 37, 64, 0.12);
-  cursor: pointer;
-  padding: 0;
-  transition: all 0.3s var(--ease-out);
+ width: 8px;
+ height: 8px;
+ border-radius: 50%;
+ border: none;
+ background: rgba(10, 37, 64, 0.12);
+ cursor: pointer;
+ padding: 0;
+ transition: all 0.3s var(--ease-out);
 }
 
 .sektor-testimonial-dot.active {
-  background: var(--brand-blue);
-  transform: scale(1.25);
-  box-shadow: 0 0 8px rgba(0, 98, 214, 0.3);
+ background: var(--brand-blue);
+ transform: scale(1.25);
+ box-shadow: 0 0 8px rgba(0, 98, 214, 0.3);
 }
 
 .sektor-testimonial-dot:hover:not(.active) {
-  background: rgba(10, 37, 64, 0.25);
+ background: rgba(10, 37, 64, 0.25);
 }
 
 /* ════════════════════════════════════════════════════════
-   SUB-SECTION C — DUAL MARQUEE (Glass Pills)
-   ════════════════════════════════════════════════════════ */
+ SUB-SECTION C — DUAL MARQUEE (Glass Pills)
+ ════════════════════════════════════════════════════════ */
 .sektor-marquee-section {
-  margin-top: 16px;
+ margin-top: 16px;
 }
 
 .sektor-marquee-heading {
-  text-align: center;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--text-secondary);
-  letter-spacing: 0.02em;
-  margin-bottom: 28px;
+ text-align: center;
+ font-family: var(--font-body);
+ font-size: 14px;
+ font-weight: 500;
+ color: var(--text-secondary);
+ letter-spacing: 0.02em;
+ margin-bottom: 28px;
 }
 
 .sektor-marquee-wrapper {
-  position: relative;
-  overflow: hidden;
-  padding: 8px 0;
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 8%,
-    black 92%,
-    transparent 100%
-  );
+ position: relative;
+ overflow: hidden;
+ padding: 8px 0;
+ mask-image: linear-gradient(
+ to right,
+ transparent 0%,
+ black 8%,
+ black 92%,
+ transparent 100%
+ );
+ -webkit-mask-image: linear-gradient(
+ to right,
+ transparent 0%,
+ black 8%,
+ black 92%,
+ transparent 100%
+ );
 }
 
 .sektor-marquee-wrapper:hover .sektor-marquee-track {
-  animation-play-state: paused;
+ animation-play-state: paused;
 }
 
 .sektor-marquee-track {
-  display: flex;
-  gap: 14px;
-  width: max-content;
-  will-change: transform;
+ display: flex;
+ gap: 14px;
+ width: max-content;
+ will-change: transform;
 }
 
 .sektor-marquee-track--left {
-  animation: marqueeLeft 35s linear infinite;
+ animation: marqueeLeft 35s linear infinite;
 }
 
 .sektor-marquee-track--right {
-  animation: marqueeRight 28s linear infinite;
+ animation: marqueeRight 28s linear infinite;
 }
 
 @keyframes marqueeLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+ 0% { transform: translateX(0); }
+ 100% { transform: translateX(-50%); }
 }
 
 @keyframes marqueeRight {
-  0% { transform: translateX(-50%); }
-  100% { transform: translateX(0); }
+ 0% { transform: translateX(-50%); }
+ 100% { transform: translateX(0); }
 }
 
 .sektor-marquee-row + .sektor-marquee-row {
-  margin-top: 14px;
+ margin-top: 14px;
 }
 
 .sektor-pill {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.50);
-  border: 1px solid rgba(0, 98, 214, 0.08);
-  border-radius: 999px;
-  box-shadow:
-    0 4px 12px rgba(15, 23, 42, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(14px) saturate(160%);
-  -webkit-backdrop-filter: blur(14px) saturate(160%);
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--text-secondary);
-  white-space: nowrap;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ padding: 12px 24px;
+ background: rgba(255, 255, 255, 0.50);
+ border: 1px solid rgba(0, 98, 214, 0.08);
+ border-radius: 999px;
+ box-shadow:
+ 0 4px 12px rgba(15, 23, 42, 0.04),
+ inset 0 1px 0 rgba(255, 255, 255, 0.6);
+ backdrop-filter: blur(14px) saturate(160%);
+ -webkit-backdrop-filter: blur(14px) saturate(160%);
+ font-family: var(--font-body);
+ font-weight: 500;
+ font-size: 14px;
+ color: var(--text-secondary);
+ white-space: nowrap;
+ transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+ flex-shrink: 0;
 }
 
 .sektor-pill svg {
-  color: var(--brand-blue);
-  width: 18px;
-  height: 18px;
-  flex-shrink: 0;
-  transition: color 0.3s ease;
+ color: var(--brand-blue);
+ width: 18px;
+ height: 18px;
+ flex-shrink: 0;
+ transition: color 0.3s ease;
 }
 
 .sektor-pill:hover {
-  background: rgba(255, 255, 255, 0.78);
-  border-color: rgba(0, 98, 214, 0.30);
-  color: var(--text-primary);
-  transform: translateY(-2px) scale(1.03);
-  box-shadow:
-    0 8px 24px rgba(0, 98, 214, 0.12),
-    0 2px 8px rgba(0, 98, 214, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+ background: rgba(255, 255, 255, 0.78);
+ border-color: rgba(0, 98, 214, 0.30);
+ color: var(--text-primary);
+ transform: translateY(-2px) scale(1.03);
+ box-shadow:
+ 0 8px 24px rgba(0, 98, 214, 0.12),
+ 0 2px 8px rgba(0, 98, 214, 0.06),
+ inset 0 1px 0 rgba(255, 255, 255, 0.8);
 }
 
 .sektor-pill:hover svg {
-  color: var(--brand-cyan);
+ color: var(--brand-cyan);
 }
 
 /* ════════════════════════════════════════════════════════
-   BACKDROP-FILTER FALLBACK
-   ════════════════════════════════════════════════════════ */
+ BACKDROP-FILTER FALLBACK
+ ════════════════════════════════════════════════════════ */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .sektor-metric-bar {
-    background: rgba(255, 255, 255, 0.88);
-  }
+ .sektor-metric-bar {
+ background: rgba(255, 255, 255, 0.88);
+ }
 
-  .sektor-testimonial-card {
-    background: rgba(255, 255, 255, 0.90);
-  }
+ .sektor-testimonial-card {
+ background: rgba(255, 255, 255, 0.90);
+ }
 
-  .sektor-pill {
-    background: rgba(255, 255, 255, 0.85);
-  }
+ .sektor-pill {
+ background: rgba(255, 255, 255, 0.85);
+ }
 }
 
 /* ════════════════════════════════════════════════════════
-   RESPONSIVE
-   ════════════════════════════════════════════════════════ */
+ RESPONSIVE
+ ════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .sektor-section {
-    padding: 72px 5%;
-  }
+ .sektor-section {
+ padding: 72px 5%;
+ }
 
-  .sektor-metric-bar {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px 0;
-    padding: 32px 36px;
-  }
+ .sektor-metric-bar {
+ grid-template-columns: repeat(2, 1fr);
+ gap: 24px 0;
+ padding: 32px 36px;
+ }
 
-  .sektor-metric-item:not(:last-child)::after {
-    display: none;
-  }
+ .sektor-metric-item:not(:last-child)::after {
+ display: none;
+ }
 
-  .sektor-metric-item:nth-child(odd):not(:nth-last-child(1))::after {
-    display: block;
-    right: 0;
-    top: 12%;
-    height: 76%;
-  }
+ .sektor-metric-item:nth-child(odd):not(:nth-last-child(1))::after {
+ display: block;
+ right: 0;
+ top: 12%;
+ height: 76%;
+ }
 }
 
 @media (max-width: 768px) {
-  .sektor-section {
-    padding: 64px 5%;
-  }
+ .sektor-section {
+ padding: 64px 5%;
+ }
 
-  .sektor-section::before {
-    width: 350px;
-    height: 350px;
-    left: -100px;
-    filter: blur(60px);
-  }
+ .sektor-section::before {
+ width: 350px;
+ height: 350px;
+ left: -100px;
+ filter: blur(60px);
+ }
 
-  .sektor-section::after {
-    width: 400px;
-    height: 400px;
-    right: -120px;
-    filter: blur(70px);
-  }
+ .sektor-section::after {
+ width: 400px;
+ height: 400px;
+ right: -120px;
+ filter: blur(70px);
+ }
 
-  .sektor-heading {
-    margin-bottom: 48px;
-  }
+ .sektor-heading {
+ margin-bottom: 48px;
+ }
 
-  .sektor-metric-bar {
-    grid-template-columns: 1fr 1fr;
-    padding: 28px 24px;
-    gap: 20px 0;
-  }
+ .sektor-metric-bar {
+ grid-template-columns: 1fr 1fr;
+ padding: 28px 24px;
+ gap: 20px 0;
+ }
 
-  .sektor-metric-number {
-    font-size: 36px;
-  }
+ .sektor-metric-number {
+ font-size: 36px;
+ }
 
-  .sektor-testimonial-card {
-    padding: 28px 24px;
-  }
+ .sektor-testimonial-card {
+ padding: 28px 24px;
+ }
 
-  .sektor-testimonial-card::before {
-    font-size: 60px;
-    top: 12px;
-    left: 20px;
-  }
+ .sektor-testimonial-card::before {
+ font-size: 60px;
+ top: 12px;
+ left: 20px;
+ }
 
-  .sektor-testimonial-quote {
-    font-size: 14px;
-  }
+ .sektor-testimonial-quote {
+ font-size: 14px;
+ }
 
-  .sektor-pill {
-    padding: 10px 18px;
-    font-size: 13px;
-  }
+ .sektor-pill {
+ padding: 10px 18px;
+ font-size: 13px;
+ }
 
-  .sektor-pill svg {
-    width: 16px;
-    height: 16px;
-  }
+ .sektor-pill svg {
+ width: 16px;
+ height: 16px;
+ }
 }
 
 @media (max-width: 480px) {
-  .sektor-section {
-    padding: 56px 4%;
-  }
+ .sektor-section {
+ padding: 56px 4%;
+ }
 
-  .sektor-section::before,
-  .sektor-section::after {
-    display: none;
-  }
+ .sektor-section::before,
+ .sektor-section::after {
+ display: none;
+ }
 
-  .sektor-metric-bar {
-    grid-template-columns: 1fr;
-    padding: 24px 20px;
-    gap: 20px;
-  }
+ .sektor-metric-bar {
+ grid-template-columns: 1fr;
+ padding: 24px 20px;
+ gap: 20px;
+ }
 
-  .sektor-metric-item:not(:last-child)::after {
-    display: none;
-  }
+ .sektor-metric-item:not(:last-child)::after {
+ display: none;
+ }
 
-  .sektor-metric-item {
-    padding: 8px 0;
-  }
+ .sektor-metric-item {
+ padding: 8px 0;
+ }
 
-  .sektor-testimonial-card {
-    padding: 24px 20px;
-  }
+ .sektor-testimonial-card {
+ padding: 24px 20px;
+ }
 
-  .sektor-testimonial-header {
-    gap: 10px;
-  }
+ .sektor-testimonial-header {
+ gap: 10px;
+ }
 
-  .sektor-avatar,
-  .sektor-avatar-monogram {
-    width: 44px;
-    height: 44px;
-  }
+ .sektor-avatar,
+ .sektor-avatar-monogram {
+ width: 44px;
+ height: 44px;
+ }
 
-  .sektor-avatar-monogram {
-    font-size: 15px;
-  }
+ .sektor-avatar-monogram {
+ font-size: 15px;
+ }
 }
 
 /* ════════════════════════════════════════════════════════
-   REDUCED MOTION
-   ════════════════════════════════════════════════════════ */
+ REDUCED MOTION
+ ════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
-  .sektor-marquee-track--left,
-  .sektor-marquee-track--right {
-    animation: none;
-  }
+ .sektor-marquee-track--left,
+ .sektor-marquee-track--right {
+ animation: none;
+ }
 
-  .sektor-testimonial-slide {
-    transition: none;
-  }
+ .sektor-testimonial-slide {
+ transition: none;
+ }
 
-  .sektor-metric-bar {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+ .sektor-metric-bar {
+ opacity: 1;
+ transform: none;
+ transition: none;
+ }
 
-  .sektor-section::before,
-  .sektor-section::after,
-  .sektor-ambient-orb {
-    animation: none;
-  }
+ .sektor-section::before,
+ .sektor-section::after,
+ .sektor-ambient-orb {
+ animation: none;
+ }
 }

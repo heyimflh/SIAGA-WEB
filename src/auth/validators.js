@@ -6,7 +6,7 @@
 // components MUST import from here rather than re-declaring patterns.
 
 /**
- * Email regex (Requirement 5.2 / 7.5).
+ * Email validation regex.
  * - At least one non-whitespace, non-`@` char before `@`
  * - At least one non-whitespace, non-`@` char after `@`
  * - A `.` followed by at least 2 non-whitespace, non-`@` chars
@@ -14,14 +14,14 @@
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /**
- * Phone regex (Requirement 7.7).
+ * Phone validation regex.
  * Allowed characters: digits, `+`, whitespace, `-`. Plus a minimum of 8
  * digits after stripping non-digit chars (enforced separately below).
  */
 export const PHONE_RE = /^[\d+\s-]+$/;
 
 /**
- * SIDOPI upload constraints (Requirement 11.2, 11.3).
+ * SIDOPI upload constraints.
  */
 export const ALLOWED_MIME = ['application/pdf', 'image/jpeg', 'image/png'];
 export const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB in bytes
@@ -29,22 +29,22 @@ export const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5 MB in bytes
 // Exact error messages — copy must be byte-for-byte identical with the
 // strings referenced by the design and the property tests.
 const MSG = {
-  emailRequired: 'Email wajib diisi',
-  emailInvalid: 'Format email tidak valid',
-  passwordRequired: 'Password wajib diisi',
-  passwordTooShort: 'Password minimal 8 karakter',
-  fieldRequired: 'Field ini wajib diisi',
-  confirmMismatch: 'Konfirmasi password tidak cocok',
-  phoneInvalid: 'Nomor telepon tidak valid',
-  fileFormat: 'Format file harus PDF, JPG, atau PNG',
-  fileSize: 'Ukuran file maksimal 5 MB',
+ emailRequired: 'Email wajib diisi',
+ emailInvalid: 'Format email tidak valid',
+ passwordRequired: 'Password wajib diisi',
+ passwordTooShort: 'Password minimal 8 karakter',
+ fieldRequired: 'Field ini wajib diisi',
+ confirmMismatch: 'Konfirmasi password tidak cocok',
+ phoneInvalid: 'Nomor telepon tidak valid',
+ fileFormat: 'Format file harus PDF, JPG, atau PNG',
+ fileSize: 'Ukuran file maksimal 5 MB',
 };
 
 /**
  * Treat non-strings and whitespace-only strings as empty.
  */
 function isEmpty(s) {
-  return typeof s !== 'string' || s.trim() === '';
+ return typeof s !== 'string' || s.trim() === '';
 }
 
 /**
@@ -52,9 +52,9 @@ function isEmpty(s) {
  * @returns {{ ok: boolean, error?: string }}
  */
 export function validateEmail(s) {
-  if (isEmpty(s)) return { ok: false, error: MSG.emailRequired };
-  if (!EMAIL_RE.test(s)) return { ok: false, error: MSG.emailInvalid };
-  return { ok: true };
+ if (isEmpty(s)) return { ok: false, error: MSG.emailRequired };
+ if (!EMAIL_RE.test(s)) return { ok: false, error: MSG.emailInvalid };
+ return { ok: true };
 }
 
 /**
@@ -62,9 +62,9 @@ export function validateEmail(s) {
  * @returns {{ ok: boolean, error?: string }}
  */
 export function validatePassword(s) {
-  if (isEmpty(s)) return { ok: false, error: MSG.passwordRequired };
-  if (s.length < 8) return { ok: false, error: MSG.passwordTooShort };
-  return { ok: true };
+ if (isEmpty(s)) return { ok: false, error: MSG.passwordRequired };
+ if (s.length < 8) return { ok: false, error: MSG.passwordTooShort };
+ return { ok: true };
 }
 
 /**
@@ -72,12 +72,12 @@ export function validatePassword(s) {
  * @returns {{ ok: boolean, error?: string }}
  */
 export function validatePhone(s) {
-  if (isEmpty(s)) return { ok: false, error: MSG.fieldRequired };
-  if (!PHONE_RE.test(s)) return { ok: false, error: MSG.phoneInvalid };
-  // Reject inputs with fewer than 8 numeric digits.
-  const digitCount = (s.match(/\d/g) || []).length;
-  if (digitCount < 8) return { ok: false, error: MSG.phoneInvalid };
-  return { ok: true };
+ if (isEmpty(s)) return { ok: false, error: MSG.fieldRequired };
+ if (!PHONE_RE.test(s)) return { ok: false, error: MSG.phoneInvalid };
+ // Reject inputs with fewer than 8 numeric digits.
+ const digitCount = (s.match(/\d/g) || []).length;
+ if (digitCount < 8) return { ok: false, error: MSG.phoneInvalid };
+ return { ok: true };
 }
 
 /**
@@ -86,28 +86,28 @@ export function validatePhone(s) {
  * @returns {{ ok: boolean, errors: { email?: string, password?: string } }}
  */
 export function validateLogin(input) {
-  const safe = input || {};
-  const errors = {};
+ const safe = input || {};
+ const errors = {};
 
-  const e = validateEmail(safe.email);
-  if (!e.ok) errors.email = e.error;
+ const e = validateEmail(safe.email);
+ if (!e.ok) errors.email = e.error;
 
-  const p = validatePassword(safe.password);
-  if (!p.ok) errors.password = p.error;
+ const p = validatePassword(safe.password);
+ if (!p.ok) errors.password = p.error;
 
-  return { ok: Object.keys(errors).length === 0, errors };
+ return { ok: Object.keys(errors).length === 0, errors };
 }
 
 // Field shapes per role (kept here, not exported, so consumers stay
 // dependent on validateStep2 rather than reaching into internals).
 const STEP2_FIELDS = {
-  client: ['companyName', 'corporateEmail', 'phone', 'password', 'confirmPassword'],
-  pilot: ['fullName', 'email', 'phone', 'password', 'confirmPassword'],
+ client: ['companyName', 'corporateEmail', 'phone', 'password', 'confirmPassword'],
+ pilot: ['fullName', 'email', 'phone', 'password', 'confirmPassword'],
 };
 
 const EMAIL_FIELD_BY_ROLE = {
-  client: 'corporateEmail',
-  pilot: 'email',
+ client: 'corporateEmail',
+ pilot: 'email',
 };
 
 /**
@@ -119,51 +119,51 @@ const EMAIL_FIELD_BY_ROLE = {
  * @returns {{ ok: boolean, errors: Record<string, string> }}
  */
 export function validateStep2(role, fields) {
-  const errors = {};
-  const list = STEP2_FIELDS[role];
+ const errors = {};
+ const list = STEP2_FIELDS[role];
 
-  // Unknown role → treat as ok:false with no errors map; reducer guards
-  // already prevent this path, but we stay total.
-  if (!list) return { ok: false, errors };
+ // Unknown role → treat as ok:false with no errors map; reducer guards
+ // already prevent this path, but we stay total.
+ if (!list) return { ok: false, errors };
 
-  const safe = fields || {};
-  const emailField = EMAIL_FIELD_BY_ROLE[role];
+ const safe = fields || {};
+ const emailField = EMAIL_FIELD_BY_ROLE[role];
 
-  for (const name of list) {
-    const value = safe[name];
+ for (const name of list) {
+ const value = safe[name];
 
-    if (isEmpty(value)) {
-      errors[name] = MSG.fieldRequired;
-      continue;
-    }
+ if (isEmpty(value)) {
+ errors[name] = MSG.fieldRequired;
+ continue;
+ }
 
-    if (name === emailField) {
-      if (!EMAIL_RE.test(value)) errors[name] = MSG.emailInvalid;
-      continue;
-    }
+ if (name === emailField) {
+ if (!EMAIL_RE.test(value)) errors[name] = MSG.emailInvalid;
+ continue;
+ }
 
-    if (name === 'phone') {
-      const phoneRes = validatePhone(value);
-      if (!phoneRes.ok) errors[name] = phoneRes.error;
-      continue;
-    }
+ if (name === 'phone') {
+ const phoneRes = validatePhone(value);
+ if (!phoneRes.ok) errors[name] = phoneRes.error;
+ continue;
+ }
 
-    if (name === 'password') {
-      if (value.length < 8) errors[name] = MSG.passwordTooShort;
-      continue;
-    }
+ if (name === 'password') {
+ if (value.length < 8) errors[name] = MSG.passwordTooShort;
+ continue;
+ }
 
-    if (name === 'confirmPassword') {
-      if (value !== safe.password) errors[name] = MSG.confirmMismatch;
-      continue;
-    }
-  }
+ if (name === 'confirmPassword') {
+ if (value !== safe.password) errors[name] = MSG.confirmMismatch;
+ continue;
+ }
+ }
 
-  return { ok: Object.keys(errors).length === 0, errors };
+ return { ok: Object.keys(errors).length === 0, errors };
 }
 
 /**
- * SIDOPI file validator (Requirement 11.2, 11.3).
+ * SIDOPI file validator.
  * Total over `File | null`; null → ok:false with no error so callers can
  * gate UI without rendering a stale message.
  *
@@ -171,34 +171,34 @@ export function validateStep2(role, fields) {
  * @returns {{ ok: boolean, error?: string }}
  */
 export function validateSidopiFile(file) {
-  if (file == null) return { ok: false };
-  if (!ALLOWED_MIME.includes(file.type)) {
-    return { ok: false, error: MSG.fileFormat };
-  }
-  if (file.size > MAX_FILE_SIZE) {
-    return { ok: false, error: MSG.fileSize };
-  }
-  return { ok: true };
+ if (file == null) return { ok: false };
+ if (!ALLOWED_MIME.includes(file.type)) {
+ return { ok: false, error: MSG.fileFormat };
+ }
+ if (file.size > MAX_FILE_SIZE) {
+ return { ok: false, error: MSG.fileSize };
+ }
+ return { ok: true };
 }
 
 /**
- * Pure submit-gating predicate for Register Step 3 (Property 4).
+ * Pure submit-gating predicate for Register Step 3.
  *
  * @param {{
- *   role: 'client'|'pilot'|null,
- *   termsAccepted: boolean,
- *   sidopiFile: object|null,
+ * role: 'client'|'pilot'|null,
+ * termsAccepted: boolean,
+ * sidopiFile: object|null,
  * }} state
  * @returns {boolean}
  */
 export function isSubmitEnabled(state) {
-  if (!state || !state.termsAccepted) return false;
-  if (state.role === 'client') return true;
-  if (state.role === 'pilot') {
-    if (state.sidopiFile == null) return false;
-    if (!validateSidopiFile(state.sidopiFile).ok) return false;
-    return true;
-  }
-  // Unknown/null role: gate closed.
-  return false;
+ if (!state || !state.termsAccepted) return false;
+ if (state.role === 'client') return true;
+ if (state.role === 'pilot') {
+ if (state.sidopiFile == null) return false;
+ if (!validateSidopiFile(state.sidopiFile).ok) return false;
+ return true;
+ }
+ // Unknown/null role: gate closed.
+ return false;
 }

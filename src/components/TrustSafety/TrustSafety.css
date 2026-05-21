@@ -1,505 +1,505 @@
 /* ════════════════════════════════════════════════════════
-   SECTION — TRUST & SAFETY
-   Four-pillar trust infrastructure
-   ════════════════════════════════════════════════════════ */
+ SECTION — TRUST & SAFETY
+ Four-pillar trust infrastructure
+ ════════════════════════════════════════════════════════ */
 
 .ts-section {
-  position: relative;
-  padding: 120px 0;
-  overflow: hidden;
-  isolation: isolate;
-  background: var(--bg-primary);
+ position: relative;
+ padding: 120px 0;
+ overflow: hidden;
+ isolation: isolate;
+ background: var(--bg-primary);
 }
 
 /* ── Background ── */
 .ts-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+ position: absolute;
+ inset: 0;
+ pointer-events: none;
+ z-index: 0;
 }
 
 .ts-bg-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(0, 180, 216, 0.04), transparent 60%);
-  filter: blur(60px);
+ position: absolute;
+ width: 500px;
+ height: 500px;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ background: radial-gradient(circle, rgba(0, 180, 216, 0.04), transparent 60%);
+ filter: blur(60px);
 }
 
 .ts-bg-grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 98, 214, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 98, 214, 0.015) 1px, transparent 1px);
-  background-size: 64px 64px;
-  opacity: 0.5;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 80%);
+ position: absolute;
+ inset: 0;
+ background-image:
+ linear-gradient(rgba(0, 98, 214, 0.015) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(0, 98, 214, 0.015) 1px, transparent 1px);
+ background-size: 64px 64px;
+ opacity: 0.5;
+ mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 80%);
+ -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 80%);
 }
 
 /* ── Container ── */
 .ts-container {
-  position: relative;
-  z-index: 1;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 6%;
+ position: relative;
+ z-index: 1;
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 6%;
 }
 
 /* ── Header ── */
 .ts-header {
-  text-align: center;
-  margin-bottom: 64px;
+ text-align: center;
+ margin-bottom: 64px;
 }
 
 .ts-eyebrow {
-  display: inline-block;
-  font-family: var(--font-body);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-success);
-  margin-bottom: 16px;
-  padding: 6px 14px;
-  background: rgba(0, 137, 123, 0.06);
-  border: 1px solid rgba(0, 137, 123, 0.12);
-  border-radius: 100px;
+ display: inline-block;
+ font-family: var(--font-body);
+ font-size: 11px;
+ font-weight: 700;
+ letter-spacing: 0.14em;
+ text-transform: uppercase;
+ color: var(--color-success);
+ margin-bottom: 16px;
+ padding: 6px 14px;
+ background: rgba(0, 137, 123, 0.06);
+ border: 1px solid rgba(0, 137, 123, 0.12);
+ border-radius: 100px;
 }
 
 .ts-headline {
-  font-family: var(--font-display);
-  font-size: clamp(30px, 3.8vw, 46px);
-  font-weight: 800;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  color: var(--text-primary);
-  margin-bottom: 16px;
+ font-family: var(--font-display);
+ font-size: clamp(30px, 3.8vw, 46px);
+ font-weight: 800;
+ line-height: 1.15;
+ letter-spacing: -0.03em;
+ color: var(--text-primary);
+ margin-bottom: 16px;
 }
 
 .ts-subheadline {
-  font-family: var(--font-body);
-  font-size: clamp(15px, 1.2vw, 17px);
-  line-height: 1.7;
-  color: var(--text-secondary);
-  max-width: 620px;
-  margin: 0 auto;
+ font-family: var(--font-body);
+ font-size: clamp(15px, 1.2vw, 17px);
+ line-height: 1.7;
+ color: var(--text-secondary);
+ max-width: 620px;
+ margin: 0 auto;
 }
 
 /* ── Pillars Grid ── */
 .ts-pillars {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 24px;
 }
 
 /* ════════════════════════════════════════════════════════
-   PILLAR CARD — Glassmorphism Light
-   ════════════════════════════════════════════════════════ */
+ PILLAR CARD — Glassmorphism Light
+ ════════════════════════════════════════════════════════ */
 .ts-pillar {
-  position: relative;
-  background: rgba(255, 255, 255, 0.65);
-  border: 1px solid var(--border-light);
-  border-radius: 20px;
-  padding: 28px 24px;
-  backdrop-filter: blur(12px) saturate(140%);
-  -webkit-backdrop-filter: blur(12px) saturate(140%);
-  box-shadow: var(--shadow-sm);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.5s ease,
-              border-color 0.4s ease;
-  overflow: hidden;
+ position: relative;
+ background: rgba(255, 255, 255, 0.65);
+ border: 1px solid var(--border-light);
+ border-radius: 20px;
+ padding: 28px 24px;
+ backdrop-filter: blur(12px) saturate(140%);
+ -webkit-backdrop-filter: blur(12px) saturate(140%);
+ box-shadow: var(--shadow-sm);
+ transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+ box-shadow 0.5s ease,
+ border-color 0.4s ease;
+ overflow: hidden;
 }
 
 .ts-pillar:hover {
-  transform: translateY(-6px);
-  box-shadow:
-    0 20px 50px rgba(0, 98, 214, 0.08),
-    0 6px 20px rgba(15, 23, 42, 0.04);
-  border-color: rgba(0, 98, 214, 0.1);
+ transform: translateY(-6px);
+ box-shadow:
+ 0 20px 50px rgba(0, 98, 214, 0.08),
+ 0 6px 20px rgba(15, 23, 42, 0.04);
+ border-color: rgba(0, 98, 214, 0.1);
 }
 
 /* ── Border Top Accent ── */
 .ts-pillar-border-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: var(--pillar-accent);
-  border-radius: 20px 20px 0 0;
-  transition: box-shadow 0.4s ease;
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ height: 3px;
+ background: var(--pillar-accent);
+ border-radius: 20px 20px 0 0;
+ transition: box-shadow 0.4s ease;
 }
 
 .ts-pillar:hover .ts-pillar-border-top {
-  box-shadow: 0 2px 12px color-mix(in srgb, var(--pillar-accent) 40%, transparent);
+ box-shadow: 0 2px 12px color-mix(in srgb, var(--pillar-accent) 40%, transparent);
 }
 
 /* ── Pillar Icon ── */
 .ts-pillar-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: var(--radius-md);
-  background: rgba(0, 98, 214, 0.06);
-  border: 1px solid var(--border-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--brand-blue);
-  margin-bottom: 16px;
+ width: 44px;
+ height: 44px;
+ border-radius: var(--radius-md);
+ background: rgba(0, 98, 214, 0.06);
+ border: 1px solid var(--border-light);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: var(--brand-blue);
+ margin-bottom: 16px;
 }
 
 /* ── Pillar Text ── */
 .ts-pillar-headline {
-  font-family: var(--font-display);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: -0.01em;
-  margin-bottom: 10px;
-  line-height: 1.3;
+ font-family: var(--font-display);
+ font-size: 16px;
+ font-weight: 700;
+ color: var(--text-primary);
+ letter-spacing: -0.01em;
+ margin-bottom: 10px;
+ line-height: 1.3;
 }
 
 .ts-pillar-body {
-  font-family: var(--font-body);
-  font-size: 13.5px;
-  line-height: 1.65;
-  color: var(--text-secondary);
+ font-family: var(--font-body);
+ font-size: 13.5px;
+ line-height: 1.65;
+ color: var(--text-secondary);
 }
 
 /* ════════════════════════════════════════════════════════
-   MINI VISUALS
-   ════════════════════════════════════════════════════════ */
+ MINI VISUALS
+ ════════════════════════════════════════════════════════ */
 
 .ts-visual {
-  min-height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-  border-radius: var(--radius-md);
-  background: rgba(0, 98, 214, 0.02);
-  border: 1px solid rgba(0, 98, 214, 0.04);
+ min-height: 60px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin-bottom: 20px;
+ border-radius: var(--radius-md);
+ background: rgba(0, 98, 214, 0.02);
+ border: 1px solid rgba(0, 98, 214, 0.04);
 }
 
 /* ── Escrow Flow ── */
 .ts-escrow-flow {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  padding: 0 12px;
-  width: 100%;
+ display: flex;
+ align-items: center;
+ gap: 0;
+ padding: 0 12px;
+ width: 100%;
 }
 
 .ts-escrow-step {
-  display: flex;
-  align-items: center;
-  flex: 1;
+ display: flex;
+ align-items: center;
+ flex: 1;
 }
 
 .ts-escrow-node {
-  width: 36px;
-  height: 28px;
-  border-radius: 6px;
-  background: rgba(0, 98, 214, 0.08);
-  border: 1px solid rgba(0, 98, 214, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.6;
-  flex-shrink: 0;
+ width: 36px;
+ height: 28px;
+ border-radius: 6px;
+ background: rgba(0, 98, 214, 0.08);
+ border: 1px solid rgba(0, 98, 214, 0.12);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ opacity: 0.6;
+ flex-shrink: 0;
 }
 
 .ts-escrow-node span {
-  font-family: var(--font-body);
-  font-size: 8px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
-  color: var(--brand-blue);
-  text-transform: uppercase;
+ font-family: var(--font-body);
+ font-size: 8px;
+ font-weight: 700;
+ letter-spacing: 0.02em;
+ color: var(--brand-blue);
+ text-transform: uppercase;
 }
 
 .ts-escrow-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(0, 98, 214, 0.15), rgba(0, 98, 214, 0.05));
-  margin: 0 2px;
+ flex: 1;
+ height: 1px;
+ background: linear-gradient(90deg, rgba(0, 98, 214, 0.15), rgba(0, 98, 214, 0.05));
+ margin: 0 2px;
 }
 
 /* ── Verified Badge ── */
 .ts-visual--verified {
-  position: relative;
-  height: 80px;
+ position: relative;
+ height: 80px;
 }
 
 .ts-verified-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid var(--border-light);
-  border-radius: 12px;
-  position: relative;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 10px 14px;
+ background: rgba(255, 255, 255, 0.9);
+ border: 1px solid var(--border-light);
+ border-radius: 12px;
+ position: relative;
+ box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .ts-verified-avatar {
-  position: relative;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  overflow: visible;
-  flex-shrink: 0;
+ position: relative;
+ width: 36px;
+ height: 36px;
+ border-radius: 50%;
+ overflow: visible;
+ flex-shrink: 0;
 }
 
 .ts-verified-avatar-img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(0, 180, 216, 0.3);
+ width: 36px;
+ height: 36px;
+ border-radius: 50%;
+ object-fit: cover;
+ border: 2px solid rgba(0, 180, 216, 0.3);
 }
 
 .ts-verified-badge {
-  position: absolute;
-  bottom: -2px;
-  right: -4px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--brand-cyan);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  box-shadow: 0 2px 6px rgba(0, 180, 216, 0.5);
-  transform: scale(0);
+ position: absolute;
+ bottom: -2px;
+ right: -4px;
+ width: 18px;
+ height: 18px;
+ border-radius: 50%;
+ background: var(--brand-cyan);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ color: white;
+ box-shadow: 0 2px 6px rgba(0, 180, 216, 0.5);
+ transform: scale(0);
 }
 
 .ts-verified-info {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  min-width: 0;
+ display: flex;
+ flex-direction: column;
+ gap: 4px;
+ min-width: 0;
 }
 
 .ts-verified-name {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 700;
-  color: var(--text-primary);
-  letter-spacing: 0.01em;
+ font-family: var(--font-body);
+ font-size: 10px;
+ font-weight: 700;
+ color: var(--text-primary);
+ letter-spacing: 0.01em;
 }
 
 .ts-verified-credentials {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
+ display: flex;
+ flex-direction: column;
+ gap: 3px;
 }
 
 .ts-verified-bar {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transform-origin: left;
+ display: flex;
+ align-items: center;
+ gap: 4px;
+ transform-origin: left;
 }
 
 .ts-verified-bar-label {
-  font-family: var(--font-body);
-  font-size: 7px;
-  font-weight: 600;
-  color: var(--text-tertiary);
-  width: 36px;
-  flex-shrink: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+ font-family: var(--font-body);
+ font-size: 7px;
+ font-weight: 600;
+ color: var(--text-tertiary);
+ width: 36px;
+ flex-shrink: 0;
+ text-transform: uppercase;
+ letter-spacing: 0.03em;
 }
 
 .ts-verified-bar-fill {
-  height: 4px;
-  border-radius: 2px;
+ height: 4px;
+ border-radius: 2px;
 }
 
 .ts-verified-bar-fill--full {
-  width: 40px;
-  background: linear-gradient(90deg, var(--brand-cyan), var(--brand-blue));
+ width: 40px;
+ background: linear-gradient(90deg, var(--brand-cyan), var(--brand-blue));
 }
 
 .ts-verified-bar-fill--partial {
-  width: 28px;
-  background: linear-gradient(90deg, var(--brand-cyan), rgba(0, 180, 216, 0.4));
+ width: 28px;
+ background: linear-gradient(90deg, var(--brand-cyan), rgba(0, 180, 216, 0.4));
 }
 
 /* ── Rating ── */
 .ts-visual--rating {
-  height: 90px;
+ height: 90px;
 }
 
 .ts-rating-scene {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 0 8px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ gap: 8px;
+ width: 100%;
+ padding: 0 8px;
 }
 
 .ts-rating-profile {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 3px;
 }
 
 .ts-rating-avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
+ width: 28px;
+ height: 28px;
+ border-radius: 50%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ overflow: hidden;
 }
 
 .ts-rating-avatar--company {
-  background: linear-gradient(135deg, rgba(0, 98, 214, 0.12), rgba(0, 98, 214, 0.06));
-  border: 1.5px solid rgba(0, 98, 214, 0.2);
-  color: var(--brand-blue);
+ background: linear-gradient(135deg, rgba(0, 98, 214, 0.12), rgba(0, 98, 214, 0.06));
+ border: 1.5px solid rgba(0, 98, 214, 0.2);
+ color: var(--brand-blue);
 }
 
 .ts-rating-avatar--pilot {
-  border: 1.5px solid rgba(0, 180, 216, 0.3);
+ border: 1.5px solid rgba(0, 180, 216, 0.3);
 }
 
 .ts-rating-avatar-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ border-radius: 50%;
 }
 
 .ts-rating-label {
-  font-family: var(--font-body);
-  font-size: 7px;
-  font-weight: 700;
-  color: var(--text-tertiary);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+ font-family: var(--font-body);
+ font-size: 7px;
+ font-weight: 700;
+ color: var(--text-tertiary);
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
 }
 
 .ts-rating-stars-row {
-  display: flex;
-  gap: 1px;
+ display: flex;
+ gap: 1px;
 }
 
 .ts-rating-star-item {
-  opacity: 0;
-  transform: scale(0);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ opacity: 0;
+ transform: scale(0);
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
 
 .ts-rating-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0.3;
-  margin: 0 2px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ opacity: 0.3;
+ margin: 0 2px;
 }
 
 /* ── Encryption ── */
 .ts-encryption-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 3px;
-  padding: 0 20px;
-  width: 100%;
-  max-width: 160px;
+ display: grid;
+ grid-template-columns: repeat(6, 1fr);
+ gap: 3px;
+ padding: 0 20px;
+ width: 100%;
+ max-width: 160px;
 }
 
 .ts-encryption-block {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 3px;
-  background: var(--brand-navy);
-  opacity: 0.15;
+ width: 100%;
+ aspect-ratio: 1;
+ border-radius: 3px;
+ background: var(--brand-navy);
+ opacity: 0.15;
 }
 
 /* ════════════════════════════════════════════════════════
-   FALLBACK
-   ════════════════════════════════════════════════════════ */
+ FALLBACK
+ ════════════════════════════════════════════════════════ */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .ts-pillar {
-    background: rgba(255, 255, 255, 0.92);
-  }
+ .ts-pillar {
+ background: rgba(255, 255, 255, 0.92);
+ }
 }
 
 /* ════════════════════════════════════════════════════════
-   RESPONSIVE
-   ════════════════════════════════════════════════════════ */
+ RESPONSIVE
+ ════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
-  .ts-section {
-    padding: 96px 0;
-  }
-  .ts-container {
-    padding: 0 5%;
-  }
-  .ts-pillars {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
+ .ts-section {
+ padding: 96px 0;
+ }
+ .ts-container {
+ padding: 0 5%;
+ }
+ .ts-pillars {
+ grid-template-columns: repeat(2, 1fr);
+ gap: 20px;
+ }
 }
 
 @media (max-width: 768px) {
-  .ts-section {
-    padding: 80px 0;
-  }
-  .ts-header {
-    margin-bottom: 48px;
-  }
-  .ts-pillars {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  .ts-pillar {
-    padding: 24px 20px;
-  }
+ .ts-section {
+ padding: 80px 0;
+ }
+ .ts-header {
+ margin-bottom: 48px;
+ }
+ .ts-pillars {
+ grid-template-columns: 1fr;
+ gap: 16px;
+ }
+ .ts-pillar {
+ padding: 24px 20px;
+ }
 }
 
 @media (max-width: 480px) {
-  .ts-section {
-    padding: 64px 0;
-  }
-  .ts-headline {
-    font-size: 26px;
-  }
+ .ts-section {
+ padding: 64px 0;
+ }
+ .ts-headline {
+ font-size: 26px;
+ }
 }
 
 /* ════════════════════════════════════════════════════════
-   REDUCED MOTION
-   ════════════════════════════════════════════════════════ */
+ REDUCED MOTION
+ ════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
-  .ts-pillar {
-    transition: none;
-  }
-  .ts-pillar:hover {
-    transform: none;
-  }
-  .ts-escrow-node,
-  .ts-verified-badge,
-  .ts-verified-bar,
-  .ts-rating-star-item,
-  .ts-rating-arrow,
-  .ts-encryption-block {
-    animation: none;
-    opacity: 1;
-    transform: none;
-  }
+ .ts-pillar {
+ transition: none;
+ }
+ .ts-pillar:hover {
+ transform: none;
+ }
+ .ts-escrow-node,
+ .ts-verified-badge,
+ .ts-verified-bar,
+ .ts-rating-star-item,
+ .ts-rating-arrow,
+ .ts-encryption-block {
+ animation: none;
+ opacity: 1;
+ transform: none;
+ }
 }

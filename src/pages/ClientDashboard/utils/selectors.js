@@ -9,19 +9,19 @@
  * section dashboard membaca dari sumber yang sama via selector ini,
  * konsistensi cross-section (Map_Floating_Stats vs Overview_Card vs
  * Quick_Stats_Footer) terjamin by construction — tidak butuh property test
- * runtime untuk Requirement 10.4–10.9.
+ * runtime untuk –10.9.
  *
  * Catatan tentang shape input:
- *   - `data` adalah object hasil `mockData` di `mock-data.js`.
- *   - `data.assets` adalah array (lihat shape `Asset` di design.md).
- *   - `data.proyek_aktif` adalah array project; selector menghitung jumlah
- *     project yang `is_active !== false` agar konsisten dengan
- *     Requirement 10.8 ("entri proyek_aktif yang berstatus aktif").
- *   - `data.bids` adalah flat array bid lintas project, di-key oleh
- *     `project_id` (lihat design.md).
- *   - `data.perusahaan` adalah object tunggal dengan field `nama`, `email`,
- *     `avatar`. Resolver `selectCompanyByEmail` mencocokkan email session
- *     ke entry ini.
+ * - `data` adalah object hasil `mockData` di `mock-data.js`.
+ * - `data.assets` adalah array (lihat shape `Asset` di design.md).
+ * - `data.proyek_aktif` adalah array project; selector menghitung jumlah
+ * project yang `is_active !== false` agar konsisten dengan
+ * ("entri proyek_aktif yang berstatus aktif").
+ * - `data.bids` adalah flat array bid lintas project, di-key oleh
+ * `project_id` (lihat design.md).
+ * - `data.perusahaan` adalah object tunggal dengan field `nama`, `email`,
+ * `avatar`. Resolver `selectCompanyByEmail` mencocokkan email session
+ * ke entry ini.
  *
  * Fallback `selectCompanyByEmail`: jika email tidak cocok dengan
  * `perusahaan.email`, selector mengembalikan object synthesized
@@ -40,7 +40,7 @@
  * @returns {number}
  */
 export function selectAssetCount(data) {
-  return data.assets.length;
+ return data.assets.length;
 }
 
 /**
@@ -52,7 +52,7 @@ export function selectAssetCount(data) {
  * @returns {number}
  */
 export function selectKritisCount(data) {
-  return data.assets.filter((a) => a.status === 'kritis').length;
+ return data.assets.filter((a) => a.status === 'kritis').length;
 }
 
 /**
@@ -64,7 +64,7 @@ export function selectKritisCount(data) {
  * @returns {number}
  */
 export function selectPerluPerhatianCount(data) {
-  return data.assets.filter((a) => a.status === 'perlu_perhatian').length;
+ return data.assets.filter((a) => a.status === 'perlu_perhatian').length;
 }
 
 /**
@@ -78,7 +78,7 @@ export function selectPerluPerhatianCount(data) {
  * @returns {number}
  */
 export function selectActiveProjectCount(data) {
-  return data.proyek_aktif.filter((p) => p.is_active !== false).length;
+ return data.proyek_aktif.filter((p) => p.is_active !== false).length;
 }
 
 /**
@@ -87,14 +87,13 @@ export function selectActiveProjectCount(data) {
  * Memfilter flat `data.bids` berdasarkan `project_id`. Jika tidak ada bid
  * untuk project tersebut (mis. project baru) selector mengembalikan array
  * kosong — caller (BiddingReviewTable) menggunakannya untuk men-trigger
- * empty state Requirement 7.14.
- *
+ * empty state *
  * @param {{ bids: ReadonlyArray<{ project_id: string }> }} data
  * @param {string} projectId
  * @returns {Array<{ project_id: string }>}
  */
 export function selectBidsForProject(data, projectId) {
-  return data.bids.filter((b) => b.project_id === projectId);
+ return data.bids.filter((b) => b.project_id === projectId);
 }
 
 /**
@@ -105,36 +104,36 @@ export function selectBidsForProject(data, projectId) {
  * sehingga Topbar greeting tetap dapat me-render "Halo, [email]".
  *
  * Contoh:
- *   selectCompanyByEmail(mockData, 'hendra@pln.co.id')
- *     → mockData.perusahaan
+ * selectCompanyByEmail(mockData, 'hendra@pln.co.id')
+ * → mockData.perusahaan
  *
- *   selectCompanyByEmail(mockData, 'unknown@example.com')
- *     → { nama: 'unknown@example.com', email: 'unknown@example.com', avatar: null }
+ * selectCompanyByEmail(mockData, 'unknown@example.com')
+ * → { nama: 'unknown@example.com', email: 'unknown@example.com', avatar: null }
  *
  * @param {{ perusahaan: { nama: string, email: string, avatar: string | null } }} data
  * @param {string} email
  * @returns {{ nama: string, email: string, avatar: string | null }}
  */
 export function selectCompanyByEmail(data, email) {
-  const normalized = typeof email === 'string' ? email.trim().toLowerCase() : '';
-  const perusahaan = data.perusahaan;
+ const normalized = typeof email === 'string' ? email.trim().toLowerCase() : '';
+ const perusahaan = data.perusahaan;
 
-  if (
-    perusahaan &&
-    typeof perusahaan.email === 'string' &&
-    perusahaan.email.trim().toLowerCase() === normalized &&
-    normalized.length > 0
-  ) {
-    return perusahaan;
-  }
+ if (
+ perusahaan &&
+ typeof perusahaan.email === 'string' &&
+ perusahaan.email.trim().toLowerCase() === normalized &&
+ normalized.length > 0
+ ) {
+ return perusahaan;
+ }
 
-  // Fallback: gunakan email itu sendiri sebagai nama agar UI tidak crash
-  // ketika session email tidak terdaftar di mock data. Field `email`
-  // dipertahankan apa adanya (tidak di-lowercase) supaya tampil sesuai input.
-  const safeEmail = typeof email === 'string' ? email : '';
-  return {
-    nama: safeEmail,
-    email: safeEmail,
-    avatar: null,
-  };
+ // Fallback: gunakan email itu sendiri sebagai nama agar UI tidak crash
+ // ketika session email tidak terdaftar di mock data. Field `email`
+ // dipertahankan apa adanya (tidak di-lowercase) supaya tampil sesuai input.
+ const safeEmail = typeof email === 'string' ? email : '';
+ return {
+ nama: safeEmail,
+ email: safeEmail,
+ avatar: null,
+ };
 }

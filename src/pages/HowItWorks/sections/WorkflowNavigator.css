@@ -1,110 +1,110 @@
 /* WorkflowNavigator — Sticky step indicator */
 .wf-nav {
-  position: sticky;
-  top: 0;
-  z-index: 90;
-  background: rgba(10,37,64,0.94);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,212,255,0.1);
-  padding: 0.75rem 1.5rem;
+ position: sticky;
+ top: 0;
+ z-index: 90;
+ background: rgba(10,37,64,0.94);
+ backdrop-filter: blur(12px);
+ border-bottom: 1px solid rgba(0,212,255,0.1);
+ padding: 0.75rem 1.5rem;
 }
 
 .wf-nav__container {
-  max-width: 700px;
-  margin: 0 auto;
+ max-width: 700px;
+ margin: 0 auto;
 }
 
 .wf-nav__track {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+ position: relative;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
 }
 
 .wf-nav__step {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 999px;
-  padding: 0.45rem 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Inter', sans-serif;
-  min-height: 38px;
+ position: relative;
+ z-index: 2;
+ display: flex;
+ align-items: center;
+ gap: 0.4rem;
+ background: rgba(255,255,255,0.04);
+ border: 1px solid rgba(255,255,255,0.08);
+ border-radius: 999px;
+ padding: 0.45rem 1rem;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ font-family: 'Inter', sans-serif;
+ min-height: 38px;
 }
 
 .wf-nav__step-num {
-  font-size: 0.68rem;
-  font-weight: 700;
-  color: #60758A;
-  transition: color 0.3s;
+ font-size: 0.68rem;
+ font-weight: 700;
+ color: #60758A;
+ transition: color 0.3s;
 }
 
 .wf-nav__step-label {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: #8BA2B8;
-  transition: color 0.3s;
+ font-size: 0.75rem;
+ font-weight: 600;
+ color: #8BA2B8;
+ transition: color 0.3s;
 }
 
 .wf-nav__step--active {
-  background: rgba(0,212,255,0.1);
-  border-color: rgba(0,212,255,0.35);
-  box-shadow: 0 0 16px rgba(0,212,255,0.1);
+ background: rgba(0,212,255,0.1);
+ border-color: rgba(0,212,255,0.35);
+ box-shadow: 0 0 16px rgba(0,212,255,0.1);
 }
 
 .wf-nav__step--active .wf-nav__step-num { color: #00D4FF; }
 .wf-nav__step--active .wf-nav__step-label { color: #fff; }
 
 .wf-nav__step:focus-visible {
-  outline: 2px solid #00D4FF;
-  outline-offset: 2px;
+ outline: 2px solid #00D4FF;
+ outline-offset: 2px;
 }
 
 /* Progress line behind steps */
 .wf-nav__line {
-  position: absolute;
-  top: 50%;
-  left: 10%;
-  right: 10%;
-  height: 2px;
-  background: rgba(255,255,255,0.06);
-  border-radius: 1px;
-  transform: translateY(-50%);
-  z-index: 1;
+ position: absolute;
+ top: 50%;
+ left: 10%;
+ right: 10%;
+ height: 2px;
+ background: rgba(255,255,255,0.06);
+ border-radius: 1px;
+ transform: translateY(-50%);
+ z-index: 1;
 }
 
 .wf-nav__line-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #00D4FF, #0B7CFF);
-  border-radius: 1px;
-  transition: width 0.4s ease;
+ height: 100%;
+ background: linear-gradient(90deg, #00D4FF, #0B7CFF);
+ border-radius: 1px;
+ transition: width 0.4s ease;
 }
 
 /* Mobile: horizontal scroll */
 @media (max-width: 640px) {
-  .wf-nav { padding: 0.6rem 1rem; }
-  .wf-nav__track {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 0.5rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .wf-nav__track::-webkit-scrollbar { display: none; }
-  .wf-nav__step {
-    flex-shrink: 0;
-    scroll-snap-align: center;
-    padding: 0.4rem 0.8rem;
-  }
-  .wf-nav__line { display: none; }
+ .wf-nav { padding: 0.6rem 1rem; }
+ .wf-nav__track {
+ overflow-x: auto;
+ scroll-snap-type: x mandatory;
+ gap: 0.5rem;
+ -webkit-overflow-scrolling: touch;
+ scrollbar-width: none;
+ }
+ .wf-nav__track::-webkit-scrollbar { display: none; }
+ .wf-nav__step {
+ flex-shrink: 0;
+ scroll-snap-align: center;
+ padding: 0.4rem 0.8rem;
+ }
+ .wf-nav__line { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .wf-nav__line-fill { transition: none; }
-  .wf-nav__step { transition: none; }
+ .wf-nav__line-fill { transition: none; }
+ .wf-nav__step { transition: none; }
 }

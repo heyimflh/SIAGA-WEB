@@ -16,38 +16,38 @@ import { useState, useEffect } from 'react';
  * Validates: Requirements 6.5, 7.1, 7.2
  */
 export function useVisibility(ref, options = {}) {
-  const [isVisible, setIsVisible] = useState(false);
+ const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    // Feature detection fallback: if IntersectionObserver is unavailable, default to true
-    if (typeof IntersectionObserver === 'undefined') {
-      setIsVisible(true);
-      return;
-    }
+ useEffect(() => {
+ // Feature detection fallback: if IntersectionObserver is unavailable, default to true
+ if (typeof IntersectionObserver === 'undefined') {
+ setIsVisible(true);
+ return;
+ }
 
-    const element = ref.current;
-    if (!element) return;
+ const element = ref.current;
+ if (!element) return;
 
-    // Enforce minimum rootMargin of 100px
-    const rootMargin = enforceMinRootMargin(options.rootMargin);
-    const threshold = options.threshold ?? 0;
+ // Enforce minimum rootMargin of 100px
+ const rootMargin = enforceMinRootMargin(options.rootMargin);
+ const threshold = options.threshold ?? 0;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { rootMargin, threshold }
-    );
+ const observer = new IntersectionObserver(
+ ([entry]) => {
+ setIsVisible(entry.isIntersecting);
+ },
+ { rootMargin, threshold }
+ );
 
-    observer.observe(element);
+ observer.observe(element);
 
-    // Disconnect observer on unmount
-    return () => {
-      observer.disconnect();
-    };
-  }, [ref, options.rootMargin, options.threshold]);
+ // Disconnect observer on unmount
+ return () => {
+ observer.disconnect();
+ };
+ }, [ref, options.rootMargin, options.threshold]);
 
-  return isVisible;
+ return isVisible;
 }
 
 /**
@@ -58,19 +58,19 @@ export function useVisibility(ref, options = {}) {
  * @returns {string} A rootMargin string with at least 100px
  */
 function enforceMinRootMargin(rootMargin) {
-  if (!rootMargin) return '100px';
+ if (!rootMargin) return '100px';
 
-  // Parse the rootMargin values (supports 1-4 values like CSS margin shorthand)
-  const parts = rootMargin.trim().split(/\s+/);
-  const enforced = parts.map((part) => {
-    const value = parseInt(part, 10);
-    if (isNaN(value) || value < 100) {
-      return '100px';
-    }
-    return part;
-  });
+ // Parse the rootMargin values (supports 1-4 values like CSS margin shorthand)
+ const parts = rootMargin.trim().split(/\s+/);
+ const enforced = parts.map((part) => {
+ const value = parseInt(part, 10);
+ if (isNaN(value) || value < 100) {
+ return '100px';
+ }
+ return part;
+ });
 
-  return enforced.join(' ');
+ return enforced.join(' ');
 }
 
 export default useVisibility;

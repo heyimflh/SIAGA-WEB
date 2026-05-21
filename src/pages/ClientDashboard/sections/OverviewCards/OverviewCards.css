@@ -6,352 +6,352 @@
  */
 
 /* =========================================================================
-   Grid Container — 4 cols desktop, 2 cols tablet, 1 col mobile
-   ========================================================================= */
+ Grid Container — 4 cols desktop, 2 cols tablet, 1 col mobile
+ ========================================================================= */
 
 .overview-cards {
-  display: grid;
-  gap: 1rem;
-  padding: 0;
-  margin-bottom: 1.75rem;
+ display: grid;
+ gap: 1rem;
+ padding: 0;
+ margin-bottom: 1.75rem;
 }
 
 @media (min-width: 1280px) {
-  .overview-cards {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.125rem;
-  }
+ .overview-cards {
+ grid-template-columns: repeat(4, 1fr);
+ gap: 1.125rem;
+ }
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
-  .overview-cards {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
+ .overview-cards {
+ grid-template-columns: repeat(2, 1fr);
+ gap: 1rem;
+ }
 }
 
 @media (max-width: 767px) {
-  .overview-cards {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
+ .overview-cards {
+ grid-template-columns: repeat(2, 1fr);
+ gap: 0.75rem;
+ }
 }
 
 @media (max-width: 400px) {
-  .overview-cards {
-    grid-template-columns: 1fr;
-  }
+ .overview-cards {
+ grid-template-columns: 1fr;
+ }
 }
 
 /* =========================================================================
-   Single Card — Compact Glass
-   ========================================================================= */
+ Single Card — Compact Glass
+ ========================================================================= */
 
 .overview-card {
-  position: relative;
-  padding: 1.125rem 1.25rem;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(20px) saturate(1.2);
-  -webkit-backdrop-filter: blur(20px) saturate(1.2);
-  border: 1px solid rgba(180, 220, 245, 0.45);
-  box-shadow:
-    0 6px 24px rgba(10, 40, 80, 0.06),
-    0 1px 4px rgba(10, 40, 80, 0.02);
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: default;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
+ position: relative;
+ padding: 1.125rem 1.25rem;
+ border-radius: 20px;
+ background: rgba(255, 255, 255, 0.72);
+ backdrop-filter: blur(20px) saturate(1.2);
+ -webkit-backdrop-filter: blur(20px) saturate(1.2);
+ border: 1px solid rgba(180, 220, 245, 0.45);
+ box-shadow:
+ 0 6px 24px rgba(10, 40, 80, 0.06),
+ 0 1px 4px rgba(10, 40, 80, 0.02);
+ transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+ box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+ cursor: default;
+ overflow: hidden;
+ display: flex;
+ flex-direction: column;
+ min-height: 0;
 }
 
 /* Subtle top highlight */
 .overview-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 40%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, transparent 100%);
-  pointer-events: none;
-  border-radius: 20px 20px 0 0;
+ content: '';
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ height: 40%;
+ background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, transparent 100%);
+ pointer-events: none;
+ border-radius: 20px 20px 0 0;
 }
 
 /* Decorative glow */
 .overview-card::after {
-  content: '';
-  position: absolute;
-  top: -16px;
-  right: -16px;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(0, 191, 234, 0.07) 0%, transparent 70%);
-  pointer-events: none;
+ content: '';
+ position: absolute;
+ top: -16px;
+ right: -16px;
+ width: 72px;
+ height: 72px;
+ border-radius: 50%;
+ background: radial-gradient(circle, rgba(0, 191, 234, 0.07) 0%, transparent 70%);
+ pointer-events: none;
 }
 
 /* Hover */
 .overview-card:hover {
-  transform: translateY(-3px);
-  box-shadow:
-    0 12px 36px rgba(10, 40, 80, 0.09),
-    0 3px 10px rgba(16, 109, 255, 0.04);
+ transform: translateY(-3px);
+ box-shadow:
+ 0 12px 36px rgba(10, 40, 80, 0.09),
+ 0 3px 10px rgba(16, 109, 255, 0.04);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .overview-card { transition: none; }
-  .overview-card:hover { transform: none; }
+ .overview-card { transition: none; }
+ .overview-card:hover { transform: none; }
 }
 
 /* =========================================================================
-   Card Header — Icon + Label (compact)
-   ========================================================================= */
+ Card Header — Icon + Label (compact)
+ ========================================================================= */
 
 .overview-card__header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.625rem;
-  position: relative;
-  z-index: 1;
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ margin-bottom: 0.625rem;
+ position: relative;
+ z-index: 1;
 }
 
 .overview-card__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 11px;
-  background: rgba(34, 211, 238, 0.1);
-  color: #00BFEA;
-  flex-shrink: 0;
-  border: 1px solid rgba(34, 211, 238, 0.22);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 36px;
+ height: 36px;
+ border-radius: 11px;
+ background: rgba(34, 211, 238, 0.1);
+ color: #00BFEA;
+ flex-shrink: 0;
+ border: 1px solid rgba(34, 211, 238, 0.22);
 }
 
 .overview-card__icon svg {
-  width: 18px;
-  height: 18px;
+ width: 18px;
+ height: 18px;
 }
 
 .overview-card__label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: #58708E;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  line-height: 1.3;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.6875rem;
+ font-weight: 600;
+ color: #58708E;
+ text-transform: uppercase;
+ letter-spacing: 0.05em;
+ line-height: 1.3;
 }
 
 /* =========================================================================
-   Card Body — Values
-   ========================================================================= */
+ Card Body — Values
+ ========================================================================= */
 
 .overview-card__body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
-  position: relative;
-  z-index: 1;
-  flex: 1;
-  justify-content: center;
+ display: flex;
+ flex-direction: column;
+ gap: 0.375rem;
+ position: relative;
+ z-index: 1;
+ flex: 1;
+ justify-content: center;
 }
 
 .overview-card__value {
-  font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
-  font-size: 1.625rem;
-  font-weight: 800;
-  color: #071A34;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
+ font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
+ font-size: 1.625rem;
+ font-weight: 800;
+ color: #071A34;
+ line-height: 1.15;
+ letter-spacing: -0.02em;
 }
 
 /* =========================================================================
-   Variant: proyek-aktif — Trend
-   ========================================================================= */
+ Variant: proyek-aktif — Trend
+ ========================================================================= */
 
 .overview-card__trend {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-size: 0.75rem;
-  font-weight: 600;
+ display: flex;
+ align-items: center;
+ gap: 0.3rem;
+ font-size: 0.75rem;
+ font-weight: 600;
 }
 
 .overview-card__trend--up { color: #10B981; }
 .overview-card__trend--down { color: #EF4444; }
 
 /* =========================================================================
-   Variant: aset-terinspeksi — Progress bar
-   ========================================================================= */
+ Variant: aset-terinspeksi — Progress bar
+ ========================================================================= */
 
 .overview-card__progress {
-  display: flex;
-  flex-direction: column;
-  gap: 0.375rem;
+ display: flex;
+ flex-direction: column;
+ gap: 0.375rem;
 }
 
 .overview-card__progress-bar {
-  width: 100%;
-  height: 6px;
-  border-radius: 6px;
-  background: rgba(16, 109, 255, 0.07);
-  overflow: hidden;
+ width: 100%;
+ height: 6px;
+ border-radius: 6px;
+ background: rgba(16, 109, 255, 0.07);
+ overflow: hidden;
 }
 
 .overview-card__progress-fill {
-  height: 100%;
-  border-radius: 6px;
-  background: linear-gradient(90deg, #00BFEA, #106DFF);
-  transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 0 6px rgba(0, 191, 234, 0.3);
+ height: 100%;
+ border-radius: 6px;
+ background: linear-gradient(90deg, #00BFEA, #106DFF);
+ transition: width 600ms cubic-bezier(0.4, 0, 0.2, 1);
+ box-shadow: 0 0 6px rgba(0, 191, 234, 0.3);
 }
 
 .overview-card__progress-text {
-  font-size: 0.6875rem;
-  color: #58708E;
-  font-weight: 500;
+ font-size: 0.6875rem;
+ color: #58708E;
+ font-weight: 500;
 }
 
 /* =========================================================================
-   Variant: budget — Horizontal layout (info left, donut right)
-   ========================================================================= */
+ Variant: budget — Horizontal layout (info left, donut right)
+ ========================================================================= */
 
 .overview-card__budget-layout {
-  display: flex;
-  align-items: center;
-  gap: 0.625rem;
-  position: relative;
-  z-index: 1;
-  flex: 1;
+ display: flex;
+ align-items: center;
+ gap: 0.625rem;
+ position: relative;
+ z-index: 1;
+ flex: 1;
 }
 
 .overview-card__budget-info {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-  flex: 1;
-  min-width: 0;
+ display: flex;
+ flex-direction: column;
+ gap: 0.2rem;
+ flex: 1;
+ min-width: 0;
 }
 
 .overview-card__budget-info .overview-card__value {
-  font-size: 1.375rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+ font-size: 1.375rem;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
 }
 
 .overview-card__budget-subtitle {
-  font-size: 0.6875rem;
-  color: #58708E;
-  font-weight: 500;
+ font-size: 0.6875rem;
+ color: #58708E;
+ font-weight: 500;
 }
 
 .overview-card__budget-pct {
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: #00BFEA;
+ font-size: 0.6875rem;
+ font-weight: 600;
+ color: #00BFEA;
 }
 
 .overview-card__donut-slot {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 80px;
+ flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 80px;
+ height: 80px;
 }
 
 /* =========================================================================
-   Variant: proyek-selesai — Badge
-   ========================================================================= */
+ Variant: proyek-selesai — Badge
+ ========================================================================= */
 
 .overview-card__badge {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.25rem 0.625rem;
-  border-radius: 16px;
-  background: rgba(16, 185, 129, 0.08);
-  color: #10B981;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  width: fit-content;
-  border: 1px solid rgba(16, 185, 129, 0.15);
+ display: inline-flex;
+ align-items: center;
+ padding: 0.25rem 0.625rem;
+ border-radius: 16px;
+ background: rgba(16, 185, 129, 0.08);
+ color: #10B981;
+ font-size: 0.6875rem;
+ font-weight: 600;
+ width: fit-content;
+ border: 1px solid rgba(16, 185, 129, 0.15);
 }
 
 /* =========================================================================
-   Chart Skeleton
-   ========================================================================= */
+ Chart Skeleton
+ ========================================================================= */
 
 @keyframes chart-skeleton-pulse {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 0.7; }
+ 0%, 100% { opacity: 0.4; }
+ 50% { opacity: 0.7; }
 }
 
 .chart-skeleton {
-  animation: chart-skeleton-pulse 1.5s ease-in-out infinite;
+ animation: chart-skeleton-pulse 1.5s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .chart-skeleton { animation: none; opacity: 0.5; }
+ .chart-skeleton { animation: none; opacity: 0.5; }
 }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ padding: 0;
+ margin: -1px;
+ overflow: hidden;
+ clip: rect(0, 0, 0, 0);
+ white-space: nowrap;
+ border-width: 0;
 }
 
 /* =========================================================================
-   Mobile refinements
-   ========================================================================= */
+ Mobile refinements
+ ========================================================================= */
 
 @media (max-width: 767px) {
-  .overview-card {
-    padding: 1rem 1.125rem;
-    border-radius: 16px;
-  }
+ .overview-card {
+ padding: 1rem 1.125rem;
+ border-radius: 16px;
+ }
 
-  .overview-card__icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 9px;
-  }
+ .overview-card__icon {
+ width: 32px;
+ height: 32px;
+ border-radius: 9px;
+ }
 
-  .overview-card__icon svg {
-    width: 16px;
-    height: 16px;
-  }
+ .overview-card__icon svg {
+ width: 16px;
+ height: 16px;
+ }
 
-  .overview-card__header {
-    margin-bottom: 0.625rem;
-    gap: 0.5rem;
-  }
+ .overview-card__header {
+ margin-bottom: 0.625rem;
+ gap: 0.5rem;
+ }
 
-  .overview-card__label {
-    font-size: 0.625rem;
-  }
+ .overview-card__label {
+ font-size: 0.625rem;
+ }
 
-  .overview-card__value {
-    font-size: 1.375rem;
-  }
+ .overview-card__value {
+ font-size: 1.375rem;
+ }
 
-  .overview-card__budget-info .overview-card__value {
-    font-size: 1.125rem;
-  }
+ .overview-card__budget-info .overview-card__value {
+ font-size: 1.125rem;
+ }
 
-  .overview-card__donut-slot {
-    width: 72px;
-    height: 72px;
-  }
+ .overview-card__donut-slot {
+ width: 72px;
+ height: 72px;
+ }
 }

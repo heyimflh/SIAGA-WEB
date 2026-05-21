@@ -1,0 +1,670 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+ JobRadar Dark Theme Override
+ 
+ PURPOSE: Fix dark theme leak caused by landing page's JobRadar.css
+ which uses unscoped selectors (.radar-sidebar, .radar-card, etc.)
+ that bleed into this protected page.
+ 
+ SCOPE: .job-radar-page only — does NOT affect landing page Job Radar preview.
+ ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── CSS Variables for Job Radar Dark Theme ── */
+.job-radar-page {
+ --jr-bg: #020B16;
+ --jr-panel: rgba(5, 22, 38, 0.95);
+ --jr-panel-soft: rgba(8, 31, 52, 0.85);
+ --jr-border: rgba(0, 212, 255, 0.18);
+ --jr-text: #eaf7ff;
+ --jr-muted: #8faabd;
+ --jr-accent: #00d4ff;
+}
+
+/* ══════════════════════════════════════════════════════
+ SIDEBAR — Override landing page's white .radar-sidebar
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .radar-sidebar {
+ background: #051527 !important;
+ background: linear-gradient(180deg, rgba(8, 39, 71, 0.98), rgba(3, 18, 38, 0.99)) !important;
+ border: none !important;
+ border-right: 1px solid rgba(120, 190, 255, 0.24) !important;
+ border-radius: 0 !important;
+ box-shadow: 28px 0 90px rgba(0, 14, 35, 0.42) !important;
+ color: rgba(245, 252, 255, 0.96) !important;
+ position: relative !important;
+ left: auto !important;
+ top: auto !important;
+ bottom: auto !important;
+ width: 360px !important;
+ height: 100vh !important;
+ opacity: 1 !important;
+ transform: none !important;
+ overflow: visible !important;
+}
+
+/* Override sidebar header */
+.job-radar-page .radar-sidebar__header {
+ border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.job-radar-page .radar-sidebar__title {
+ color: #ffffff !important;
+}
+
+.job-radar-page .radar-sidebar__meta {
+ color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.job-radar-page .radar-sidebar__icon-wrap {
+ background: rgba(0, 210, 255, 0.12) !important;
+ border-color: rgba(0, 210, 255, 0.28) !important;
+ color: #00D2FF !important;
+}
+
+.job-radar-page .radar-sidebar__icon-ping {
+ border-color: rgba(8, 18, 35, 0.9) !important;
+}
+
+.job-radar-page .radar-sidebar__reset {
+ border-color: rgba(255, 255, 255, 0.1) !important;
+ color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.job-radar-page .radar-sidebar__reset:hover {
+ background: rgba(0, 210, 255, 0.1) !important;
+ border-color: rgba(0, 210, 255, 0.3) !important;
+ color: var(--jr-accent) !important;
+}
+
+/* ── Sidebar Filters ── */
+.job-radar-page .radar-sidebar__filters {
+ border-bottom-color: rgba(255, 255, 255, 0.06) !important;
+}
+
+.job-radar-page .radar-filter {
+ color: rgba(200, 225, 255, 0.75) !important;
+ background: rgba(255, 255, 255, 0.05) !important;
+ border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.job-radar-page .radar-filter:hover {
+ background: rgba(0, 210, 255, 0.08) !important;
+ border-color: rgba(0, 210, 255, 0.28) !important;
+ color: rgba(230, 245, 255, 0.9) !important;
+}
+
+.job-radar-page .radar-filter--active {
+ background: rgba(0, 210, 255, 0.14) !important;
+ border-color: rgba(0, 210, 255, 0.45) !important;
+ color: #00D2FF !important;
+}
+
+.job-radar-page .radar-filter__badge {
+ background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.job-radar-page .radar-filter--active .radar-filter__badge {
+ background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* ── Sidebar List / Scrollbar ── */
+.job-radar-page .radar-sidebar__list::-webkit-scrollbar-thumb {
+ background: rgba(0, 210, 255, 0.2) !important;
+}
+
+.job-radar-page .radar-sidebar__list::-webkit-scrollbar-thumb:hover {
+ background: rgba(0, 210, 255, 0.35) !important;
+}
+
+/* ── Sidebar Footer ── */
+.job-radar-page .radar-sidebar__footer {
+ border-top-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ RADAR CARDS — Override landing page's light .radar-card
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .radar-card {
+ background: transparent !important;
+ border-color: transparent !important;
+}
+
+.job-radar-page .radar-card:hover {
+ background: rgba(0, 210, 255, 0.06) !important;
+ border-color: rgba(0, 210, 255, 0.12) !important;
+ box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.job-radar-page .radar-card--selected {
+ background: rgba(0, 98, 214, 0.1) !important;
+ border-color: rgba(0, 210, 255, 0.2) !important;
+ box-shadow: 0 4px 16px rgba(0, 98, 214, 0.15) !important;
+}
+
+.job-radar-page .radar-card__title {
+ color: #ffffff !important;
+}
+
+.job-radar-page .radar-card__location {
+ color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.job-radar-page .radar-card__location svg {
+ color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.job-radar-page .radar-card__time {
+ color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.job-radar-page .radar-card__budget {
+ color: #00D2FF !important;
+}
+
+.job-radar-page .radar-card__deadline {
+ color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.job-radar-page .radar-card__deadline svg {
+ color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.job-radar-page .radar-card__arrow {
+ color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.job-radar-page .radar-card:hover .radar-card__arrow,
+.job-radar-page .radar-card--selected .radar-card__arrow {
+ color: #00D2FF !important;
+}
+
+.job-radar-page .radar-card__badge--active {
+ background: rgba(0, 210, 255, 0.12) !important;
+ color: #00D2FF !important;
+ border-color: rgba(0, 210, 255, 0.2) !important;
+}
+
+.job-radar-page .radar-card__badge--urgent {
+ background: rgba(245, 158, 11, 0.12) !important;
+ color: #F59E0B !important;
+ border-color: rgba(245, 158, 11, 0.2) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ MISSION CARD — Ensure dark background
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .mission-card {
+ background: rgba(10, 30, 55, 0.8) !important;
+}
+
+.job-radar-page .mission-card:hover,
+.job-radar-page .mission-card--hovered {
+ background: rgba(10, 35, 65, 0.9) !important;
+}
+
+.job-radar-page .mission-card--highlighted {
+ background: rgba(0, 210, 255, 0.1) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ SORT CONTROL / SELECT — Dark theme
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .sort-control {
+ background: rgba(255, 255, 255, 0.05) !important;
+ border-color: rgba(255, 255, 255, 0.08) !important;
+ color: rgba(200, 225, 255, 0.7) !important;
+}
+
+.job-radar-page .sort-control__select {
+ background: transparent !important;
+ color: rgba(220, 240, 255, 0.85) !important;
+}
+
+.job-radar-page .sort-control__select option {
+ background: #061A33 !important;
+ color: rgba(245, 252, 255, 0.96) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ PROJECT LIST — Count and header
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .project-list__count {
+ color: rgba(180, 215, 255, 0.6) !important;
+}
+
+.job-radar-page .project-list__header {
+ border-bottom-color: rgba(120, 190, 255, 0.08) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ FLOATING STATS BAR — Override any light leak
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .floating-stats {
+ background: transparent !important;
+}
+
+.job-radar-page .floating-stat-card {
+ background: rgba(8, 18, 35, 0.92) !important;
+ border-color: rgba(0, 180, 216, 0.15) !important;
+ box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.job-radar-page .floating-stat-card__value {
+ color: #ffffff !important;
+}
+
+.job-radar-page .floating-stat-card__label {
+ color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ LIVE ALERT CARD — Override light theme
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .live-alert-card {
+ background: rgba(8, 18, 35, 0.92) !important;
+ border-color: rgba(0, 180, 216, 0.15) !important;
+ box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+.job-radar-page .live-alert-card__header {
+ border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.job-radar-page .live-alert-card__header-left {
+ color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.job-radar-page .live-alert-card__counter {
+ color: rgba(255, 255, 255, 0.5) !important;
+ background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.job-radar-page .live-alert-card__message {
+ color: #ffffff !important;
+}
+
+.job-radar-page .live-alert-card__time {
+ color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.job-radar-page .live-alert-card__progress {
+ background: rgba(255, 255, 255, 0.06) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ POPUP — Override landing page's light .job-radar__popup
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .job-radar__popup {
+ background: rgba(8, 18, 35, 0.95) !important;
+ border-color: rgba(0, 180, 216, 0.2) !important;
+ box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5) !important;
+}
+
+.job-radar-page .popup__title {
+ color: #ffffff !important;
+}
+
+.job-radar-page .popup__location {
+ color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.job-radar-page .popup__grid {
+ background: rgba(255, 255, 255, 0.04) !important;
+ border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.job-radar-page .popup__grid-label {
+ color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.job-radar-page .popup__grid-value {
+ color: #ffffff !important;
+}
+
+.job-radar-page .popup__grid-value--blue {
+ color: #00D2FF !important;
+}
+
+.job-radar-page .popup__close {
+ border-color: rgba(255, 255, 255, 0.1) !important;
+ color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.job-radar-page .popup__time {
+ color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ BOTTOM STATUS BAR — Override light theme
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .bottom-status-bar {
+ background: rgba(8, 18, 35, 0.92) !important;
+ border-color: rgba(0, 180, 216, 0.12) !important;
+ box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+.job-radar-page .bottom-status-bar__label {
+ color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.job-radar-page .bottom-status-bar__value {
+ color: #ffffff !important;
+}
+
+.job-radar-page .bottom-status-bar__value--blue {
+ color: #00D2FF !important;
+}
+
+.job-radar-page .bottom-status-bar__value--mono {
+ color: #00D2FF !important;
+}
+
+.job-radar-page .bottom-status-bar__sep {
+ background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ LIVE BADGE — Override light theme
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .job-radar__live-badge {
+ background: rgba(10, 20, 40, 0.88) !important;
+ border-color: rgba(0, 180, 216, 0.2) !important;
+ box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.job-radar-page .live-badge__time {
+ color: rgba(255, 255, 255, 0.6) !important;
+ border-left-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ MAPBOX CONTROLS — Dark override
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .mapboxgl-ctrl-group {
+ background: rgba(8, 18, 35, 0.88) !important;
+ border-color: rgba(0, 180, 216, 0.15) !important;
+ box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+.job-radar-page .mapboxgl-ctrl-group button:hover {
+ background: rgba(0, 180, 216, 0.1) !important;
+}
+
+/* ══════════════════════════════════════════════════════
+ GLOBE MARKER — Override light theme dot border
+ ══════════════════════════════════════════════════════ */
+
+.job-radar-page .globe-marker__dot {
+ border-color: rgba(8, 18, 35, 0.9) !important;
+}
+
+/* ==========================================================================
+ Protected Job Radar dark mission-control surface
+ Scope stays on /dashboard/pilot/job-radar via the page root class.
+ ========================================================================== */
+
+.job-radar-protected {
+ --jr-bg: #031525;
+ --jr-panel: rgba(5, 22, 38, 0.92);
+ --jr-panel-strong: rgba(4, 17, 31, 0.96);
+ --jr-panel-soft: rgba(8, 31, 52, 0.78);
+ --jr-border: rgba(0, 212, 255, 0.2);
+ --jr-border-strong: rgba(0, 212, 255, 0.32);
+ --jr-text: #eaf7ff;
+ --jr-muted: #8faabd;
+ --jr-accent: #00d4ff;
+ --jr-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+ background: var(--jr-bg);
+ color: var(--jr-text);
+ color-scheme: dark;
+ overflow: hidden;
+}
+
+.job-radar-protected *,
+.job-radar-protected *::before,
+.job-radar-protected *::after {
+ box-sizing: border-box;
+}
+
+.job-radar-protected .radar-sidebar,
+.job-radar-protected .filter-section,
+.job-radar-protected .sidebar-header,
+.job-radar-protected .project-list__header,
+.job-radar-protected .mission-card,
+.job-radar-protected .sort-control,
+.job-radar-protected .radar-hud,
+.job-radar-protected .pin-popup__card,
+.job-radar-protected .detail-drawer,
+.job-radar-protected .mobile-bottom-sheet {
+ background: var(--jr-panel) !important;
+ color: var(--jr-text) !important;
+ border: 1px solid var(--jr-border) !important;
+ box-shadow: var(--jr-shadow) !important;
+ backdrop-filter: blur(18px) saturate(1.15) !important;
+ -webkit-backdrop-filter: blur(18px) saturate(1.15) !important;
+}
+
+.job-radar-protected .radar-sidebar {
+ background:
+ radial-gradient(circle at 18% 0%, rgba(0, 212, 255, 0.14), transparent 34%),
+ linear-gradient(180deg, rgba(5, 22, 38, 0.96), rgba(3, 15, 27, 0.98)) !important;
+ border-top: none !important;
+ border-bottom: none !important;
+ border-left: none !important;
+ border-radius: 0 !important;
+}
+
+.job-radar-protected .filter-section,
+.job-radar-protected .sidebar-header {
+ padding: 16px !important;
+ border-radius: 18px !important;
+}
+
+.job-radar-protected .project-list__header {
+ padding: 10px 12px !important;
+ border-radius: 14px !important;
+ border-bottom: 1px solid var(--jr-border) !important;
+}
+
+.job-radar-protected .project-list__count,
+.job-radar-protected .filter-section__label,
+.job-radar-protected .sidebar-header__subtitle,
+.job-radar-protected .sidebar-header__helper,
+.job-radar-protected .value-range__title,
+.job-radar-protected .mission-card__location,
+.job-radar-protected .mission-card__meta-item,
+.job-radar-protected .pin-popup__location,
+.job-radar-protected .pin-popup__meta-item,
+.job-radar-protected .detail-drawer__info-row,
+.job-radar-protected .detail-drawer__stat-label,
+.job-radar-protected .detail-drawer__desc-text,
+.job-radar-protected .radar-hud__subtitle,
+.job-radar-protected .radar-hud__stat-label {
+ color: var(--jr-muted) !important;
+}
+
+.job-radar-protected .sidebar-header__title,
+.job-radar-protected .mission-card__name,
+.job-radar-protected .pin-popup__name,
+.job-radar-protected .detail-drawer__name,
+.job-radar-protected .detail-drawer__stat-value,
+.job-radar-protected .radar-hud__title,
+.job-radar-protected .radar-hud__stat-value,
+.job-radar-protected .mobile-bottom-sheet__title,
+.job-radar-protected .mobile-bottom-sheet__count {
+ color: var(--jr-text) !important;
+}
+
+.job-radar-protected .sidebar-header__icon,
+.job-radar-protected .sidebar-header__badge,
+.job-radar-protected .filter-section__reset,
+.job-radar-protected .infra-chip--active,
+.job-radar-protected .status-toggle__option--active,
+.job-radar-protected .radar-hud__live,
+.job-radar-protected .radar-hud__filter-badge,
+.job-radar-protected .mobile-bottom-sheet__badge {
+ background: rgba(0, 212, 255, 0.12) !important;
+ border-color: var(--jr-border-strong) !important;
+ color: var(--jr-accent) !important;
+}
+
+.job-radar-protected .infra-chip,
+.job-radar-protected .location-search__input,
+.job-radar-protected .status-toggle,
+.job-radar-protected .mission-card__infra,
+.job-radar-protected .mission-card__btn--detail,
+.job-radar-protected .pin-popup__infra,
+.job-radar-protected .pin-popup__btn--detail,
+.job-radar-protected .detail-drawer__infra,
+.job-radar-protected .detail-drawer__stat-card,
+.job-radar-protected .detail-drawer__close,
+.job-radar-protected .detail-drawer__close-btn,
+.job-radar-protected .radar-sidebar__toggle,
+.job-radar-protected .job-radar-page__sidebar-toggle {
+ background: var(--jr-panel-soft) !important;
+ color: var(--jr-text) !important;
+ border: 1px solid var(--jr-border) !important;
+}
+
+.job-radar-protected .infra-chip:hover,
+.job-radar-protected .location-search__input:focus,
+.job-radar-protected .status-toggle__option:hover,
+.job-radar-protected .mission-card:hover,
+.job-radar-protected .mission-card--hovered,
+.job-radar-protected .mission-card__btn--detail:hover,
+.job-radar-protected .pin-popup__btn--detail:hover,
+.job-radar-protected .detail-drawer__close-btn:hover {
+ background: rgba(0, 212, 255, 0.1) !important;
+ border-color: var(--jr-border-strong) !important;
+ color: var(--jr-text) !important;
+}
+
+.job-radar-protected .mission-card {
+ border-radius: 16px !important;
+}
+
+.job-radar-protected .mission-card--highlighted {
+ background: rgba(0, 212, 255, 0.14) !important;
+ border-color: rgba(0, 212, 255, 0.48) !important;
+}
+
+.job-radar-protected .mission-card__value,
+.job-radar-protected .pin-popup__value,
+.job-radar-protected .detail-drawer__stat-value--cyan,
+.job-radar-protected .value-range__display,
+.job-radar-protected .sidebar-header__count,
+.job-radar-protected .radar-hud__live-text {
+ color: var(--jr-accent) !important;
+}
+
+.job-radar-protected .sort-control {
+ min-width: 148px;
+ padding: 7px 12px !important;
+ border-radius: 12px !important;
+}
+
+.job-radar-protected .sort-control__select,
+.job-radar-protected select {
+ background: transparent !important;
+ color: var(--jr-text) !important;
+ border: 0 !important;
+ color-scheme: dark;
+}
+
+.job-radar-protected .sort-control__select option,
+.job-radar-protected select option {
+ background: #061a33 !important;
+ color: var(--jr-text) !important;
+}
+
+.job-radar-protected .location-search__input::placeholder {
+ color: rgba(143, 170, 189, 0.72) !important;
+}
+
+.job-radar-protected .location-search__suggestions {
+ background: var(--jr-panel-strong) !important;
+ color: var(--jr-text) !important;
+ border: 1px solid var(--jr-border-strong) !important;
+ box-shadow: 0 18px 48px rgba(0, 0, 0, 0.45) !important;
+}
+
+.job-radar-protected .location-search__option {
+ color: var(--jr-text) !important;
+}
+
+.job-radar-protected .location-search__option:hover {
+ background: rgba(0, 212, 255, 0.12) !important;
+ color: var(--jr-accent) !important;
+}
+
+.job-radar-protected .value-range__slider {
+ background: rgba(143, 170, 189, 0.18) !important;
+ accent-color: var(--jr-accent);
+}
+
+.job-radar-protected .status-toggle__option {
+ color: var(--jr-muted) !important;
+}
+
+.job-radar-protected .pin-popup__card,
+.job-radar-protected .detail-drawer {
+ background: linear-gradient(180deg, rgba(6, 24, 42, 0.98), rgba(3, 15, 27, 0.98)) !important;
+}
+
+.job-radar-protected .detail-drawer-overlay,
+.job-radar-protected .radar-sidebar-overlay-backdrop {
+ background: rgba(0, 8, 18, 0.58) !important;
+}
+
+.job-radar-protected .pin-popup__close,
+.job-radar-protected .detail-drawer__close,
+.job-radar-protected .job-radar-toast__close {
+ background: rgba(8, 31, 52, 0.84) !important;
+ color: var(--jr-muted) !important;
+ border: 1px solid var(--jr-border) !important;
+}
+
+.job-radar-protected .pin-popup__close:hover,
+.job-radar-protected .detail-drawer__close:hover,
+.job-radar-protected .job-radar-toast__close:hover {
+ color: var(--jr-text) !important;
+ border-color: var(--jr-border-strong) !important;
+}
+
+.job-radar-protected .job-radar-toast__card {
+ background: rgba(5, 22, 38, 0.95) !important;
+ color: var(--jr-text) !important;
+ border: 1px solid rgba(0, 212, 255, 0.24) !important;
+ box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45) !important;
+}
+
+.job-radar-protected .mapboxgl-ctrl-group {
+ background: var(--jr-panel) !important;
+ border: 1px solid var(--jr-border) !important;
+}
+
+.job-radar-protected .mapboxgl-ctrl-group button:hover {
+ background: rgba(0, 212, 255, 0.12) !important;
+}
+
+@media (max-width: 767px) {
+ .job-radar-protected .filter-section,
+ .job-radar-protected .sidebar-header,
+ .job-radar-protected .project-list__header {
+ margin-inline: 12px;
+ }
+
+ .job-radar-protected .mission-card {
+ border-radius: 14px !important;
+ }
+}

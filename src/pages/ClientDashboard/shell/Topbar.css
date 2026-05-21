@@ -6,187 +6,187 @@
  */
 
 /* ============================================================
-   TOPBAR CONTAINER
-   ============================================================ */
+ TOPBAR CONTAINER
+ ============================================================ */
 .topbar {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  gap: 1rem;
+ display: flex;
+ align-items: center;
+ width: 100%;
+ height: 100%;
+ gap: 1rem;
 }
 
 /* ============================================================
-   HAMBURGER (mobile only, <768px)
-   ============================================================ */
+ HAMBURGER (mobile only, <768px)
+ ============================================================ */
 .topbar__hamburger {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: rgba(16, 109, 255, 0.05);
-  cursor: pointer;
-  border-radius: 12px;
-  color: var(--color-primary, #071A34);
-  transition: background 0.2s ease, transform 0.15s ease;
-  flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 40px;
+ height: 40px;
+ border: none;
+ background: rgba(16, 109, 255, 0.05);
+ cursor: pointer;
+ border-radius: 12px;
+ color: var(--color-primary, #071A34);
+ transition: background 0.2s ease, transform 0.15s ease;
+ flex-shrink: 0;
 }
 
 .topbar__hamburger:hover {
-  background: rgba(16, 109, 255, 0.1);
-  transform: scale(1.04);
+ background: rgba(16, 109, 255, 0.1);
+ transform: scale(1.04);
 }
 
 .topbar__hamburger:focus-visible {
-  outline: 2px solid var(--color-accent, #106DFF);
-  outline-offset: 2px;
+ outline: 2px solid var(--color-accent, #106DFF);
+ outline-offset: 2px;
 }
 
 /* ============================================================
-   GREETING BLOCK — Compact in topbar
-   ============================================================ */
+ GREETING BLOCK — Compact in topbar
+ ============================================================ */
 .topbar__greeting {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 0;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ min-width: 0;
 }
 
 .topbar__greeting-title {
-  font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--color-primary, #071A34);
-  margin: 0;
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  letter-spacing: -0.01em;
+ font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
+ font-size: 1rem;
+ font-weight: 700;
+ color: var(--color-primary, #071A34);
+ margin: 0;
+ line-height: 1.3;
+ white-space: nowrap;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ letter-spacing: -0.01em;
 }
 
 .topbar__greeting-date {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.75rem;
-  color: var(--text-secondary, #58708E);
-  line-height: 1.4;
-  margin-top: 0.1rem;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.75rem;
+ color: var(--text-secondary, #58708E);
+ line-height: 1.4;
+ margin-top: 0.1rem;
 }
 
 /* ============================================================
-   SPACER
-   ============================================================ */
+ SPACER
+ ============================================================ */
 .topbar__spacer {
-  flex: 1;
+ flex: 1;
 }
 
 /* ============================================================
-   NOTIFICATION BELL
-   ============================================================ */
+ NOTIFICATION BELL
+ ============================================================ */
 .topbar__notification {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: rgba(16, 109, 255, 0.04);
-  cursor: pointer;
-  border-radius: 12px;
-  color: var(--color-primary, #071A34);
-  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-  flex-shrink: 0;
+ position: relative;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 40px;
+ height: 40px;
+ border: none;
+ background: rgba(16, 109, 255, 0.04);
+ cursor: pointer;
+ border-radius: 12px;
+ color: var(--color-primary, #071A34);
+ transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+ flex-shrink: 0;
 }
 
 .topbar__notification:hover {
-  background: rgba(16, 109, 255, 0.09);
-  transform: scale(1.06);
-  box-shadow: 0 4px 14px rgba(16, 109, 255, 0.08);
+ background: rgba(16, 109, 255, 0.09);
+ transform: scale(1.06);
+ box-shadow: 0 4px 14px rgba(16, 109, 255, 0.08);
 }
 
 .topbar__notification:focus-visible {
-  outline: 2px solid var(--color-accent, #106DFF);
-  outline-offset: 2px;
+ outline: 2px solid var(--color-accent, #106DFF);
+ outline-offset: 2px;
 }
 
 /* Badge */
 .topbar__notification-badge {
-  position: absolute;
-  top: 3px;
-  right: 3px;
-  min-width: 17px;
-  height: 17px;
-  padding: 0 4px;
-  border-radius: 9px;
-  background: linear-gradient(135deg, #EF4444, #DC2626);
-  color: #fff;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.625rem;
-  font-weight: 700;
-  line-height: 17px;
-  text-align: center;
-  pointer-events: none;
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.35);
+ position: absolute;
+ top: 3px;
+ right: 3px;
+ min-width: 17px;
+ height: 17px;
+ padding: 0 4px;
+ border-radius: 9px;
+ background: linear-gradient(135deg, #EF4444, #DC2626);
+ color: #fff;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.625rem;
+ font-weight: 700;
+ line-height: 17px;
+ text-align: center;
+ pointer-events: none;
+ box-shadow: 0 2px 8px rgba(239, 68, 68, 0.35);
 }
 
 /* ============================================================
-   PROFILE BUTTON
-   ============================================================ */
+ PROFILE BUTTON
+ ============================================================ */
 .topbar__profile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: 1.5px solid rgba(16, 109, 255, 0.1);
-  background: linear-gradient(135deg, rgba(16, 109, 255, 0.06), rgba(0, 191, 234, 0.06));
-  cursor: pointer;
-  border-radius: 50%;
-  color: var(--color-primary, #071A34);
-  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-  flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 40px;
+ height: 40px;
+ border: 1.5px solid rgba(16, 109, 255, 0.1);
+ background: linear-gradient(135deg, rgba(16, 109, 255, 0.06), rgba(0, 191, 234, 0.06));
+ cursor: pointer;
+ border-radius: 50%;
+ color: var(--color-primary, #071A34);
+ transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+ flex-shrink: 0;
 }
 
 .topbar__profile:hover {
-  background: linear-gradient(135deg, rgba(16, 109, 255, 0.12), rgba(0, 191, 234, 0.12));
-  transform: scale(1.06);
-  box-shadow: 0 4px 16px rgba(16, 109, 255, 0.1);
+ background: linear-gradient(135deg, rgba(16, 109, 255, 0.12), rgba(0, 191, 234, 0.12));
+ transform: scale(1.06);
+ box-shadow: 0 4px 16px rgba(16, 109, 255, 0.1);
 }
 
 .topbar__profile:focus-visible {
-  outline: 2px solid var(--color-accent, #106DFF);
-  outline-offset: 2px;
+ outline: 2px solid var(--color-accent, #106DFF);
+ outline-offset: 2px;
 }
 
 /* ============================================================
-   RESPONSIVE — Mobile adjustments
-   ============================================================ */
+ RESPONSIVE — Mobile adjustments
+ ============================================================ */
 @media (max-width: 767px) {
-  .topbar__greeting-title {
-    font-size: 0.875rem;
-  }
+ .topbar__greeting-title {
+ font-size: 0.875rem;
+ }
 
-  .topbar__greeting-date {
-    font-size: 0.6875rem;
-  }
+ .topbar__greeting-date {
+ font-size: 0.6875rem;
+ }
 
-  .topbar__notification,
-  .topbar__profile {
-    width: 36px;
-    height: 36px;
-  }
+ .topbar__notification,
+ .topbar__profile {
+ width: 36px;
+ height: 36px;
+ }
 }
 
 /* ============================================================
-   REDUCED MOTION
-   ============================================================ */
+ REDUCED MOTION
+ ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .topbar__hamburger,
-  .topbar__notification,
-  .topbar__profile {
-    transition: none;
-  }
+ .topbar__hamburger,
+ .topbar__notification,
+ .topbar__profile {
+ transition: none;
+ }
 }

@@ -7,16 +7,16 @@
 /* Report mockup */
 .srp__mockup { display: flex; justify-content: center; }
 .srp__page {
-  width: 100%; max-width: 360px; background: #fff;
-  border: 1px solid rgba(10,37,64,0.08); border-radius: 12px;
-  padding: 2rem 1.5rem; box-shadow: 0 8px 40px rgba(10,37,64,0.08);
+ width: 100%; max-width: 360px; background: #fff;
+ border: 1px solid rgba(10,37,64,0.08); border-radius: 12px;
+ padding: 2rem 1.5rem; box-shadow: 0 8px 40px rgba(10,37,64,0.08);
 }
 .srp__page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
 .srp__page-logo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.9rem; color: #031525; }
 .srp__page-badge {
-  font-family: 'Inter', sans-serif; font-size: 0.55rem; font-weight: 700;
-  letter-spacing: 0.1em; color: #0B7CFF; background: rgba(11,124,255,0.08);
-  padding: 0.2rem 0.5rem; border-radius: 4px;
+ font-family: 'Inter', sans-serif; font-size: 0.55rem; font-weight: 700;
+ letter-spacing: 0.1em; color: #0B7CFF; background: rgba(11,124,255,0.08);
+ padding: 0.2rem 0.5rem; border-radius: 4px;
 }
 .srp__page-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.1rem; color: #071A2E; margin-bottom: 0.3rem; }
 .srp__page-meta { display: flex; gap: 1rem; font-family: 'Inter', sans-serif; font-size: 0.7rem; color: #60758A; margin-bottom: 1.25rem; }
@@ -51,28 +51,28 @@
 .srp__info { display: flex; flex-direction: column; }
 .srp__info-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.35rem; color: #071A2E; margin: 0 0 1.25rem; }
 .srp__info-list {
-  list-style: none; padding: 0; margin: 0 0 2rem;
-  display: flex; flex-direction: column; gap: 0.6rem;
+ list-style: none; padding: 0; margin: 0 0 2rem;
+ display: flex; flex-direction: column; gap: 0.6rem;
 }
 .srp__info-list li {
-  display: flex; align-items: center; gap: 0.6rem;
-  font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #071A2E;
+ display: flex; align-items: center; gap: 0.6rem;
+ font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #071A2E;
 }
 .srp__info-list li::before {
-  content: ''; width: 6px; height: 6px; border-radius: 50%; background: #00D4FF; flex-shrink: 0;
+ content: ''; width: 6px; height: 6px; border-radius: 50%; background: #00D4FF; flex-shrink: 0;
 }
 
 .srp__info-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; }
 .srp__info-cta {
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700;
-  text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 999px;
-  transition: transform 0.2s, box-shadow 0.2s; min-height: 44px;
+ display: inline-flex; align-items: center; justify-content: center;
+ font-family: 'Inter', sans-serif; font-size: 0.85rem; font-weight: 700;
+ text-decoration: none; padding: 0.8rem 1.5rem; border-radius: 999px;
+ transition: transform 0.2s, box-shadow 0.2s; min-height: 44px;
 }
 .srp__info-cta:focus-visible { outline: 2px solid #00D4FF; outline-offset: 3px; }
 .srp__info-cta--primary {
-  background: linear-gradient(135deg, #00D4FF, #0B7CFF); color: #fff;
-  box-shadow: 0 6px 24px rgba(0,212,255,0.25);
+ background: linear-gradient(135deg, #00D4FF, #0B7CFF); color: #fff;
+ box-shadow: 0 6px 24px rgba(0,212,255,0.25);
 }
 .srp__info-cta--primary:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,212,255,0.35); }
 .srp__info-cta--secondary { background: #071A2E; color: #fff; }

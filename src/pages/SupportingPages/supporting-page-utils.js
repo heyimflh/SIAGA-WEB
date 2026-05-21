@@ -9,7 +9,7 @@
  * @returns {boolean}
  */
 export function validateCommissionSplit(platformPercent, pilotPercent) {
-  return platformPercent + pilotPercent === 100;
+ return platformPercent + pilotPercent === 100;
 }
 
 /**
@@ -18,7 +18,7 @@ export function validateCommissionSplit(platformPercent, pilotPercent) {
  * @returns {string}
  */
 export function getFAQPanelId(faqId) {
-  return `${faqId}-panel`;
+ return `${faqId}-panel`;
 }
 
 /**
@@ -27,5 +27,5 @@ export function getFAQPanelId(faqId) {
  * @returns {string}
  */
 export function getFAQButtonId(faqId) {
-  return `${faqId}-button`;
+ return `${faqId}-button`;
 }

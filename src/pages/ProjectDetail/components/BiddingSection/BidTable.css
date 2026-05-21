@@ -1,56 +1,56 @@
 .pd-bid-table-wrapper {
-  overflow-x: auto;
-  border-radius: 16px;
-  border: 1px solid rgba(180,220,245,0.3);
+ overflow-x: auto;
+ border-radius: 16px;
+ border: 1px solid rgba(180,220,245,0.3);
 }
 .pd-bid-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
+ width: 100%;
+ border-collapse: collapse;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.85rem;
 }
 .pd-bid-table thead th {
-  padding: 14px 16px;
-  text-align: left;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #8AA0B8;
-  background: rgba(7,26,52,0.03);
-  border-bottom: 1px solid rgba(180,220,245,0.3);
+ padding: 14px 16px;
+ text-align: left;
+ font-size: 0.72rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: 0.5px;
+ color: #8AA0B8;
+ background: rgba(7,26,52,0.03);
+ border-bottom: 1px solid rgba(180,220,245,0.3);
 }
 .pd-bid-table tbody tr {
-  transition: background 0.15s;
+ transition: background 0.15s;
 }
 .pd-bid-table tbody tr:hover {
-  background: rgba(0,210,255,0.04);
+ background: rgba(0,210,255,0.04);
 }
 .pd-bid-table tbody td {
-  padding: 14px 16px;
-  border-bottom: 1px solid rgba(180,220,245,0.15);
-  color: #071A34;
-  vertical-align: middle;
+ padding: 14px 16px;
+ border-bottom: 1px solid rgba(180,220,245,0.15);
+ color: #071A34;
+ vertical-align: middle;
 }
 .pd-bid-table__pilot {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 600;
+ display: flex;
+ align-items: center;
+ gap: 10px;
+ font-weight: 600;
 }
 .pd-bid-table__avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: rgba(0,210,255,0.1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: #00D2FF;
-  flex-shrink: 0;
+ width: 32px;
+ height: 32px;
+ border-radius: 50%;
+ overflow: hidden;
+ background: rgba(0,210,255,0.1);
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ font-size: 0.75rem;
+ font-weight: 700;
+ color: #00D2FF;
+ flex-shrink: 0;
 }
 .pd-bid-table__avatar img { width: 100%; height: 100%; object-fit: cover; }
 .pd-bid-table__verified { color: #00D2FF; }
@@ -59,79 +59,79 @@
 .pd-bid-table__drone { font-size: 0.78rem; color: #58708E; max-width: 160px; }
 .pd-bid-table__actions { display: flex; gap: 6px; }
 .pd-bid-table__btn {
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: all 0.15s;
+ padding: 6px 14px;
+ border-radius: 8px;
+ font-size: 0.75rem;
+ font-weight: 600;
+ border: none;
+ cursor: pointer;
+ transition: all 0.15s;
 }
 .pd-bid-table__btn--primary {
-  background: linear-gradient(135deg, #00D2FF, #106DFF);
-  color: #fff;
+ background: linear-gradient(135deg, #00D2FF, #106DFF);
+ color: #fff;
 }
 .pd-bid-table__btn--primary:hover { box-shadow: 0 4px 16px rgba(0,210,255,0.3); }
 .pd-bid-table__btn--secondary {
-  background: rgba(7,26,52,0.06);
-  color: #071A34;
+ background: rgba(7,26,52,0.06);
+ color: #071A34;
 }
 .pd-bid-table__btn--secondary:hover { background: rgba(7,26,52,0.1); }
 .pd-bid-table__empty { color: #8AA0B8; font-size: 0.88rem; text-align: center; padding: 24px; }
 
 /* Bid Intelligence Panel styles */
 .pd-bid-intel__title {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #071A34;
-  margin: 0 0 4px;
+ font-family: 'Montserrat', sans-serif;
+ font-weight: 700;
+ font-size: 1.3rem;
+ color: #071A34;
+ margin: 0 0 4px;
 }
 .pd-bid-intel__subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.85rem;
-  color: #58708E;
-  margin: 0 0 24px;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.85rem;
+ color: #58708E;
+ margin: 0 0 24px;
 }
 .pd-bid-intel__closed {
-  font-size: 0.92rem;
-  color: #8AA0B8;
-  padding: 20px 0;
+ font-size: 0.92rem;
+ color: #8AA0B8;
+ padding: 20px 0;
 }
 .pd-bid-intel__metrics {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
-  margin-bottom: 28px;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+ gap: 12px;
+ margin-bottom: 28px;
 }
 .pd-bid-intel__metric {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 16px 12px;
-  background: rgba(0,210,255,0.04);
-  border: 1px solid rgba(0,210,255,0.12);
-  border-radius: 14px;
-  text-align: center;
-  color: #00D2FF;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 4px;
+ padding: 16px 12px;
+ background: rgba(0,210,255,0.04);
+ border: 1px solid rgba(0,210,255,0.12);
+ border-radius: 14px;
+ text-align: center;
+ color: #00D2FF;
 }
 .pd-bid-intel__metric-value {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #071A34;
+ font-family: 'Inter', sans-serif;
+ font-size: 1rem;
+ font-weight: 700;
+ color: #071A34;
 }
 .pd-bid-intel__metric-label {
-  font-size: 0.68rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.3px;
-  color: #8AA0B8;
+ font-size: 0.68rem;
+ font-weight: 600;
+ text-transform: uppercase;
+ letter-spacing: 0.3px;
+ color: #8AA0B8;
 }
 .pd-bid-intel__table-desktop { display: block; }
 .pd-bid-intel__cards-mobile { display: none; }
 @media (max-width: 768px) {
-  .pd-bid-intel__table-desktop { display: none; }
-  .pd-bid-intel__cards-mobile { display: block; }
+ .pd-bid-intel__table-desktop { display: none; }
+ .pd-bid-intel__cards-mobile { display: block; }
 }

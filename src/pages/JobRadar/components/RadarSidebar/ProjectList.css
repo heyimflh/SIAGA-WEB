@@ -1,120 +1,136 @@
 /* ══════════════════════════════════════════════════════
-   ProjectList — Mission Card List with Sort
-   Selectors match JSX classNames exactly.
-   ══════════════════════════════════════════════════════ */
+ ProjectList — Mission Card List with Sort
+ Selectors match JSX classNames exactly.
+ ══════════════════════════════════════════════════════ */
 
 .project-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-height: 0;
-  flex-shrink: 0;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ min-height: 0;
+ flex-shrink: 0;
+}
+
+.job-radar-page .project-list {
+ width: 100%;
+ max-width: none;
+ margin: 0;
+ padding: 0;
 }
 
 .project-list__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(120, 190, 255, 0.08);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 12px;
+ padding-bottom: 8px;
+ border-bottom: 1px solid rgba(120, 190, 255, 0.08);
+}
+
+.job-radar-page .project-list__header {
+ width: 100%;
+ margin: 0;
 }
 
 .project-list__count {
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(180, 215, 255, 0.6) !important;
-  white-space: nowrap;
+ font-size: 12px;
+ font-weight: 600;
+ color: rgba(180, 215, 255, 0.6) !important;
+ white-space: nowrap;
 }
 
 /* Sort Control */
 .sort-control {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  color: rgba(200, 225, 255, 0.7);
-  min-width: 140px;
-  flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ gap: 6px;
+ padding: 6px 12px;
+ background: rgba(255, 255, 255, 0.05);
+ border: 1px solid rgba(255, 255, 255, 0.08);
+ border-radius: 10px;
+ color: rgba(200, 225, 255, 0.7);
+ min-width: 140px;
+ flex-shrink: 0;
 }
 
 .sort-control__select {
-  background: transparent;
-  border: none;
-  color: rgba(220, 240, 255, 0.85);
-  font-size: 12px;
-  font-weight: 500;
-  font-family: 'Inter', sans-serif;
-  cursor: none;
-  outline: none;
-  padding: 0;
-  width: 100%;
+ background: transparent;
+ border: none;
+ color: rgba(220, 240, 255, 0.85);
+ font-size: 12px;
+ font-weight: 500;
+ font-family: 'Inter', sans-serif;
+ cursor: none;
+ outline: none;
+ padding: 0;
+ width: 100%;
 }
 
 .sort-control__select option {
-  background: #061A33;
-  color: rgba(245, 252, 255, 0.96);
+ background: #061A33;
+ color: rgba(245, 252, 255, 0.96);
 }
 
 .sort-control__select:focus-visible {
-  outline: 2px solid #00D2FF;
-  outline-offset: 2px;
-  border-radius: 4px;
+ outline: 2px solid #00D2FF;
+ outline-offset: 2px;
+ border-radius: 4px;
 }
 
 /* Items container */
 .project-list__items {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+}
+
+.job-radar-page .project-list__items {
+ width: 100%;
 }
 
 /* Empty State */
 .project-list__empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px 16px;
-  gap: 10px;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ padding: 40px 16px;
+ gap: 10px;
 }
 
 .project-list__empty-icon {
-  color: rgba(0, 210, 255, 0.3);
-  margin-bottom: 8px;
+ color: rgba(0, 210, 255, 0.3);
+ margin-bottom: 8px;
 }
 
 .project-list__empty-title {
-  font-size: 14px;
-  font-weight: 600;
-  color: rgba(245, 252, 255, 0.8) !important;
-  margin: 0;
+ font-size: 14px;
+ font-weight: 600;
+ color: rgba(245, 252, 255, 0.8) !important;
+ margin: 0;
 }
 
 .project-list__empty-subtitle {
-  font-size: 12px;
-  color: rgba(180, 215, 255, 0.5) !important;
-  margin: 0;
+ font-size: 12px;
+ color: rgba(180, 215, 255, 0.5) !important;
+ margin: 0;
 }
 
 .project-list__empty-reset {
-  margin-top: 12px;
-  padding: 9px 18px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #00D2FF;
-  background: rgba(0, 210, 255, 0.1);
-  border: 1px solid rgba(0, 210, 255, 0.25);
-  border-radius: 10px;
-  cursor: none;
-  transition: all 0.2s ease;
+ margin-top: 12px;
+ padding: 9px 18px;
+ font-size: 12px;
+ font-weight: 600;
+ color: #00D2FF;
+ background: rgba(0, 210, 255, 0.1);
+ border: 1px solid rgba(0, 210, 255, 0.25);
+ border-radius: 10px;
+ cursor: none;
+ transition: all 0.2s ease;
 }
 
 .project-list__empty-reset:hover {
-  background: rgba(0, 210, 255, 0.18);
-  border-color: rgba(0, 210, 255, 0.4);
+ background: rgba(0, 210, 255, 0.18);
+ border-color: rgba(0, 210, 255, 0.4);
 }

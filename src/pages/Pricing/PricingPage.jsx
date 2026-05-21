@@ -18,23 +18,23 @@ import './PricingPage.css';
  * Public page, no ProtectedRoute, no API calls, fully static.
  */
 export default function PricingPage() {
-  return (
-    <>
-      <Navbar />
-      <main className="pricing-page">
-        <CinematicHeroPricing />
-        <PricingTrustStrip />
-        <PricingCards />
-        <PlanRecommendationStrip />
-        <EscrowFlowConsole />
-        <FeatureComparisonTable />
-        <FAQKnowledgeBase />
-        <SecurityTrustBadges />
-        <ClosingSection>
-          <CTASectionPricing />
-          <Footer />
-        </ClosingSection>
-      </main>
-    </>
-  );
+ return (
+ <>
+ <Navbar />
+ <main className="pricing-page">
+ <CinematicHeroPricing />
+ <PricingTrustStrip />
+ <PricingCards />
+ <PlanRecommendationStrip />
+ <EscrowFlowConsole />
+ <FeatureComparisonTable />
+ <FAQKnowledgeBase />
+ <SecurityTrustBadges />
+ <ClosingSection>
+ <CTASectionPricing />
+ <Footer />
+ </ClosingSection>
+ </main>
+ </>
+ );
 }

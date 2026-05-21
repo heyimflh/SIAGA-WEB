@@ -1,60 +1,60 @@
 .pilots-toast {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 16px 22px;
-  background: rgba(255,255,255,0.96);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  border: 1px solid rgba(0, 180, 216, 0.15);
-  border-radius: 16px;
-  box-shadow:
-    0 16px 48px rgba(10, 37, 64, 0.12),
-    0 4px 12px rgba(0, 180, 216, 0.06);
-  z-index: 500;
-  animation: toastSlideIn 0.35s var(--ease-out);
+ position: fixed;
+ bottom: 24px;
+ right: 24px;
+ display: flex;
+ align-items: center;
+ gap: 12px;
+ padding: 16px 22px;
+ background: rgba(255,255,255,0.96);
+ backdrop-filter: blur(16px) saturate(160%);
+ -webkit-backdrop-filter: blur(16px) saturate(160%);
+ border: 1px solid rgba(0, 180, 216, 0.15);
+ border-radius: 16px;
+ box-shadow:
+ 0 16px 48px rgba(10, 37, 64, 0.12),
+ 0 4px 12px rgba(0, 180, 216, 0.06);
+ z-index: 500;
+ animation: toastSlideIn 0.35s var(--ease-out);
 }
 
 .pilots-toast__message {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-primary);
+ font-size: 14px;
+ font-weight: 600;
+ color: var(--text-primary);
 }
 
 .pilots-toast__close {
-  background: rgba(241, 245, 249, 0.8);
-  border: none;
-  color: var(--text-tertiary);
-  cursor: pointer;
-  padding: 6px;
-  border-radius: 8px;
-  transition: background 0.2s;
+ background: rgba(241, 245, 249, 0.8);
+ border: none;
+ color: var(--text-tertiary);
+ cursor: pointer;
+ padding: 6px;
+ border-radius: 8px;
+ transition: background 0.2s;
 }
 
 .pilots-toast__close:hover {
-  background: rgba(229, 57, 53, 0.08);
-  color: var(--color-danger);
+ background: rgba(229, 57, 53, 0.08);
+ color: var(--color-danger);
 }
 
 @keyframes toastSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(16px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+ from {
+ opacity: 0;
+ transform: translateY(16px) scale(0.95);
+ }
+ to {
+ opacity: 1;
+ transform: translateY(0) scale(1);
+ }
 }
 
 @media (max-width: 767px) {
-  .pilots-toast {
-    left: 16px;
-    right: 16px;
-    bottom: 16px;
-    justify-content: center;
-  }
+ .pilots-toast {
+ left: 16px;
+ right: 16px;
+ bottom: 16px;
+ justify-content: center;
+ }
 }

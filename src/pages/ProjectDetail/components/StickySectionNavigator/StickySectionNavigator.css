@@ -1,49 +1,49 @@
 .pd-sticky-nav {
-  position: sticky;
-  top: 12px;
-  z-index: 50;
-  margin-bottom: 32px;
+ position: sticky;
+ top: 12px;
+ z-index: 50;
+ margin-bottom: 32px;
 }
 .pd-sticky-nav__inner {
-  display: flex;
-  gap: 6px;
-  padding: 8px 12px;
-  background: rgba(255,255,255,0.78);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(180,220,245,0.4);
-  border-radius: 999px;
-  box-shadow: 0 8px 30px rgba(10,40,80,0.08);
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  width: fit-content;
-  max-width: 100%;
+ display: flex;
+ gap: 6px;
+ padding: 8px 12px;
+ background: rgba(255,255,255,0.78);
+ backdrop-filter: blur(20px);
+ border: 1px solid rgba(180,220,245,0.4);
+ border-radius: 999px;
+ box-shadow: 0 8px 30px rgba(10,40,80,0.08);
+ overflow-x: auto;
+ scrollbar-width: none;
+ -ms-overflow-style: none;
+ width: fit-content;
+ max-width: 100%;
 }
 .pd-sticky-nav__inner::-webkit-scrollbar { display: none; }
 .pd-sticky-nav__item {
-  padding: 8px 18px;
-  border: none;
-  border-radius: 999px;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: #58708E;
-  background: transparent;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.2s;
+ padding: 8px 18px;
+ border: none;
+ border-radius: 999px;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.82rem;
+ font-weight: 600;
+ color: #58708E;
+ background: transparent;
+ cursor: pointer;
+ white-space: nowrap;
+ transition: all 0.2s;
 }
 .pd-sticky-nav__item:hover { color: #071A34; background: rgba(0,210,255,0.06); }
 .pd-sticky-nav__item--active {
-  color: #fff;
-  background: linear-gradient(135deg, #071A34, #082747);
-  box-shadow: 0 4px 16px rgba(7,26,52,0.2);
+ color: #fff;
+ background: linear-gradient(135deg, #071A34, #082747);
+ box-shadow: 0 4px 16px rgba(7,26,52,0.2);
 }
 .pd-sticky-nav__item:focus-visible {
-  outline: 2px solid #00D2FF;
-  outline-offset: 2px;
+ outline: 2px solid #00D2FF;
+ outline-offset: 2px;
 }
 @media (max-width: 768px) {
-  .pd-sticky-nav__inner { width: 100%; }
-  .pd-sticky-nav__item { padding: 7px 14px; font-size: 0.78rem; }
+ .pd-sticky-nav__inner { width: 100%; }
+ .pd-sticky-nav__item { padding: 7px 14px; font-size: 0.78rem; }
 }

@@ -17,22 +17,22 @@ import './HowItWorksPage.css';
  * Public page, no ProtectedRoute, no API calls, fully static.
  */
 export default function HowItWorksPage() {
-  return (
-    <>
-      <Navbar />
-      <main className="how-it-works-page">
-        <CinematicHeroHIW />
-        <WorkflowNavigator />
-        <MissionJourneyTimeline />
-        <BehindWorkflowLayer />
-        <DemoTheater />
-        <SampleReportPreview />
-        <RoleBasedBenefits />
-        <ClosingSection>
-          <CTASectionHIW />
-          <Footer />
-        </ClosingSection>
-      </main>
-    </>
-  );
+ return (
+ <>
+ <Navbar />
+ <main className="how-it-works-page">
+ <CinematicHeroHIW />
+ <WorkflowNavigator />
+ <MissionJourneyTimeline />
+ <BehindWorkflowLayer />
+ <DemoTheater />
+ <SampleReportPreview />
+ <RoleBasedBenefits />
+ <ClosingSection>
+ <CTASectionHIW />
+ <Footer />
+ </ClosingSection>
+ </main>
+ </>
+ );
 }

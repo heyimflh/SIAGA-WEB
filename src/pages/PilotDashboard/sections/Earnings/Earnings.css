@@ -8,15 +8,15 @@
 @media (max-width: 767px) { .earnings__summary { grid-template-columns: 1fr; } }
 
 .earnings__total-card {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 1.5rem;
-  border: 1px solid rgba(0, 210, 255, 0.08);
-  box-shadow: 0 8px 24px rgba(10, 25, 47, 0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+ background: rgba(255, 255, 255, 0.9);
+ backdrop-filter: blur(12px);
+ border-radius: 20px;
+ padding: 1.5rem;
+ border: 1px solid rgba(0, 210, 255, 0.08);
+ box-shadow: 0 8px 24px rgba(10, 25, 47, 0.06);
+ display: flex;
+ flex-direction: column;
+ gap: 0.5rem;
 }
 
 .earnings__total-label { font-size: 0.75rem; font-weight: 600; color: #60758D; text-transform: uppercase; letter-spacing: 0.04em; }
@@ -28,25 +28,25 @@
 .earnings__mom-text--down { color: #FF4C4C; }
 
 .earnings__chart-wrap {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 1.25rem;
-  border: 1px solid rgba(0, 210, 255, 0.08);
-  box-shadow: 0 8px 24px rgba(10, 25, 47, 0.06);
+ background: rgba(255, 255, 255, 0.9);
+ backdrop-filter: blur(12px);
+ border-radius: 20px;
+ padding: 1.25rem;
+ border: 1px solid rgba(0, 210, 255, 0.08);
+ box-shadow: 0 8px 24px rgba(10, 25, 47, 0.06);
 }
 
 .earnings__chart-loading { padding: 2rem; text-align: center; color: #60758D; font-size: 0.8125rem; }
 
 /* Payment Table */
 .payment-table__wrap {
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  padding: 1.25rem;
-  border: 1px solid rgba(0, 210, 255, 0.08);
-  box-shadow: 0 8px 24px rgba(10, 25, 47, 0.06);
-  overflow-x: auto;
+ background: rgba(255, 255, 255, 0.9);
+ backdrop-filter: blur(12px);
+ border-radius: 20px;
+ padding: 1.25rem;
+ border: 1px solid rgba(0, 210, 255, 0.08);
+ box-shadow: 0 8px 24px rgba(10, 25, 47, 0.06);
+ overflow-x: auto;
 }
 
 .payment-table { width: 100%; border-collapse: collapse; font-size: 0.8125rem; }
@@ -63,6 +63,6 @@
 .earnings__empty p { color: #60758D; margin: 0; }
 
 @media (max-width: 767px) {
-  .payment-table { font-size: 0.75rem; }
-  .payment-table th, .payment-table td { padding: 0.5rem 0.375rem; }
+ .payment-table { font-size: 0.75rem; }
+ .payment-table th, .payment-table td { padding: 0.5rem 0.375rem; }
 }

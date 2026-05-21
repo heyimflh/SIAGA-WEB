@@ -1,74 +1,74 @@
 .pilot-grid-wrapper {
-  margin-bottom: 56px;
+ margin-bottom: 56px;
 }
 
 .pilot-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 24px;
 }
 
 .pilot-grid__load-more {
-  text-align: center;
-  margin-top: 40px;
+ text-align: center;
+ margin-top: 40px;
 }
 
 .pilot-grid__load-btn {
-  padding: 15px 36px;
-  font-size: 14px;
-  font-weight: 700;
-  border: 2px solid rgba(0, 180, 216, 0.3);
-  border-radius: 14px;
-  background: rgba(0, 180, 216, 0.03);
-  color: var(--brand-cyan);
-  cursor: pointer;
-  transition: all 0.25s var(--ease-out);
+ padding: 15px 36px;
+ font-size: 14px;
+ font-weight: 700;
+ border: 2px solid rgba(0, 180, 216, 0.3);
+ border-radius: 14px;
+ background: rgba(0, 180, 216, 0.03);
+ color: var(--brand-cyan);
+ cursor: pointer;
+ transition: all 0.25s var(--ease-out);
 }
 
 .pilot-grid__load-btn:hover {
-  background: rgba(0, 180, 216, 0.08);
-  border-color: var(--brand-cyan);
-  box-shadow: 0 4px 16px rgba(0, 180, 216, 0.12);
-  transform: translateY(-2px);
+ background: rgba(0, 180, 216, 0.08);
+ border-color: var(--brand-cyan);
+ box-shadow: 0 4px 16px rgba(0, 180, 216, 0.12);
+ transform: translateY(-2px);
 }
 
 /* ── Skeleton ── */
 .pilot-card-skeleton {
-  background: var(--pilots-card-bg);
-  border: 1px solid var(--pilots-card-border);
-  border-radius: 24px;
-  padding: 28px 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+ background: var(--pilots-card-bg);
+ border: 1px solid var(--pilots-card-border);
+ border-radius: 24px;
+ padding: 28px 24px;
+ display: flex;
+ flex-direction: column;
+ gap: 16px;
 }
 
 .pilot-card-skeleton__header {
-  display: flex;
-  gap: 14px;
+ display: flex;
+ gap: 14px;
 }
 
 .pilot-card-skeleton__avatar {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(47,99,244,0.08), rgba(0,180,216,0.06));
-  animation: skeletonPulse 1.8s ease-in-out infinite;
+ width: 58px;
+ height: 58px;
+ border-radius: 50%;
+ background: linear-gradient(135deg, rgba(47,99,244,0.08), rgba(0,180,216,0.06));
+ animation: skeletonPulse 1.8s ease-in-out infinite;
 }
 
 .pilot-card-skeleton__lines {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: center;
+ flex: 1;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ justify-content: center;
 }
 
 .pilot-card-skeleton__line {
-  height: 12px;
-  border-radius: 8px;
-  background: linear-gradient(90deg, rgba(241,245,249,0.8), rgba(232,244,253,0.6));
-  animation: skeletonPulse 1.8s ease-in-out infinite;
+ height: 12px;
+ border-radius: 8px;
+ background: linear-gradient(90deg, rgba(241,245,249,0.8), rgba(232,244,253,0.6));
+ animation: skeletonPulse 1.8s ease-in-out infinite;
 }
 
 .pilot-card-skeleton__line--w40 { width: 40%; }
@@ -78,29 +78,29 @@
 .pilot-card-skeleton__line--w100 { width: 100%; }
 
 @keyframes skeletonPulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+ 0%, 100% { opacity: 1; }
+ 50% { opacity: 0.4; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pilot-card-skeleton__avatar,
-  .pilot-card-skeleton__line {
-    animation: none;
-  }
-  .pilot-grid__load-btn:hover {
-    transform: none;
-  }
+ .pilot-card-skeleton__avatar,
+ .pilot-card-skeleton__line {
+ animation: none;
+ }
+ .pilot-grid__load-btn:hover {
+ transform: none;
+ }
 }
 
 @media (max-width: 1279px) {
-  .pilot-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+ .pilot-grid {
+ grid-template-columns: repeat(2, 1fr);
+ }
 }
 
 @media (max-width: 767px) {
-  .pilot-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
+ .pilot-grid {
+ grid-template-columns: 1fr;
+ gap: 16px;
+ }
 }

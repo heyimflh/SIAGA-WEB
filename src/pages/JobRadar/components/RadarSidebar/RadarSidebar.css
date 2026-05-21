@@ -1,135 +1,135 @@
 /* ══════════════════════════════════════════════════════
-   RadarSidebar — Job Radar Page (Full Dashboard)
-   SCOPED under .job-radar-page to avoid conflicts with
-   the landing page's .radar-sidebar in JobRadar.css
-   ══════════════════════════════════════════════════════ */
+ RadarSidebar — Job Radar Page (Full Dashboard)
+ SCOPED under .job-radar-page to avoid conflicts with
+ the landing page's .radar-sidebar in JobRadar.css
+ ══════════════════════════════════════════════════════ */
 
 .job-radar-page .radar-sidebar {
-  position: relative;
-  width: 360px;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  z-index: 40;
-  overflow: visible;
-  color: rgba(245, 252, 255, 0.96);
-  background:
-    radial-gradient(circle at 18% 0%, rgba(110, 168, 255, 0.22), transparent 34%),
-    radial-gradient(circle at 92% 24%, rgba(0, 210, 255, 0.13), transparent 32%),
-    linear-gradient(180deg, rgba(8, 39, 71, 0.95), rgba(3, 18, 38, 0.98));
-  backdrop-filter: blur(24px);
-  border-right: 1px solid rgba(120, 190, 255, 0.24);
-  box-shadow: 28px 0 90px rgba(0, 14, 35, 0.42);
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.35s ease;
-  /* Reset landing page initial animation state */
-  opacity: 1;
-  transform: none;
+ position: relative;
+ width: 360px;
+ height: 100vh;
+ display: flex;
+ flex-direction: column;
+ z-index: 40;
+ overflow: visible;
+ color: rgba(245, 252, 255, 0.96);
+ background:
+ radial-gradient(circle at 18% 0%, rgba(110, 168, 255, 0.22), transparent 34%),
+ radial-gradient(circle at 92% 24%, rgba(0, 210, 255, 0.13), transparent 32%),
+ linear-gradient(180deg, rgba(8, 39, 71, 0.95), rgba(3, 18, 38, 0.98));
+ backdrop-filter: blur(24px);
+ border-right: 1px solid rgba(120, 190, 255, 0.24);
+ box-shadow: 28px 0 90px rgba(0, 14, 35, 0.42);
+ transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+ opacity 0.35s ease;
+ /* Reset landing page initial animation state */
+ opacity: 1;
+ transform: none;
 }
 
 /* Subtle radar grid */
 .job-radar-page .radar-sidebar::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.45;
+ content: '';
+ position: absolute;
+ inset: 0;
+ pointer-events: none;
+ z-index: 0;
+ background-image:
+ linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+ background-size: 40px 40px;
+ opacity: 0.45;
 }
 
 /* Hidden state (user collapsed) */
 .job-radar-page .radar-sidebar--hidden {
-  transform: translateX(-100%);
-  opacity: 0;
-  pointer-events: none;
+ transform: translateX(-100%);
+ opacity: 0;
+ pointer-events: none;
 }
 
 /* Overlay mode for tablet */
 .job-radar-page .radar-sidebar--overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 200;
+ position: fixed;
+ top: 0;
+ left: 0;
+ z-index: 200;
 }
 
 .job-radar-page .radar-sidebar--overlay.radar-sidebar--hidden {
-  transform: translateX(-100%);
+ transform: translateX(-100%);
 }
 
 /* Toggle button on sidebar edge */
 .job-radar-page .radar-sidebar__toggle {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translate(100%, -50%);
-  z-index: 60;
-  width: 24px;
-  height: 72px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(8, 39, 71, 0.92);
-  backdrop-filter: blur(12px);
-  border: 1.5px solid rgba(0, 210, 255, 0.35);
-  border-left: none;
-  border-radius: 0 12px 12px 0;
-  color: #00D2FF;
-  cursor: none;
-  transition: all 0.25s ease;
-  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.3);
+ position: absolute;
+ top: 50%;
+ right: 0;
+ transform: translate(100%, -50%);
+ z-index: 60;
+ width: 24px;
+ height: 72px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: rgba(8, 39, 71, 0.92);
+ backdrop-filter: blur(12px);
+ border: 1.5px solid rgba(0, 210, 255, 0.35);
+ border-left: none;
+ border-radius: 0 12px 12px 0;
+ color: #00D2FF;
+ cursor: none;
+ transition: all 0.25s ease;
+ box-shadow: 4px 0 16px rgba(0, 0, 0, 0.3);
 }
 
 .job-radar-page .radar-sidebar__toggle:hover {
-  background: rgba(0, 210, 255, 0.15);
-  border-color: rgba(0, 210, 255, 0.6);
-  box-shadow: 4px 0 24px rgba(0, 210, 255, 0.2);
-  color: #fff;
+ background: rgba(0, 210, 255, 0.15);
+ border-color: rgba(0, 210, 255, 0.6);
+ box-shadow: 4px 0 24px rgba(0, 210, 255, 0.2);
+ color: #fff;
 }
 
 .job-radar-page .radar-sidebar__toggle:focus-visible {
-  outline: 2px solid #00D2FF;
-  outline-offset: 2px;
+ outline: 2px solid #00D2FF;
+ outline-offset: 2px;
 }
 
 /* ── Scrollable content wrapper ── */
 .job-radar-page .radar-sidebar__content {
-  position: relative;
-  z-index: 1;
-  flex: 1;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 24px 20px 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 210, 255, 0.35) transparent;
+ position: relative;
+ z-index: 1;
+ flex: 1;
+ min-height: 0;
+ overflow-y: auto;
+ overflow-x: hidden;
+ padding: 24px 20px 40px;
+ display: flex;
+ flex-direction: column;
+ gap: 18px;
+ scrollbar-width: thin;
+ scrollbar-color: rgba(0, 210, 255, 0.35) transparent;
 }
 
 /* Extra space after last item so it's never cropped */
 .job-radar-page .radar-sidebar__content::after {
-  content: '';
-  display: block;
-  min-height: 80px;
-  flex-shrink: 0;
+ content: '';
+ display: block;
+ min-height: 80px;
+ flex-shrink: 0;
 }
 
 .job-radar-page .radar-sidebar__content::-webkit-scrollbar {
-  width: 6px;
+ width: 6px;
 }
 
 .job-radar-page .radar-sidebar__content::-webkit-scrollbar-track {
-  background: transparent;
+ background: transparent;
 }
 
 .job-radar-page .radar-sidebar__content::-webkit-scrollbar-thumb {
-  background: rgba(0, 210, 255, 0.32);
-  border-radius: 999px;
+ background: rgba(0, 210, 255, 0.32);
+ border-radius: 999px;
 }
 
 /* Override global heading/text colors inside sidebar */
@@ -140,53 +140,53 @@
 .job-radar-page .radar-sidebar p,
 .job-radar-page .radar-sidebar span,
 .job-radar-page .radar-sidebar label {
-  color: inherit;
+ color: inherit;
 }
 
 /* Overlay backdrop for tablet */
 .job-radar-page .radar-sidebar-overlay-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 199;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+ position: fixed;
+ inset: 0;
+ background: rgba(0, 0, 0, 0.5);
+ z-index: 199;
+ opacity: 0;
+ pointer-events: none;
+ transition: opacity 0.3s ease;
 }
 
 .job-radar-page .radar-sidebar-overlay-backdrop--visible {
-  opacity: 1;
-  pointer-events: auto;
+ opacity: 1;
+ pointer-events: auto;
 }
 
 /* ── Desktop >=1280px ── */
 @media (min-width: 1280px) {
-  .job-radar-page .radar-sidebar {
-    display: flex;
-    transform: translateX(0);
-    opacity: 1;
-    visibility: visible;
-  }
-  .job-radar-page .radar-sidebar--hidden {
-    transform: translateX(-100%);
-    opacity: 0;
-    pointer-events: none;
-  }
+ .job-radar-page .radar-sidebar {
+ display: flex;
+ transform: translateX(0);
+ opacity: 1;
+ visibility: visible;
+ }
+ .job-radar-page .radar-sidebar--hidden {
+ transform: translateX(-100%);
+ opacity: 0;
+ pointer-events: none;
+ }
 }
 
 /* ── Tablet 768-1279px ── */
 @media (min-width: 768px) and (max-width: 1279px) {
-  .job-radar-page .radar-sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 200;
-  }
+ .job-radar-page .radar-sidebar {
+ position: fixed;
+ top: 0;
+ left: 0;
+ z-index: 200;
+ }
 }
 
 /* ── Mobile <768px ── */
 @media (max-width: 767px) {
-  .job-radar-page .radar-sidebar {
-    display: none !important;
-  }
+ .job-radar-page .radar-sidebar {
+ display: none !important;
+ }
 }

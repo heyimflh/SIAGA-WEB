@@ -1,59 +1,59 @@
 .pd-summary-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 14px;
-  margin-bottom: 28px;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+ gap: 14px;
+ margin-bottom: 28px;
 }
 .pd-summary-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 18px 20px;
-  background: rgba(255,255,255,0.76);
-  backdrop-filter: blur(18px);
-  border: 1px solid rgba(180,220,245,0.4);
-  border-radius: 18px;
-  box-shadow: 0 8px 30px rgba(10,40,80,0.06);
-  transition: transform 0.2s, box-shadow 0.2s;
+ display: flex;
+ align-items: center;
+ gap: 14px;
+ padding: 18px 20px;
+ background: rgba(255,255,255,0.76);
+ backdrop-filter: blur(18px);
+ border: 1px solid rgba(180,220,245,0.4);
+ border-radius: 18px;
+ box-shadow: 0 8px 30px rgba(10,40,80,0.06);
+ transition: transform 0.2s, box-shadow 0.2s;
 }
 .pd-summary-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(0,210,255,0.12);
+ transform: translateY(-2px);
+ box-shadow: 0 12px 40px rgba(0,210,255,0.12);
 }
 .pd-summary-card__icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 12px;
-  background: rgba(0,210,255,0.1);
-  color: #00D2FF;
-  flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 42px;
+ height: 42px;
+ border-radius: 12px;
+ background: rgba(0,210,255,0.1);
+ color: #00D2FF;
+ flex-shrink: 0;
 }
 .pd-summary-card__content {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+ display: flex;
+ flex-direction: column;
+ gap: 2px;
 }
 .pd-summary-card__label {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #8AA0B8;
+ font-family: 'Inter', sans-serif;
+ font-size: 0.7rem;
+ font-weight: 700;
+ text-transform: uppercase;
+ letter-spacing: 0.5px;
+ color: #8AA0B8;
 }
 .pd-summary-card__value {
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #071A34;
+ font-family: 'Inter', sans-serif;
+ font-size: 1rem;
+ font-weight: 700;
+ color: #071A34;
 }
 @media (max-width: 768px) {
-  .pd-summary-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  .pd-summary-card { padding: 14px 14px; }
+ .pd-summary-cards { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+ .pd-summary-card { padding: 14px 14px; }
 }
 @media (max-width: 380px) {
-  .pd-summary-cards { grid-template-columns: 1fr; }
+ .pd-summary-cards { grid-template-columns: 1fr; }
 }

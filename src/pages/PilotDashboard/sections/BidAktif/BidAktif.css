@@ -1,104 +1,104 @@
 .bid-aktif {
-  margin-bottom: 2.5rem;
-  position: relative;
-  z-index: 1;
+ margin-bottom: 2.5rem;
+ position: relative;
+ z-index: 1;
 }
 
 .bid-aktif__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
+ display: flex;
+ justify-content: space-between;
+ align-items: flex-start;
+ gap: 1rem;
+ margin-bottom: 1.5rem;
+ flex-wrap: wrap;
 }
 
 .bid-aktif__label {
-  font-size: 0.6875rem;
-  font-weight: 700;
-  color: #00A3CC;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+ font-size: 0.6875rem;
+ font-weight: 700;
+ color: #00A3CC;
+ letter-spacing: 0.08em;
+ text-transform: uppercase;
 }
 
 .bid-aktif__title {
-  font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #0A192F;
-  margin: 0.25rem 0 0.375rem;
+ font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
+ font-size: 1.25rem;
+ font-weight: 700;
+ color: #0A192F;
+ margin: 0.25rem 0 0.375rem;
 }
 
 .bid-aktif__subtitle {
-  font-size: 0.8125rem;
-  color: #60758D;
-  margin: 0;
+ font-size: 0.8125rem;
+ color: #60758D;
+ margin: 0;
 }
 
 .bid-aktif__sort {
-  display: flex;
-  gap: 0;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 999px;
-  border: 1px solid rgba(0, 210, 255, 0.12);
-  overflow: hidden;
+ display: flex;
+ gap: 0;
+ background: rgba(255, 255, 255, 0.8);
+ border-radius: 999px;
+ border: 1px solid rgba(0, 210, 255, 0.12);
+ overflow: hidden;
 }
 
 .bid-aktif__sort-btn {
-  padding: 0.5rem 1rem;
-  border: none;
-  background: transparent;
-  font-size: 0.75rem;
-  font-weight: 500;
-  color: #60758D;
-  cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+ padding: 0.5rem 1rem;
+ border: none;
+ background: transparent;
+ font-size: 0.75rem;
+ font-weight: 500;
+ color: #60758D;
+ cursor: pointer;
+ transition: background 0.2s ease, color 0.2s ease;
 }
 
 .bid-aktif__sort-btn--active {
-  background: rgba(0, 210, 255, 0.12);
-  color: #0088CC;
-  font-weight: 600;
+ background: rgba(0, 210, 255, 0.12);
+ color: #0088CC;
+ font-weight: 600;
 }
 
 .bid-aktif__sort-btn:focus-visible {
-  outline: 2px solid #00D2FF;
-  outline-offset: -2px;
+ outline: 2px solid #00D2FF;
+ outline-offset: -2px;
 }
 
 .bid-aktif__list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+ display: flex;
+ flex-direction: column;
+ gap: 0.75rem;
 }
 
 .bid-entry {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.25rem 1.5rem;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(8px);
-  border-radius: 16px;
-  border: 1px solid rgba(0, 210, 255, 0.06);
-  box-shadow: 0 4px 16px rgba(10, 25, 47, 0.04);
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-  text-align: left;
-  width: 100%;
-  font-family: inherit;
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ gap: 1rem;
+ padding: 1.25rem 1.5rem;
+ background: rgba(255, 255, 255, 0.88);
+ backdrop-filter: blur(8px);
+ border-radius: 16px;
+ border: 1px solid rgba(0, 210, 255, 0.06);
+ box-shadow: 0 4px 16px rgba(10, 25, 47, 0.04);
+ cursor: pointer;
+ transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+ text-align: left;
+ width: 100%;
+ font-family: inherit;
 }
 
 .bid-entry:hover {
-  transform: translateX(4px);
-  box-shadow: 0 8px 24px rgba(0, 210, 255, 0.1);
-  border-color: rgba(0, 210, 255, 0.2);
+ transform: translateX(4px);
+ box-shadow: 0 8px 24px rgba(0, 210, 255, 0.1);
+ border-color: rgba(0, 210, 255, 0.2);
 }
 
 .bid-entry:focus-visible {
-  outline: 2px solid #00D2FF;
-  outline-offset: 2px;
+ outline: 2px solid #00D2FF;
+ outline-offset: 2px;
 }
 
 .bid-entry__main { display: flex; flex-direction: column; gap: 0.375rem; min-width: 0; flex: 1; }
@@ -106,47 +106,47 @@
 .bid-entry__meta { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
 
 .bid-entry__infra-badge {
-  padding: 0.2rem 0.5rem;
-  border-radius: 6px;
-  background: rgba(0, 210, 255, 0.08);
-  color: #0088CC;
-  font-size: 0.6875rem;
-  font-weight: 600;
+ padding: 0.2rem 0.5rem;
+ border-radius: 6px;
+ background: rgba(0, 210, 255, 0.08);
+ color: #0088CC;
+ font-size: 0.6875rem;
+ font-weight: 600;
 }
 
 .bid-entry__location { font-size: 0.75rem; color: #60758D; }
 
 .bid-entry__details {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-shrink: 0;
+ display: flex;
+ align-items: center;
+ gap: 1rem;
+ flex-shrink: 0;
 }
 
 .bid-entry__price {
-  font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #0A192F;
-  white-space: nowrap;
+ font-family: 'Plus Jakarta Sans', 'Montserrat', sans-serif;
+ font-size: 1rem;
+ font-weight: 700;
+ color: #0A192F;
+ white-space: nowrap;
 }
 
 .bid-entry__days {
-  padding: 0.2rem 0.5rem;
-  border-radius: 999px;
-  background: rgba(10, 25, 47, 0.05);
-  font-size: 0.6875rem;
-  font-weight: 600;
-  color: #60758D;
-  white-space: nowrap;
+ padding: 0.2rem 0.5rem;
+ border-radius: 999px;
+ background: rgba(10, 25, 47, 0.05);
+ font-size: 0.6875rem;
+ font-weight: 600;
+ color: #60758D;
+ white-space: nowrap;
 }
 
 .bid-entry__status {
-  padding: 0.25rem 0.625rem;
-  border-radius: 999px;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  white-space: nowrap;
+ padding: 0.25rem 0.625rem;
+ border-radius: 999px;
+ font-size: 0.6875rem;
+ font-weight: 600;
+ white-space: nowrap;
 }
 
 .bid-entry__status--warning { background: rgba(245, 185, 66, 0.12); color: #D4930A; }
@@ -154,31 +154,31 @@
 .bid-entry__status--danger { background: rgba(255, 76, 76, 0.12); color: #CC3333; }
 
 .bid-aktif__empty {
-  text-align: center;
-  padding: 3rem 2rem;
-  background: rgba(255, 255, 255, 0.6);
-  border-radius: 16px;
-  border: 1px dashed rgba(0, 210, 255, 0.2);
+ text-align: center;
+ padding: 3rem 2rem;
+ background: rgba(255, 255, 255, 0.6);
+ border-radius: 16px;
+ border: 1px dashed rgba(0, 210, 255, 0.2);
 }
 
 .bid-aktif__empty p { color: #60758D; margin: 0 0 1rem; }
 
 .bid-aktif__empty-cta {
-  padding: 0.6rem 1.25rem;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #00D2FF, #0088CC);
-  color: #fff;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
+ padding: 0.6rem 1.25rem;
+ border-radius: 12px;
+ background: linear-gradient(135deg, #00D2FF, #0088CC);
+ color: #fff;
+ font-size: 0.8125rem;
+ font-weight: 600;
+ border: none;
+ cursor: pointer;
 }
 
 @media (max-width: 767px) {
-  .bid-entry { flex-direction: column; align-items: flex-start; }
-  .bid-entry__details { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
+ .bid-entry { flex-direction: column; align-items: flex-start; }
+ .bid-entry__details { width: 100%; justify-content: flex-start; flex-wrap: wrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bid-entry { transition: none; }
+ .bid-entry { transition: none; }
 }

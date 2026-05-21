@@ -7,28 +7,27 @@
  *
  * Kontrak `resolveInitialProjectId(mockData, stored)`:
  *
- *   1. Jika `mockData.proyek_aktif` kosong (length === 0) → kembalikan
- *      `null`. Caller (ProjectTimeline) menampilkan empty state
- *      "Belum ada proyek aktif" (Requirement 15.1).
+ * 1. Jika `mockData.proyek_aktif` kosong (length === 0) → kembalikan
+ * `null`. Caller (ProjectTimeline) menampilkan empty state
+ * "Belum ada proyek aktif" .
  *
- *   2. Jika `stored` merupakan string yang cocok dengan salah satu
- *      `proyek_aktif[i].id` → kembalikan `stored` (Requirement 6.4b —
- *      pilihan lintas-session di-restore).
+ * 2. Jika `stored` merupakan string yang cocok dengan salah satu
+ * `proyek_aktif[i].id` → kembalikan `stored` .
  *
- *   3. Selain itu (stored null/undefined/non-string, atau stored stale
- *      yang tidak lagi ada di list) → kembalikan `proyek_aktif[0].id`
- *      sebagai default (Requirement 6.3 / 6.4c fallback).
+ * 3. Selain itu (stored null/undefined/non-string, atau stored stale
+ * yang tidak lagi ada di list) → kembalikan `proyek_aktif[0].id`
+ * sebagai default .
  *
  * Fungsi murni: tidak melakukan I/O, tidak membaca/menulis localStorage.
  * Caller bertanggung jawab membaca `stored` via `safeReadLocalStorage`
  * sebelum memanggil resolver ini.
  *
  * Defensive terhadap input non-konvensional:
- *   - `mockData` dianggap bisa berupa object dengan `proyek_aktif` berupa
- *     array. Jika `proyek_aktif` bukan array (tidak terdefinisi di
- *     mock-data), perlakukan sebagai list kosong → kembalikan `null`.
- *   - `stored` boleh bernilai `null`, `undefined`, atau string. Tipe
- *     non-string lain di-treat seperti `null`.
+ * - `mockData` dianggap bisa berupa object dengan `proyek_aktif` berupa
+ * array. Jika `proyek_aktif` bukan array (tidak terdefinisi di
+ * mock-data), perlakukan sebagai list kosong → kembalikan `null`.
+ * - `stored` boleh bernilai `null`, `undefined`, atau string. Tipe
+ * non-string lain di-treat seperti `null`.
  */
 
 /**
@@ -42,21 +41,21 @@
  * @returns {string | null}
  */
 export function resolveInitialProjectId(mockData, stored) {
-  const list =
-    mockData && Array.isArray(mockData.proyek_aktif)
-      ? mockData.proyek_aktif
-      : [];
+ const list =
+ mockData && Array.isArray(mockData.proyek_aktif)
+ ? mockData.proyek_aktif
+ : [];
 
-  // Requirement 15.1 — empty state, caller render empty UI.
-  if (list.length === 0) {
-    return null;
-  }
+ // empty state, caller render empty UI.
+ if (list.length === 0) {
+ return null;
+ }
 
-  // Requirement 6.4b — restore pilihan lintas-session jika masih valid.
-  if (typeof stored === 'string' && list.some((p) => p && p.id === stored)) {
-    return stored;
-  }
+ // b — restore pilihan lintas-session jika masih valid.
+ if (typeof stored === 'string' && list.some((p) => p && p.id === stored)) {
+ return stored;
+ }
 
-  // Requirement 6.3 / 6.4c — default ke proyek pertama.
-  return list[0].id;
+ // c — default ke proyek pertama.
+ return list[0].id;
 }

@@ -1,0 +1,276 @@
+<mxfile host="app.diagrams.net" modified="2026-05-20" agent="SIAGA" version="24.0.0" type="device">
+  <diagram id="siaga-flowchart" name="Struktur Website SIAGA">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ==================== TITLE ==================== -->
+        <mxCell id="title" value="&lt;b&gt;STRUKTUR &amp; ALUR WEBSITE SIAGA&lt;/b&gt;&lt;br&gt;Platform Inspeksi Drone B2B untuk Infrastruktur Kritis Indonesia" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="450" y="20" width="700" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== ENTRY POINT ==================== -->
+        <mxCell id="entry" value="User Mengakses&lt;br&gt;siaga.id" style="ellipse;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00D2FF;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="90" width="160" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== PUBLIC PAGES GROUP ==================== -->
+        <mxCell id="public-group" value="HALAMAN PUBLIK (Tanpa Login)" style="swimlane;startSize=30;fillColor=#E8F4FD;strokeColor=#00D2FF;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="200" width="1240" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- Landing Page -->
+        <mxCell id="landing" value="🏠 Landing Page&lt;br&gt;&lt;i&gt;/&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Hero 3D Drone + Stats&lt;br&gt;Problem/Solution&lt;br&gt;How It Works Preview&lt;br&gt;Trust Partners + CTA&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00D2FF;fontSize=10;arcSize=12;" vertex="1" parent="public-group">
+          <mxGeometry x="30" y="45" width="170" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- How It Works -->
+        <mxCell id="howitworks" value="⚙️ Cara Kerja&lt;br&gt;&lt;i&gt;/how-it-works&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Timeline Interaktif&lt;br&gt;4 Steps Vertikal&lt;br&gt;Video Demo&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00D2FF;fontSize=10;arcSize=12;" vertex="1" parent="public-group">
+          <mxGeometry x="230" y="45" width="170" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Pricing -->
+        <mxCell id="pricing" value="💰 Harga&lt;br&gt;&lt;i&gt;/pricing&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;3 Tier Pricing Cards&lt;br&gt;Commission Model&lt;br&gt;FAQ + Trust Badges&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00D2FF;fontSize=10;arcSize=12;" vertex="1" parent="public-group">
+          <mxGeometry x="430" y="45" width="170" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Browse Pilots -->
+        <mxCell id="pilots" value="👨‍✈️ Browse Pilots&lt;br&gt;&lt;i&gt;/pilots&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Search + Filter&lt;br&gt;Grid Pilot Cards&lt;br&gt;Profil + Portofolio&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00D2FF;fontSize=10;arcSize=12;" vertex="1" parent="public-group">
+          <mxGeometry x="630" y="45" width="170" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Login -->
+        <mxCell id="login" value="🔐 Login&lt;br&gt;&lt;i&gt;/login&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Split Screen Layout&lt;br&gt;3D Drone + Form&lt;br&gt;Role-based Redirect&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A365D;fontColor=#FFFFFF;strokeColor=#FFD700;fontSize=10;arcSize=12;" vertex="1" parent="public-group">
+          <mxGeometry x="840" y="45" width="170" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Register -->
+        <mxCell id="register" value="📝 Register&lt;br&gt;&lt;i&gt;/register?role=...&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Step 1: Pilih Role&lt;br&gt;Step 2: Isi Data&lt;br&gt;Step 3: Verifikasi&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A365D;fontColor=#FFFFFF;strokeColor=#FFD700;fontSize=10;arcSize=12;" vertex="1" parent="public-group">
+          <mxGeometry x="1040" y="45" width="170" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== AUTH DECISION ==================== -->
+        <mxCell id="auth-check" value="Sudah Login?&lt;br&gt;(Session Check)" style="rhombus;whiteSpace=wrap;html=1;fillColor=#FFD700;fontColor=#0A192F;strokeColor=#0A192F;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="470" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Role Decision -->
+        <mxCell id="role-check" value="Role?" style="rhombus;whiteSpace=wrap;html=1;fillColor=#00D2FF;fontColor=#0A192F;strokeColor=#0A192F;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="630" width="160" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CLIENT DASHBOARD GROUP ==================== -->
+        <mxCell id="client-group" value="CLIENT DASHBOARD (Role: Client)" style="swimlane;startSize=30;fillColor=#E8FFE8;strokeColor=#00C48C;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="770" width="700" height="380" as="geometry" />
+        </mxCell>
+
+        <!-- Client Dashboard Main -->
+        <mxCell id="client-dash" value="📊 Dashboard&lt;br&gt;&lt;i&gt;/dashboard/client&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Overview Cards&lt;br&gt;Asset Map Mini&lt;br&gt;Project Timeline&lt;br&gt;Activity Feed&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00C48C;fontSize=10;arcSize=12;" vertex="1" parent="client-group">
+          <mxGeometry x="20" y="45" width="150" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Client Projects -->
+        <mxCell id="client-projects" value="📁 Proyek&lt;br&gt;&lt;i&gt;/dashboard/client/projects&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Daftar Proyek&lt;br&gt;Status Tracking&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00C48C;fontSize=10;arcSize=12;" vertex="1" parent="client-group">
+          <mxGeometry x="190" y="45" width="150" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Client Asset Map -->
+        <mxCell id="client-assetmap" value="🗺️ Asset Map&lt;br&gt;&lt;i&gt;/dashboard/client/asset-map&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Mapbox Monitoring&lt;br&gt;Pin Status Aset&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00C48C;fontSize=10;arcSize=12;" vertex="1" parent="client-group">
+          <mxGeometry x="360" y="45" width="150" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Client Bidding -->
+        <mxCell id="client-bidding" value="⚖️ Bidding&lt;br&gt;&lt;i&gt;/dashboard/client/bidding&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Review Penawaran&lt;br&gt;Pilih Pilot&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00C48C;fontSize=10;arcSize=12;" vertex="1" parent="client-group">
+          <mxGeometry x="530" y="45" width="150" height="130" as="geometry" />
+        </mxCell>
+
+        <!-- Client Report Generator -->
+        <mxCell id="client-report" value="📄 Report Generator&lt;br&gt;&lt;i&gt;/dashboard/client/&lt;br&gt;report-generator&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Pilih Proyek → Customize&lt;br&gt;→ Generate → Download&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00D2FF;fontSize=10;arcSize=12;strokeWidth=2;" vertex="1" parent="client-group">
+          <mxGeometry x="20" y="210" width="170" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Client Create Project -->
+        <mxCell id="client-create" value="➕ Buat Proyek Baru&lt;br&gt;&lt;i&gt;/dashboard/client/&lt;br&gt;create-project&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Form Proyek Baru&lt;br&gt;(Coming Soon)&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00C48C;fontSize=10;arcSize=12;" vertex="1" parent="client-group">
+          <mxGeometry x="210" y="210" width="170" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Client Settings -->
+        <mxCell id="client-settings" value="⚙️ Pengaturan&lt;br&gt;&lt;i&gt;/dashboard/client/settings&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Profil Perusahaan&lt;br&gt;Preferensi&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00C48C;fontSize=10;arcSize=12;" vertex="1" parent="client-group">
+          <mxGeometry x="400" y="210" width="170" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== PILOT DASHBOARD GROUP ==================== -->
+        <mxCell id="pilot-group" value="PILOT DASHBOARD (Role: Pilot)" style="swimlane;startSize=30;fillColor=#FFF3E0;strokeColor=#FF9800;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="820" y="770" width="700" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- Pilot Dashboard Main -->
+        <mxCell id="pilot-dash" value="🎯 Pilot Dashboard&lt;br&gt;&lt;i&gt;/dashboard/pilot&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Overview Misi&lt;br&gt;Statistik Pilot&lt;br&gt;Earnings Summary&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#FF9800;fontSize=10;arcSize=12;" vertex="1" parent="pilot-group">
+          <mxGeometry x="30" y="50" width="170" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Job Radar -->
+        <mxCell id="pilot-jobradar" value="📡 Job Radar&lt;br&gt;&lt;i&gt;/dashboard/pilot/job-radar&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Mapbox 3D Terrain&lt;br&gt;Filter + Pin Proyek&lt;br&gt;Fly-to Animation&lt;br&gt;Bid Sekarang&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00D2FF;fontSize=10;arcSize=12;strokeWidth=2;" vertex="1" parent="pilot-group">
+          <mxGeometry x="240" y="50" width="180" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- Pilot Coming Soon -->
+        <mxCell id="pilot-soon" value="🔒 Coming Soon&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Bid Saya&lt;br&gt;Proyek Aktif&lt;br&gt;Workspace&lt;br&gt;Earnings&lt;br&gt;Pengaturan&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2D3748;fontColor=#A0AEC0;strokeColor=#4A5568;fontSize=10;arcSize=12;dashed=1;" vertex="1" parent="pilot-group">
+          <mxGeometry x="470" y="50" width="170" height="140" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== SHARED PAGE ==================== -->
+        <mxCell id="shared-group" value="HALAMAN BERSAMA (Client &amp; Pilot)" style="swimlane;startSize=30;fillColor=#F0E6FF;strokeColor=#8B5CF6;fontSize=11;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="1050" width="460" height="150" as="geometry" />
+        </mxCell>
+
+        <!-- Project Detail -->
+        <mxCell id="project-detail" value="📋 Project Detail&lt;br&gt;&lt;i&gt;/project/:projectId&lt;/i&gt;&lt;br&gt;&lt;font style=&quot;font-size:9px&quot;&gt;Info Proyek Lengkap&lt;br&gt;Galeri Foto + Peta&lt;br&gt;Status + Timeline&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#8B5CF6;fontSize=10;arcSize=12;" vertex="1" parent="shared-group">
+          <mxGeometry x="140" y="40" width="180" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- ==================== CONNECTIONS ==================== -->
+        <!-- Entry to Landing -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00D2FF;strokeWidth=2;" edge="1" source="entry" target="landing" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Landing to other public pages (via Navbar) -->
+        <mxCell id="e2" value="Navbar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00D2FF;strokeWidth=1;dashed=1;fontSize=9;" edge="1" source="landing" target="howitworks" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" value="Navbar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00D2FF;strokeWidth=1;dashed=1;fontSize=9;" edge="1" source="landing" target="pricing" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" value="Navbar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00D2FF;strokeWidth=1;dashed=1;fontSize=9;" edge="1" source="landing" target="pilots" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Landing CTA to Login/Register -->
+        <mxCell id="e5" value="CTA: Masuk" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FFD700;strokeWidth=2;fontSize=9;" edge="1" source="landing" target="login" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e6" value="CTA: Coba Gratis" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FFD700;strokeWidth=2;fontSize=9;" edge="1" source="landing" target="register" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Login/Register to Auth Check -->
+        <mxCell id="e7" value="Submit Login" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FFD700;strokeWidth=2;fontSize=9;" edge="1" source="login" target="auth-check" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" value="Selesai Register → Login" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FFD700;strokeWidth=1;dashed=1;fontSize=9;" edge="1" source="register" target="login" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Auth Check outcomes -->
+        <mxCell id="e9" value="Tidak → Redirect" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FF4C4C;strokeWidth=2;fontSize=9;" edge="1" source="auth-check" target="login" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1100" y="520" />
+              <mxPoint x="1100" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" value="Ya → Cek Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00C48C;strokeWidth=2;fontSize=9;" edge="1" source="auth-check" target="role-check" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Role Check to Dashboards -->
+        <mxCell id="e11" value="role = client" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00C48C;strokeWidth=2;fontSize=9;" edge="1" source="role-check" target="client-dash" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="500" y="670" />
+              <mxPoint x="500" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" value="role = pilot" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FF9800;strokeWidth=2;fontSize=9;" edge="1" source="role-check" target="pilot-dash" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1050" y="670" />
+              <mxPoint x="1050" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- Client Sidebar Navigation (internal links) -->
+        <mxCell id="e13" value="Sidebar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00C48C;strokeWidth=1;dashed=1;fontSize=8;" edge="1" source="client-dash" target="client-projects" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e14" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00C48C;strokeWidth=1;dashed=1;" edge="1" source="client-dash" target="client-assetmap" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e15" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00C48C;strokeWidth=1;dashed=1;" edge="1" source="client-dash" target="client-bidding" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e16" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00C48C;strokeWidth=1;dashed=1;" edge="1" source="client-dash" target="client-report" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e17" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00C48C;strokeWidth=1;dashed=1;" edge="1" source="client-dash" target="client-create" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e18" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#00C48C;strokeWidth=1;dashed=1;" edge="1" source="client-dash" target="client-settings" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Pilot Sidebar Navigation -->
+        <mxCell id="e19" value="Sidebar" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FF9800;strokeWidth=1;dashed=1;fontSize=8;" edge="1" source="pilot-dash" target="pilot-jobradar" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Both dashboards to Project Detail -->
+        <mxCell id="e20" value="Klik Proyek" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#8B5CF6;strokeWidth=2;fontSize=9;" edge="1" source="client-projects" target="project-detail" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e21" value="Klik Proyek" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#8B5CF6;strokeWidth=2;fontSize=9;" edge="1" source="pilot-jobradar" target="project-detail" parent="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Logout arrows -->
+        <mxCell id="e22" value="Logout" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FF4C4C;strokeWidth=1;dashed=1;dashPattern=5 3;fontSize=8;" edge="1" source="client-group" target="login" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="50" y="520" />
+              <mxPoint x="50" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e23" value="Logout" style="edgeStyle=orthogonalEdgeStyle;rounded=1;strokeColor=#FF4C4C;strokeWidth=1;dashed=1;dashPattern=5 3;fontSize=8;" edge="1" source="pilot-group" target="login" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="1530" y="880" />
+              <mxPoint x="1530" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ==================== LEGEND ==================== -->
+        <mxCell id="legend-box" value="LEGENDA" style="swimlane;startSize=25;fillColor=#F8F8F8;strokeColor=#333333;fontSize=10;fontStyle=1;rounded=1;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="280" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1" value="Halaman Publik" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00D2FF;fontSize=9;" vertex="1" parent="legend-box">
+          <mxGeometry x="10" y="30" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" value="Auth Pages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1A365D;fontColor=#FFFFFF;strokeColor=#FFD700;fontSize=9;" vertex="1" parent="legend-box">
+          <mxGeometry x="145" y="30" width="120" height="25" as="geometry" />
+        </mxCell>
+
+        <mxCell id="leg3" value="Client Pages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#00C48C;fontSize=9;" vertex="1" parent="legend-box">
+          <mxGeometry x="10" y="62" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="leg4" value="Pilot Pages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#FF9800;fontSize=9;" vertex="1" parent="legend-box">
+          <mxGeometry x="145" y="62" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="leg5" value="Shared Pages" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0A192F;fontColor=#FFFFFF;strokeColor=#8B5CF6;fontSize=9;" vertex="1" parent="legend-box">
+          <mxGeometry x="10" y="94" width="120" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="leg6" value="Coming Soon" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#2D3748;fontColor=#A0AEC0;strokeColor=#4A5568;fontSize=9;dashed=1;" vertex="1" parent="legend-box">
+          <mxGeometry x="145" y="94" width="120" height="25" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

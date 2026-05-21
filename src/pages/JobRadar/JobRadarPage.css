@@ -6,90 +6,90 @@
  */
 
 .job-radar-page {
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: 360px minmax(0, 1fr);
-  background: #020B16;
-  font-family: 'Inter', sans-serif;
-  cursor: none;
-  --radar-accent: #00D2FF;
+ position: fixed;
+ inset: 0;
+ width: 100vw;
+ height: 100vh;
+ overflow: hidden;
+ display: grid;
+ grid-template-columns: 360px minmax(0, 1fr);
+ background: #020B16;
+ font-family: 'Inter', sans-serif;
+ cursor: none;
+ --radar-accent: #00D2FF;
 }
 
 .job-radar-page--sidebar-collapsed {
-  grid-template-columns: 0px minmax(0, 1fr);
+ grid-template-columns: 0px minmax(0, 1fr);
 }
 
 /* ── Map Area ── */
 .job-radar-page__map-area {
-  position: relative;
-  min-width: 0;
-  height: 100vh;
-  overflow: hidden;
-  z-index: 1;
+ position: relative;
+ min-width: 0;
+ height: 100vh;
+ overflow: hidden;
+ z-index: 1;
 }
 
 /* ── Sidebar Toggle Button (shown when collapsed) ── */
 .job-radar-page__sidebar-toggle {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
-  z-index: 100;
-  width: 28px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(6, 26, 51, 0.82);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 210, 255, 0.18);
-  border-left: none;
-  border-radius: 0 14px 14px 0;
-  color: #00D2FF;
-  cursor: none;
-  transition: all 0.3s ease;
+ position: absolute;
+ top: 50%;
+ left: 0;
+ transform: translateY(-50%);
+ z-index: 100;
+ width: 28px;
+ height: 64px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: rgba(6, 26, 51, 0.82);
+ backdrop-filter: blur(12px);
+ border: 1px solid rgba(0, 210, 255, 0.18);
+ border-left: none;
+ border-radius: 0 14px 14px 0;
+ color: #00D2FF;
+ cursor: none;
+ transition: all 0.3s ease;
 }
 
 .job-radar-page__sidebar-toggle:hover {
-  background: rgba(6, 26, 51, 0.92);
-  border-color: rgba(0, 210, 255, 0.4);
-  box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+ background: rgba(6, 26, 51, 0.92);
+ border-color: rgba(0, 210, 255, 0.4);
+ box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
 }
 
 .job-radar-page__sidebar-toggle--collapsed svg {
-  transform: rotate(180deg);
+ transform: rotate(180deg);
 }
 
 /* ── Aria Live (screen reader only) ── */
 .job-radar-page__aria-live {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+ position: absolute;
+ width: 1px;
+ height: 1px;
+ padding: 0;
+ margin: -1px;
+ overflow: hidden;
+ clip: rect(0, 0, 0, 0);
+ white-space: nowrap;
+ border: 0;
 }
 
 /* ── Tablet: sidebar becomes overlay, grid is 1 column ── */
 @media (min-width: 768px) and (max-width: 1279px) {
-  .job-radar-page {
-    grid-template-columns: minmax(0, 1fr);
-  }
+ .job-radar-page {
+ grid-template-columns: minmax(0, 1fr);
+ }
 }
 
 /* ── Mobile: single column, no sidebar ── */
 @media (max-width: 767px) {
-  .job-radar-page {
-    grid-template-columns: minmax(0, 1fr);
-  }
-  .job-radar-page__sidebar-toggle {
-    display: none;
-  }
+ .job-radar-page {
+ grid-template-columns: minmax(0, 1fr);
+ }
+ .job-radar-page__sidebar-toggle {
+ display: none;
+ }
 }

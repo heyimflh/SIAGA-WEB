@@ -5,67 +5,67 @@
  */
 
 .map-filter {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 2;
-  display: flex;
-  gap: 6px;
-  background: rgba(7, 26, 52, 0.8);
-  backdrop-filter: blur(20px) saturate(1.5);
-  -webkit-backdrop-filter: blur(20px) saturate(1.5);
-  border-radius: 14px;
-  padding: 5px;
-  border: 1px solid rgba(120, 210, 255, 0.1);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+ position: absolute;
+ top: 16px;
+ right: 16px;
+ z-index: 2;
+ display: flex;
+ gap: 6px;
+ background: rgba(7, 26, 52, 0.8);
+ backdrop-filter: blur(20px) saturate(1.5);
+ -webkit-backdrop-filter: blur(20px) saturate(1.5);
+ border-radius: 14px;
+ padding: 5px;
+ border: 1px solid rgba(120, 210, 255, 0.1);
+ box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 .map-filter__btn {
-  padding: 7px 14px;
-  border: none;
-  border-radius: 10px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  cursor: pointer;
-  background: transparent;
-  color: rgba(255, 255, 255, 0.65);
-  transition: background 180ms ease, color 180ms ease, transform 150ms ease, box-shadow 180ms ease;
-  white-space: nowrap;
-  font-family: 'Inter', sans-serif;
+ padding: 7px 14px;
+ border: none;
+ border-radius: 10px;
+ font-size: 0.75rem;
+ font-weight: 500;
+ cursor: pointer;
+ background: transparent;
+ color: rgba(255, 255, 255, 0.65);
+ transition: background 180ms ease, color 180ms ease, transform 150ms ease, box-shadow 180ms ease;
+ white-space: nowrap;
+ font-family: 'Inter', sans-serif;
 }
 
 .map-filter__btn:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.95);
-  transform: scale(1.02);
+ background: rgba(255, 255, 255, 0.08);
+ color: rgba(255, 255, 255, 0.95);
+ transform: scale(1.02);
 }
 
 .map-filter__btn--active {
-  background: linear-gradient(135deg, #00BFEA, #106DFF);
-  color: #FFFFFF;
-  font-weight: 600;
-  box-shadow: 0 4px 14px rgba(0, 191, 234, 0.35);
+ background: linear-gradient(135deg, #00BFEA, #106DFF);
+ color: #FFFFFF;
+ font-weight: 600;
+ box-shadow: 0 4px 14px rgba(0, 191, 234, 0.35);
 }
 
 .map-filter__btn--active:hover:not(:disabled) {
-  background: linear-gradient(135deg, #00BFEA, #106DFF);
-  color: #FFFFFF;
-  transform: scale(1.02);
+ background: linear-gradient(135deg, #00BFEA, #106DFF);
+ color: #FFFFFF;
+ transform: scale(1.02);
 }
 
 .map-filter__btn:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-  color: rgba(255, 255, 255, 0.3);
+ opacity: 0.3;
+ cursor: not-allowed;
+ color: rgba(255, 255, 255, 0.3);
 }
 
 .map-filter__btn:focus-visible {
-  outline: 2px solid #22D3EE;
-  outline-offset: 2px;
+ outline: 2px solid #22D3EE;
+ outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .map-filter__btn {
-    transition: none;
-  }
+ .map-filter__btn {
+ transition: none;
+ }
 }

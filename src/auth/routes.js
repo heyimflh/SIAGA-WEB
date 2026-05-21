@@ -6,9 +6,7 @@
  * from here as the single source of truth for auth-related paths and the
  * derivation rules between auth session state and dashboard routes.
  *
- * Feature: auth-pages
- * Validates: Requirements 1.1, 1.2, 1.3, 13.1, 13.2, 13.4, 13.5, 13.6
- * Property 8: ProtectedRoute redirect logic is consistent (pickRedirect totality)
+ * Ensures ProtectedRoute redirect logic is consistent and total.
  */
 
 /**
@@ -17,21 +15,19 @@
  * config, navigation calls, and tests.
  *
  * @type {{
- *   ROOT: '/',
- *   LOGIN: '/login',
- *   REGISTER: '/register',
- *   DASHBOARD_CLIENT: '/dashboard/client',
- *   DASHBOARD_PILOT: '/dashboard/pilot',
+ * ROOT: '/',
+ * LOGIN: '/login',
+ * REGISTER: '/register',
+ * DASHBOARD_CLIENT: '/dashboard/client',
+ * DASHBOARD_PILOT: '/dashboard/pilot',
  * }}
- *
- * Validates: Requirements 1.1, 1.2, 1.3, 13.1, 13.2
  */
 export const ROUTES = Object.freeze({
-  ROOT: '/',
-  LOGIN: '/login',
-  REGISTER: '/register',
-  DASHBOARD_CLIENT: '/dashboard/client',
-  DASHBOARD_PILOT: '/dashboard/pilot',
+ ROOT: '/',
+ LOGIN: '/login',
+ REGISTER: '/register',
+ DASHBOARD_CLIENT: '/dashboard/client',
+ DASHBOARD_PILOT: '/dashboard/pilot',
 });
 
 /**
@@ -43,13 +39,11 @@ export const ROUTES = Object.freeze({
  *
  * @param {'client' | 'pilot' | string | null | undefined} role
  * @returns {string | null} Dashboard path for known roles, `null` otherwise.
- *
- * Validates: Requirements 13.1, 13.2
  */
 export function roleToDashboardPath(role) {
-  if (role === 'client') return ROUTES.DASHBOARD_CLIENT;
-  if (role === 'pilot') return ROUTES.DASHBOARD_PILOT;
-  return null;
+ if (role === 'client') return ROUTES.DASHBOARD_CLIENT;
+ if (role === 'pilot') return ROUTES.DASHBOARD_PILOT;
+ return null;
 }
 
 /**
@@ -57,9 +51,9 @@ export function roleToDashboardPath(role) {
  * and the role that the requested route demands.
  *
  * Decision table:
- *   - `session === null`              → `'/login'`            (no session)
- *   - `session.role === requestedRole` → `null`               (allow render)
- *   - `session.role !== requestedRole` → `/dashboard/<session.role>` (wrong role)
+ * - `session === null` → `'/login'` (no session)
+ * - `session.role === requestedRole` → `null` (allow render)
+ * - `session.role !== requestedRole` → `/dashboard/<session.role>` (wrong role)
  *
  * The function is total over its declared input domain and never throws.
  * Defensive branches handle non-conforming inputs (e.g. session object
@@ -70,28 +64,27 @@ export function roleToDashboardPath(role) {
  * @param {'client' | 'pilot'} requestedRole
  * @returns {string | null} Path to redirect to, or `null` to allow the render.
  *
- * Validates: Requirements 13.4, 13.5, 13.6
- * Property 8: pickRedirect is total and consistent.
+ * pickRedirect is total and consistent.
  */
 export function pickRedirect(session, requestedRole) {
-  // Treat null/undefined session as "not logged in".
-  if (session === null || session === undefined) {
-    return ROUTES.LOGIN;
-  }
+ // Treat null/undefined session as "not logged in".
+ if (session === null || session === undefined) {
+ return ROUTES.LOGIN;
+ }
 
-  // Defensive: a malformed session without a recognized role is also
-  // treated as "not logged in" so the function stays total.
-  const sessionRole = session.role;
-  const sessionDashboard = roleToDashboardPath(sessionRole);
-  if (sessionDashboard === null) {
-    return ROUTES.LOGIN;
-  }
+ // Defensive: a malformed session without a recognized role is also
+ // treated as "not logged in" so the function stays total.
+ const sessionRole = session.role;
+ const sessionDashboard = roleToDashboardPath(sessionRole);
+ if (sessionDashboard === null) {
+ return ROUTES.LOGIN;
+ }
 
-  // Matching role → allow render.
-  if (sessionRole === requestedRole) {
-    return null;
-  }
+ // Matching role → allow render.
+ if (sessionRole === requestedRole) {
+ return null;
+ }
 
-  // Mismatched role → bounce to the session's own dashboard.
-  return sessionDashboard;
+ // Mismatched role → bounce to the session's own dashboard.
+ return sessionDashboard;
 }

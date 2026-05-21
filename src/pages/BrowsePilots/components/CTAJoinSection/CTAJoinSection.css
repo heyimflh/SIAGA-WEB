@@ -1,151 +1,151 @@
 /* ════════════════════════════════════════════════════════
-   CTA JOIN — Cinematic Closing Section
-   ════════════════════════════════════════════════════════ */
+ CTA JOIN — Cinematic Closing Section
+ ════════════════════════════════════════════════════════ */
 
 .pilots-cta-join {
-  position: relative;
-  background: linear-gradient(155deg, #071A3E 0%, #0F45D8 45%, #2F63F4 80%, #4A7AFF 100%);
-  padding: 100px 24px;
-  text-align: center;
-  overflow: hidden;
+ position: relative;
+ background: linear-gradient(155deg, #071A3E 0%, #0F45D8 45%, #2F63F4 80%, #4A7AFF 100%);
+ padding: 100px 24px;
+ text-align: center;
+ overflow: hidden;
 }
 
 /* ── Background layers ── */
 .pilots-cta-join__bg {
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle, rgba(0, 210, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-  background-size: 40px 40px, 80px 80px, 80px 80px;
-  pointer-events: none;
+ position: absolute;
+ inset: 0;
+ background-image:
+ radial-gradient(circle, rgba(0, 210, 255, 0.04) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px),
+ linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+ background-size: 40px 40px, 80px 80px, 80px 80px;
+ pointer-events: none;
 }
 
 .pilots-cta-join::before {
-  content: '';
-  position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 210, 255, 0.15), transparent 60%);
-  border-radius: 50%;
-  pointer-events: none;
+ content: '';
+ position: absolute;
+ top: -20%;
+ right: -10%;
+ width: 500px;
+ height: 500px;
+ background: radial-gradient(circle, rgba(0, 210, 255, 0.15), transparent 60%);
+ border-radius: 50%;
+ pointer-events: none;
 }
 
 .pilots-cta-join::after {
-  content: '';
-  position: absolute;
-  bottom: -15%;
-  left: -5%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(142, 165, 255, 0.12), transparent 60%);
-  border-radius: 50%;
-  pointer-events: none;
+ content: '';
+ position: absolute;
+ bottom: -15%;
+ left: -5%;
+ width: 400px;
+ height: 400px;
+ background: radial-gradient(circle, rgba(142, 165, 255, 0.12), transparent 60%);
+ border-radius: 50%;
+ pointer-events: none;
 }
 
 .pilots-cta-join__content {
-  position: relative;
-  z-index: 1;
-  max-width: 860px;
-  margin: 0 auto;
+ position: relative;
+ z-index: 1;
+ max-width: 860px;
+ margin: 0 auto;
 }
 
 .pilots-cta-join__heading {
-  font-family: var(--font-display);
-  font-size: clamp(26px, 3.5vw, 40px);
-  font-weight: 800;
-  color: #FFFFFF;
-  margin-bottom: 16px;
-  letter-spacing: -0.02em;
+ font-family: var(--font-display);
+ font-size: clamp(26px, 3.5vw, 40px);
+ font-weight: 800;
+ color: #FFFFFF;
+ margin-bottom: 16px;
+ letter-spacing: -0.02em;
 }
 
 .pilots-cta-join__subtitle {
-  font-size: 16px;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.72);
-  margin-bottom: 48px;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+ font-size: 16px;
+ line-height: 1.7;
+ color: rgba(255,255,255,0.72);
+ margin-bottom: 48px;
+ max-width: 600px;
+ margin-left: auto;
+ margin-right: auto;
 }
 
 .pilots-cta-join__benefits {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  margin-bottom: 48px;
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ gap: 16px;
+ margin-bottom: 48px;
 }
 
 .pilots-cta-join__benefit {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: 24px 14px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 18px;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(255,255,255,0.88);
-  backdrop-filter: blur(8px);
-  transition: transform 0.3s var(--ease-out), background 0.3s;
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ gap: 12px;
+ padding: 24px 14px;
+ background: rgba(255,255,255,0.06);
+ border: 1px solid rgba(255,255,255,0.1);
+ border-radius: 18px;
+ font-size: 13px;
+ font-weight: 600;
+ color: rgba(255,255,255,0.88);
+ backdrop-filter: blur(8px);
+ transition: transform 0.3s var(--ease-out), background 0.3s;
 }
 
 .pilots-cta-join__benefit:hover {
-  transform: translateY(-4px);
-  background: rgba(255,255,255,0.1);
+ transform: translateY(-4px);
+ background: rgba(255,255,255,0.1);
 }
 
 .pilots-cta-join__benefit-icon {
-  color: #7DF9FF;
+ color: #7DF9FF;
 }
 
 .pilots-cta-join__btn {
-  padding: 18px 42px;
-  font-size: 16px;
-  font-weight: 700;
-  border: none;
-  border-radius: 14px;
-  background: linear-gradient(135deg, #00B4D8, #00D2FF);
-  color: #FFFFFF;
-  cursor: pointer;
-  transition: transform 0.25s var(--ease-out), box-shadow 0.25s;
-  box-shadow: 0 8px 28px rgba(0, 180, 216, 0.3);
+ padding: 18px 42px;
+ font-size: 16px;
+ font-weight: 700;
+ border: none;
+ border-radius: 14px;
+ background: linear-gradient(135deg, #00B4D8, #00D2FF);
+ color: #FFFFFF;
+ cursor: pointer;
+ transition: transform 0.25s var(--ease-out), box-shadow 0.25s;
+ box-shadow: 0 8px 28px rgba(0, 180, 216, 0.3);
 }
 
 .pilots-cta-join__btn:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 36px rgba(0, 210, 255, 0.4);
+ transform: translateY(-3px) scale(1.02);
+ box-shadow: 0 12px 36px rgba(0, 210, 255, 0.4);
 }
 
 .pilots-cta-join__btn:active {
-  transform: scale(0.98);
+ transform: scale(0.98);
 }
 
 @media (max-width: 1024px) {
-  .pilots-cta-join__benefits {
-    grid-template-columns: repeat(2, 1fr);
-  }
+ .pilots-cta-join__benefits {
+ grid-template-columns: repeat(2, 1fr);
+ }
 }
 
 @media (max-width: 480px) {
-  .pilots-cta-join__benefits {
-    grid-template-columns: 1fr;
-  }
-  .pilots-cta-join {
-    padding: 64px 16px;
-  }
+ .pilots-cta-join__benefits {
+ grid-template-columns: 1fr;
+ }
+ .pilots-cta-join {
+ padding: 64px 16px;
+ }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pilots-cta-join__benefit:hover {
-    transform: none;
-  }
-  .pilots-cta-join__btn:hover {
-    transform: none;
-  }
+ .pilots-cta-join__benefit:hover {
+ transform: none;
+ }
+ .pilots-cta-join__btn:hover {
+ transform: none;
+ }
 }

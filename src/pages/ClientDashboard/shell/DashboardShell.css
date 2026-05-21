@@ -5,246 +5,246 @@
  */
 
 /* ============================================================
-   BASE LAYOUT
-   ============================================================ */
+ BASE LAYOUT
+ ============================================================ */
 .dashboard-shell__layout {
-  display: grid;
-  min-height: 100vh;
-  width: 100%;
-  overflow-x: hidden;
+ display: grid;
+ min-height: 100vh;
+ width: 100%;
+ overflow-x: hidden;
 }
 
 .dashboard-shell__layout--desktop {
-  grid-template-columns: minmax(260px, 280px) 1fr;
-  grid-template-rows: 68px 1fr;
-  grid-template-areas:
-    "sidebar topbar"
-    "sidebar main";
+ grid-template-columns: minmax(260px, 280px) 1fr;
+ grid-template-rows: 68px 1fr;
+ grid-template-areas:
+ "sidebar topbar"
+ "sidebar main";
 }
 
 /* ============================================================
-   TABLET LAYOUT (768px – 1279px)
-   ============================================================ */
+ TABLET LAYOUT (768px – 1279px)
+ ============================================================ */
 .dashboard-shell__layout--tablet {
-  grid-template-columns: 72px 1fr;
-  grid-template-rows: 68px 1fr;
-  grid-template-areas:
-    "sidebar topbar"
-    "sidebar main";
+ grid-template-columns: 72px 1fr;
+ grid-template-rows: 68px 1fr;
+ grid-template-areas:
+ "sidebar topbar"
+ "sidebar main";
 }
 
 /* ============================================================
-   MOBILE LAYOUT (<768px)
-   ============================================================ */
+ MOBILE LAYOUT (<768px)
+ ============================================================ */
 .dashboard-shell__layout--mobile {
-  grid-template-columns: 1fr;
-  grid-template-rows: 60px 1fr;
-  grid-template-areas:
-    "topbar"
-    "main";
+ grid-template-columns: 1fr;
+ grid-template-rows: 60px 1fr;
+ grid-template-areas:
+ "topbar"
+ "main";
 }
 
 /* ============================================================
-   SIDEBAR
-   ============================================================ */
+ SIDEBAR
+ ============================================================ */
 .dashboard-shell__sidebar {
-  grid-area: sidebar;
-  background: linear-gradient(180deg, #061A33 0%, #082747 100%);
-  top: 0;
-  left: 0;
-  height: 100vh;
-  z-index: 100;
-  overflow-y: auto;
-  overflow-x: hidden;
-  border-right: 1px solid rgba(120, 210, 255, 0.1);
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 191, 234, 0.2) transparent;
+ grid-area: sidebar;
+ background: linear-gradient(180deg, #061A33 0%, #082747 100%);
+ top: 0;
+ left: 0;
+ height: 100vh;
+ z-index: 100;
+ overflow-y: auto;
+ overflow-x: hidden;
+ border-right: 1px solid rgba(120, 210, 255, 0.1);
+ scrollbar-width: thin;
+ scrollbar-color: rgba(0, 191, 234, 0.2) transparent;
 }
 
 .dashboard-shell__sidebar::-webkit-scrollbar {
-  width: 4px;
+ width: 4px;
 }
 
 .dashboard-shell__sidebar::-webkit-scrollbar-thumb {
-  background: rgba(0, 191, 234, 0.2);
-  border-radius: 4px;
+ background: rgba(0, 191, 234, 0.2);
+ border-radius: 4px;
 }
 
 /* Full variant (desktop) */
 .dashboard-shell__sidebar--full {
-  width: 100%;
-  position: sticky;
-  top: 0;
-  height: 100vh;
+ width: 100%;
+ position: sticky;
+ top: 0;
+ height: 100vh;
 }
 
 /* Icon-only variant (tablet) */
 .dashboard-shell__sidebar--icon {
-  width: 72px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
+ width: 72px;
+ position: sticky;
+ top: 0;
+ height: 100vh;
 }
 
 /* Drawer variant (mobile) */
 .dashboard-shell__sidebar--drawer {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 280px;
-  height: 100vh;
-  transform: translateX(-100%);
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 1000;
-  box-shadow: 4px 0 48px rgba(6, 26, 51, 0.6);
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 280px;
+ height: 100vh;
+ transform: translateX(-100%);
+ transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+ z-index: 1000;
+ box-shadow: 4px 0 48px rgba(6, 26, 51, 0.6);
 }
 
 .dashboard-shell__sidebar--drawer.dashboard-shell__sidebar--open {
-  transform: translateX(0);
+ transform: translateX(0);
 }
 
 /* Drawer backdrop */
 .dashboard-shell__drawer-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(7, 26, 52, 0.6);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  z-index: 999;
-  animation: shell-fadeIn 0.25s ease;
+ position: fixed;
+ inset: 0;
+ background: rgba(7, 26, 52, 0.6);
+ backdrop-filter: blur(6px);
+ -webkit-backdrop-filter: blur(6px);
+ z-index: 999;
+ animation: shell-fadeIn 0.25s ease;
 }
 
 @keyframes shell-fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+ from { opacity: 0; }
+ to { opacity: 1; }
 }
 
 /* ============================================================
-   TOPBAR — Premium glass treatment
-   ============================================================ */
+ TOPBAR — Premium glass treatment
+ ============================================================ */
 .dashboard-shell__topbar {
-  grid-area: topbar;
-  display: flex;
-  align-items: center;
-  padding: 0 2rem;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(24px) saturate(1.5);
-  -webkit-backdrop-filter: blur(24px) saturate(1.5);
-  border-bottom: 1px solid rgba(180, 220, 245, 0.35);
-  height: 68px;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  box-shadow: 0 1px 16px rgba(10, 40, 80, 0.04);
+ grid-area: topbar;
+ display: flex;
+ align-items: center;
+ padding: 0 2rem;
+ background: rgba(255, 255, 255, 0.82);
+ backdrop-filter: blur(24px) saturate(1.5);
+ -webkit-backdrop-filter: blur(24px) saturate(1.5);
+ border-bottom: 1px solid rgba(180, 220, 245, 0.35);
+ height: 68px;
+ position: sticky;
+ top: 0;
+ z-index: 50;
+ box-shadow: 0 1px 16px rgba(10, 40, 80, 0.04);
 }
 
 /* Hamburger button (mobile only) */
 .dashboard-shell__hamburger {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: rgba(16, 109, 255, 0.06);
-  cursor: pointer;
-  border-radius: 12px;
-  transition: background 0.2s ease, transform 0.2s ease;
-  margin-right: 0.75rem;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: 40px;
+ height: 40px;
+ border: none;
+ background: rgba(16, 109, 255, 0.06);
+ cursor: pointer;
+ border-radius: 12px;
+ transition: background 0.2s ease, transform 0.2s ease;
+ margin-right: 0.75rem;
 }
 
 .dashboard-shell__hamburger:hover {
-  background: rgba(16, 109, 255, 0.12);
-  transform: scale(1.05);
+ background: rgba(16, 109, 255, 0.12);
+ transform: scale(1.05);
 }
 
 .dashboard-shell__hamburger:focus-visible {
-  outline: 2px solid var(--color-accent, #106DFF);
-  outline-offset: 2px;
+ outline: 2px solid var(--color-accent, #106DFF);
+ outline-offset: 2px;
 }
 
 .dashboard-shell__hamburger-icon {
-  display: block;
-  width: 18px;
-  height: 2px;
-  background: var(--color-primary, #071A34);
-  position: relative;
-  border-radius: 2px;
+ display: block;
+ width: 18px;
+ height: 2px;
+ background: var(--color-primary, #071A34);
+ position: relative;
+ border-radius: 2px;
 }
 
 .dashboard-shell__hamburger-icon::before,
 .dashboard-shell__hamburger-icon::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: inherit;
-  border-radius: 2px;
+ content: '';
+ position: absolute;
+ left: 0;
+ width: 100%;
+ height: 2px;
+ background: inherit;
+ border-radius: 2px;
 }
 
 .dashboard-shell__hamburger-icon::before {
-  top: -6px;
+ top: -6px;
 }
 
 .dashboard-shell__hamburger-icon::after {
-  top: 6px;
+ top: 6px;
 }
 
 /* ============================================================
-   MAIN CONTENT AREA
-   ============================================================ */
+ MAIN CONTENT AREA
+ ============================================================ */
 .dashboard-shell__main {
-  grid-area: main;
-  background: transparent;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 2.5rem 2.5rem 2rem;
-  min-height: calc(100vh - 68px);
-  position: relative;
+ grid-area: main;
+ background: transparent;
+ overflow-y: auto;
+ overflow-x: hidden;
+ padding: 2.5rem 2.5rem 2rem;
+ min-height: calc(100vh - 68px);
+ position: relative;
 }
 
 /* Ensure main scrolls independently while sidebar stays fixed */
 .dashboard-shell__layout--desktop .dashboard-shell__main,
 .dashboard-shell__layout--tablet .dashboard-shell__main {
-  height: calc(100vh - 68px);
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(16, 109, 255, 0.12) transparent;
+ height: calc(100vh - 68px);
+ overflow-y: auto;
+ scrollbar-width: thin;
+ scrollbar-color: rgba(16, 109, 255, 0.12) transparent;
 }
 
 .dashboard-shell__layout--desktop .dashboard-shell__main::-webkit-scrollbar,
 .dashboard-shell__layout--tablet .dashboard-shell__main::-webkit-scrollbar {
-  width: 6px;
+ width: 6px;
 }
 
 .dashboard-shell__layout--desktop .dashboard-shell__main::-webkit-scrollbar-thumb,
 .dashboard-shell__layout--tablet .dashboard-shell__main::-webkit-scrollbar-thumb {
-  background: rgba(16, 109, 255, 0.12);
-  border-radius: 6px;
+ background: rgba(16, 109, 255, 0.12);
+ border-radius: 6px;
 }
 
 /* Tablet main */
 .dashboard-shell__layout--tablet .dashboard-shell__main {
-  padding: 2rem 1.75rem;
+ padding: 2rem 1.75rem;
 }
 
 /* Mobile main */
 .dashboard-shell__layout--mobile .dashboard-shell__main {
-  padding: 1.5rem 1.125rem;
+ padding: 1.5rem 1.125rem;
 }
 
 /* Mobile topbar height adjustment */
 .dashboard-shell__layout--mobile .dashboard-shell__topbar {
-  height: 60px;
-  padding: 0 1rem;
+ height: 60px;
+ padding: 0 1rem;
 }
 
 /* ============================================================
-   REDUCED MOTION
-   ============================================================ */
+ REDUCED MOTION
+ ============================================================ */
 @media (prefers-reduced-motion: reduce) {
-  .dashboard-shell__sidebar--drawer {
-    transition: none;
-  }
+ .dashboard-shell__sidebar--drawer {
+ transition: none;
+ }
 }

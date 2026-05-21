@@ -6,12 +6,12 @@
  * Validates: Requirements 7.2a, 7.5, 7.6, 7.8, 7.9, 7.10
  *
  * Pipeline used by BiddingReviewTable:
- *   eligibleBids(bids) → applyChips(result, chips) → applySort(result, sort)
+ * eligibleBids(bids) → applyChips(result, chips) → applySort(result, sort)
  */
 
 /**
  * Minimum rating threshold — bids below this are NEVER shown regardless of
- * any filter chip state (Requirement 7.2a).
+ * any filter chip state .
  */
 export const ELIGIBLE_THRESHOLD = 2;
 
@@ -21,7 +21,7 @@ export const ELIGIBLE_THRESHOLD = 2;
  * @returns {Array} bids with rating >= ELIGIBLE_THRESHOLD
  */
 export function eligibleBids(bids) {
-  return bids.filter((b) => b.rating >= ELIGIBLE_THRESHOLD);
+ return bids.filter((b) => b.rating >= ELIGIBLE_THRESHOLD);
 }
 
 /**
@@ -33,11 +33,11 @@ export function eligibleBids(bids) {
  * @returns {Array} filtered bids
  */
 export function applyChips(bids, { siagaVerifiedOnly, ratingMin4 }) {
-  return bids.filter(
-    (b) =>
-      (!siagaVerifiedOnly || b.siaga_verified === true) &&
-      (!ratingMin4 || b.rating >= 4)
-  );
+ return bids.filter(
+ (b) =>
+ (!siagaVerifiedOnly || b.siaga_verified === true) &&
+ (!ratingMin4 || b.rating >= 4)
+ );
 }
 
 /**
@@ -49,15 +49,15 @@ export function applyChips(bids, { siagaVerifiedOnly, ratingMin4 }) {
  * @returns {Array} sorted copy of bids, or original reference if sort is null/undefined
  */
 export function applySort(bids, sort) {
-  if (!sort) return bids;
-  const { key, direction } = sort;
-  return [...bids].sort((a, b) => {
-    const cmp =
-      a[key] === b[key]
-        ? a.pilot_id.localeCompare(b.pilot_id)
-        : a[key] > b[key]
-          ? 1
-          : -1;
-    return direction === 'asc' ? cmp : -cmp;
-  });
+ if (!sort) return bids;
+ const { key, direction } = sort;
+ return [...bids].sort((a, b) => {
+ const cmp =
+ a[key] === b[key]
+ ? a.pilot_id.localeCompare(b.pilot_id)
+ : a[key] > b[key]
+ ? 1
+ : -1;
+ return direction === 'asc' ? cmp : -cmp;
+ });
 }
