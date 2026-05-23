@@ -1,10 +1,3 @@
-/**
- * PilotTopbar — Sticky glass topbar for Pilot Dashboard.
- *
- * Feature: pilot-dashboard
- * Validates: Requirements 4
- */
-
 import { Bell, User, Menu } from 'lucide-react';
 import { formatIndonesianDate } from '../utils/formatDate.js';
 import './PilotTopbar.css';

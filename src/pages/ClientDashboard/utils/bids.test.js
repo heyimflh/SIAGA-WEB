@@ -1,7 +1,3 @@
-/**
- * Unit tests for bids.js utility functions.
- * Validates: Requirements 7.2a, 7.5, 7.6, 7.8, 7.9, 7.10
- */
 import { describe, it, expect } from 'vitest';
 import {
  ELIGIBLE_THRESHOLD,
@@ -60,19 +56,19 @@ describe('applyChips', () => {
  it('filters to siaga_verified only', () => {
  const result = applyChips(eligible, { siagaVerifiedOnly: true, ratingMin4: false });
  expect(result.every((b) => b.siaga_verified === true)).toBe(true);
- expect(result).toHaveLength(3); // P-A, P-D, P-E
+ expect(result).toHaveLength(3);
  });
 
  it('filters to rating >= 4 only', () => {
  const result = applyChips(eligible, { siagaVerifiedOnly: false, ratingMin4: true });
  expect(result.every((b) => b.rating >= 4)).toBe(true);
- expect(result).toHaveLength(2); // P-A, P-D
+ expect(result).toHaveLength(2);
  });
 
  it('AND-composition: both chips active', () => {
  const result = applyChips(eligible, { siagaVerifiedOnly: true, ratingMin4: true });
  expect(result.every((b) => b.siaga_verified === true && b.rating >= 4)).toBe(true);
- expect(result).toHaveLength(2); // P-A, P-D
+ expect(result).toHaveLength(2);
  });
 
  it('monotonic: adding chips never increases result count', () => {

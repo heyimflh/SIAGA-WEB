@@ -136,14 +136,12 @@ function Footer() {
 
  return (
  <footer ref={footerRef} className="sf" aria-label="Site footer">
- {/* Subtle divider — gradient line, not hard border */}
+
  <div className="sf__divider" aria-hidden="true" />
 
- {/* Top area: brand + link columns */}
  <div className="sf-top">
  <div className="sf-container">
  <div className="sf-grid">
- {/* Brand column */}
  <div className="sf-brand">
  <img
  src="/images/logo/siaga-full.png"
@@ -153,7 +151,7 @@ function Footer() {
  <p className="sf-brand__tagline">
  Platform inspeksi drone B2B untuk infrastruktur kritis Indonesia.
  </p>
- {/* Social icons */}
+
  <div className="sf-social">
  {socialLinks.map((social) => (
  <a
@@ -168,7 +166,6 @@ function Footer() {
  </div>
  </div>
 
- {/* Link columns */}
  <div className="sf-links">
  {footerLinks.map((col) => (
  <div key={col.title} className="sf-links__col">
@@ -189,12 +186,12 @@ function Footer() {
  </div>
  </div>
 
- {/* Giant decorative wordmark */}
+
  <div className="sf-wordmark" aria-hidden="true">
  <span className="sf-wordmark__text">SIAGA</span>
  </div>
 
- {/* Bottom bar */}
+
  <div className="sf-bottom">
  <div className="sf-container">
  <div className="sf-bottom__inner">

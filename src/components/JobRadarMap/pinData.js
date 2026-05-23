@@ -1,4 +1,3 @@
-// Data lokasi pins peta Indonesia — job inspeksi drone
 export const pinData = [
  {
  id: 1,
@@ -132,7 +131,6 @@ export const pinData = [
  },
 ];
 
-// Connection lines between project hubs
 export const connectionLines = [
  { from: [106.05, -6.02], to: [107.38, -6.53] },
  { from: [107.38, -6.53], to: [110.42, -6.97] },

@@ -13,7 +13,7 @@ export default function Hero() {
  isVisibleRef.current = isVisible;
 
  useEffect(() => {
- // Disable parallax on touch devices
+
  const isTouchDevice = window.matchMedia('(hover: none), (pointer: coarse)').matches;
 
  let mouseX = 0;
@@ -31,12 +31,11 @@ export default function Hero() {
  window.addEventListener('mousemove', handleMouseMove, { passive: true });
  }
 
- // Cache DOM queries outside the loop
  let floaters = null;
  let sphere = null;
 
  const animateParallax = () => {
- // Skip parallax on touch devices or when hero is off-screen
+
  if (isTouchDevice || !isVisibleRef.current) {
  rafId = requestAnimationFrame(animateParallax);
  return;
@@ -49,7 +48,6 @@ export default function Hero() {
  if (!floaters) floaters = containerRef.current.querySelectorAll('.hero-floater');
  if (!sphere) sphere = containerRef.current.querySelector('.hero-gradient-sphere');
 
- // Use direct style.transform instead of gsap.set for less overhead
  for (let i = 0; i < floaters.length; i++) {
  const speed = (i + 1) * 12;
  floaters[i].style.transform = `translate3d(${targetX * speed}px, ${targetY * speed}px, 0)`;
@@ -65,59 +63,48 @@ export default function Hero() {
  const ctx = gsap.context(() => {
  const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
- // Background layers
  tl.to('.hero-grid-bg', { opacity: 0.5, duration: 1.8 }, 0);
  tl.to('.hero-glow-orb', { opacity: 1, duration: 2.5, stagger: 0.3 }, 0);
  tl.to('.hero-gradient-sphere', { opacity: 1, duration: 2 }, 0.2);
 
- // Decorative floaters
  tl.fromTo('.hero-floater',
  { scale: 0, opacity: 0 },
  { scale: 1, opacity: 1, duration: 1, stagger: 0.15, ease: 'back.out(1.5)' },
  0.3
  );
 
- // Eyebrow
  tl.fromTo('.hero-eyebrow',
  { y: 20, opacity: 0 },
  { y: 0, opacity: 1, duration: 0.7 },
  0.4
  );
 
- // Title words
  tl.fromTo('.hero-title .word',
  { y: '110%', opacity: 0 },
  { y: '0%', opacity: 1, duration: 0.9, stagger: 0.07 },
  0.6
  );
 
- // Underline
  tl.to('.hero-title-underline', { scaleX: 1, duration: 0.7, ease: 'power3.inOut' }, 1.5);
 
- // Subtitle
  tl.fromTo('.hero-subtitle',
  { y: 20, opacity: 0 },
  { y: 0, opacity: 1, duration: 0.8 },
  1.7
  );
 
- // CTA group
  tl.fromTo('.hero-cta-group',
  { y: 24, opacity: 0 },
  { y: 0, opacity: 1, duration: 0.7 },
  2.0
  );
 
- // Spec badges
  tl.fromTo('.hero-spec-badge',
  { scale: 0.6, opacity: 0 },
  { scale: 1, opacity: 1, duration: 0.5, stagger: 0.1, ease: 'back.out(1.8)' },
  2.3
  );
 
- // Trust bar removed — now using dedicated StatsBar section
-
- // Scroll indicator
  tl.to('.hero-scroll-indicator', { opacity: 1, duration: 0.6 }, 3.0);
  }, containerRef);
 
@@ -130,18 +117,14 @@ export default function Hero() {
 
  return (
  <section className="hero" ref={containerRef}>
- {/* ── Background layers ── */}
  <div className="hero-grid-bg" />
 
- {/* Gradient sphere — large glowing backdrop behind drone */}
  <div className="hero-gradient-sphere" />
 
- {/* Ambient glow orbs */}
  <div className="hero-glow-orb hero-glow-1" />
  <div className="hero-glow-orb hero-glow-2" />
  <div className="hero-glow-orb hero-glow-3" />
 
- {/* ── Decorative floating elements ── */}
  <div className="hero-floater floater-dot-1" />
  <div className="hero-floater floater-dot-2" />
  <div className="hero-floater floater-dot-3" />
@@ -150,7 +133,6 @@ export default function Hero() {
  <div className="hero-floater floater-cross" />
  <div className="hero-floater floater-diamond" />
 
- {/* ── Text content ── */}
  <div className="hero-content">
  <p className="hero-eyebrow">
  Platform Inspeksi Drone #1 Indonesia
@@ -188,13 +170,13 @@ export default function Hero() {
  </div>
  </div>
 
- {/* ── 3D drone scene ── */}
+
  <div className="hero-3d-container">
  <Suspense fallback={<div style={{ width: '100%', height: '100%' }} />}>
  <Scene />
  </Suspense>
 
- {/* Floating spec badges */}
+
  <div className="hero-spec-badge badge-cam">
  <Camera size={15} strokeWidth={2} />
  <div className="badge-text">
@@ -228,9 +210,7 @@ export default function Hero() {
  </div>
  </div>
 
- {/* Trust bar removed — stats now in dedicated StatsBar section */}
 
- {/* Scroll indicator */}
  <div className="hero-scroll-indicator">
  <div className="scroll-line" />
  <span className="scroll-text">Scroll</span>

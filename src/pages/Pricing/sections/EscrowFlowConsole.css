@@ -1,8 +1,6 @@
-/* EscrowFlowConsole — Premium escrow visualization */
 .efc { padding: 5rem 1.5rem; background: linear-gradient(180deg, #1B8FD9 0%, #0D6AB8 50%, #0A2540 100%); }
 .efc__container { max-width: 900px; margin: 0 auto; }
 
-/* Flow */
 .efc__flow { display: flex; align-items: center; justify-content: center; margin: 3rem 0 2.5rem; flex-wrap: wrap; gap: 0; }
 .efc__flow-step-wrapper { display: flex; align-items: center; }
 .efc__flow-card {
@@ -23,7 +21,6 @@
 .efc__flow-line { width: 24px; height: 2px; background: linear-gradient(90deg, rgba(255,255,255,0.2), rgba(0,212,255,0.4)); border-radius: 1px; }
 .efc__flow-arrow { width: 0; height: 0; border-style: solid; border-width: 4px 0 4px 6px; border-color: transparent transparent transparent rgba(0,212,255,0.5); }
 
-/* Split payment */
 .efc__split { background: rgba(255,255,255,0.06); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.12); border-radius: 20px; padding: 1.75rem; margin-bottom: 1.5rem; }
 .efc__split-header { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 700; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1rem; }
 .efc__split-bar { display: flex; height: 56px; border-radius: 12px; overflow: hidden; margin-bottom: 1rem; }
@@ -39,10 +36,8 @@
 .efc__split-badges { display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap; }
 .efc__split-badge { font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); padding: 0.35rem 0.8rem; border-radius: 999px; }
 
-/* Explanation */
 .efc__explanation { font-family: 'Inter', sans-serif; font-size: 0.88rem; color: rgba(255,255,255,0.7); line-height: 1.7; text-align: center; max-width: 680px; margin: 0 auto; }
 
-/* Responsive */
 @media (max-width: 768px) {
  .efc { padding: 3.5rem 1rem; }
  .efc__flow { flex-direction: column; gap: 0; }

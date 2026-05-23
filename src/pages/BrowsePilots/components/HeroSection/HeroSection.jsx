@@ -27,7 +27,6 @@ export default function HeroSection({
  const [currentSlide, setCurrentSlide] = useState(0);
  const intervalRef = useRef(null);
 
- // Auto-slide every 5 seconds
  useEffect(() => {
  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  if (prefersReduced) return;
@@ -41,7 +40,6 @@ export default function HeroSection({
 
  return (
  <section className="pilots-hero">
- {/* Sliding background images */}
  <div className="pilots-hero__slideshow" aria-hidden="true">
  {HERO_IMAGES.map((src, i) => (
  <div
@@ -53,12 +51,10 @@ export default function HeroSection({
  ))}
  </div>
 
- {/* Blue-sky overlay layers */}
  <div className="pilots-hero__overlay" aria-hidden="true" />
  <div className="pilots-hero__bg-pattern" aria-hidden="true" />
  <div className="pilots-hero__glow" aria-hidden="true" />
 
- {/* Floating glass badges */}
  <div className="pilots-hero__floating" aria-hidden="true">
  <span className="pilots-hero__float-badge pilots-hero__float-badge--1">SIDOPI Verified</span>
  <span className="pilots-hero__float-badge pilots-hero__float-badge--2">DJI M300 RTK</span>
@@ -66,7 +62,7 @@ export default function HeroSection({
  <span className="pilots-hero__float-badge pilots-hero__float-badge--4">Infrastructure</span>
  </div>
 
- {/* Slide indicators */}
+
  <div className="pilots-hero__indicators" aria-hidden="true">
  {HERO_IMAGES.map((_, i) => (
  <button
@@ -91,7 +87,6 @@ export default function HeroSection({
  jembatan, SUTET, bendungan, jalan tol, tower, dan aset strategis lainnya.
  </p>
 
- {/* Search Bar */}
  <div className="pilots-hero__search-wrapper">
  <div className="pilots-search" role="combobox"
  aria-expanded={showSuggestions && suggestions.length > 0}
@@ -115,7 +110,7 @@ export default function HeroSection({
  />
  </div>
 
- {/* Autocomplete Dropdown */}
+
  {showSuggestions && suggestions.length > 0 && (
  <ul id={listboxId} className="pilots-search__suggestions" role="listbox">
  {suggestions.map((s, i) => (
@@ -135,7 +130,6 @@ export default function HeroSection({
  )}
  </div>
 
- {/* Trust Metrics */}
  <div className="pilots-hero__metrics">
  {TRUST_METRICS.map((m) => (
  <div key={m.label} className="pilots-hero__metric">

@@ -1,25 +1,11 @@
-/**
- * QuickStatsFooter — Section F
- *
- * Strip horizontal di paling bawah Main Content dengan 3 statistik
- * berdampingan yang menjalankan count-up saat masuk viewport.
- *
- * Spec: .kiro/specs/client-dashboard
- * Validates: Requirements 9.1, 9.2, 9.3, 9.4, 9.5, 9.5a, 11.4
- */
-
 import { useRef } from 'react';
 import ReactCountUp from 'react-countup';
 import { formatRupiah } from '../../utils/formatRupiah.js';
 import useVisibility from '../../../../hooks/useVisibility.js';
 
-// Handle CJS/ESM interop — react-countup may export the component as .default
 const CountUp = ReactCountUp.default || ReactCountUp;
 import './QuickStatsFooter.css';
 
-/**
- * @param {{ quickStats: { total_hemat_rp: number, total_pilot_kerjasama: number, rata_rata_waktu_bidding_hari: number } }} props
- */
 function QuickStatsFooter({ quickStats }) {
  const containerRef = useRef(null);
  const visible = useVisibility(containerRef);

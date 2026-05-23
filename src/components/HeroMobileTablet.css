@@ -1,9 +1,3 @@
-/* ════════════════════════════════════════════════════════
- HERO MOBILE/TABLET — DEDICATED COMPONENT
- Tampil hanya di < 1024px. Layout vertical premium.
- Semua elemen utama di normal document flow.
- ════════════════════════════════════════════════════════ */
-
 .hmt-hero {
  position: relative;
  width: 100%;
@@ -17,7 +11,6 @@
  linear-gradient(180deg, #FBFDFF 0%, #F1F8FF 50%, #FBFDFF 100%);
 }
 
-/* ── Background decoration ── */
 .hmt-bg {
  position: absolute;
  inset: 0;
@@ -60,7 +53,6 @@
  background: rgba(0, 180, 216, 0.08);
 }
 
-/* ── Main container ── */
 .hmt-container {
  position: relative;
  z-index: 1;
@@ -71,9 +63,6 @@
  flex-direction: column;
 }
 
-/* ════════════════════════════════════════
- 1. EYEBROW BADGE
- ════════════════════════════════════════ */
 .hmt-eyebrow {
  display: inline-flex;
  align-items: center;
@@ -107,9 +96,6 @@
  50% { opacity: 0.5; }
 }
 
-/* ════════════════════════════════════════
- 2. HEADLINE
- ════════════════════════════════════════ */
 .hmt-title {
  font-family: var(--font-display);
  font-size: clamp(28px, 8.5vw, 44px);
@@ -135,9 +121,6 @@
  -webkit-text-fill-color: transparent;
 }
 
-/* ════════════════════════════════════════
- 3. SUBTITLE
- ════════════════════════════════════════ */
 .hmt-subtitle {
  font-family: var(--font-body);
  font-size: 14.5px;
@@ -147,9 +130,6 @@
  margin-bottom: 28px;
 }
 
-/* ════════════════════════════════════════
- 4. CTA BUTTONS — stacked vertical, full-width
- ════════════════════════════════════════ */
 .hmt-cta-group {
  display: flex;
  flex-direction: column;
@@ -215,9 +195,6 @@
  border-color: rgba(10, 37, 64, 0.2);
 }
 
-/* ════════════════════════════════════════
- 5. 3D DRONE STAGE — fully contained
- ════════════════════════════════════════ */
 .hmt-stage {
  position: relative;
  width: 100%;
@@ -236,7 +213,6 @@
  isolation: isolate;
 }
 
-/* Subtle grid pattern inside stage */
 .hmt-stage-grid {
  position: absolute;
  inset: 0;
@@ -263,7 +239,6 @@
  pointer-events: none;
 }
 
-/* Canvas wrapper — strict containment */
 .hmt-stage-canvas {
  position: absolute;
  inset: 0;
@@ -287,7 +262,6 @@
  background: transparent;
 }
 
-/* Tag badge inside stage */
 .hmt-stage-tag {
  position: absolute;
  top: 14px;
@@ -319,9 +293,6 @@
  animation: hmtDotPulse 1.6s ease-in-out infinite;
 }
 
-/* ════════════════════════════════════════
- 6. STATS GRID — normal grid, no absolute
- ════════════════════════════════════════ */
 .hmt-stats {
  display: grid;
  grid-template-columns: repeat(2, 1fr);
@@ -390,18 +361,12 @@
  text-overflow: ellipsis;
 }
 
-/* ════════════════════════════════════════════════════════
- RESPONSIVE BREAKPOINTS
- ════════════════════════════════════════════════════════ */
-
-/* Mobile besar (390px+) */
 @media (min-width: 390px) {
  .hmt-stage {
  height: 300px;
  }
 }
 
-/* Mobile XL (430px+) */
 @media (min-width: 430px) {
  .hmt-container {
  padding: 0 24px;
@@ -420,7 +385,6 @@
  }
 }
 
-/* Tablet portrait (640px+) */
 @media (min-width: 640px) {
  .hmt-hero {
  padding: 120px 0 72px;
@@ -448,7 +412,6 @@
  max-width: 540px;
  }
 
- /* CTA — horizontal at tablet */
  .hmt-cta-group {
  flex-direction: row;
  flex-wrap: wrap;
@@ -467,7 +430,6 @@
  margin-bottom: 28px;
  }
 
- /* Stats — 4 columns at tablet */
  .hmt-stats {
  grid-template-columns: repeat(4, 1fr);
  gap: 12px;
@@ -482,7 +444,6 @@
  }
 }
 
-/* Tablet landscape / laptop kecil (768px+) — masih pakai mobile/tablet hero, tapi 2-column */
 @media (min-width: 768px) {
  .hmt-hero {
  padding: 130px 0 80px;
@@ -502,7 +463,6 @@
  }
 }
 
-/* Mid tablet landscape (900px+) — 2-column layout */
 @media (min-width: 900px) {
  .hmt-container {
  display: grid;
@@ -556,7 +516,6 @@
  }
 }
 
-/* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
  .hmt-eyebrow-dot,
  .hmt-stage-tag-dot {

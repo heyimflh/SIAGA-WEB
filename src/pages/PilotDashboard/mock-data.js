@@ -1,13 +1,3 @@
-/**
- * mock-data.js — Single source of truth untuk seluruh data Pilot Dashboard.
- *
- * Semua section membaca dari sini agar angka antar-section konsisten.
- * Tidak ada API call. Data bersifat statis dan tidak boleh dimutasi.
- *
- * Feature: pilot-dashboard
- * Validates: Requirements 14
- */
-
 export const mockData = Object.freeze({
  pilot_profile: {
  nama: 'Rizky',

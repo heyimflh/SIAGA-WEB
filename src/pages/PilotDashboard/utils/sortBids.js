@@ -1,10 +1,3 @@
-/**
- * sortBids.js — Pure bid sorting function.
- *
- * Feature: pilot-dashboard
- * Validates: Requirements 8, 15
- */
-
 const STATUS_ORDER = { pending: 0, diterima: 1, ditolak: 2 };
 
 export function sortBids(bids, criteria = 'terbaru') {
@@ -20,6 +13,5 @@ export function sortBids(bids, criteria = 'terbaru') {
  });
  }
 
- // Default: terbaru (newest first)
  return copy.sort((a, b) => new Date(b.tanggal_submit) - new Date(a.tanggal_submit));
 }

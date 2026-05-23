@@ -1,7 +1,3 @@
-/* ════════════════════════════════════════════════════════
- BROWSE PILOTS PAGE — Premium Pilot Marketplace
- ════════════════════════════════════════════════════════ */
-
 .browse-pilots-page {
  --pilots-hero-bg: #0F45D8;
  --pilots-hero-dot: rgba(0, 210, 255, 0.06);
@@ -28,7 +24,6 @@
  overflow-x: hidden;
 }
 
-/* ── Marketplace area with depth ── */
 .browse-pilots-page__marketplace {
  position: relative;
  max-width: 1360px;

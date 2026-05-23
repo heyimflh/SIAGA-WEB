@@ -111,7 +111,6 @@ export default function DemoTheater() {
  dark
  />
 
- {/* Scenario selector */}
  <div className="dt-scenarios">
  {scenarios.map((s) => (
  <button
@@ -125,14 +124,13 @@ export default function DemoTheater() {
  ))}
  </div>
 
- {/* Browser frame */}
  <div className="dt-frame">
  <div className="dt-frame__header">
  <div className="dt-frame__dots"><span/><span/><span/></div>
  <span className="dt-frame__url">app.siaga.id — {activeScenario}</span>
  </div>
 
- {/* Tabs */}
+
  <div className="dt-tabs" role="tablist" aria-label="Demo views">
  {tabs.map((tab) => (
  <button
@@ -148,7 +146,7 @@ export default function DemoTheater() {
  ))}
  </div>
 
- {/* Content */}
+
  <div className="dt-frame__body" role="tabpanel">
  {views[activeTab]}
  </div>

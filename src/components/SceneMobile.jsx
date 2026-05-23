@@ -3,7 +3,6 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
-/* ── Drone model — auto-rotate version untuk mobile (tanpa cursor follow) ── */
 function DroneModelMobile() {
  const { scene } = useGLTF('/models/drone.glb');
  const groupRef = useRef();
@@ -29,7 +28,6 @@ function DroneModelMobile() {
  if (!groupRef.current) return;
  const t = clock.elapsedTime;
 
- /* Entry animation — scale up smoothly */
  if (entryProgress.current < 1) {
  const raw = Math.max(0, (t - 0.6) / 1.2);
  entryProgress.current = Math.min(1, raw);
@@ -40,15 +38,12 @@ function DroneModelMobile() {
  return;
  }
 
- /* Floating bob */
  groupRef.current.position.y = Math.sin(t * 0.6) * 0.12;
 
- /* Auto-rotate gentle untuk mobile (no cursor) */
  groupRef.current.rotation.y = Math.sin(t * 0.3) * 0.5 + t * 0.15;
  groupRef.current.rotation.x = Math.sin(t * 0.4) * 0.08;
  groupRef.current.rotation.z = Math.sin(t * 0.35) * 0.05;
 
- /* Propeller spin */
  for (let i = 0; i < propellers.length; i++) {
  propellers[i].rotation.y += 0.4;
  }
@@ -61,7 +56,7 @@ function DroneModelMobile() {
  );
 }
 
-/* ── Shadow ellipse ── */
+
 function ShadowPlane() {
  return (
  <mesh position={[0, -1.4, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={[2, 1, 1]}>
@@ -73,7 +68,7 @@ function ShadowPlane() {
 
 useGLTF.preload('/models/drone.glb');
 
-/* ── Mobile Canvas — touch-friendly, no cursor follow ── */
+
 export default function SceneMobile() {
  const wrapperRef = useRef(null);
  const [isVisible, setIsVisible] = useState(true);

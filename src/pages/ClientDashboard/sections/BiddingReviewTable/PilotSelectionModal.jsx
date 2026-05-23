@@ -1,21 +1,3 @@
-/**
- * PilotSelectionModal.jsx — Modal konfirmasi pemilihan pilot.
- *
- * Spec: .kiro/specs/client-dashboard
- * Validates: Requirements 7.12, 7.13, 13.10, 13.11
- *
- * Rendered via `createPortal(document.body)`.
- * Animasi scale-in 200ms (range 150-300ms).
- * Konten: ringkasan pilot terpilih + peringatan + tombol "Batal" + "Konfirmasi Pilihan".
- * Focus trap + Escape close.
- *
- * Props:
- * - pilot: object | null — bid data dari mock-data
- * - isOpen: boolean
- * - onClose: () => void
- * - onConfirm: () => void
- */
-
 import { useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -36,7 +18,6 @@ function PilotSelectionModal({ pilot, isOpen, onClose, onConfirm }) {
  const modalRef = useRef(null);
  const previousFocusRef = useRef(null);
 
- // Focus trap: focus first focusable element on open, restore on close
  useEffect(() => {
  if (isOpen && modalRef.current) {
  previousFocusRef.current = document.activeElement;
@@ -52,7 +33,6 @@ function PilotSelectionModal({ pilot, isOpen, onClose, onConfirm }) {
  }
  }, [isOpen]);
 
- // Escape key handler
  useEffect(() => {
  if (!isOpen) return;
 
@@ -67,7 +47,6 @@ function PilotSelectionModal({ pilot, isOpen, onClose, onConfirm }) {
  return () => document.removeEventListener('keydown', handleKeyDown);
  }, [isOpen, onClose]);
 
- // Focus trap: keep focus within modal
  const handleKeyDown = useCallback(
  (e) => {
  if (e.key !== 'Tab' || !modalRef.current) return;
@@ -91,7 +70,6 @@ function PilotSelectionModal({ pilot, isOpen, onClose, onConfirm }) {
  []
  );
 
- // Prevent body scroll when modal is open
  useEffect(() => {
  if (isOpen) {
  document.body.style.overflow = 'hidden';
@@ -109,7 +87,6 @@ function PilotSelectionModal({ pilot, isOpen, onClose, onConfirm }) {
  <AnimatePresence>
  {isOpen && (
  <>
- {/* Overlay backdrop */}
  <motion.div
  className="pilot-modal-overlay"
  variants={overlayVariants}
@@ -121,7 +98,6 @@ function PilotSelectionModal({ pilot, isOpen, onClose, onConfirm }) {
  aria-hidden="true"
  />
 
- {/* Modal panel */}
  <motion.div
  ref={modalRef}
  className="pilot-modal"
@@ -135,7 +111,6 @@ function PilotSelectionModal({ pilot, isOpen, onClose, onConfirm }) {
  transition={{ duration: 0.2, ease: 'easeOut' }}
  onKeyDown={handleKeyDown}
  >
- {/* Header */}
  <div className="pilot-modal__header">
  <UserCheck size={24} className="pilot-modal__header-icon" aria-hidden="true" />
  <h2 id="pilot-modal-title" className="pilot-modal__title">
@@ -143,7 +118,6 @@ function PilotSelectionModal({ pilot, isOpen, onClose, onConfirm }) {
  </h2>
  </div>
 
- {/* Pilot summary */}
  <div className="pilot-modal__summary">
  <img
  src={pilot.pilot_avatar}
@@ -171,7 +145,7 @@ function PilotSelectionModal({ pilot, isOpen, onClose, onConfirm }) {
  </div>
  </div>
 
- {/* Warning */}
+
  <div className="pilot-modal__warning">
  <AlertTriangle size={18} className="pilot-modal__warning-icon" aria-hidden="true" />
  <p className="pilot-modal__warning-text">
@@ -180,7 +154,6 @@ function PilotSelectionModal({ pilot, isOpen, onClose, onConfirm }) {
  </p>
  </div>
 
- {/* Actions */}
  <div className="pilot-modal__actions">
  <button
  type="button"

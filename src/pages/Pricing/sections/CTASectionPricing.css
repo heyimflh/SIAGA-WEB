@@ -1,4 +1,3 @@
-/* CTASectionPricing — inside ClosingSection */
 .cta-pr { position: relative; overflow: hidden; padding: 5.5rem 1.5rem; text-align: center; }
 .cta-pr__bg { position: absolute; inset: 0; pointer-events: none; }
 .cta-pr__grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px); background-size: 56px 56px; }

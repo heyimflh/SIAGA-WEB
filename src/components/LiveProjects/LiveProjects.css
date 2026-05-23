@@ -1,14 +1,9 @@
-/* ════════════════════════════════════════════════════════
- SECTION — LIVE PROJECTS
- Demand-side liquidity — Premium Glassmorphism
- ════════════════════════════════════════════════════════ */
-
 .lp-section {
  position: relative;
  padding: 120px 0;
  overflow: hidden;
  isolation: isolate;
- /* Rich colored background for visible glass effect */
+
  background:
  radial-gradient(ellipse 70% 50% at 70% 25%, rgba(0, 98, 214, 0.13), transparent 50%),
  radial-gradient(ellipse 60% 50% at 30% 75%, rgba(0, 180, 216, 0.10), transparent 50%),
@@ -16,7 +11,6 @@
  linear-gradient(135deg, rgba(241, 245, 249, 0.8) 0%, rgba(232, 244, 253, 0.65) 40%, rgba(248, 252, 255, 0.5) 100%);
 }
 
-/* ── Ambient glow — top right ── */
 .lp-section::before {
  content: '';
  position: absolute;
@@ -32,7 +26,6 @@
  animation: lpGlowFloat 16s ease-in-out infinite alternate;
 }
 
-/* ── Ambient glow — bottom left ── */
 .lp-section::after {
  content: '';
  position: absolute;
@@ -53,7 +46,6 @@
  100% { transform: translate(12px, -10px) scale(1.06); }
 }
 
-/* ── Container ── */
 .lp-container {
  position: relative;
  z-index: 1;
@@ -62,7 +54,6 @@
  padding: 0 6%;
 }
 
-/* ── Header ── */
 .lp-header {
  text-align: center;
  margin-bottom: 64px;
@@ -128,7 +119,6 @@
  margin: 0 auto;
 }
 
-/* ── Grid ── */
 .lp-grid {
  display: grid;
  grid-template-columns: repeat(2, 1fr);
@@ -136,9 +126,6 @@
  margin-bottom: 48px;
 }
 
-/* ════════════════════════════════════════════════════════
- GLASSMORPHISM PROJECT CARD
- ════════════════════════════════════════════════════════ */
 .lp-card {
  position: relative;
  background: rgba(255, 255, 255, 0.28);
@@ -159,7 +146,6 @@
  overflow: hidden;
 }
 
-/* Top highlight */
 .lp-card::before {
  content: '';
  position: absolute;
@@ -179,7 +165,6 @@
  z-index: 2;
 }
 
-/* Inner glow */
 .lp-card::after {
  content: '';
  position: absolute;
@@ -204,7 +189,6 @@
  0 0 0 1px rgba(0, 98, 214, 0.06);
 }
 
-/* ── Card Header ── */
 .lp-card-header {
  display: flex;
  align-items: flex-start;
@@ -236,7 +220,6 @@
  line-height: 1.3;
 }
 
-/* ── Location ── */
 .lp-card-location {
  display: flex;
  align-items: center;
@@ -254,7 +237,6 @@
  flex-shrink: 0;
 }
 
-/* ── Divider ── */
 .lp-card-divider {
  height: 1px;
  background: rgba(0, 98, 214, 0.06);
@@ -263,7 +245,6 @@
  z-index: 2;
 }
 
-/* ── Details ── */
 .lp-card-details {
  display: flex;
  flex-direction: column;
@@ -312,7 +293,6 @@
  50% { opacity: 0.3; }
 }
 
-/* ── Card CTA ── */
 .lp-card-cta {
  display: inline-flex;
  align-items: center;
@@ -339,7 +319,6 @@
  transform: translateX(2px);
 }
 
-/* ── Bottom CTA ── */
 .lp-bottom-cta {
  text-align: center;
 }
@@ -382,9 +361,6 @@
  transform: translateX(3px);
 }
 
-/* ════════════════════════════════════════════════════════
- FALLBACK
- ════════════════════════════════════════════════════════ */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
  .lp-card {
  background: rgba(255, 255, 255, 0.88);
@@ -394,9 +370,6 @@
  }
 }
 
-/* ════════════════════════════════════════════════════════
- RESPONSIVE
- ════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
  .lp-section {
  padding: 96px 0;
@@ -455,9 +428,6 @@
  }
 }
 
-/* ════════════════════════════════════════════════════════
- REDUCED MOTION
- ════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
  .lp-live-dot {
  animation: none;
@@ -477,7 +447,6 @@
  }
 }
 
-/* ─── Extra small mobile (360px and below) ─── */
 @media (max-width: 360px) {
  .lp-section {
  padding: 56px 0;
@@ -509,7 +478,6 @@
  border-radius: 16px;
  }
 
- /* Card header — icon stays compact */
  .lp-card-header {
  gap: 10px;
  margin-bottom: 10px;
@@ -525,7 +493,7 @@
  .lp-card-title {
  font-size: 14px;
  line-height: 1.3;
- /* Allow wrap but limit to 2 lines */
+
  display: -webkit-box;
  -webkit-line-clamp: 2;
  -webkit-box-orient: vertical;
@@ -551,7 +519,6 @@
  gap: 6px;
  }
 
- /* Deadline row — keep wrap clean */
  .lp-card-row--deadline {
  flex-wrap: wrap;
  }

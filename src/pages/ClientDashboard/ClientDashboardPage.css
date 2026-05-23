@@ -1,11 +1,3 @@
-/**
- * ClientDashboardPage.css — SIAGA Client Command Center.
- *
- * Premium animated gradient background with radial glows,
- * design tokens, and refined layout system.
- */
-
-/* ─── Design Tokens ─── */
 .dashboard-shell {
  --color-primary: #071A34;
  --color-accent: #106DFF;
@@ -22,18 +14,17 @@
  --radius-card: 24px;
  --radius-pill: 14px;
 
- /* Typography */
  font-family: 'Inter', sans-serif;
  color: var(--text-primary);
 
- /* Full viewport shell */
  min-height: 100vh;
  width: 100%;
+ max-width: 100vw;
+ overflow-x: hidden;
  background: linear-gradient(160deg, #F0F7FF 0%, #E8F4FD 30%, #F8FBFF 70%, #FFFFFF 100%);
  position: relative;
 }
 
-/* Animated radial glow — top right */
 .dashboard-shell::before {
  content: '';
  position: fixed;
@@ -47,7 +38,6 @@
  animation: glow-float 12s ease-in-out infinite alternate;
 }
 
-/* Animated radial glow — bottom left */
 .dashboard-shell::after {
  content: '';
  position: fixed;
@@ -66,14 +56,21 @@
  100% { transform: translate(30px, -20px) scale(1.08); }
 }
 
-/* ============================================================
- MAIN CONTENT GRID — Map (~65%) + Activity (~35%) side-by-side
- ============================================================ */
+@media (max-width: 767px) {
+ .dashboard-shell::before,
+ .dashboard-shell::after {
+ display: none;
+ }
+}
+
 .dashboard-main-content {
  display: block;
  position: relative;
  z-index: 1;
  margin-bottom: 2rem;
+ max-width: 100%;
+ min-width: 0;
+ overflow: hidden;
 }
 
 @media (min-width: 1280px) {
@@ -82,6 +79,7 @@
  grid-template-columns: 1fr 380px;
  gap: 2rem;
  align-items: start;
+ overflow: visible;
  }
 }
 
@@ -117,13 +115,12 @@
  }
 }
 
-/* ============================================================
- SECTION WRAPPERS — Visual hierarchy headers
- ============================================================ */
 .dashboard-section {
  position: relative;
  z-index: 1;
  margin-bottom: 2rem;
+ min-width: 0;
+ max-width: 100%;
 }
 
 .dashboard-section__title {
@@ -149,9 +146,32 @@
  background: linear-gradient(180deg, #106DFF, #00BFEA);
 }
 
-/* ============================================================
- REDUCED MOTION
- ============================================================ */
+@media (max-width: 767px) {
+ .dashboard-section__title {
+ padding-left: 0.75rem;
+ font-size: 1rem;
+ }
+
+ .dashboard-section__title::before {
+ left: 0;
+ }
+
+ .dashboard-section {
+ margin-bottom: 1.5rem;
+ }
+}
+
+@media (max-width: 400px) {
+ .dashboard-section__title {
+ font-size: 0.9375rem;
+ margin-bottom: 0.75rem;
+ }
+
+ .dashboard-section {
+ margin-bottom: 1.25rem;
+ }
+}
+
 @media (prefers-reduced-motion: reduce) {
  .dashboard-shell::before,
  .dashboard-shell::after {

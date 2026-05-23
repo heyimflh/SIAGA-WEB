@@ -48,7 +48,7 @@ describe('parseRupiah', () => {
 
  it('tolerates whitespace between prefix and digits', () => {
  expect(parseRupiah('Rp 1.000.000')).toBe(1000000);
- expect(parseRupiah('Rp\u00A01.000')).toBe(1000); // non-breaking space
+ expect(parseRupiah('Rp\u00A01.000')).toBe(1000);
  });
 
  it('tolerates missing space after Rp', () => {

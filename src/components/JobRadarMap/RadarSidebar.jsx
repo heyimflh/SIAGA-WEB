@@ -14,7 +14,6 @@ export default function RadarSidebar({ pins, activePin, onPinSelect, onReset }) 
 
  return (
  <div className="radar-sidebar">
- {/* Header */}
  <div className="radar-sidebar__header">
  <div className="radar-sidebar__title-group">
  <div className="radar-sidebar__icon-wrap">
@@ -41,7 +40,7 @@ export default function RadarSidebar({ pins, activePin, onPinSelect, onReset }) 
  </button>
  </div>
 
- {/* Filter tabs */}
+
  <div className="radar-sidebar__filters">
  <button
  className={`radar-filter ${filter === 'all' ? 'radar-filter--active' : ''}`}
@@ -66,7 +65,7 @@ export default function RadarSidebar({ pins, activePin, onPinSelect, onReset }) 
  </button>
  </div>
 
- {/* Pin list */}
+
  <div className="radar-sidebar__list" data-lenis-prevent>
  {filteredPins.map((pin) => (
  <button
@@ -116,7 +115,6 @@ export default function RadarSidebar({ pins, activePin, onPinSelect, onReset }) 
  ))}
  </div>
 
- {/* Footer */}
  <div className="radar-sidebar__footer">
  <button className="radar-sidebar__cta">
  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">

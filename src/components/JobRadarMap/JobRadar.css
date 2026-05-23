@@ -1,8 +1,3 @@
-/* ════════════════════════════════════════════════════════
- SECTION 5 — JOB RADAR MAP · LIGHT GLOBE DASHBOARD
- Premium geospatial monitoring with realistic globe
- ════════════════════════════════════════════════════════ */
-
 .job-radar {
  position: relative;
  background: transparent;
@@ -11,7 +6,6 @@
  contain: layout style;
 }
 
-/* Subtle ambient gradient */
 .job-radar::before {
  content: '';
  position: absolute;
@@ -24,11 +18,6 @@
  pointer-events: none;
  z-index: 0;
 }
-
-
-/* ════════════════════════════════════════════════════════
- SECTION HEADING
- ════════════════════════════════════════════════════════ */
 
 .job-radar__heading {
  position: relative;
@@ -106,11 +95,6 @@
  margin: 0 auto;
 }
 
-
-/* ════════════════════════════════════════════════════════
- DASHBOARD CONTAINER
- ════════════════════════════════════════════════════════ */
-
 .job-radar__dashboard {
  position: relative;
  margin: 0 32px;
@@ -140,7 +124,6 @@
  height: 100%;
 }
 
-/* Soft edge overlay */
 .job-radar__overlay {
  position: absolute;
  inset: 0;
@@ -149,11 +132,6 @@
  border-radius: 36px 36px 0 0;
  box-shadow: inset 0 0 80px rgba(251, 253, 255, 0.3);
 }
-
-
-/* ════════════════════════════════════════════════════════
- LIVE BADGE
- ════════════════════════════════════════════════════════ */
 
 .job-radar__live-badge {
  position: absolute;
@@ -204,11 +182,6 @@
  padding-left: 8px;
  border-left: 1px solid rgba(10, 37, 64, 0.1);
 }
-
-
-/* ════════════════════════════════════════════════════════
- GLOBE MARKERS — Soft Glow Pins
- ════════════════════════════════════════════════════════ */
 
 .globe-marker {
  position: relative;
@@ -268,7 +241,6 @@
  0 0 24px rgba(245, 158, 11, 0.3);
 }
 
-/* Pulse rings */
 .globe-marker__pulse {
  position: absolute;
  top: 50%;
@@ -295,11 +267,6 @@
  100% { width: 48px; height: 48px; opacity: 0; }
 }
 
-
-/* ════════════════════════════════════════════════════════
- RADAR SIDEBAR — Frosted White Glass
- ════════════════════════════════════════════════════════ */
-
 .radar-sidebar {
  position: absolute;
  left: 20px;
@@ -322,7 +289,6 @@
  transform: translateX(-50px);
 }
 
-/* Header */
 .radar-sidebar__header {
  display: flex;
  align-items: center;
@@ -416,7 +382,6 @@
  transform: rotate(-180deg);
 }
 
-/* Filter Tabs */
 .radar-sidebar__filters {
  display: flex;
  gap: 6px;
@@ -481,7 +446,6 @@
  background: rgba(255, 255, 255, 0.25);
 }
 
-/* Pin List */
 .radar-sidebar__list {
  flex: 1;
  overflow-y: auto;
@@ -502,7 +466,6 @@
  background: rgba(10, 37, 64, 0.15);
 }
 
-/* Radar Card */
 .radar-card {
  display: flex;
  align-items: center;
@@ -531,7 +494,6 @@
  box-shadow: 0 4px 16px rgba(0, 98, 214, 0.08);
 }
 
-/* Card indicator */
 .radar-card__left { flex-shrink: 0; }
 
 .radar-card__indicator {
@@ -561,7 +523,6 @@
  50% { opacity: 0.5; transform: scale(0.7); }
 }
 
-/* Card body */
 .radar-card__body { flex: 1; min-width: 0; }
 
 .radar-card__top {
@@ -671,7 +632,6 @@
  color: var(--brand-blue);
 }
 
-/* Sidebar Footer */
 .radar-sidebar__footer {
  padding: 14px 18px;
  border-top: 1px solid rgba(10, 37, 64, 0.06);
@@ -716,11 +676,6 @@
 .radar-sidebar__cta:active {
  transform: translateY(0);
 }
-
-
-/* ════════════════════════════════════════════════════════
- FLOATING STATS — Right Side Cards
- ════════════════════════════════════════════════════════ */
 
 .floating-stats {
  position: absolute;
@@ -808,11 +763,6 @@
  color: #4A6885;
  letter-spacing: 0.01em;
 }
-
-
-/* ════════════════════════════════════════════════════════
- LIVE ALERT CARD
- ════════════════════════════════════════════════════════ */
 
 .live-alert-card {
  position: absolute;
@@ -932,11 +882,6 @@
  from { width: 100%; }
  to { width: 0%; }
 }
-
-
-/* ════════════════════════════════════════════════════════
- POPUP — Detail Card (Light)
- ════════════════════════════════════════════════════════ */
 
 .job-radar__popup {
  position: absolute;
@@ -1134,11 +1079,6 @@
  transform: translateX(3px);
 }
 
-
-/* ════════════════════════════════════════════════════════
- BOTTOM STATUS BAR
- ════════════════════════════════════════════════════════ */
-
 .bottom-status-bar {
  display: flex;
  align-items: center;
@@ -1222,11 +1162,6 @@
  background: rgba(10, 37, 64, 0.08);
 }
 
-
-/* ════════════════════════════════════════════════════════
- MAPBOX OVERRIDES (Light Globe)
- ════════════════════════════════════════════════════════ */
-
 .job-radar .mapboxgl-ctrl-group {
  background: rgba(255, 255, 255, 0.92) !important;
  backdrop-filter: blur(16px) !important;
@@ -1251,15 +1186,9 @@
  bottom: 14px !important;
 }
 
-/* Globe specific — hide mapbox logo area for cleaner look */
 .job-radar .mapboxgl-ctrl-logo {
  opacity: 0.4;
 }
-
-
-/* ════════════════════════════════════════════════════════
- RESPONSIVE
- ════════════════════════════════════════════════════════ */
 
 @media (max-width: 1400px) {
  .floating-stats {

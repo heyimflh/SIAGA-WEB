@@ -1,8 +1,3 @@
-/**
- * ReportHeroHeader — Glassmorphism hero context header.
- * Displays SIAGA Report Intelligence branding and mini stats.
- */
-
 import { Zap, FileText, Clock, Radio } from 'lucide-react';
 import './ReportHeroHeader.css';
 

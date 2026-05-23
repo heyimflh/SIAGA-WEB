@@ -1,17 +1,3 @@
-/**
- * PilotDashboardPage — Entry point for route `/dashboard/pilot`.
- *
- * Composes shell + all sections. Manages state:
- * - bidSort
- * - selectedProjectId (workspace)
- * - uploadedFiles (session-only)
- * - uploadingFiles (session-only)
- * - activeSection (section navigator)
- *
- * Feature: pilot-dashboard
- * Validates: Requirements 1, 2, 14
- */
-
 import { useState, useCallback, useRef, useEffect } from 'react';
 import { mockData } from './mock-data.js';
 import {
@@ -37,7 +23,7 @@ import QuickActions from './sections/QuickActions/QuickActions.jsx';
 import './PilotDashboardPage.css';
 
 function PilotDashboardPage() {
- // State
+
  const [bidSort, setBidSort] = useState('terbaru');
  const [selectedProjectId, setSelectedProjectId] = useState(
  mockData.proyek_berjalan.length > 0 ? mockData.proyek_berjalan[0].id : null
@@ -46,18 +32,15 @@ function PilotDashboardPage() {
  const [uploadingFiles, setUploadingFiles] = useState([]);
  const [activeSection, setActiveSection] = useState('section-overview');
 
- // Refs for scroll
  const workspaceRef = useRef(null);
  const timersRef = useRef([]);
 
- // Cleanup upload timers on unmount
  useEffect(() => {
  return () => {
  timersRef.current.forEach(clearInterval);
  };
  }, []);
 
- // Derived metrics
  const pendingBidCount = selectPendingBidCount(mockData.bids);
  const proyekBerjalanCount = selectProyekBerjalanCount(mockData.proyek_berjalan);
  const totalEarnings = selectTotalEarnings(mockData.earnings);
@@ -65,7 +48,6 @@ function PilotDashboardPage() {
  const urgentDeadlineCount = selectUrgentDeadlineCount(mockData.proyek_berjalan);
  const nextDeadline = selectNextDeadline(mockData.proyek_berjalan);
 
- // Handlers
  const handleSortChange = useCallback((sort) => setBidSort(sort), []);
  const handleProjectSelect = useCallback((id) => setSelectedProjectId(id), []);
 
@@ -92,7 +74,6 @@ function PilotDashboardPage() {
 
  setUploadingFiles((prev) => [...prev, ...newUploading]);
 
- // Simulate upload progress
  newUploading.forEach((uf) => {
  const timer = setInterval(() => {
  setUploadingFiles((prev) => {
@@ -100,7 +81,7 @@ function PilotDashboardPage() {
  if (f.id !== uf.id || f.status !== 'uploading') return f;
  const newProgress = Math.min(f.progress + Math.random() * 25 + 10, 100);
  if (newProgress >= 100) {
- // Random failure for demo (10% chance)
+
  if (Math.random() < 0.1) {
  return { ...f, progress: f.progress, status: 'error' };
  }
@@ -109,7 +90,6 @@ function PilotDashboardPage() {
  return { ...f, progress: Math.round(newProgress) };
  });
 
- // Move completed files to uploaded
  const completed = updated.filter((f) => f.status === 'complete');
  if (completed.length > 0) {
  setUploadedFiles((prevFiles) => [
@@ -132,7 +112,6 @@ function PilotDashboardPage() {
 
  timersRef.current.push(timer);
 
- // Auto-clear timer after max 5s
  setTimeout(() => clearInterval(timer), 5000);
  });
  }, [selectedProjectId]);
@@ -154,7 +133,6 @@ function PilotDashboardPage() {
  notifUnread={mockData.notifications.unread_count}
  activeMissionCount={proyekBerjalanCount}
  >
- {/* Section A: Mission Header */}
  <PilotMissionHeader
  pilotProfile={mockData.pilot_profile}
  activeMissionCount={proyekBerjalanCount}
@@ -162,13 +140,11 @@ function PilotDashboardPage() {
  nextDeadline={nextDeadline}
  />
 
- {/* Section Navigator */}
  <SectionNavigator
  activeSection={activeSection}
  onSectionClick={handleSectionClick}
  />
 
- {/* Section B: Overview Cards */}
  <OverviewCards
  bidAktifCount={pendingBidCount}
  proyekBerjalanCount={proyekBerjalanCount}
@@ -178,20 +154,17 @@ function PilotDashboardPage() {
  urgentDeadlineCount={urgentDeadlineCount}
  />
 
- {/* Section C: Bid Aktif */}
  <BidAktif
  bids={mockData.bids}
  sortBy={bidSort}
  onSortChange={handleSortChange}
  />
 
- {/* Section D: Proyek Berjalan */}
  <ProyekBerjalan
  projects={mockData.proyek_berjalan}
  onUploadClick={handleScrollToWorkspace}
  />
 
- {/* Section E: Workspace */}
  <div ref={workspaceRef}>
  <Workspace
  projects={mockData.proyek_berjalan}
@@ -205,20 +178,18 @@ function PilotDashboardPage() {
  />
  </div>
 
- {/* Section F: Earnings */}
+
  <Earnings
  earnings={mockData.earnings}
  payments={mockData.payments}
  />
 
- {/* Section G: Rating Reviews */}
  <RatingReviews
  ratingAvg={ratingAvg}
  totalReviews={mockData.pilot_profile.total_reviews}
  reviews={mockData.reviews}
  />
 
- {/* Section H: Quick Actions */}
  <QuickActions onScrollToWorkspace={() => handleScrollToWorkspace(null)} />
  </PilotDashboardShell>
  </div>

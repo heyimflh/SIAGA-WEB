@@ -18,7 +18,6 @@ export default function PilotCard({ pilot, searchQuery, authRole, onViewProfile,
 
  return (
  <article className="pilot-card">
- {/* Identity */}
  <div className="pilot-card__identity">
  <div className={`pilot-card__avatar ${pilot.siaga_verified ? 'pilot-card__avatar--verified' : ''}`}>
  {pilot.avatar ? (
@@ -47,7 +46,6 @@ export default function PilotCard({ pilot, searchQuery, authRole, onViewProfile,
  </div>
  </div>
 
- {/* Trust Badges */}
  {pilot.trust_badges && pilot.trust_badges.length > 0 && (
  <div className="pilot-card__trust">
  {pilot.trust_badges.slice(0, 3).map((badge) => (
@@ -56,19 +54,17 @@ export default function PilotCard({ pilot, searchQuery, authRole, onViewProfile,
  </div>
  )}
 
- {/* Specializations */}
  <div className="pilot-card__specs">
  {pilot.specializations.slice(0, 3).map((spec) => (
  <span key={spec} className="pilot-card__spec">{spec}</span>
  ))}
  </div>
 
- {/* Bio */}
  {pilot.bio && (
  <p className="pilot-card__bio">{pilot.bio}</p>
  )}
 
- {/* Stats */}
+
  <div className="pilot-card__stats">
  <span className="pilot-card__stat">
  <Briefcase size={12} /> {pilot.projects_completed} Proyek
@@ -81,7 +77,6 @@ export default function PilotCard({ pilot, searchQuery, authRole, onViewProfile,
  </span>
  </div>
 
- {/* Portfolio Thumbnails */}
  {pilot.portfolio_images && pilot.portfolio_images.length > 0 && (
  <div className="pilot-card__portfolio">
  {pilot.portfolio_images.slice(0, 3).map((img, i) => {
@@ -94,7 +89,7 @@ export default function PilotCard({ pilot, searchQuery, authRole, onViewProfile,
  </div>
  )}
 
- {/* Actions */}
+
  <div className="pilot-card__actions">
  <button
  ref={btnRef}

@@ -1,7 +1,3 @@
-/**
- * Pricing tier data for SIAGA Pricing Page.
- * Three tiers: Basic, Professional, Enterprise.
- */
 export const pricingTiers = [
  {
  id: 'basic',

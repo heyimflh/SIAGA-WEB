@@ -1,4 +1,3 @@
-// Feature: auth-pages, Register submit gating depends on terms + role-specific verification
 import { describe, it, expect } from 'vitest';
 import fc from 'fast-check';
 import { isSubmitEnabled, validateSidopiFile } from './validators.js';
@@ -7,19 +6,18 @@ const ALLOWED_MIMES = ['application/pdf', 'image/jpeg', 'image/png'];
 const INVALID_MIMES = ['text/plain', 'image/gif', 'application/zip', '', 'video/mp4'];
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 
-// Generator for file-like objects covering valid + invalid MIME and size cases.
 const fileLikeArb = fc.oneof(
- // Valid: allowed MIME + size <= 5MB
+
  fc.record({
  type: fc.constantFrom(...ALLOWED_MIMES),
  size: fc.integer({ min: 0, max: MAX_FILE_SIZE }),
  }),
- // Invalid MIME, any size
+
  fc.record({
  type: fc.constantFrom(...INVALID_MIMES),
  size: fc.integer({ min: 0, max: MAX_FILE_SIZE * 2 }),
  }),
- // Allowed MIME but oversize
+
  fc.record({
  type: fc.constantFrom(...ALLOWED_MIMES),
  size: fc.integer({ min: MAX_FILE_SIZE + 1, max: MAX_FILE_SIZE * 4 }),

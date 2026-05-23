@@ -33,7 +33,7 @@ export default function InspectionAreaMap({ polygonCoords, inspectionPoints, lua
  mapRef.current = map;
 
  map.on('load', () => {
- // Add polygon
+
  if (polygonCoords && polygonCoords.length >= 3) {
  map.addSource('inspection-area', {
  type: 'geojson',
@@ -56,7 +56,6 @@ export default function InspectionAreaMap({ polygonCoords, inspectionPoints, lua
  paint: { 'line-color': '#00D2FF', 'line-width': 2 },
  });
 
- // Fit bounds
  const lngs = polygonCoords.map((c) => c[0]);
  const lats = polygonCoords.map((c) => c[1]);
  map.fitBounds(
@@ -65,7 +64,6 @@ export default function InspectionAreaMap({ polygonCoords, inspectionPoints, lua
  );
  }
 
- // Add markers
  if (inspectionPoints && inspectionPoints.length > 0) {
  inspectionPoints.forEach((pt) => {
  const el = document.createElement('div');

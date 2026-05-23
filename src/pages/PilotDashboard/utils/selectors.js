@@ -1,11 +1,3 @@
-/**
- * selectors.js — Pure selector functions for derived dashboard metrics.
- *
- * All functions are pure, do not mutate input, and maintain cross-section consistency.
- * Feature: pilot-dashboard
- * Validates: Requirements 14, 15
- */
-
 export function selectPendingBidCount(bids) {
  if (!Array.isArray(bids)) return 0;
  return bids.filter((b) => b.status === 'pending').length;

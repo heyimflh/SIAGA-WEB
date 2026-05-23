@@ -1,7 +1,3 @@
-/**
- * StepGenerate — Step 3: Pre-generation command center + Big Button.
- */
-
 import { useState, useRef } from 'react';
 import { Zap, FileText, Layers, Monitor } from 'lucide-react';
 import './StepGenerate.css';
@@ -11,7 +7,7 @@ function StepGenerate({ project, previewPages, totalPages, onBack, onGenerate, a
  const debounceRef = useRef(null);
 
  const handleClick = () => {
- if (isClicked) return; // debounce
+ if (isClicked) return;
  setIsClicked(true);
  debounceRef.current = setTimeout(() => setIsClicked(false), 1000);
  onGenerate();
@@ -32,7 +28,7 @@ function StepGenerate({ project, previewPages, totalPages, onBack, onGenerate, a
  <h2 className="step-generate__title">Generate Report</h2>
  </div>
 
- {/* Summary Command Center */}
+
  <div className="step-generate__summary">
  {summaryItems.map((item) => (
  <div key={item.label} className="step-generate__pill">
@@ -43,7 +39,6 @@ function StepGenerate({ project, previewPages, totalPages, onBack, onGenerate, a
  ))}
  </div>
 
- {/* Big Button */}
  <div className="step-generate__button-area">
  <button
  className="step-generate__big-button"
@@ -63,7 +58,6 @@ function StepGenerate({ project, previewPages, totalPages, onBack, onGenerate, a
  </p>
  </div>
 
- {/* Back */}
  <div className="step-generate__nav">
  <button className="step-generate__btn-back" onClick={onBack} type="button">
  ← Kembali

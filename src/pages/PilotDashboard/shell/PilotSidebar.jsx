@@ -1,11 +1,3 @@
-/**
- * PilotSidebar — Cockpit Navigation for Pilot Dashboard.
- *
- * Three variants: full (desktop), icon (tablet), drawer (mobile).
- * Feature: pilot-dashboard
- * Validates: Requirements 3
- */
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import {
@@ -59,7 +51,6 @@ function PilotSidebar({ pilotName, avatarUrl, isVerified, variant = 'full', draw
 
  return (
  <div className={sidebarClass}>
- {/* Close button for drawer */}
  {isDrawer && drawerOpen && (
  <button
  type="button"
@@ -71,13 +62,12 @@ function PilotSidebar({ pilotName, avatarUrl, isVerified, variant = 'full', draw
  </button>
  )}
 
- {/* Logo */}
+
  <div className="pilot-sidebar__logo">
  <img src="/images/logo/siaga-icon.png" alt="SIAGA" className="pilot-sidebar__logo-img" />
  {!isIconOnly && <span className="pilot-sidebar__logo-text">SIAGA</span>}
  </div>
 
- {/* Pilot Identity Block */}
  {!isIconOnly && (
  <div className="pilot-sidebar__identity">
  <div className={`pilot-sidebar__avatar-wrap ${isVerified ? 'pilot-sidebar__avatar-wrap--verified' : ''}`}>
@@ -96,7 +86,6 @@ function PilotSidebar({ pilotName, avatarUrl, isVerified, variant = 'full', draw
  </div>
  )}
 
- {/* CTA: Cari Proyek */}
  <Link
  to="/dashboard/pilot/job-radar"
  className="pilot-sidebar__cta-btn"
@@ -106,7 +95,6 @@ function PilotSidebar({ pilotName, avatarUrl, isVerified, variant = 'full', draw
  {!isIconOnly && <span>Cari Proyek</span>}
  </Link>
 
- {/* Navigation */}
  <nav aria-label="Navigasi pilot" className="pilot-sidebar__nav">
  <ul className="pilot-sidebar__menu" role="list">
  {PILOT_MENU.map((item) => {
@@ -158,10 +146,9 @@ function PilotSidebar({ pilotName, avatarUrl, isVerified, variant = 'full', draw
  </ul>
  </nav>
 
- {/* Spacer */}
+
  <div className="pilot-sidebar__spacer" />
 
- {/* Footer — Logout */}
  <div className="pilot-sidebar__footer">
  {logoutError && (
  <p className="pilot-sidebar__logout-error" role="alert">{logoutError}</p>

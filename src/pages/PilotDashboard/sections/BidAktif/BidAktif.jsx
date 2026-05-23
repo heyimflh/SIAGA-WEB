@@ -1,9 +1,3 @@
-/**
- * BidAktif — Mission Bid Pipeline section.
- * Feature: pilot-dashboard
- * Validates: Requirements 8
- */
-
 import { useNavigate } from 'react-router-dom';
 import { formatRupiah } from '../../utils/formatRupiah';
 import { sortBids } from '../../utils/sortBids';

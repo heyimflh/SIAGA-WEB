@@ -1,11 +1,3 @@
-/**
- * formatRupiah.js — Format and parse Indonesian Rupiah currency.
- *
- * Pure functions, no side effects.
- * Feature: pilot-dashboard
- * Validates: Requirements 15
- */
-
 export function formatRupiah(number) {
  if (typeof number !== 'number' || isNaN(number)) return 'Rp 0';
  const formatted = Math.round(number)

@@ -2,10 +2,6 @@ import { useEffect } from 'react';
 import { Info } from 'lucide-react';
 import './ToastNotification.css';
 
-/**
- * ToastNotification — Glass toast for placeholder feedback.
- * Auto-dismisses after 4 seconds.
- */
 export default function ToastNotification({ message, onDismiss }) {
  useEffect(() => {
  if (!message) return;

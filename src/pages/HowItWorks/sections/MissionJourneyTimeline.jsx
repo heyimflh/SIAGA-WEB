@@ -4,7 +4,6 @@ import { timelineSteps } from '../data/timeline-data';
 import SupportingSectionHeader from '../../SupportingPages/SupportingSectionHeader';
 import './MissionJourneyTimeline.css';
 
-/* Step Visual Mockups — detailed product simulations */
 function StepOneVisual() {
  return (
  <div className="wf-mockup wf-mockup--form">
@@ -105,7 +104,6 @@ function StepThreeVisual() {
  <span className="wf-mockup__live-badge"><span className="wf-mockup__live-dot"/>LIVE</span>
  </div>
  <div className="wf-mockup__body">
- {/* Map area */}
  <div className="wf-monitor__map">
  <div className="wf-monitor__map-grid"/>
  <svg className="wf-monitor__map-path" viewBox="0 0 240 100" fill="none">
@@ -120,7 +118,6 @@ function StepThreeVisual() {
  <div className="wf-monitor__wp">C</div>
  </div>
  </div>
- {/* Metrics */}
  <div className="wf-monitor__metrics">
  <div className="wf-monitor__metric">
  <span className="wf-monitor__metric-val">127m</span>
@@ -139,7 +136,7 @@ function StepThreeVisual() {
  <span className="wf-monitor__metric-lbl">Defects</span>
  </div>
  </div>
- {/* Feed */}
+
  <div className="wf-monitor__feed">
  <div className="wf-monitor__feed-item wf-monitor__feed-item--done">
  <span className="wf-monitor__feed-icon">✓</span>
@@ -243,7 +240,6 @@ export default function MissionJourneyTimeline() {
  className="wf-step"
  ref={(el) => { stepsRef.current[i] = el; }}
  >
- {/* Text side */}
  <div className="wf-step__text">
  <div className="wf-step__number">{step.id}</div>
  <span className="wf-step__label">{step.label}</span>
@@ -262,7 +258,6 @@ export default function MissionJourneyTimeline() {
  )}
  </div>
 
- {/* Visual side */}
  <div className="wf-step__visual">
  {stepVisuals[i]}
  </div>

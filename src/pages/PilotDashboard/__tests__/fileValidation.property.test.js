@@ -1,8 +1,3 @@
-/**
- * Property test for file validation.
- * Feature: pilot-dashboard
- */
-
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
 import { isValidExtension, isValidFileSize, validateFile } from '../utils/fileValidation.js';

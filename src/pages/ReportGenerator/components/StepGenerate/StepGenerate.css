@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════════════════
- Step Generate — Big Button Focal Point
- ═══════════════════════════════════════════════════════ */
-
 .step-generate {
  text-align: center;
  padding: 2rem 0;
@@ -27,7 +23,6 @@
  margin-top: 0.4rem;
 }
 
-/* ─── Summary Pills ─── */
 .step-generate__summary {
  display: flex;
  flex-wrap: wrap;
@@ -65,7 +60,6 @@
  color: var(--brand-navy, #0A2540);
 }
 
-/* ─── Big Button ─── */
 .step-generate__button-area {
  margin-bottom: 2rem;
 }
@@ -118,7 +112,6 @@
  outline-offset: 3px;
 }
 
-/* Pulse animation */
 .step-generate__big-button-pulse {
  position: absolute;
  inset: 0;
@@ -151,7 +144,6 @@
  color: var(--text-tertiary, #8BA3BE);
 }
 
-/* ─── Navigation ─── */
 .step-generate__nav {
  display: flex;
  justify-content: center;
@@ -172,7 +164,6 @@
  border-color: rgba(10, 37, 64, 0.2);
 }
 
-/* ─── Responsive ─── */
 @media (max-width: 768px) {
  .step-generate__big-button {
  min-width: 90vw;

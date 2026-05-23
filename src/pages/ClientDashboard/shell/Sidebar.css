@@ -1,13 +1,3 @@
-/**
- * Sidebar.css — Premium dark glass sidebar with grid pattern overlay.
- *
- * Deep navy gradient, subtle grid texture, glowing active states,
- * and refined spacing for a command center aesthetic.
- */
-
-/* ============================================================
- BASE SIDEBAR
- ============================================================ */
 .sidebar {
  display: flex;
  flex-direction: column;
@@ -20,7 +10,6 @@
  overflow: hidden;
 }
 
-/* Subtle grid pattern overlay */
 .sidebar::before {
  content: '';
  position: absolute;
@@ -33,7 +22,6 @@
  z-index: 0;
 }
 
-/* Top radial glow */
 .sidebar::after {
  content: '';
  position: absolute;
@@ -47,27 +35,21 @@
  z-index: 0;
 }
 
-/* Full variant (desktop ≥1280px) */
 .sidebar--full {
  width: 100%;
 }
 
-/* Icon-only variant (tablet 768-1279px) */
 .sidebar--icon {
  width: 72px;
  align-items: center;
  padding: 1.75rem 0.625rem;
 }
 
-/* Drawer variant (mobile <768px) */
 .sidebar--drawer {
  width: 280px;
  position: relative;
 }
 
-/* ============================================================
- LOGO
- ============================================================ */
 .sidebar__logo {
  display: flex;
  align-items: center;
@@ -93,15 +75,11 @@
  letter-spacing: 0.04em;
 }
 
-/* Icon-only: center logo */
 .sidebar--icon .sidebar__logo {
  justify-content: center;
  padding: 0;
 }
 
-/* ============================================================
- IDENTITY BLOCK — Glass dark card
- ============================================================ */
 .sidebar__identity {
  display: flex;
  align-items: center;
@@ -169,9 +147,6 @@
  border: 1px solid rgba(34, 211, 238, 0.15);
 }
 
-/* ============================================================
- CREATE PROJECT BUTTON — Gradient with glow
- ============================================================ */
 .sidebar__create-btn {
  display: flex;
  align-items: center;
@@ -209,7 +184,6 @@
  outline-offset: 3px;
 }
 
-/* Icon-only variant: compact button */
 .sidebar--icon .sidebar__create-btn {
  padding: 0.8rem;
  margin: 0 0 2rem;
@@ -220,9 +194,6 @@
  display: none;
 }
 
-/* ============================================================
- NAVIGATION MENU — Premium active states
- ============================================================ */
 .sidebar__nav {
  flex: 0 0 auto;
  position: relative;
@@ -242,7 +213,6 @@
  display: block;
 }
 
-/* Base menu link/button styles */
 .sidebar__menu-link {
  display: flex;
  align-items: center;
@@ -267,13 +237,11 @@
  transform: translateX(2px);
 }
 
-/* Focus indicator */
 .sidebar__menu-link:focus-visible {
  outline: 2px solid #22D3EE;
  outline-offset: 2px;
 }
 
-/* Active state — Glass pill with cyan glow */
 .sidebar__menu-link--active {
  background: rgba(0, 191, 234, 0.12);
  border: 1px solid rgba(0, 191, 234, 0.25);
@@ -287,7 +255,6 @@
  background: rgba(0, 191, 234, 0.16);
 }
 
-/* Disabled state */
 .sidebar__menu-link--disabled {
  color: rgba(255, 255, 255, 0.22);
  cursor: not-allowed;
@@ -299,14 +266,12 @@
  transform: none;
 }
 
-/* Menu label */
 .sidebar__menu-label {
  white-space: nowrap;
  overflow: hidden;
  text-overflow: ellipsis;
 }
 
-/* Icon-only variant: hide labels, center icons */
 .sidebar--icon .sidebar__menu-link {
  justify-content: center;
  padding: 0.75rem;
@@ -333,16 +298,10 @@
  display: none;
 }
 
-/* ============================================================
- SPACER
- ============================================================ */
 .sidebar__spacer {
  flex: 1 1 auto;
 }
 
-/* ============================================================
- FOOTER — LOGOUT
- ============================================================ */
 .sidebar__footer {
  margin-top: auto;
  padding-top: 1.25rem;
@@ -377,7 +336,6 @@
  outline-offset: 2px;
 }
 
-/* Icon-only variant: center logout */
 .sidebar--icon .sidebar__logout-btn {
  justify-content: center;
  padding: 0.75rem;
@@ -387,7 +345,6 @@
  display: none;
 }
 
-/* Logout error message */
 .sidebar__logout-error {
  padding: 0.5rem 0.75rem;
  margin-bottom: 0.5rem;
@@ -399,9 +356,6 @@
  border: 1px solid rgba(239, 68, 68, 0.12);
 }
 
-/* ============================================================
- CLOSE BUTTON (drawer variant only)
- ============================================================ */
 .sidebar__close-btn {
  position: absolute;
  top: 1.25rem;
@@ -431,9 +385,6 @@
  outline-offset: 2px;
 }
 
-/* ============================================================
- REDUCED MOTION
- ============================================================ */
 @media (prefers-reduced-motion: reduce) {
  .sidebar__create-btn,
  .sidebar__menu-link,

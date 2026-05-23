@@ -1,22 +1,3 @@
-/**
- * PilotProfileDrawer.jsx — Slide-in drawer dari kanan menampilkan profil
- * lengkap pilot saat tombol "Lihat Profil" di BidRow diklik.
- *
- * Spec: .kiro/specs/client-dashboard
- * Validates: Requirements 7.11, 13.10, 13.11
- *
- * Struktur mirip AssetDetailDrawer:
- * - Framer Motion slide-in dari kanan
- * - Focus trap (first focusable on open)
- * - Escape key closes
- * - Click overlay backdrop closes
- *
- * Props:
- * - pilot: object | null — bid data dari mock-data
- * - isOpen: boolean
- * - onClose: () => void
- */
-
 import { useEffect, useRef, useCallback } from 'react';
 import { createPortal } from 'react-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -37,7 +18,6 @@ function PilotProfileDrawer({ pilot, isOpen, onClose }) {
  const drawerRef = useRef(null);
  const previousFocusRef = useRef(null);
 
- // Focus trap: focus first focusable element on open, restore on close
  useEffect(() => {
  if (isOpen && drawerRef.current) {
  previousFocusRef.current = document.activeElement;
@@ -53,7 +33,6 @@ function PilotProfileDrawer({ pilot, isOpen, onClose }) {
  }
  }, [isOpen]);
 
- // Escape key handler
  useEffect(() => {
  if (!isOpen) return;
 
@@ -68,7 +47,6 @@ function PilotProfileDrawer({ pilot, isOpen, onClose }) {
  return () => document.removeEventListener('keydown', handleKeyDown);
  }, [isOpen, onClose]);
 
- // Focus trap: keep focus within drawer
  const handleKeyDown = useCallback(
  (e) => {
  if (e.key !== 'Tab' || !drawerRef.current) return;
@@ -92,7 +70,6 @@ function PilotProfileDrawer({ pilot, isOpen, onClose }) {
  []
  );
 
- // Prevent body scroll when drawer is open
  useEffect(() => {
  if (isOpen) {
  document.body.style.overflow = 'hidden';
@@ -110,7 +87,6 @@ function PilotProfileDrawer({ pilot, isOpen, onClose }) {
  <AnimatePresence>
  {isOpen && (
  <>
- {/* Overlay backdrop */}
  <motion.div
  className="client-pilot-drawer-overlay pilot-drawer-overlay"
  variants={overlayVariants}
@@ -122,7 +98,6 @@ function PilotProfileDrawer({ pilot, isOpen, onClose }) {
  aria-hidden="true"
  />
 
- {/* Drawer panel */}
  <motion.aside
  ref={drawerRef}
  className="client-pilot-drawer pilot-drawer"
@@ -136,7 +111,6 @@ function PilotProfileDrawer({ pilot, isOpen, onClose }) {
  transition={{ duration: 0.28, ease: 'easeOut' }}
  onKeyDown={handleKeyDown}
  >
- {/* Header */}
  <div className="pilot-drawer__header">
  <h2 className="pilot-drawer__title">Profil Pilot</h2>
  <button
@@ -149,9 +123,7 @@ function PilotProfileDrawer({ pilot, isOpen, onClose }) {
  </button>
  </div>
 
- {/* Content */}
  <div className="pilot-drawer__content">
- {/* Avatar + Name */}
  <div className="pilot-drawer__identity">
  <img
  src={pilot.pilot_avatar}
@@ -169,7 +141,6 @@ function PilotProfileDrawer({ pilot, isOpen, onClose }) {
  </div>
  </div>
 
- {/* Stats */}
  <div className="pilot-drawer__stats">
  <div className="pilot-drawer__stat">
  <Star size={16} aria-hidden="true" className="pilot-drawer__stat-icon" />
@@ -188,13 +159,12 @@ function PilotProfileDrawer({ pilot, isOpen, onClose }) {
  </div>
  </div>
 
- {/* Bid Price */}
  <div className="pilot-drawer__section">
  <h4 className="pilot-drawer__section-title">Harga Penawaran</h4>
  <p className="pilot-drawer__price">{formatRupiah(pilot.harga)}</p>
  </div>
 
- {/* Portfolio */}
+
  {pilot.portfolio_thumbs && pilot.portfolio_thumbs.length > 0 && (
  <div className="pilot-drawer__section">
  <h4 className="pilot-drawer__section-title">Portfolio</h4>

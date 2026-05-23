@@ -1,14 +1,3 @@
-/* ══════════════════════════════════════════════════════════════════════════════
- JobRadar Dark Theme Override
- 
- PURPOSE: Fix dark theme leak caused by landing page's JobRadar.css
- which uses unscoped selectors (.radar-sidebar, .radar-card, etc.)
- that bleed into this protected page.
- 
- SCOPE: .job-radar-page only — does NOT affect landing page Job Radar preview.
- ══════════════════════════════════════════════════════════════════════════════ */
-
-/* ── CSS Variables for Job Radar Dark Theme ── */
 .job-radar-page {
  --jr-bg: #020B16;
  --jr-panel: rgba(5, 22, 38, 0.95);
@@ -18,10 +7,6 @@
  --jr-muted: #8faabd;
  --jr-accent: #00d4ff;
 }
-
-/* ══════════════════════════════════════════════════════
- SIDEBAR — Override landing page's white .radar-sidebar
- ══════════════════════════════════════════════════════ */
 
 .job-radar-page .radar-sidebar {
  background: #051527 !important;
@@ -42,7 +27,6 @@
  overflow: visible !important;
 }
 
-/* Override sidebar header */
 .job-radar-page .radar-sidebar__header {
  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
 }
@@ -76,7 +60,6 @@
  color: var(--jr-accent) !important;
 }
 
-/* ── Sidebar Filters ── */
 .job-radar-page .radar-sidebar__filters {
  border-bottom-color: rgba(255, 255, 255, 0.06) !important;
 }
@@ -107,7 +90,6 @@
  background: rgba(255, 255, 255, 0.2) !important;
 }
 
-/* ── Sidebar List / Scrollbar ── */
 .job-radar-page .radar-sidebar__list::-webkit-scrollbar-thumb {
  background: rgba(0, 210, 255, 0.2) !important;
 }
@@ -116,14 +98,9 @@
  background: rgba(0, 210, 255, 0.35) !important;
 }
 
-/* ── Sidebar Footer ── */
 .job-radar-page .radar-sidebar__footer {
  border-top-color: rgba(255, 255, 255, 0.08) !important;
 }
-
-/* ══════════════════════════════════════════════════════
- RADAR CARDS — Override landing page's light .radar-card
- ══════════════════════════════════════════════════════ */
 
 .job-radar-page .radar-card {
  background: transparent !important;
@@ -191,10 +168,6 @@
  border-color: rgba(245, 158, 11, 0.2) !important;
 }
 
-/* ══════════════════════════════════════════════════════
- MISSION CARD — Ensure dark background
- ══════════════════════════════════════════════════════ */
-
 .job-radar-page .mission-card {
  background: rgba(10, 30, 55, 0.8) !important;
 }
@@ -207,10 +180,6 @@
 .job-radar-page .mission-card--highlighted {
  background: rgba(0, 210, 255, 0.1) !important;
 }
-
-/* ══════════════════════════════════════════════════════
- SORT CONTROL / SELECT — Dark theme
- ══════════════════════════════════════════════════════ */
 
 .job-radar-page .sort-control {
  background: rgba(255, 255, 255, 0.05) !important;
@@ -228,10 +197,6 @@
  color: rgba(245, 252, 255, 0.96) !important;
 }
 
-/* ══════════════════════════════════════════════════════
- PROJECT LIST — Count and header
- ══════════════════════════════════════════════════════ */
-
 .job-radar-page .project-list__count {
  color: rgba(180, 215, 255, 0.6) !important;
 }
@@ -239,10 +204,6 @@
 .job-radar-page .project-list__header {
  border-bottom-color: rgba(120, 190, 255, 0.08) !important;
 }
-
-/* ══════════════════════════════════════════════════════
- FLOATING STATS BAR — Override any light leak
- ══════════════════════════════════════════════════════ */
 
 .job-radar-page .floating-stats {
  background: transparent !important;
@@ -261,10 +222,6 @@
 .job-radar-page .floating-stat-card__label {
  color: rgba(255, 255, 255, 0.5) !important;
 }
-
-/* ══════════════════════════════════════════════════════
- LIVE ALERT CARD — Override light theme
- ══════════════════════════════════════════════════════ */
 
 .job-radar-page .live-alert-card {
  background: rgba(8, 18, 35, 0.92) !important;
@@ -296,10 +253,6 @@
 .job-radar-page .live-alert-card__progress {
  background: rgba(255, 255, 255, 0.06) !important;
 }
-
-/* ══════════════════════════════════════════════════════
- POPUP — Override landing page's light .job-radar__popup
- ══════════════════════════════════════════════════════ */
 
 .job-radar-page .job-radar__popup {
  background: rgba(8, 18, 35, 0.95) !important;
@@ -341,10 +294,6 @@
  color: rgba(255, 255, 255, 0.4) !important;
 }
 
-/* ══════════════════════════════════════════════════════
- BOTTOM STATUS BAR — Override light theme
- ══════════════════════════════════════════════════════ */
-
 .job-radar-page .bottom-status-bar {
  background: rgba(8, 18, 35, 0.92) !important;
  border-color: rgba(0, 180, 216, 0.12) !important;
@@ -371,10 +320,6 @@
  background: rgba(255, 255, 255, 0.1) !important;
 }
 
-/* ══════════════════════════════════════════════════════
- LIVE BADGE — Override light theme
- ══════════════════════════════════════════════════════ */
-
 .job-radar-page .job-radar__live-badge {
  background: rgba(10, 20, 40, 0.88) !important;
  border-color: rgba(0, 180, 216, 0.2) !important;
@@ -386,10 +331,6 @@
  border-left-color: rgba(255, 255, 255, 0.15) !important;
 }
 
-/* ══════════════════════════════════════════════════════
- MAPBOX CONTROLS — Dark override
- ══════════════════════════════════════════════════════ */
-
 .job-radar-page .mapboxgl-ctrl-group {
  background: rgba(8, 18, 35, 0.88) !important;
  border-color: rgba(0, 180, 216, 0.15) !important;
@@ -400,18 +341,9 @@
  background: rgba(0, 180, 216, 0.1) !important;
 }
 
-/* ══════════════════════════════════════════════════════
- GLOBE MARKER — Override light theme dot border
- ══════════════════════════════════════════════════════ */
-
 .job-radar-page .globe-marker__dot {
  border-color: rgba(8, 18, 35, 0.9) !important;
 }
-
-/* ==========================================================================
- Protected Job Radar dark mission-control surface
- Scope stays on /dashboard/pilot/job-radar via the page root class.
- ========================================================================== */
 
 .job-radar-protected {
  --jr-bg: #031525;

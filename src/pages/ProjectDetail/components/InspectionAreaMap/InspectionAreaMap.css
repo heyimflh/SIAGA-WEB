@@ -74,7 +74,6 @@
  box-shadow: 0 0 6px rgba(0,210,255,0.5);
 }
 
-/* Map marker */
 .pd-map-marker {
  width: 12px;
  height: 12px;
@@ -89,7 +88,6 @@
  50% { box-shadow: 0 0 16px rgba(0,210,255,0.9); }
 }
 
-/* Loading fallback */
 .pd-map-loading {
  position: relative;
  width: 100%;
@@ -132,7 +130,6 @@
  margin: 0;
 }
 
-/* Error fallback */
 .pd-map-error {
  width: 100%;
  min-height: 300px;

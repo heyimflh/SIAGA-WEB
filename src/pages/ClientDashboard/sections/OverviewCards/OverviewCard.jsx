@@ -1,16 +1,3 @@
-/**
- * OverviewCard — single metric card component for Section A.
- *
- * Renders one of four variants:
- * - proyek-aktif: label, angka utama, ikon, indikator tren (arrow + persentase)
- * - aset-terinspeksi: angka + progress bar --color-accent proporsional terhadap target_tahunan
- * - budget: angka format Rupiah + BudgetDonut (lazy-loaded, viewport-triggered)
- * - proyek-selesai: angka + badge --color-success "+N vs bulan lalu"
- *
- * Spec: .kiro/specs/client-dashboard
- * Validates: Requirements 4.2, 4.3, 4.4, 4.5, 4.6, 4.10, 4.11, 4.12, 11.2, 11.3, 11.5, 11.5a, 11.5b, 15.7, 15.7a
- */
-
 import { useRef, lazy, Suspense } from 'react';
 import {
  FolderKanban,
@@ -25,7 +12,6 @@ import useVisibility from '../../../../hooks/useVisibility.js';
 import ReactCountUp from 'react-countup';
 import ChartSkeleton from './ChartSkeleton.jsx';
 
-// Handle CJS/ESM interop — react-countup may export the component as .default
 const CountUp = ReactCountUp.default || ReactCountUp;
 
 const BudgetDonut = lazy(() => import('./BudgetDonut.jsx'));
@@ -89,9 +75,6 @@ function OverviewCard({ variant, data }) {
  );
 }
 
-/**
- * Variant proyek-aktif: angka utama + indikator tren arrow + persentase
- */
 function ProyekAktifContent({ data, visible }) {
  const { value, trend_pct } = data;
  const isUp = trend_pct >= 0;
@@ -110,9 +93,7 @@ function ProyekAktifContent({ data, visible }) {
  );
 }
 
-/**
- * Variant aset-terinspeksi: angka + progress bar proporsional terhadap target_tahunan
- */
+
 function AsetTerinspeksiContent({ data, visible }) {
  const { value, target_tahunan } = data;
  const progress = target_tahunan > 0 ? Math.min((value / target_tahunan) * 100, 100) : 0;
@@ -142,19 +123,13 @@ function AsetTerinspeksiContent({ data, visible }) {
  );
 }
 
-/**
- * Variant budget: angka format Rupiah + BudgetDonut (lazy, viewport-triggered)
- * BudgetDonut renders only when parent OverviewCard is visible AND data is ready.
- * Suspense fallback shows ChartSkeleton until chart actually renders its visuals.
- * Validates: Requirements 4.5, 11.2, 11.5, 11.5a, 11.5b, 15.7, 15.7a
- */
+
 function BudgetContent({ data, visible }) {
  const { used, total } = data;
  const dataReady = used != null && total != null;
  const shouldRenderDonut = visible && dataReady;
  const percentage = total > 0 ? Math.round((used / total) * 100) : 0;
 
- // Format compact: "Rp 4,32 M" instead of "Rp 4.320.000.000"
  function formatCompactRupiah(n) {
  if (n >= 1_000_000_000) return `Rp ${(n / 1_000_000_000).toFixed(2).replace('.', ',')} M`;
  if (n >= 1_000_000) return `Rp ${(n / 1_000_000).toFixed(1).replace('.', ',')} Jt`;
@@ -185,9 +160,7 @@ function BudgetContent({ data, visible }) {
  );
 }
 
-/**
- * Variant proyek-selesai: angka + badge --color-success "+N vs bulan lalu"
- */
+
 function ProyekSelesaiContent({ data, visible }) {
  const { value, delta_vs_last_month } = data;
  const deltaText = delta_vs_last_month >= 0

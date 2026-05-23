@@ -1,20 +1,9 @@
-/* ════════════════════════════════════════════════════════
- SECTION 6 — HOW IT WORKS
- Scroll Storytelling — Awwwards-level Design
- ════════════════════════════════════════════════════════ */
-
 .hiw-section {
  position: relative;
  width: 100%;
  overflow: hidden;
  padding-bottom: 100px;
 }
-
-
-/* ════════════════════════════════════════════════════════
- INTERACTIVE DEMO CARD — Cursor.com Style
- Product window showcase with tilt, spotlight, shine
- ════════════════════════════════════════════════════════ */
 
 .demo-card {
  --mouse-x: 50%;
@@ -59,7 +48,6 @@
  border-color: rgba(10, 37, 64, 0.10);
 }
 
-/* Spotlight — radial gradient following mouse */
 .demo-card__spotlight {
  position: absolute;
  inset: 0;
@@ -79,7 +67,6 @@
  opacity: 1;
 }
 
-/* Shine sweep — diagonal light on hover */
 .demo-card__shine {
  position: absolute;
  inset: 0;
@@ -121,7 +108,6 @@
  100% { transform: translateX(350%); }
 }
 
-/* Window frame */
 .demo-card__window {
  position: relative;
  z-index: 2;
@@ -168,7 +154,6 @@
  padding: 22px;
 }
 
-/* Progress bar shimmer on card hover */
 .demo-card:hover .hiw-dash-progress-fill,
 .demo-card:hover .hiw-report-progress-fill {
  position: relative;
@@ -192,50 +177,41 @@
  100% { left: 100%; }
 }
 
-/* Metric cards lift on card hover */
 .demo-card:hover .hiw-dash-metric {
  transform: translateY(-2px);
  box-shadow: 0 4px 12px rgba(10, 37, 64, 0.06);
  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
-/* Submit button arrow slide on card hover */
 .demo-card:hover .hiw-form-submit svg {
  transform: translateX(4px);
  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Report generate button glow on card hover */
 .demo-card:hover .hiw-report-generate-btn {
  box-shadow: 0 8px 32px rgba(0, 98, 214, 0.35);
 }
 
-/* Verified badge subtle pulse on card hover */
 .demo-card:hover .hiw-pilot-verified {
  box-shadow: 0 0 0 2px rgba(0, 137, 123, 0.08);
 }
 
-/* Best match badge shimmer on card hover */
 .demo-card:hover .hiw-pilot-badge-best {
  box-shadow: 0 2px 12px rgba(0, 98, 214, 0.4);
 }
 
-/* Ready to download glow on card hover */
 .demo-card:hover .hiw-report-ready {
  box-shadow: 0 0 0 2px rgba(0, 137, 123, 0.08), 0 4px 12px rgba(0, 137, 123, 0.06);
 }
 
-/* Featured pilot card glow on card hover */
 .demo-card:hover .hiw-pilot-featured {
  box-shadow: 0 0 0 3px rgba(0, 98, 214, 0.1), 0 8px 24px rgba(0, 98, 214, 0.08);
 }
 
-/* Input field glow on card hover */
 .demo-card:hover .hiw-field-active .hiw-field-input {
  box-shadow: 0 0 0 4px rgba(0, 98, 214, 0.08);
 }
 
-/* Touch/mobile — disable tilt and spotlight */
 @media (hover: none), (pointer: coarse) {
  .demo-card {
  transform: none !important;
@@ -249,7 +225,6 @@
  }
 }
 
-/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
  .demo-card {
  transition: none;
@@ -268,7 +243,6 @@
  }
 }
 
-/* ─── Background ─── */
 .hiw-bg {
  display: none;
 }
@@ -298,8 +272,6 @@
  50% { transform: translate(20px, -15px) scale(1.05); }
 }
 
-
-/* ─── Header ─── */
 .hiw-header {
  position: relative;
  z-index: 2;
@@ -344,8 +316,6 @@
  color: var(--text-secondary);
 }
 
-
-/* ─── Steps Container ─── */
 .hiw-steps-container {
  position: relative;
  z-index: 2;
@@ -360,8 +330,6 @@
  align-items: center;
 }
 
-
-/* ─── Step Row ─── */
 .hiw-step-row {
  display: grid;
  grid-template-columns: 1fr 1fr;
@@ -379,8 +347,6 @@
  direction: ltr;
 }
 
-
-/* ─── Connector ─── */
 .hiw-connector {
  display: flex;
  flex-direction: column;
@@ -407,8 +373,6 @@
  box-shadow: 0 0 8px rgba(0,98,214,0.3);
 }
 
-
-/* ─── Step Text ─── */
 .hiw-step-text {
  display: flex;
  flex-direction: column;
@@ -501,8 +465,6 @@
  flex-shrink: 0;
 }
 
-
-/* ─── Step Visual ─── */
 .hiw-step-visual {
  display: flex;
  align-items: center;
@@ -514,14 +476,12 @@
  max-width: 480px;
 }
 
-
-/* ─── Step 1: Form Mockup ─── */
 .hiw-mockup-form {
- display: none; /* replaced by demo-card */
+ display: none;
 }
 
 .hiw-form-header {
- display: none; /* replaced by demo-card__header */
+ display: none;
 }
 
 .hiw-form-body {
@@ -648,8 +608,6 @@
  box-shadow: 0 4px 16px rgba(0,98,214,0.25);
 }
 
-
-/* ─── Step 2: Pilot Cards ─── */
 .hiw-pilots-grid {
  display: flex;
  flex-direction: column;
@@ -765,14 +723,12 @@
  white-space: nowrap;
 }
 
-
-/* ─── Step 3: Dashboard ─── */
 .hiw-dashboard {
- display: none; /* replaced by demo-card */
+ display: none;
 }
 
 .hiw-dash-header {
- display: none; /* replaced by demo-card__header */
+ display: none;
 }
 
 .hiw-dash-header-inline {
@@ -938,8 +894,6 @@
  white-space: nowrap;
 }
 
-
-/* ─── Step 4: Report ─── */
 .hiw-report-scene {
  display: flex;
  flex-direction: column;
@@ -1158,8 +1112,6 @@
  letter-spacing: -0.02em;
 }
 
-
-/* ─── Responsive ─── */
 @media (max-width: 900px) {
  .hiw-step-row {
  grid-template-columns: 1fr;
@@ -1260,7 +1212,6 @@
  }
 }
 
-/* ─── Extra small mobile (360px and below) ─── */
 @media (max-width: 360px) {
  .hiw-header {
  padding: 64px 4% 40px;
@@ -1316,7 +1267,6 @@
  border-radius: 7px;
  }
 
- /* Demo card — minimum viable layout */
  .demo-card {
  border-radius: 14px;
  }
@@ -1333,7 +1283,6 @@
  padding: 14px;
  }
 
- /* Form mockup */
  .hiw-form-body {
  padding: 14px;
  gap: 10px;
@@ -1365,7 +1314,6 @@
  font-size: 12.5px;
  }
 
- /* Pilot cards */
  .hiw-pilot-card {
  padding: 12px 14px;
  border-radius: 12px;
@@ -1392,7 +1340,6 @@
  padding: 3px 8px;
  }
 
- /* Dashboard */
  .hiw-dash-body {
  padding: 14px;
  gap: 12px;
@@ -1424,7 +1371,6 @@
  font-size: 9px;
  }
 
- /* Report */
  .hiw-report-card {
  padding: 16px;
  border-radius: 14px;

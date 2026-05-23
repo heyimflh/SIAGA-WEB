@@ -4,27 +4,6 @@ import { validateLogin } from '../../auth/validators.js';
 import { useAuth } from '../../auth/AuthContext.jsx';
 import { roleToDashboardPath } from '../../auth/routes.js';
 
-/**
- * LoginForm — Premium glassmorphism login form with icons.
- *
- * Props:
- * - role: 'client' | 'pilot' (controlled by RoleTabSwitcher)
- * - onLoadingChange?: (loading) => void (optional notifier)
- *
- * Submit handler order (EXACT, per design):
- * 1. validateLogin({email, password})
- * 2. if errors non-empty → setState({errors}), return early; do NOT set isSubmitting
- * 3. if state.errors still has any visible message → return early (Req 5.9)
- * 4. if state.isSubmitting === true → return (Req 14.4)
- * 5. set isSubmitting = true
- * 6. await 800ms mock delay
- * 7. mock auth: 95% success, 5% random failure (Math.random() < 0.05)
- * 8. on success: login({role, email}) then navigate(roleToDashboardPath(role))
- * 9. on failure: setState({ errors: { ...prev, global: 'Login gagal, silakan coba lagi' }, isSubmitting: false })
- *
- * Requirements: 4.4–4.10, 5.1–5.9, 11.1, 11.4, 12.1–12.4, 14.1, 14.3, 14.4
- */
-
 const MOCK_DELAY_MS = 800;
 const FAILURE_PROBABILITY = 0.05;
 const GLOBAL_ERROR_MESSAGE = 'Login gagal, silakan coba lagi';
@@ -118,10 +97,10 @@ export default function LoginForm({ role, onLoadingChange }) {
 
  if (!failed) {
  login({ role, email });
- // Check for redirect query param
+
  const redirectTarget = searchParams.get('redirect');
  if (redirectTarget) {
- // Validate redirect target matches the user's role
+
  const isClientRoute = redirectTarget.startsWith('/dashboard/client');
  const isPilotRoute = redirectTarget.startsWith('/dashboard/pilot');
  const isSharedRoute = redirectTarget.startsWith('/project/');
@@ -135,7 +114,7 @@ export default function LoginForm({ role, onLoadingChange }) {
  return;
  }
  }
- // Default: go to role's dashboard
+
  const dashboardPath = roleToDashboardPath(role);
  if (dashboardPath) {
  navigate(dashboardPath, { replace: true });
@@ -159,7 +138,7 @@ export default function LoginForm({ role, onLoadingChange }) {
  </div>
  ) : null}
 
- {/* Email Field */}
+
  <div className={`login-form__field${emailHasError ? ' is-invalid' : ''}`}>
  <label htmlFor="login-email">Email</label>
  <div className="login-form__input-wrapper">
@@ -187,7 +166,7 @@ export default function LoginForm({ role, onLoadingChange }) {
  ) : null}
  </div>
 
- {/* Password Field */}
+
  <div className={`login-form__field${passwordHasError ? ' is-invalid' : ''}`}>
  <label htmlFor="login-password">Password</label>
  <div className="login-form__input-wrapper">
@@ -236,7 +215,7 @@ export default function LoginForm({ role, onLoadingChange }) {
  ) : null}
  </div>
 
- {/* Remember Me + Forgot Password */}
+
  <div className="login-form__options-row">
  <div className="login-form__remember">
  <label htmlFor="login-remember" className="login-form__remember-label">
@@ -256,7 +235,7 @@ export default function LoginForm({ role, onLoadingChange }) {
  </a>
  </div>
 
- {/* Submit Button */}
+
  <button
  type="submit"
  className="login-form__submit"

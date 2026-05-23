@@ -1,16 +1,3 @@
-// Pure reducer for Register_Form_State (RegisterPage flow).
-// See .kiro/specs/auth-pages/design.md "RegisterPage" + Properties 5, 6, 9, 10, 11.
-//
-// Contract:
-// - Pure function: (state, action) => newState. No side effects. No clones of File blobs.
-// - All transitions are explicit; unknown action types return state unchanged.
-// - `inFlight` guards navigation actions (GO_TO_STEP, BACK) against a second action
-// fired in the same frame while a submit is in progress .
-// - `isSubmitting` guards SUBMIT_START against double-trigger .
-
-// ---------------------------------------------------------------------------
-// Action type constants (single source of truth).
-// ---------------------------------------------------------------------------
 export const ACTION_TYPES = Object.freeze({
  SET_ROLE: 'SET_ROLE',
  SET_FIELD: 'SET_FIELD',
@@ -26,10 +13,6 @@ export const ACTION_TYPES = Object.freeze({
  SUBMIT_FAILURE: 'SUBMIT_FAILURE',
 });
 
-// ---------------------------------------------------------------------------
-// Initial state (matches design RegisterFormState shape).
-// Frozen factory to prevent accidental mutation between consumers.
-// ---------------------------------------------------------------------------
 const emptyClient = () => ({
  companyName: '',
  corporateEmail: '',
@@ -59,9 +42,6 @@ export const initialRegisterState = Object.freeze({
  inFlight: false,
 });
 
-// ---------------------------------------------------------------------------
-// Helpers
-// ---------------------------------------------------------------------------
 function omitKey(obj, key) {
  if (obj == null || !(key in obj)) return obj;
  const next = { ...obj };
@@ -73,18 +53,11 @@ function isValidRole(role) {
  return role === 'client' || role === 'pilot';
 }
 
-// ---------------------------------------------------------------------------
-// Reducer
-// ---------------------------------------------------------------------------
 export function registerReducer(state = initialRegisterState, action) {
  if (!action || typeof action.type !== 'string') return state;
 
  switch (action.type) {
- // -------------------------------------------------------------------
- // SET_ROLE — payload: { role: 'client' | 'pilot' | null }
- // changing to a *different* role clears client/pilot/sidopiFile.
- // Same-role dispatch is a no-op so accidental re-clicks don't wipe data.
- // -------------------------------------------------------------------
+
  case ACTION_TYPES.SET_ROLE: {
  const nextRole = action.payload?.role ?? null;
  if (nextRole !== null && !isValidRole(nextRole)) return state;
@@ -101,10 +74,6 @@ export function registerReducer(state = initialRegisterState, action) {
  };
  }
 
- // -------------------------------------------------------------------
- // SET_FIELD — payload: { role: 'client'|'pilot', field: string, value: any }
- // clears stepErrors[field] regardless of new value validity.
- // -------------------------------------------------------------------
  case ACTION_TYPES.SET_FIELD: {
  const { role, field, value } = action.payload ?? {};
  if (!isValidRole(role)) return state;
@@ -119,10 +88,6 @@ export function registerReducer(state = initialRegisterState, action) {
  };
  }
 
- // -------------------------------------------------------------------
- // SET_FILE — payload: { file: { name, size, type, blob } }
- // Caller is responsible for validating MIME/size before dispatching.
- // -------------------------------------------------------------------
  case ACTION_TYPES.SET_FILE: {
  const file = action.payload?.file ?? null;
  return {
@@ -132,29 +97,15 @@ export function registerReducer(state = initialRegisterState, action) {
  };
  }
 
- // -------------------------------------------------------------------
- // CLEAR_FILE — drop sidopiFile, no other state changes.
- // -------------------------------------------------------------------
  case ACTION_TYPES.CLEAR_FILE: {
  if (state.sidopiFile === null) return state;
  return { ...state, sidopiFile: null };
  }
 
- // -------------------------------------------------------------------
- // TOGGLE_TERMS — flip termsAccepted boolean.
- // -------------------------------------------------------------------
  case ACTION_TYPES.TOGGLE_TERMS: {
  return { ...state, termsAccepted: !state.termsAccepted };
  }
 
- // -------------------------------------------------------------------
- // GO_TO_STEP — payload: { step: 1 | 2 | 3 }
- // Guards:
- // - inFlight=true drops the action .
- // - GO_TO_STEP(2) rejected when role is null .
- // - step must be 1, 2, or 3.
- // On success: advance step, clear stepErrors and globalError, reset inFlight.
- // -------------------------------------------------------------------
  case ACTION_TYPES.GO_TO_STEP: {
  if (state.inFlight) return state;
 
@@ -163,7 +114,7 @@ export function registerReducer(state = initialRegisterState, action) {
  if (step === 2 && state.role === null) return state;
  if (step === 3 && state.role === null) return state;
  if (step === state.step) {
- // Idempotent: still ensure inFlight is reset.
+
  if (!state.inFlight) return state;
  return { ...state, inFlight: false };
  }
@@ -177,10 +128,6 @@ export function registerReducer(state = initialRegisterState, action) {
  };
  }
 
- // -------------------------------------------------------------------
- // BACK — go to previous step, no validation, preserves all field data.
- // Requirements 7.9 and 8.9.
- // -------------------------------------------------------------------
  case ACTION_TYPES.BACK: {
  if (state.inFlight) return state;
  if (state.step <= 1) return state;
@@ -193,10 +140,6 @@ export function registerReducer(state = initialRegisterState, action) {
  };
  }
 
- // -------------------------------------------------------------------
- // SET_ERRORS — payload: { stepErrors?: {...}, globalError?: string|null }
- // Replaces stepErrors map and/or sets globalError. Either field is optional.
- // -------------------------------------------------------------------
  case ACTION_TYPES.SET_ERRORS: {
  const { stepErrors, globalError } = action.payload ?? {};
  const next = { ...state };
@@ -209,11 +152,6 @@ export function registerReducer(state = initialRegisterState, action) {
  return next;
  }
 
- // -------------------------------------------------------------------
- // CLEAR_ERROR — payload: { field?: string }
- // If field given, removes that key from stepErrors; otherwise clears all
- // stepErrors and globalError.
- // -------------------------------------------------------------------
  case ACTION_TYPES.CLEAR_ERROR: {
  const field = action.payload?.field;
  if (typeof field === 'string' && field.length > 0) {
@@ -222,10 +160,6 @@ export function registerReducer(state = initialRegisterState, action) {
  return { ...state, stepErrors: {}, globalError: null };
  }
 
- // -------------------------------------------------------------------
- // SUBMIT_START — if already submitting, return state unchanged.
- // Otherwise set isSubmitting=true, inFlight=true, clear globalError.
- // -------------------------------------------------------------------
  case ACTION_TYPES.SUBMIT_START: {
  if (state.isSubmitting) return state;
  return {
@@ -236,10 +170,6 @@ export function registerReducer(state = initialRegisterState, action) {
  };
  }
 
- // -------------------------------------------------------------------
- // SUBMIT_SUCCESS — terminal: clear submission flags.
- // Field data is preserved (caller will navigate away anyway).
- // -------------------------------------------------------------------
  case ACTION_TYPES.SUBMIT_SUCCESS: {
  return {
  ...state,
@@ -249,11 +179,6 @@ export function registerReducer(state = initialRegisterState, action) {
  };
  }
 
- // -------------------------------------------------------------------
- // SUBMIT_FAILURE — preserve role, client, pilot, sidopiFile,
- // termsAccepted. Only flip submission flags and surface globalError.
- // payload: { globalError?: string }
- // -------------------------------------------------------------------
  case ACTION_TYPES.SUBMIT_FAILURE: {
  const message =
  action.payload?.globalError ?? 'Pendaftaran gagal, silakan coba lagi';

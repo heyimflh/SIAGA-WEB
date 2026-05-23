@@ -39,7 +39,7 @@ export function AuthProvider({ children }) {
  window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(next));
  }
  } catch {
- // Storage write failed (quota, privacy mode); proceed with in-memory state.
+
  }
  setState({ session: next });
  }, []);
@@ -50,7 +50,7 @@ export function AuthProvider({ children }) {
  window.sessionStorage.removeItem(STORAGE_KEY);
  }
  } catch {
- // Ignore storage errors on logout; still reset state.
+
  }
  setState({ session: null });
  }, []);

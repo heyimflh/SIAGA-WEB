@@ -1,9 +1,3 @@
-/**
- * OverviewCards — Mission Telemetry Cards section.
- * Feature: pilot-dashboard
- * Validates: Requirements 7
- */
-
 import { Radar, FolderOpen, Wallet, Star } from 'lucide-react';
 import { formatRupiah } from '../../utils/formatRupiah';
 import './OverviewCards.css';

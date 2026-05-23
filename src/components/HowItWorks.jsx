@@ -19,7 +19,6 @@ import './HowItWorks.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─── Steps Data ─── */
 const stepsData = [
  {
  id: 1,
@@ -75,14 +74,12 @@ const stepsData = [
  },
 ];
 
-/* ─── Pilot Cards Data ─── */
 const pilots = [
  { name: 'Andi Pratama', rating: 4.9, missions: 127, speciality: 'SUTET & Tower', verified: true },
  { name: 'Rizal Hidayat', rating: 4.95, missions: 203, speciality: 'Migas & Offshore', verified: true, featured: true },
  { name: 'Fajar Nugroho', rating: 4.8, missions: 89, speciality: 'Konstruksi', verified: true },
 ];
 
-/* ─── Interactive Demo Card Wrapper ─── */
 function DemoCard({ windowTitle, children }) {
  const cardRef = useRef(null);
 
@@ -115,11 +112,8 @@ function DemoCard({ windowTitle, children }) {
  onMouseMove={handleMouseMove}
  onMouseLeave={handleMouseLeave}
  >
- {/* Spotlight overlay */}
  <div className="demo-card__spotlight" />
- {/* Shine sweep */}
  <div className="demo-card__shine" />
- {/* Window frame */}
  <div className="demo-card__window">
  <div className="demo-card__header">
  <div className="demo-card__dots">
@@ -136,7 +130,6 @@ function DemoCard({ windowTitle, children }) {
  );
 }
 
-/* ─── Step 1: Post Project Visual ─── */
 function StepOneVisual() {
  return (
  <DemoCard windowTitle="New Inspection Project">
@@ -181,7 +174,7 @@ function StepOneVisual() {
  );
 }
 
-/* ─── Step 2: Select Pilot Visual ─── */
+
 function StepTwoVisual() {
  return (
  <DemoCard windowTitle="Pilot Matching">
@@ -215,7 +208,7 @@ function StepTwoVisual() {
  );
 }
 
-/* ─── Step 3: Monitor Visual ─── */
+
 function StepThreeVisual() {
  return (
  <DemoCard windowTitle="Live Mission Dashboard">
@@ -267,7 +260,6 @@ function StepThreeVisual() {
  );
 }
 
-/* ─── Step 4: Report Visual ─── */
 function StepFourVisual() {
  return (
  <DemoCard windowTitle="Auto Report Generator">
@@ -321,13 +313,13 @@ function StepFourVisual() {
  );
 }
 
-/* ─── Single Step Row ─── */
+
 function StepRow({ step, index, visual }) {
  const isEven = index % 2 === 0;
 
  return (
  <div className={`hiw-step-row ${isEven ? '' : 'hiw-step-row-reverse'}`} data-step={step.id}>
- {/* Text Side */}
+
  <div className="hiw-step-text">
  <div className="hiw-step-number">
  <span>0{step.id}</span>
@@ -350,7 +342,7 @@ function StepRow({ step, index, visual }) {
  </ul>
  </div>
 
- {/* Visual Side */}
+
  <div className="hiw-step-visual">
  {visual}
  </div>
@@ -358,7 +350,7 @@ function StepRow({ step, index, visual }) {
  );
 }
 
-/* ─── Main Component ─── */
+
 function HowItWorks() {
  const sectionRef = useRef(null);
 
@@ -367,7 +359,7 @@ function HowItWorks() {
  if (!section) return;
 
  const ctx = gsap.context(() => {
- // Header entrance
+
  gsap.fromTo(
  '.hiw-label',
  { y: 20, opacity: 0 },
@@ -384,7 +376,7 @@ function HowItWorks() {
  { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', scrollTrigger: { trigger: '.hiw-header', start: 'top 75%' } }
  );
 
- // Each step row animates in
+
  const stepRows = section.querySelectorAll('.hiw-step-row');
  stepRows.forEach((row) => {
  const textEl = row.querySelector('.hiw-step-text');
@@ -407,7 +399,7 @@ function HowItWorks() {
  );
  });
 
- // Connector lines grow
+
  const connectors = section.querySelectorAll('.hiw-connector');
  connectors.forEach((conn) => {
  gsap.fromTo(conn,
@@ -433,7 +425,7 @@ function HowItWorks() {
 
  return (
  <section className="hiw-section" ref={sectionRef} id="how-it-works">
- {/* Background */}
+
  <div className="hiw-bg" aria-hidden="true">
  <div className="hiw-bg-base" />
  <div className="hiw-bg-grid" />
@@ -441,7 +433,7 @@ function HowItWorks() {
  <div className="hiw-bg-orb hiw-bg-orb-2" />
  </div>
 
- {/* Header */}
+
  <header className="hiw-header">
  <span className="hiw-label">[ HOW IT WORKS ]</span>
  <h2 className="hiw-heading">
@@ -454,7 +446,6 @@ function HowItWorks() {
  </p>
  </header>
 
- {/* Steps */}
  <div className="hiw-steps-container">
  {stepsData.map((step, i) => (
  <div key={step.id} className="hiw-step-wrapper">

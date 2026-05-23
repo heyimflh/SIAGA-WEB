@@ -1,7 +1,3 @@
-/**
- * StepPilihProyek — Step 1: Select a completed project.
- */
-
 import { useState, useRef, useEffect } from 'react';
 import { ChevronDown, MapPin, Calendar, User, Shield, AlertTriangle, CheckCircle, Camera } from 'lucide-react';
 import './StepPilihProyek.css';
@@ -10,7 +6,6 @@ function StepPilihProyek({ projects, selectedProject, onSelect, onNext, canProce
  const [dropdownOpen, setDropdownOpen] = useState(false);
  const dropdownRef = useRef(null);
 
- // Close dropdown on outside click
  useEffect(() => {
  function handleClickOutside(e) {
  if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -21,7 +16,6 @@ function StepPilihProyek({ projects, selectedProject, onSelect, onNext, canProce
  return () => document.removeEventListener('mousedown', handleClickOutside);
  }, []);
 
- // Close on Escape
  useEffect(() => {
  function handleEscape(e) {
  if (e.key === 'Escape') setDropdownOpen(false);
@@ -44,14 +38,12 @@ function StepPilihProyek({ projects, selectedProject, onSelect, onNext, canProce
  }
  };
 
- // Get pilot name from bids (first selected pilot)
  const getPilotName = (project) => {
  if (!project.bids || project.bids.length === 0) return 'N/A';
  const selected = project.bids.find((b) => b.catatan?.includes('terpilih') || b.catatan?.includes('Pilot terpilih'));
  return selected ? selected.pilot_nama : project.bids[0].pilot_nama;
  };
 
- // Get completion date from milestones
  const getCompletionDate = (project) => {
  if (!project.milestones) return 'N/A';
  const reportReady = project.milestones.find((m) => m.label === 'Report Ready');
@@ -87,7 +79,6 @@ function StepPilihProyek({ projects, selectedProject, onSelect, onNext, canProce
  </p>
  </div>
 
- {/* Premium Dropdown */}
  <div className="step-pilih__dropdown" ref={dropdownRef}>
  <button
  className={`step-pilih__trigger ${dropdownOpen ? 'step-pilih__trigger--open' : ''}`}
@@ -132,10 +123,8 @@ function StepPilihProyek({ projects, selectedProject, onSelect, onNext, canProce
  )}
  </div>
 
- {/* Project Intelligence Card */}
  {selectedProject && (
  <div className="step-pilih__preview">
- {/* Cover Image */}
  {projectImages?.coverImage && (
  <div className="step-pilih__cover-image">
  <img
@@ -196,7 +185,7 @@ function StepPilihProyek({ projects, selectedProject, onSelect, onNext, canProce
  </div>
  </div>
 
- {/* Map preview image */}
+
  {projectImages?.mapPreviewImage && (
  <div className="step-pilih__minimap step-pilih__minimap--real">
  <img
@@ -213,7 +202,7 @@ function StepPilihProyek({ projects, selectedProject, onSelect, onNext, canProce
  </div>
  )}
 
- {/* Navigation */}
+
  <div className="step-pilih__nav">
  <button
  className="step-pilih__btn-next"

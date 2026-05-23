@@ -1,13 +1,3 @@
-/**
- * ReportGeneratorPage — THE KILLER FEATURE SIAGA
- * 5-step wizard: Pilih Proyek → Customize → Generate → Loading → Download
- *
- * Route: /dashboard/client/report-generator
- * Role: client only
- *
- * Feature: report-generator
- */
-
 import { useReducer, useEffect, useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -33,7 +23,6 @@ import StepDownload from './components/StepDownload/StepDownload.jsx';
 import ToastNotification from './components/ToastNotification/ToastNotification.jsx';
 import './ReportGeneratorPage.css';
 
-// Reducer actions
 const ACTIONS = {
  SET_STEP: 'SET_STEP',
  SELECT_PROJECT: 'SELECT_PROJECT',
@@ -112,7 +101,6 @@ function wizardReducer(state, action) {
  }
 }
 
-// Step transition variants
 const stepVariants = {
  initial: { opacity: 0, y: 16, scale: 0.98 },
  animate: { opacity: 1, y: 0, scale: 1 },
@@ -123,10 +111,8 @@ function ReportGeneratorPage() {
  const [searchParams] = useSearchParams();
  const [state, dispatch] = useReducer(wizardReducer, getInitialWizardState());
 
- // Get completed projects
  const completedProjects = useMemo(() => getReportProjects(), []);
 
- // Auto-select project from query param
  useEffect(() => {
  const queryProjectId = searchParams.get('projectId');
  if (queryProjectId && isValidProjectId(queryProjectId, completedProjects)) {
@@ -137,7 +123,6 @@ function ReportGeneratorPage() {
  }
  }, [searchParams, completedProjects]);
 
- // Handlers
  const handleProjectSelect = useCallback((project) => {
  dispatch({ type: ACTIONS.SELECT_PROJECT, payload: project });
  }, []);
@@ -192,7 +177,7 @@ function ReportGeneratorPage() {
  dispatch({ type: ACTIONS.SHOW_TOAST, payload: { message: 'Laporan berhasil diunduh!', type: 'success' } });
  } catch (err) {
  console.error('PDF generation failed:', err);
- // Fallback to sample PDF
+
  try {
  const response = await fetch('/reports/sample-report.pdf');
  if (response.ok) {
@@ -237,13 +222,11 @@ function ReportGeneratorPage() {
  dispatch({ type: ACTIONS.HIDE_TOAST });
  }, []);
 
- // Derived data
  const previewPages = useMemo(() => getPreviewPages(state.checkboxState), [state.checkboxState]);
  const totalPages = useMemo(() => getTotalPages(state.checkboxState), [state.checkboxState]);
  const projectImages = useMemo(() => getProjectImages(state.selectedProject), [state.selectedProject]);
  const inspectionData = useMemo(() => getInspectionData(state.selectedProject), [state.selectedProject]);
 
- // Render active step
  const renderStep = () => {
  switch (state.currentStep) {
  case 0:
@@ -320,20 +303,17 @@ function ReportGeneratorPage() {
 
  return (
  <div className="report-generator-page">
- {/* Cinematic background */}
  <div className="report-generator-page__bg">
  <div className="report-generator-page__bg-glow" />
  <div className="report-generator-page__bg-grid" />
  </div>
 
  <div className="report-generator-page__container">
- {/* Hero Header */}
+
  <ReportHeroHeader completedCount={completedProjects.length} />
 
- {/* Stepper */}
  <ReportStepper currentStep={state.currentStep} />
 
- {/* Step Content */}
  <div className="report-generator-page__content">
  <AnimatePresence mode="wait">
  <motion.div
@@ -350,7 +330,6 @@ function ReportGeneratorPage() {
  </div>
  </div>
 
- {/* Toast */}
  {state.toastMessage && (
  <ToastNotification
  message={state.toastMessage}

@@ -1,17 +1,5 @@
 import './SupportingSectionHeader.css';
 
-/**
- * SupportingSectionHeader — reusable section header for Supporting Pages.
- * Provides consistent eyebrow, title, subtitle, and cyan accent line.
- *
- * @param {object} props
- * @param {string} [props.eyebrow] - Uppercase small label above title
- * @param {string} props.title - Section title (Montserrat bold)
- * @param {string} [props.subtitle] - Subtitle text (max-width 680px)
- * @param {'center'|'left'} [props.align='center'] - Text alignment
- * @param {boolean} [props.dark=false] - Dark background variant
- * @param {'h2'|'h3'} [props.headingLevel='h2'] - Heading element level
- */
 export default function SupportingSectionHeader({
  eyebrow,
  title,

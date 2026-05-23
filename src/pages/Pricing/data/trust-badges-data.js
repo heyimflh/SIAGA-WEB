@@ -1,6 +1,3 @@
-/**
- * Trust badge data for SIAGA Security Trust Badges section.
- */
 export const trustBadges = [
  {
  id: 'aes',

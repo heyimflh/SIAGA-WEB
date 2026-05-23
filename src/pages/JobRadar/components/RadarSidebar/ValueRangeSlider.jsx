@@ -4,10 +4,6 @@ const MIN = 0;
 const MAX = 2500000000;
 const STEP = 50000000;
 
-/**
- * ValueRangeSlider — Dual-value range slider for contract value filter.
- * Uses two native range inputs for min/max.
- */
 export default function ValueRangeSlider({ value, onChange }) {
  const [minVal, maxVal] = value;
 

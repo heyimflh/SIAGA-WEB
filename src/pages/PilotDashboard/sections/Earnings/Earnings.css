@@ -38,7 +38,6 @@
 
 .earnings__chart-loading { padding: 2rem; text-align: center; color: #60758D; font-size: 0.8125rem; }
 
-/* Payment Table */
 .payment-table__wrap {
  background: rgba(255, 255, 255, 0.9);
  backdrop-filter: blur(12px);

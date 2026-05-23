@@ -1,18 +1,3 @@
-// VerificationStep — Register flow Step 3.
-// See .kiro/specs/auth-pages/design.md "VerificationStep" + Requirements
-// 8.2, 8.5, 8.6, 8.6a, 8.7, 8.8, 8.9, 14.2, 14.2a, 14.3, 14.4.
-//
-// Responsibilities:
-// - Branch by role: pilot → render <SidopiUpload>; client → render
-// inline <ClientSummary>. The SidopiUpload component is NOT rendered
-// for client at all .
-// - Render TermsCheckbox bound to state.termsAccepted (TOGGLE_TERMS).
-// - "Daftar" button is disabled per pure isSubmitEnabled(state).
-// - "Kembali" dispatches BACK without losing Step 2 data (Req 8.9).
-// - Submit handler: SUBMIT_START → 800ms mock delay → 95% success (call
-// login + navigate) / 5% failure (SUBMIT_FAILURE with banner copy).
-// - Global error banner shown above form when state.globalError is set.
-
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthContext.jsx';
 import { isSubmitEnabled } from '../../auth/validators.js';
@@ -24,10 +9,6 @@ const SUBMIT_DELAY_MS = 800;
 const SUCCESS_RATE = 0.95;
 const FAILURE_MESSAGE = 'Pendaftaran gagal, silakan coba lagi';
 
-/**
- * Inline read-only summary of Step 2 client data. Only rendered for the
- * 'client' role branch — never shares the DOM tree with SidopiUpload.
- */
 function ClientSummary({ client }) {
  const safe = client || {};
  return (
@@ -51,10 +32,6 @@ function ClientSummary({ client }) {
  );
 }
 
-/**
- * Sleep helper used to simulate the 800ms submit latency. Kept inline so
- * the component file stays self-contained.
- */
 function delay(ms) {
  return new Promise((resolve) => setTimeout(resolve, ms));
 }
@@ -66,7 +43,7 @@ export default function VerificationStep({ state, dispatch }) {
  const submitDisabled = !isSubmitEnabled(state);
 
  function handleBack() {
- // BACK preserves all field data — reducer guarantees this.
+
  dispatch({ type: ACTION_TYPES.BACK });
  }
 
@@ -77,8 +54,6 @@ export default function VerificationStep({ state, dispatch }) {
  async function handleSubmit(e) {
  if (e && typeof e.preventDefault === 'function') e.preventDefault();
 
- // Local guard layered on top of the reducer's SUBMIT_START guard
- // .
  if (state.isSubmitting) return;
  if (submitDisabled) return;
 
@@ -86,12 +61,11 @@ export default function VerificationStep({ state, dispatch }) {
 
  await delay(SUBMIT_DELAY_MS);
 
- // Mock auth: 95% success, 5% failure.
  const success = Math.random() < SUCCESS_RATE;
 
  if (success) {
  const role = state.role;
- // Pilot uses `email`; client uses `corporateEmail` (per Step 2 fields).
+
  const email =
  role === 'pilot'
  ? state.pilot?.email ?? ''
@@ -105,9 +79,6 @@ export default function VerificationStep({ state, dispatch }) {
  return;
  }
 
- // Failure path — preserve all field data via SUBMIT_FAILURE
- // and surface the banner copy
- // .
  dispatch({
  type: ACTION_TYPES.SUBMIT_FAILURE,
  payload: { globalError: FAILURE_MESSAGE },
@@ -126,7 +97,7 @@ export default function VerificationStep({ state, dispatch }) {
  </div>
  )}
 
- {/* Role branch — a: client must NOT render SidopiUpload. */}
+
  {state.role === 'pilot' ? (
  <SidopiUpload state={state} dispatch={dispatch} />
  ) : (

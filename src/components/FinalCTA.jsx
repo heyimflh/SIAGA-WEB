@@ -73,7 +73,6 @@ function FinalCTA() {
  className="fcta"
  aria-label="Final call to action"
  >
- {/* Atmospheric background layers */}
  <div className="fcta__bg" aria-hidden="true">
  <div className="fcta__glow-center" />
  <div className="fcta__glow-ring" />
@@ -81,27 +80,26 @@ function FinalCTA() {
  </div>
 
  <div ref={contentRef} className="fcta__shell">
- {/* Eyebrow */}
+
  <div className="fcta__eyebrow">
  <span className="fcta__eyebrow-dot" />
  Platform Inspeksi Drone #1 Indonesia
  </div>
 
- {/* Headline */}
+
  <h2 className="fcta__title">
  Mulai Inspeksi
  <br />
  <span className="fcta__title-accent">Pertama Anda.</span>
  </h2>
 
- {/* Subtitle */}
  <p className="fcta__subtitle">
  Dari posting proyek hingga laporan profesional — semua berjalan otomatis.
  <br />
  Bergabung dengan ratusan perusahaan yang sudah mempercayai SIAGA.
  </p>
 
- {/* CTA Actions */}
+
  <div className="fcta__actions">
  <Link to={getRegisterPath('client')} className="fcta__btn-primary">
  <span>Daftar Gratis Sekarang</span>
@@ -109,7 +107,6 @@ function FinalCTA() {
  </Link>
  </div>
 
- {/* Trust chips */}
  <div className="fcta__trust">
  <div className="fcta__chip">
  <CreditCard size={14} />
@@ -129,7 +126,7 @@ function FinalCTA() {
  </div>
  </div>
 
- {/* Secondary login */}
+
  <p className="fcta__login">
  Sudah punya akun?{' '}
  <Link to={ROUTES.login} className="fcta__login-link">
@@ -139,7 +136,7 @@ function FinalCTA() {
  </p>
  </div>
 
- {/* Bottom divider — transition to footer */}
+
  <div className="fcta__divider" aria-hidden="true" />
  </section>
  );

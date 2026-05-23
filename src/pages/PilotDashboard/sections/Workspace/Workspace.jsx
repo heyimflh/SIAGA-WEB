@@ -1,9 +1,3 @@
-/**
- * Workspace — Inspection Data Upload Bay section.
- * Feature: pilot-dashboard
- * Validates: Requirements 10
- */
-
 import { useState, useRef, useCallback } from 'react';
 import { Upload, Trash2, RefreshCw, HardDrive } from 'lucide-react';
 import { validateFile } from '../../utils/fileValidation';
@@ -100,7 +94,6 @@ function Workspace({ projects, selectedProjectId, onProjectSelect, uploadedFiles
  <p className="workspace__subtitle">Upload RAW photos, 4K video, orthomosaic, dan point cloud hasil inspeksi.</p>
  </div>
 
- {/* Project Dropdown */}
  <div className="workspace__project-select">
  <label htmlFor="workspace-project" className="workspace__select-label">Pilih Proyek:</label>
  <select
@@ -118,7 +111,7 @@ function Workspace({ projects, selectedProjectId, onProjectSelect, uploadedFiles
 
  {selectedProjectId ? (
  <>
- {/* Upload Area */}
+
  <div
  className={`workspace__upload-area ${dragOver ? 'workspace__upload-area--drag-over' : ''}`}
  onDrop={handleDrop}
@@ -149,10 +142,9 @@ function Workspace({ projects, selectedProjectId, onProjectSelect, uploadedFiles
  />
  </div>
 
- {/* Error */}
+
  {error && <p className="workspace__error" role="alert" aria-live="polite">{error}</p>}
 
- {/* Uploading Files */}
  {uploadingFiles.length > 0 && (
  <div className="workspace__file-list">
  {uploadingFiles.map((f) => (
@@ -161,7 +153,7 @@ function Workspace({ projects, selectedProjectId, onProjectSelect, uploadedFiles
  </div>
  )}
 
- {/* Uploaded Files */}
+
  {filteredFiles.length > 0 && (
  <div className="workspace__file-list">
  {filteredFiles.map((f) => (
@@ -170,7 +162,7 @@ function Workspace({ projects, selectedProjectId, onProjectSelect, uploadedFiles
  </div>
  )}
 
- {/* Storage Indicator */}
+
  <div className="workspace__storage">
  <HardDrive size={14} aria-hidden="true" />
  <span>{storageUsed} GB / 10 GB</span>

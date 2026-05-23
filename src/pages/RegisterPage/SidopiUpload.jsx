@@ -1,31 +1,7 @@
-// SidopiUpload — Pilot-only SIDOPI document dropzone.
-// See .kiro/specs/auth-pages/design.md "SidopiUpload" + Requirements
-// 8.1, 8.3, 8.4, 8.5, 11.2, 11.3, 12.1, 12.2, 12.3.
-//
-// Behavior contract:
-// - Native <input type="file"> connected to a clickable <label> (label
-// covers the dropzone area for keyboard + click affordance).
-// - Drag/drop handled with HTML5 drag events on the dropzone wrapper.
-// - File chosen via either path is run through validateSidopiFile.
-// * Invalid → set local error banner ABOVE the dropzone, do NOT
-// dispatch SET_FILE; dropzone stays mounted and active so the
-// user can pick another file.
-// * Valid → dispatch SET_FILE with metadata + raw blob, clear local
-// error.
-// - When state.sidopiFile is set, replace the dropzone with a small
-// summary (name + formatted size) and a "Hapus" button that
-// dispatches CLEAR_FILE.
-// - Error banner uses role="alert" + aria-live="polite" so screen
-// readers announce rejection without being interruptive.
-
 import { useRef, useState } from 'react';
 import { validateSidopiFile } from '../../auth/validators.js';
 import { ACTION_TYPES } from './registerReducer.js';
 
-/**
- * Format byte count as a human-friendly KB / MB string.
- * Stays a small pure helper so it can be inlined; no need for a util file.
- */
 function formatFileSize(bytes) {
  if (typeof bytes !== 'number' || !Number.isFinite(bytes) || bytes < 0) {
  return '';
@@ -38,8 +14,7 @@ function formatFileSize(bytes) {
 }
 
 export default function SidopiUpload({ state, dispatch }) {
- // Local rejection error — separate from reducer.stepErrors because the
- // file never enters state on rejection .
+
  const [localError, setLocalError] = useState(null);
  const [isDragOver, setIsDragOver] = useState(false);
  const inputRef = useRef(null);
@@ -51,10 +26,9 @@ export default function SidopiUpload({ state, dispatch }) {
 
  const result = validateSidopiFile(rawFile);
  if (!result.ok) {
- // Rejection: surface error, leave state.sidopiFile untouched.
+
  setLocalError(result.error || 'Format file harus PDF, JPG, atau PNG');
- // Reset the native input so picking the same bad file again still
- // fires onChange (browsers de-dup identical selections otherwise).
+
  if (inputRef.current) inputRef.current.value = '';
  return;
  }
@@ -144,7 +118,6 @@ export default function SidopiUpload({ state, dispatch }) {
  onDragLeave={handleDragLeave}
  onDrop={handleDrop}
  >
- {/* Visually-hidden but still focusable: covered by the label. */}
  <input
  ref={inputRef}
  id="sidopi-file"

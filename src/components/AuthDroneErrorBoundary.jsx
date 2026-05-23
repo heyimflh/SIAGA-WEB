@@ -1,11 +1,5 @@
 import { Component } from 'react';
 
-/* ──────────────────────────────────────────────────────────────
- * AuthDroneErrorBoundary
- * Separated from AuthDroneScene to allow proper code-splitting.
- * The scene is lazy-loaded while this boundary is statically imported.
- * ────────────────────────────────────────────────────────────── */
-
 function DronePlaceholder() {
  return (
  <div
@@ -31,7 +25,7 @@ export class AuthDroneErrorBoundary extends Component {
  }
 
  componentDidCatch() {
- // Swallow — fallback placeholder is the UX contract.
+
  }
 
  render() {

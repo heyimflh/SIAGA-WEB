@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════════════════
- Toast Notification
- ═══════════════════════════════════════════════════════ */
-
 .toast-notification {
  position: fixed;
  top: 1.5rem;
@@ -79,7 +75,6 @@
  background: rgba(10, 37, 64, 0.08);
 }
 
-/* ─── Mobile ─── */
 @media (max-width: 768px) {
  .toast-notification {
  top: auto;

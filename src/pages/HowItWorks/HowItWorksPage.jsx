@@ -11,11 +11,6 @@ import RoleBasedBenefits from './sections/RoleBasedBenefits';
 import CTASectionHIW from './sections/CTASectionHIW';
 import './HowItWorksPage.css';
 
-/**
- * HowItWorksPage — SIAGA Mission Control Journey
- * Route: /how-it-works
- * Public page, no ProtectedRoute, no API calls, fully static.
- */
 export default function HowItWorksPage() {
  return (
  <>

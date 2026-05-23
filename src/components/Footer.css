@@ -1,17 +1,10 @@
-/* ============================================
- SIAGA FOOTER — Premium Dark Editorial
- Background is handled by ClosingSection wrapper.
- Footer is transparent and sits on the shared dark canvas.
- ============================================ */
-
 .sf {
  position: relative;
  overflow: hidden;
- /* No background — inherits from ClosingSection */
+
  color: rgba(255, 255, 255, 0.85);
 }
 
-/* Separator line between CTA and Footer — subtle, not hard */
 .sf__divider {
  max-width: 1200px;
  margin: 0 auto;
@@ -26,7 +19,6 @@
  );
 }
 
-/* Container */
 .sf-container {
  max-width: 1200px;
  margin: 0 auto;
@@ -34,10 +26,6 @@
  position: relative;
  z-index: 1;
 }
-
-/* ============================================
- TOP AREA — Brand + Link Columns
- ============================================ */
 
 .sf-top {
  padding: 72px 0 48px;
@@ -50,7 +38,6 @@
  align-items: start;
 }
 
-/* Brand section */
 .sf-brand {
  display: flex;
  flex-direction: column;
@@ -75,7 +62,6 @@
  max-width: 270px;
 }
 
-/* Social icons */
 .sf-social {
  display: flex;
  align-items: center;
@@ -111,10 +97,6 @@
  outline: 2px solid rgba(0, 194, 255, 0.5);
  outline-offset: 2px;
 }
-
-/* ============================================
- LINK COLUMNS
- ============================================ */
 
 .sf-links {
  display: grid;
@@ -161,10 +143,6 @@
  border-radius: 2px;
 }
 
-/* ============================================
- GIANT WORDMARK
- ============================================ */
-
 .sf-wordmark {
  position: relative;
  z-index: 1;
@@ -187,7 +165,7 @@
  text-stroke: 1.2px rgba(255, 255, 255, 0.11);
  opacity: 0.85;
  animation: sfWordmarkBreath 18s ease-in-out infinite alternate;
- /* Fade bottom edge for elegance */
+
  mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.85) 65%, transparent 100%);
  -webkit-mask-image: linear-gradient(to bottom, black 0%, rgba(0,0,0,0.85) 65%, transparent 100%);
 }
@@ -206,10 +184,6 @@
  -webkit-text-stroke-color: rgba(255, 255, 255, 0.10);
  }
 }
-
-/* ============================================
- BOTTOM BAR
- ============================================ */
 
 .sf-bottom {
  border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -230,10 +204,6 @@
  color: rgba(255, 255, 255, 0.38);
 }
 
-/* ============================================
- RESPONSIVE — Tablet
- ============================================ */
-
 @media (max-width: 1024px) {
  .sf-grid {
  grid-template-columns: 1fr;
@@ -253,10 +223,6 @@
  padding: 44px 0 16px;
  }
 }
-
-/* ============================================
- RESPONSIVE — Mobile
- ============================================ */
 
 @media (max-width: 768px) {
  .sf-top {
@@ -306,10 +272,6 @@
  gap: 22px 14px;
  }
 }
-
-/* ============================================
- ACCESSIBILITY — Reduced Motion
- ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
  .sf-wordmark__text {

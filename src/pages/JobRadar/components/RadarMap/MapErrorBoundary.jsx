@@ -1,10 +1,6 @@
 import { Component } from 'react';
 import MapErrorFallback from './MapErrorFallback.jsx';
 
-/**
- * MapErrorBoundary — Catches Mapbox initialization errors and lazy chunk failures.
- * Renders MapErrorFallback instead of crashing the page.
- */
 export default class MapErrorBoundary extends Component {
  constructor(props) {
  super(props);

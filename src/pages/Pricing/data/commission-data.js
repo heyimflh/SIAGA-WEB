@@ -1,7 +1,3 @@
-/**
- * Commission data for SIAGA Escrow Flow Console.
- * Invariant: platformPercent + pilotPercent === 100
- */
 export const COMMISSION = Object.freeze({
  platformPercent: 7,
  pilotPercent: 93,

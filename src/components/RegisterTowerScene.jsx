@@ -3,7 +3,6 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Re-export error boundary for convenience
 export { AuthDroneErrorBoundary as TowerErrorBoundary } from './AuthDroneErrorBoundary';
 
 function isCompactViewport() {
@@ -11,17 +10,6 @@ function isCompactViewport() {
  return window.matchMedia('(max-width: 767px)').matches;
 }
 
-/* ──────────────────────────────────────────────────────────────
- * RegisterTowerScene — 3D Tower SUTET for Register Page
- * 
- * Features:
- * - Loads tower.glb from /models/tower.glb
- * - Luxury museum showcase animation (slow turntable + float)
- * - No cursor tracking — pure elegant auto-animation
- * - Soft glow lighting with green-cyan tones
- * ────────────────────────────────────────────────────────────── */
-
-/* ── Tower model — Luxury museum showcase animation ───────────── */
 function TowerModel() {
  const { scene } = useGLTF('/models/tower.glb');
  const groupRef = useRef();
@@ -29,12 +17,11 @@ function TowerModel() {
  const compact = isCompactViewport();
 
  useEffect(() => {
- // Compute bounding box to auto-center and scale the model
+
  const box = new THREE.Box3().setFromObject(scene);
  const size = box.getSize(new THREE.Vector3());
  const center = box.getCenter(new THREE.Vector3());
 
- // Normalize: fit the model into a ~3 unit tall space
  const maxDim = Math.max(size.x, size.y, size.z);
  const targetHeight = compact ? 3.4 : 3;
  const scale = maxDim > 0 ? targetHeight / maxDim : 1;
@@ -68,13 +55,10 @@ function TowerModel() {
  if (!outerRef.current) return;
  const t = clock.elapsedTime;
 
- // Luxury museum turntable: very slow, elegant rotation
  outerRef.current.rotation.y = t * 0.12;
 
- // Gentle floating bob — like hovering on a pedestal
  outerRef.current.position.y = Math.sin(t * 0.4) * 0.06;
 
- // Subtle tilt oscillation for depth
  outerRef.current.rotation.x = Math.sin(t * 0.25) * 0.02;
  outerRef.current.rotation.z = Math.cos(t * 0.3) * 0.01;
  });
@@ -88,7 +72,6 @@ function TowerModel() {
  );
 }
 
-/* ── Ground glow ring ─────────────────────────────────────────── */
 function GroundGlow() {
  const ringRef = useRef();
 
@@ -107,10 +90,10 @@ function GroundGlow() {
  );
 }
 
-// Preload
+
 useGLTF.preload('/models/tower.glb');
 
-/* ── Default export ───────────────────────────────────────────── */
+
 export default function RegisterTowerScene() {
  const compact = isCompactViewport();
 
@@ -127,7 +110,6 @@ export default function RegisterTowerScene() {
  }}
  dpr={[1, 1.5]}
  >
- {/* Premium museum lighting setup */}
  <ambientLight intensity={0.7} />
  <directionalLight position={[5, 10, 5]} intensity={2.0} color="#ffffff" />
  <directionalLight position={[-4, 6, -3]} intensity={0.6} color="#10B981" />

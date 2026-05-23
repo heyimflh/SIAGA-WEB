@@ -1,11 +1,9 @@
-/* Pricing Hero — Transparent Pricing Command Center with real project slideshow */
 .ph {
  position: relative; overflow: hidden;
  padding: 7.5rem 2rem 5rem; min-height: 680px;
  display: flex; align-items: center;
 }
 
-/* Background slideshow */
 .ph__slideshow { position: absolute; inset: 0; z-index: 0; }
 .ph__slide {
  position: absolute; inset: 0;
@@ -14,7 +12,6 @@
 }
 .ph__slide--active { opacity: 1; }
 
-/* Blue sky overlay — tipis agar gambar project terlihat jelas */
 .ph__overlay {
  position: absolute; inset: 0; z-index: 1;
  background: linear-gradient(
@@ -87,7 +84,6 @@
  padding: 0.35rem 0.8rem; border-radius: 999px;
 }
 
-/* Console Preview */
 .ph__preview { opacity: 0; transform: translateY(36px) scale(0.97); transition: opacity 1s ease 0.25s, transform 1s ease 0.25s; }
 .ph--visible .ph__preview { opacity: 1; transform: translateY(0) scale(1); }
 
@@ -140,7 +136,6 @@
 .ph__console-tl-step--active { color: #00D4FF; }
 .ph__console-tl-step--active .ph__console-tl-dot { background: #00D4FF; border-color: #00D4FF; box-shadow: 0 0 8px rgba(0,212,255,0.4); }
 
-/* Slide indicators */
 .ph__indicators {
  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
  display: flex; gap: 0.5rem; z-index: 4;
@@ -154,7 +149,6 @@
  box-shadow: 0 0 8px rgba(0,212,255,0.4);
 }
 
-/* Responsive */
 @media (max-width: 1100px) { .ph__container { grid-template-columns: 1fr; gap: 2.5rem; } .ph__preview { max-width: 480px; } .ph { padding: 6.5rem 1.5rem 4rem; min-height: auto; } }
 @media (max-width: 768px) { .ph { padding: 5.5rem 1rem 3rem; } .ph__ctas { flex-direction: column; } .ph__cta { width: 100%; text-align: center; } .ph__indicators { bottom: 1.5rem; } }
 @media (prefers-reduced-motion: reduce) { .ph__slide { transition: none; } .ph__content, .ph__preview { transition: none; opacity: 1; transform: none; } }

@@ -20,7 +20,6 @@ export default function EscrowFlowConsole() {
  dark
  />
 
- {/* Flow steps */}
  <div className="efc__flow">
  {flowSteps.map((step, i) => (
  <div key={step.id} className="efc__flow-step-wrapper">
@@ -39,7 +38,7 @@ export default function EscrowFlowConsole() {
  ))}
  </div>
 
- {/* Split payment visual */}
+
  <div className="efc__split">
  <div className="efc__split-header">Payment Breakdown</div>
  <div className="efc__split-bar">
@@ -58,7 +57,7 @@ export default function EscrowFlowConsole() {
  </div>
  </div>
 
- {/* Explanation */}
+
  <p className="efc__explanation">
  SIAGA mengambil {COMMISSION.platformPercent}% platform fee untuk mendukung operasional platform, keamanan transaksi, monitoring proyek, dan infrastruktur laporan. Pilot menerima {COMMISSION.pilotPercent}% setelah pekerjaan selesai sesuai kesepakatan.
  </p>

@@ -18,28 +18,16 @@ import MapErrorBoundary from './components/RadarMap/MapErrorBoundary.jsx';
 import './JobRadarPage.css';
 import './JobRadarDarkOverride.css';
 
-// Lazy-load RadarMap so Mapbox GL JS doesn't bloat the initial chunk
 const RadarMap = lazy(() => import('./components/RadarMap/index.js'));
 
-/**
- * JobRadarPage — SIAGA Pilot Radar Command Center
- * 
- * Full-screen geospatial page for pilot UAV to discover inspection projects.
- * Route: /dashboard/pilot/job-radar
- * 
- * Feature: job-radar-page
- * Requirements: 2.1–2.13, 8.1–8.13, 9.6–9.7
- */
 export default function JobRadarPage() {
- // ── Filter & Sort State ──
+
  const [filters, setFilters] = useState(resetFilters);
  const [sortBy, setSortBy] = useState('terbaru');
 
- // ── Layout State ──
  const [sidebarOpen, setSidebarOpen] = useState(true);
  const [bottomSheetState, setBottomSheetState] = useState('collapsed');
 
- // ── Interaction State ──
  const [selectedPinId, setSelectedPinId] = useState(null);
  const [hoveredCardId, setHoveredCardId] = useState(null);
  const [highlightedCardId, setHighlightedCardId] = useState(null);
@@ -49,11 +37,9 @@ export default function JobRadarPage() {
  const [flyToTarget, setFlyToTarget] = useState(null);
  const [, setMapReady] = useState(false);
 
- // ── Refs ──
  const ariaLiveRef = useRef(null);
  const highlightTimeoutRef = useRef(null);
 
- // ── Computed Data ──
  const filteredProjects = useMemo(
  () => applyFilters(projects, filters),
  [filters]
@@ -74,11 +60,9 @@ export default function JobRadarPage() {
  [filters]
  );
 
- // ── Viewport detection ──
  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
  const isTablet = typeof window !== 'undefined' && window.innerWidth >= 768 && window.innerWidth < 1280;
 
- // ── Handlers ──
  const handleSidebarToggle = useCallback(() => {
  setSidebarOpen(prev => !prev);
  }, []);
@@ -96,7 +80,7 @@ export default function JobRadarPage() {
  const handlePinClick = useCallback((project) => {
  setSelectedPinId(project.id);
  setPopupProject(project);
- // Highlight the corresponding card for 3 seconds
+
  setHighlightedCardId(project.id);
  if (highlightTimeoutRef.current) clearTimeout(highlightTimeoutRef.current);
  highlightTimeoutRef.current = setTimeout(() => {
@@ -146,11 +130,9 @@ export default function JobRadarPage() {
  setToastMessage(null);
  }, []);
 
- // ── Determine sidebar visibility ──
  const showDesktopSidebar = !isMobile;
  const sidebarIsOverlay = isTablet;
 
- // Page class for grid layout
  const pageClasses = [
  'job-radar-page',
  'job-radar-dark',
@@ -161,7 +143,6 @@ export default function JobRadarPage() {
 
  return (
  <div className={pageClasses}>
- {/* ── Radar Sidebar (Desktop/Tablet) ── */}
  {showDesktopSidebar && (
  <RadarSidebar
  isOpen={sidebarOpen}
@@ -183,9 +164,7 @@ export default function JobRadarPage() {
  />
  )}
 
- {/* ── Map Area ── */}
  <div className="job-radar-page__map-area">
- {/* Sidebar Toggle */}
  {showDesktopSidebar && !sidebarOpen && (
  <button
  className={`job-radar-page__sidebar-toggle ${!sidebarOpen ? 'job-radar-page__sidebar-toggle--collapsed' : ''}`}
@@ -197,14 +176,13 @@ export default function JobRadarPage() {
  </button>
  )}
 
- {/* Radar HUD */}
+
  <RadarHUD
  stats={visibleStats}
  activeFilterCount={activeFilterCount}
  isCompact={isMobile}
  />
 
- {/* Mapbox Map (Lazy-loaded) */}
  <MapErrorBoundary>
  <Suspense fallback={<MapLoadingFallback />}>
  <RadarMap
@@ -224,7 +202,6 @@ export default function JobRadarPage() {
  </Suspense>
  </MapErrorBoundary>
 
- {/* Project Detail Drawer */}
  <ProjectDetailDrawer
  project={detailProject}
  isOpen={!!detailProject}
@@ -234,7 +211,7 @@ export default function JobRadarPage() {
  />
  </div>
 
- {/* ── Mobile Bottom Sheet ── */}
+
  {isMobile && (
  <MobileBottomSheet
  state={bottomSheetState}
@@ -255,13 +232,11 @@ export default function JobRadarPage() {
  />
  )}
 
- {/* ── Toast Notification ── */}
  <ToastNotification
  message={toastMessage}
  onDismiss={handleToastDismiss}
  />
 
- {/* ── Aria Live Region ── */}
  <div
  ref={ariaLiveRef}
  className="job-radar-page__aria-live"

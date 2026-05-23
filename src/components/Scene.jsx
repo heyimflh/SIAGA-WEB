@@ -3,9 +3,8 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
-/* ── Lightweight particle field ── */
 function Particles() {
- const count = 80; // Reduced from 100
+ const count = 80;
  const positions = useMemo(() => {
  const pos = new Float32Array(count * 3);
  for (let i = 0; i < count; i++) {
@@ -44,7 +43,6 @@ function Particles() {
  return <points ref={ref} geometry={geo} material={mat} frustumCulled={false} />;
 }
 
-/* ── Drone model with cursor tracking ── */
 function DroneModel() {
  const { scene } = useGLTF('/models/drone.glb');
  const groupRef = useRef();
@@ -70,7 +68,6 @@ function DroneModel() {
  if (!groupRef.current) return;
  const t = clock.elapsedTime;
 
- /* Entry animation */
  if (entryProgress.current < 1) {
  const raw = Math.max(0, (t - 1.8) / 1.2);
  entryProgress.current = Math.min(1, raw);
@@ -81,19 +78,15 @@ function DroneModel() {
  return;
  }
 
- /* Floating bob */
  groupRef.current.position.y = Math.sin(t * 0.6) * 0.15;
 
- /* Cursor tracking */
  const g = groupRef.current;
  g.rotation.y += (mouse.x * 0.7 - g.rotation.y) * 0.12;
  g.rotation.x += (-mouse.y * 0.35 - g.rotation.x) * 0.12;
  g.rotation.z += (Math.sin(t * 0.4) * 0.04 + mouse.x * 0.08 - g.rotation.z) * 0.06;
 
- /* Lateral drift */
  g.position.x += (mouse.x * 0.6 - g.position.x) * 0.04;
 
- /* Propeller spin */
  for (let i = 0; i < propellers.length; i++) {
  propellers[i].rotation.y += 0.4;
  }
@@ -106,7 +99,7 @@ function DroneModel() {
  );
 }
 
-/* ── Shadow ellipse ── */
+
 function ShadowPlane() {
  return (
  <mesh position={[0, -1.6, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={[2.5, 1.2, 1]}>
@@ -118,12 +111,12 @@ function ShadowPlane() {
 
 useGLTF.preload('/models/drone.glb');
 
-/* ── Canvas wrapper — optimized for performance ── */
+
 export default function Scene() {
  const wrapperRef = useRef(null);
  const [isVisible, setIsVisible] = useState(true);
 
- // Use IntersectionObserver to detect when canvas is off-screen
+
  useEffect(() => {
  const el = wrapperRef.current;
  if (!el) return;
@@ -155,7 +148,6 @@ export default function Scene() {
  flat
  frameloop={isVisible ? 'always' : 'never'}
  >
- {/* Simplified lighting */}
  <ambientLight intensity={1.2} />
  <directionalLight position={[5, 10, 5]} intensity={2.5} />
  <pointLight position={[0, -2, 3]} intensity={0.8} color="#00B4D8" />

@@ -1,15 +1,3 @@
-/**
- * DashboardShell — responsive grid layout (sidebar + topbar + main).
- *
- * Breakpoints:
- * ≥1280px → full sidebar (240-280px) + topbar + main (2-col grid)
- * 768-1279 → icon-only sidebar (64px) + topbar + main
- * <768px → single column, sidebar as drawer overlay
- *
- * Implements a responsive layout with conditional sidebar variants and drawer behavior.
- * Spec: .kiro/specs/client-dashboard
- */
-
 import { useState } from 'react';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import Sidebar from './Sidebar';
@@ -23,7 +11,6 @@ function DashboardShell({ session, mockData, companyName, notifUnread, children 
 
  const [drawerOpen, setDrawerOpen] = useState(false);
 
- // Determine sidebar variant
  let sidebarVariant = 'full';
  if (isMobile) {
  sidebarVariant = 'drawer';
@@ -34,7 +21,6 @@ function DashboardShell({ session, mockData, companyName, notifUnread, children 
  const handleDrawerOpen = () => setDrawerOpen(true);
  const handleDrawerClose = () => setDrawerOpen(false);
 
- // Layout class based on breakpoint
  const layoutClass = [
  'dashboard-shell',
  'dashboard-shell__layout',
@@ -45,10 +31,8 @@ function DashboardShell({ session, mockData, companyName, notifUnread, children 
 
  return (
  <div className={layoutClass}>
- {/* Sidebar */}
  {isMobile ? (
  <>
- {/* Drawer overlay for mobile */}
  {drawerOpen && (
  <div
  className="dashboard-shell__drawer-backdrop"
@@ -80,7 +64,7 @@ function DashboardShell({ session, mockData, companyName, notifUnread, children 
  </aside>
  )}
 
- {/* Topbar */}
+
  <header className="dashboard-shell__topbar">
  {isMobile && (
  <button
@@ -100,7 +84,7 @@ function DashboardShell({ session, mockData, companyName, notifUnread, children 
  />
  </header>
 
- {/* Main Content Area */}
+
  <main className="dashboard-shell__main">
  {children}
  </main>

@@ -1,13 +1,10 @@
-/* FloatingStatsBar — Glassmorphism strip floating above the map */
-/* Requirements: 9.1, 9.2, 9.3, 9.8 */
-
 .floating-stats-bar {
  position: absolute;
  top: 16px;
  left: 50%;
  transform: translateX(-50%);
- z-index: 5; /* Above map, below popup */
- pointer-events: none; /* Don't block map interaction */
+ z-index: 5;
+ pointer-events: none;
  display: flex;
  align-items: center;
  justify-content: center;
@@ -24,7 +21,7 @@
  border: 1px solid rgba(0, 210, 255, 0.15);
  border-radius: 40px;
  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
- pointer-events: auto; /* Text elements are interactive */
+ pointer-events: auto;
 }
 
 .floating-stats-bar__item {
@@ -68,7 +65,6 @@
  flex-shrink: 0;
 }
 
-/* Responsive: smaller on narrow viewports */
 @media (max-width: 768px) {
  .floating-stats-bar {
  top: 8px;

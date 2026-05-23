@@ -1,7 +1,3 @@
-/**
- * FAQ data for SIAGA Pricing Knowledge Base.
- * 10 frequently asked questions about pricing, escrow, and plans.
- */
 export const faqItems = [
  {
  id: 'faq-1',

@@ -1,9 +1,3 @@
-/**
- * MapFloatingStats.css — Glass floating stats strip.
- *
- * Premium dark glass strip with refined typography and status glow accents.
- */
-
 .map-floating-stats {
  position: absolute;
  bottom: 16px;
@@ -51,7 +45,6 @@
  font-size: 0.8rem;
 }
 
-/* Responsive: stack vertically on very small screens */
 @media (max-width: 480px) {
  .map-floating-stats {
  flex-direction: column;

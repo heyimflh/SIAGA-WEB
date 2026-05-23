@@ -1,17 +1,3 @@
-/**
- * BiddingPage — Full-page Bidding Review Center
- *
- * Route: /dashboard/client/bidding
- * Role: client only
- *
- * Premium full-page view of all bids across projects with:
- * - Project selector tabs
- * - Sortable bid table/cards
- * - Filter chips (Verified, Rating 4+)
- * - Pilot profile quick-view
- * - Stats overview
- */
-
 import { useState, useMemo, useCallback } from 'react';
 import {
  Star,
@@ -59,11 +45,9 @@ export default function BiddingPage() {
  const [searchQuery, setSearchQuery] = useState('');
  const [expandedBid, setExpandedBid] = useState(null);
 
- // Filter bids for selected project
  const filteredBids = useMemo(() => {
  let result = allBids.filter((b) => b.project_id === selectedProjectId);
 
- // Exclude very low ratings (< 2)
  result = result.filter((b) => b.rating >= 2);
 
  if (verifiedOnly) {
@@ -81,7 +65,6 @@ export default function BiddingPage() {
  );
  }
 
- // Sort
  switch (sortBy) {
  case 'rating-desc':
  result.sort((a, b) => b.rating - a.rating);
@@ -102,7 +85,6 @@ export default function BiddingPage() {
  return result;
  }, [allBids, selectedProjectId, sortBy, verifiedOnly, minRating4, searchQuery]);
 
- // Stats
  const stats = useMemo(() => {
  const projectBids = allBids.filter((b) => b.project_id === selectedProjectId && b.rating >= 2);
  const totalBids = projectBids.length;
@@ -128,7 +110,6 @@ export default function BiddingPage() {
  notifUnread={mockData.notifications.unread_count}
  >
  <div className="bidding-page">
- {/* Header */}
  <div className="bidding-page__header">
  <div className="bidding-page__header-text">
  <h1 className="bidding-page__title">
@@ -171,7 +152,6 @@ export default function BiddingPage() {
  </div>
  </div>
 
- {/* Project Tabs */}
  <div className="bidding-page__tabs">
  {projects.map((project) => (
  <button
@@ -188,7 +168,6 @@ export default function BiddingPage() {
  ))}
  </div>
 
- {/* Toolbar */}
  <div className="bidding-page__toolbar">
  <div className="bidding-page__search">
  <Search size={16} />
@@ -234,12 +213,11 @@ export default function BiddingPage() {
  </div>
  </div>
 
- {/* Results */}
  <p className="bidding-page__results">
  {filteredBids.length} penawaran ditemukan
  </p>
 
- {/* Bid Cards */}
+
  <div className="bidding-page__list">
  {filteredBids.map((bid) => (
  <div
@@ -253,7 +231,7 @@ export default function BiddingPage() {
  tabIndex={0}
  onKeyDown={(e) => { if (e.key === 'Enter') handleToggleExpand(bid.pilot_id); }}
  >
- {/* Avatar */}
+
  <div className="bid-card__avatar">
  <img src={bid.pilot_avatar} alt={bid.pilot_nama} />
  {bid.siaga_verified && (
@@ -263,7 +241,6 @@ export default function BiddingPage() {
  )}
  </div>
 
- {/* Info */}
  <div className="bid-card__info">
  <div className="bid-card__name-row">
  <span className="bid-card__name">{bid.pilot_nama}</span>
@@ -275,20 +252,19 @@ export default function BiddingPage() {
  <span className="bid-card__drone">{bid.drone_type}</span>
  </div>
 
- {/* Price */}
  <div className="bid-card__price">
  <span className="bid-card__price-value">{formatRupiah(bid.harga)}</span>
  <span className="bid-card__price-label">Penawaran</span>
  </div>
 
- {/* Duration */}
+
  <div className="bid-card__duration">
  <Clock size={14} />
  <span>{bid.estimasi_hari} hari</span>
  </div>
  </div>
 
- {/* Expanded Detail */}
+
  {expandedBid === bid.pilot_id && (
  <div className="bid-card__detail">
  <div className="bid-card__detail-section">
@@ -324,7 +300,6 @@ export default function BiddingPage() {
  ))}
  </div>
 
- {/* Empty state */}
  {filteredBids.length === 0 && (
  <div className="bidding-page__empty">
  <Gavel size={48} />

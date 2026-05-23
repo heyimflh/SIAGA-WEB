@@ -1,13 +1,5 @@
-/**
- * fileValidation.js — File upload validation for inspection data.
- *
- * Pure functions, no side effects.
- * Feature: pilot-dashboard
- * Validates: Requirements 10, 15
- */
-
 const VALID_EXTENSIONS = ['.dng', '.arw', '.mp4', '.mov', '.tif', '.las'];
-const MAX_FILE_SIZE = 500 * 1024 * 1024; // 500MB
+const MAX_FILE_SIZE = 500 * 1024 * 1024;
 
 export function isValidExtension(filename) {
  if (typeof filename !== 'string' || !filename) return false;

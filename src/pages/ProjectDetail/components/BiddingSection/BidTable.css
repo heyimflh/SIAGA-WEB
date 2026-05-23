@@ -79,7 +79,6 @@
 .pd-bid-table__btn--secondary:hover { background: rgba(7,26,52,0.1); }
 .pd-bid-table__empty { color: #8AA0B8; font-size: 0.88rem; text-align: center; padding: 24px; }
 
-/* Bid Intelligence Panel styles */
 .pd-bid-intel__title {
  font-family: 'Montserrat', sans-serif;
  font-weight: 700;

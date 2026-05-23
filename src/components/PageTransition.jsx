@@ -6,17 +6,6 @@ const variants = {
  exit: { opacity: 0, y: -16, transition: { duration: 0.3 } },
 };
 
-/**
- * PageTransition wraps page content with a Framer Motion fade + vertical slide
- * animation. Designed to be used inside an `AnimatePresence mode="wait"` so
- * route changes animate cleanly: initial fade+y:24 → animate y:0 (400ms easeOut)
- * → exit y:-16 (300ms).
- *
- * @param {object} props
- * @param {React.ReactNode} props.children - Page content to animate.
- * @param {string} [props.routeKey] - Stable key tied to the current route so
- * AnimatePresence can detect transitions.
- */
 export default function PageTransition({ children, routeKey }) {
  return (
  <motion.div

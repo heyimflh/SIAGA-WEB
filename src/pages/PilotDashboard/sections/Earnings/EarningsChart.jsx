@@ -1,9 +1,3 @@
-/**
- * EarningsChart — Lazy-loaded Recharts area chart.
- * Feature: pilot-dashboard
- * Validates: Requirements 11
- */
-
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 
 function EarningsChart({ data }) {

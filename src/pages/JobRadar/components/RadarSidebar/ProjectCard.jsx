@@ -2,10 +2,6 @@ import { MapPin, Clock, Users, Eye, Zap } from 'lucide-react';
 import { formatCompactRupiah, getStatusVisual } from '../../filters.js';
 import './ProjectCard.css';
 
-/**
- * ProjectCard — Premium Mission Card for inspection projects.
- * Designed to feel like a mission opportunity, not a generic list item.
- */
 export default function ProjectCard({
  project,
  isHovered,
@@ -41,7 +37,6 @@ export default function ProjectCard({
  aria-label={`Proyek ${project.nama} di ${project.lokasi.kota}, ${project.lokasi.provinsi}`}
  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onClick(project); } }}
  >
- {/* Status + Infrastructure */}
  <div className="mission-card__top">
  <span
  className="mission-card__status"
@@ -53,16 +48,14 @@ export default function ProjectCard({
  <span className="mission-card__infra">{project.jenis_infrastruktur}</span>
  </div>
 
- {/* Project Name */}
+
  <h3 className="mission-card__name">{project.nama}</h3>
 
- {/* Location */}
  <div className="mission-card__location">
  <MapPin size={11} />
  <span>{project.lokasi.kota}, {project.lokasi.provinsi}</span>
  </div>
 
- {/* Meta: Value, Deadline, Bidders */}
  <div className="mission-card__meta">
  <div className="mission-card__value">
  {formatCompactRupiah(project.nilai_kontrak)}
@@ -77,7 +70,7 @@ export default function ProjectCard({
  </div>
  </div>
 
- {/* CTA Buttons */}
+
  <div className="mission-card__actions">
  <button
  className="mission-card__btn mission-card__btn--detail"

@@ -2,9 +2,6 @@ import { X, MapPin, Clock, Users, Eye, Zap } from 'lucide-react';
 import { formatCompactRupiah, getStatusVisual } from '../../filters.js';
 import './PinPopup.css';
 
-/**
- * PinPopup — Glassmorphism mission preview card that appears after flyTo.
- */
 export default function PinPopup({ project, onClose, onBidClick, onDetailClick }) {
  if (!project) return null;
 
@@ -24,7 +21,6 @@ export default function PinPopup({ project, onClose, onBidClick, onDetailClick }
  aria-modal="false"
  >
  <div className="pin-popup__card">
- {/* Close button */}
  <button
  className="pin-popup__close"
  onClick={onClose}
@@ -33,7 +29,7 @@ export default function PinPopup({ project, onClose, onBidClick, onDetailClick }
  <X size={14} />
  </button>
 
- {/* Status + Infra */}
+
  <div className="pin-popup__top">
  <span
  className="pin-popup__status"
@@ -45,16 +41,14 @@ export default function PinPopup({ project, onClose, onBidClick, onDetailClick }
  <span className="pin-popup__infra">{project.jenis_infrastruktur}</span>
  </div>
 
- {/* Name */}
+
  <h3 className="pin-popup__name" id="pin-popup-title">{project.nama}</h3>
 
- {/* Location */}
  <div className="pin-popup__location">
  <MapPin size={11} />
  <span>{project.lokasi.kota}, {project.lokasi.provinsi}</span>
  </div>
 
- {/* Meta */}
  <div className="pin-popup__meta">
  <span className="pin-popup__value">{formatCompactRupiah(project.nilai_kontrak)}</span>
  <span className="pin-popup__meta-item">
@@ -65,7 +59,6 @@ export default function PinPopup({ project, onClose, onBidClick, onDetailClick }
  </span>
  </div>
 
- {/* Actions */}
  <div className="pin-popup__actions">
  <button
  className="pin-popup__btn pin-popup__btn--detail"

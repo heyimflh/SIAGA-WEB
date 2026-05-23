@@ -1,7 +1,3 @@
-/* ════════════════════════════════════════════════════════
- CTA JOIN — Cinematic Closing Section
- ════════════════════════════════════════════════════════ */
-
 .pilots-cta-join {
  position: relative;
  background: linear-gradient(155deg, #071A3E 0%, #0F45D8 45%, #2F63F4 80%, #4A7AFF 100%);
@@ -10,7 +6,6 @@
  overflow: hidden;
 }
 
-/* ── Background layers ── */
 .pilots-cta-join__bg {
  position: absolute;
  inset: 0;

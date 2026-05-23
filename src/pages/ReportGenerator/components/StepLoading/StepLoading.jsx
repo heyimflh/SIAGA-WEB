@@ -1,12 +1,3 @@
-/**
- * StepLoading — Step 4: Cinematic AI Geospatial Processing Overlay.
- * Fullscreen dark navy scene with drone, radar, progress, and confetti.
- *
- * BUG FIX: Previous version had stale closure / cleanup issues causing
- * the loading to get stuck. This version uses refs for callbacks and
- * a single orchestrating effect.
- */
-
 import { useEffect, useRef, useState } from 'react';
 import { getProgressStage } from '../../report-logic.js';
 import './StepLoading.css';
@@ -39,13 +30,11 @@ function StepLoading({ isActive, progress, onComplete, onCancel, dispatch, ACTIO
  const onCompleteRef = useRef(onComplete);
  const [localProgress, setLocalProgress] = useState(0);
 
- // Keep onComplete ref fresh
  onCompleteRef.current = onComplete;
 
- // Main progress timer — runs once when isActive becomes true
  useEffect(() => {
  if (!isActive) {
- // Reset when not active
+
  completedRef.current = false;
  setLocalProgress(0);
  return;
@@ -54,7 +43,7 @@ function StepLoading({ isActive, progress, onComplete, onCancel, dispatch, ACTIO
  completedRef.current = false;
  setLocalProgress(0);
 
- const duration = 7000; // 7 seconds total
+ const duration = 7000;
  const stepMs = 70;
  const increment = 100 / (duration / stepMs);
  let current = 0;
@@ -70,12 +59,11 @@ function StepLoading({ isActive, progress, onComplete, onCancel, dispatch, ACTIO
  setLocalProgress(rounded);
  dispatch({ type: ACTIONS.UPDATE_PROGRESS, payload: rounded });
 
- // When we hit 100, fire confetti and schedule completion
  if (rounded >= 100 && !completedRef.current) {
  completedRef.current = true;
- // Fire confetti (non-blocking)
+
  fireConfetti();
- // Schedule transition to Step 5 after 1.5s
+
  completeTimeoutRef.current = setTimeout(() => {
  onCompleteRef.current();
  }, 1500);
@@ -92,9 +80,8 @@ function StepLoading({ isActive, progress, onComplete, onCancel, dispatch, ACTIO
  completeTimeoutRef.current = null;
  }
  };
- }, [isActive]); // Only depend on isActive — dispatch/ACTIONS are stable
+ }, [isActive]);
 
- // Handle browser back
  useEffect(() => {
  const handlePopState = () => {
  if (isActive) onCancel();
@@ -113,11 +100,9 @@ function StepLoading({ isActive, progress, onComplete, onCancel, dispatch, ACTIO
  return (
  <div className="step-loading" aria-live="polite">
  <div className="step-loading__overlay">
- {/* Background effects */}
  <div className="step-loading__bg-grid" />
  <div className="step-loading__radar" />
 
- {/* Drone animation */}
  <div className="step-loading__drone-track">
  <div
  className="step-loading__drone"
@@ -135,7 +120,7 @@ function StepLoading({ isActive, progress, onComplete, onCancel, dispatch, ACTIO
  />
  </div>
 
- {/* Technical chips */}
+
  <div className="step-loading__chips">
  {visibleChips.map((chip) => (
  <span key={chip.label} className="step-loading__chip">
@@ -144,7 +129,7 @@ function StepLoading({ isActive, progress, onComplete, onCancel, dispatch, ACTIO
  ))}
  </div>
 
- {/* Progress bar */}
+
  <div className="step-loading__progress-area">
  <div
  className="step-loading__progress-bar"
@@ -165,7 +150,7 @@ function StepLoading({ isActive, progress, onComplete, onCancel, dispatch, ACTIO
  </div>
  </div>
 
- {/* Technical log */}
+
  <div className="step-loading__log">
  {visibleLogs.map((log) => (
  <div key={log.text} className="step-loading__log-line">
@@ -178,9 +163,7 @@ function StepLoading({ isActive, progress, onComplete, onCancel, dispatch, ACTIO
  );
 }
 
-/**
- * Fire confetti — non-blocking, errors silently caught.
- */
+
 async function fireConfetti() {
  try {
  const confettiModule = await import('canvas-confetti');
@@ -193,7 +176,7 @@ async function fireConfetti() {
  disableForReducedMotion: true,
  });
  } catch {
- // Silently skip — must not block flow
+
  }
 }
 

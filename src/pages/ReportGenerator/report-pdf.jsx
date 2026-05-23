@@ -1,15 +1,7 @@
-/**
- * Report PDF Generator — Dynamic PDF using @react-pdf/renderer.
- * Generates a real inspection report PDF based on selected project and sections.
- *
- * Feature: report-generator
- */
-
 import React from 'react';
 import { Document, Page, Text, View, Image, StyleSheet, pdf, Font } from '@react-pdf/renderer';
 import { getProjectImages, getInspectionData } from './report-data.js';
 
-// Register fonts (using system-safe fonts)
 Font.register({
  family: 'Inter',
  fonts: [
@@ -19,10 +11,9 @@ Font.register({
  ],
 });
 
-// PDF Styles
 const styles = StyleSheet.create({
  page: { padding: 40, fontFamily: 'Inter', fontSize: 9, color: '#0A2540' },
- // Cover
+
  coverPage: { padding: 0, position: 'relative' },
  coverOverlay: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(10,37,64,0.7)' },
  coverImage: { width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 },
@@ -34,55 +25,52 @@ const styles = StyleSheet.create({
  coverMetaRow: { flexDirection: 'row', marginBottom: 6 },
  coverMetaLabel: { width: 120, fontSize: 9, color: '#8BA3BE' },
  coverMetaValue: { fontSize: 9, fontWeight: 600, color: '#FFFFFF' },
- // Header
+
  header: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', borderBottom: '2px solid #00B4D8', paddingBottom: 8, marginBottom: 20 },
  headerBrand: { fontSize: 12, fontWeight: 700, color: '#00B4D8' },
  headerProject: { fontSize: 8, color: '#4A6885', textAlign: 'right' },
- // Section title
+
  sectionTitle: { fontSize: 16, fontWeight: 700, color: '#0A2540', marginBottom: 12, borderLeft: '3px solid #00B4D8', paddingLeft: 10 },
  sectionSubtitle: { fontSize: 11, fontWeight: 600, color: '#0A2540', marginBottom: 8, marginTop: 12 },
- // Body text
+
  bodyText: { fontSize: 9, lineHeight: 1.6, color: '#4A6885', marginBottom: 8 },
- // Info grid
+
  infoGrid: { flexDirection: 'row', flexWrap: 'wrap', marginBottom: 12 },
  infoItem: { width: '50%', marginBottom: 8 },
  infoLabel: { fontSize: 7, color: '#8BA3BE', textTransform: 'uppercase', letterSpacing: 0.5 },
  infoValue: { fontSize: 9, fontWeight: 600, color: '#0A2540', marginTop: 2 },
- // Table
+
  table: { marginTop: 8, marginBottom: 12 },
  tableHeader: { flexDirection: 'row', backgroundColor: '#0A2540', padding: 6, borderRadius: 3 },
  tableHeaderCell: { fontSize: 7, fontWeight: 700, color: '#FFFFFF', textTransform: 'uppercase' },
  tableRow: { flexDirection: 'row', padding: 6, borderBottom: '1px solid #E8F4FD' },
  tableRowAlt: { flexDirection: 'row', padding: 6, borderBottom: '1px solid #E8F4FD', backgroundColor: '#F8FCFF' },
  tableCell: { fontSize: 8, color: '#0A2540' },
- // Severity badges
+
  severityHigh: { backgroundColor: '#FEE2E2', color: '#DC2626', padding: '2 6', borderRadius: 3, fontSize: 7, fontWeight: 600 },
  severityMedium: { backgroundColor: '#FEF3C7', color: '#D97706', padding: '2 6', borderRadius: 3, fontSize: 7, fontWeight: 600 },
  severityLow: { backgroundColor: '#DBEAFE', color: '#2563EB', padding: '2 6', borderRadius: 3, fontSize: 7, fontWeight: 600 },
  severitySafe: { backgroundColor: '#D1FAE5', color: '#059669', padding: '2 6', borderRadius: 3, fontSize: 7, fontWeight: 600 },
- // Stats box
+
  statsRow: { flexDirection: 'row', gap: 8, marginBottom: 12 },
  statBox: { flex: 1, backgroundColor: '#F8FCFF', border: '1px solid #E8F4FD', borderRadius: 6, padding: 10, alignItems: 'center' },
  statValue: { fontSize: 18, fontWeight: 700, color: '#0A2540' },
  statLabel: { fontSize: 7, color: '#8BA3BE', marginTop: 3, textTransform: 'uppercase' },
- // Image
+
  galleryImage: { width: '48%', height: 140, objectFit: 'cover', borderRadius: 4, marginBottom: 8 },
  mapImage: { width: '100%', height: 200, objectFit: 'cover', borderRadius: 6, marginBottom: 12 },
- // Footer
+
  footer: { position: 'absolute', bottom: 20, left: 40, right: 40, flexDirection: 'row', justifyContent: 'space-between', borderTop: '1px solid #E8F4FD', paddingTop: 8 },
  footerText: { fontSize: 7, color: '#8BA3BE' },
- // Signature
+
  signatureBox: { marginTop: 20, padding: 16, border: '1px solid #E8F4FD', borderRadius: 6 },
  signatureLine: { borderBottom: '1px solid #0A2540', width: 200, marginTop: 30, marginBottom: 6 },
- // Recommendation
+
  recItem: { flexDirection: 'row', marginBottom: 6, paddingLeft: 8 },
  recBullet: { width: 6, height: 6, borderRadius: 3, backgroundColor: '#00B4D8', marginRight: 8, marginTop: 3 },
  recText: { flex: 1, fontSize: 9, color: '#4A6885', lineHeight: 1.5 },
 });
 
-/**
- * Get severity style
- */
 function getSeverityStyle(severity) {
  switch (severity?.toLowerCase()) {
  case 'high': return styles.severityHigh;
@@ -93,9 +81,6 @@ function getSeverityStyle(severity) {
  }
 }
 
-/**
- * Page header component
- */
 function PageHeader({ projectName }) {
  return (
  <View style={styles.header} fixed>
@@ -105,9 +90,7 @@ function PageHeader({ projectName }) {
  );
 }
 
-/**
- * Page footer component
- */
+
 function PageFooter({ reportId }) {
  return (
  <View style={styles.footer} fixed>
@@ -118,9 +101,7 @@ function PageFooter({ reportId }) {
  );
 }
 
-/**
- * Cover Page
- */
+
 function CoverPage({ project, inspection, images, reportId, timestamp }) {
  return (
  <Page size="A4" style={styles.coverPage}>
@@ -165,9 +146,7 @@ function CoverPage({ project, inspection, images, reportId, timestamp }) {
  );
 }
 
-/**
- * Executive Summary Page
- */
+
 function ExecutiveSummaryPage({ project, inspection, reportId }) {
  return (
  <Page size="A4" style={styles.page}>
@@ -218,9 +197,7 @@ function ExecutiveSummaryPage({ project, inspection, reportId }) {
  );
 }
 
-/**
- * Map & GPS Page
- */
+
 function MapGpsPage({ project, inspection, images, reportId }) {
  return (
  <Page size="A4" style={styles.page}>
@@ -260,9 +237,7 @@ function MapGpsPage({ project, inspection, images, reportId }) {
  );
 }
 
-/**
- * Findings Gallery Page
- */
+
 function GalleryPage({ project, inspection, images, reportId }) {
  const findingsWithImages = (inspection.findings || []).filter(f => f.image).slice(0, 6);
  return (
@@ -290,9 +265,7 @@ function GalleryPage({ project, inspection, images, reportId }) {
  );
 }
 
-/**
- * Asset Condition Table Page
- */
+
 function ConditionTablePage({ project, inspection, reportId }) {
  return (
  <Page size="A4" style={styles.page}>
@@ -348,9 +321,7 @@ function ConditionTablePage({ project, inspection, reportId }) {
  );
 }
 
-/**
- * Signature Page
- */
+
 function SignaturePage({ project, inspection, reportId, timestamp }) {
  return (
  <Page size="A4" style={styles.page}>
@@ -395,9 +366,7 @@ function SignaturePage({ project, inspection, reportId, timestamp }) {
  );
 }
 
-/**
- * Main PDF Document component
- */
+
 function InspectionReportDocument({ project, inspection, images, checkboxState, reportId, timestamp }) {
  return (
  <Document title={`SIAGA Report - ${project.nama}`} author="SIAGA Report Engine" subject="Inspection Report">
@@ -423,10 +392,7 @@ function InspectionReportDocument({ project, inspection, images, checkboxState, 
  );
 }
 
-/**
- * Generate PDF blob for download.
- * Returns { blob, filename } or throws on error.
- */
+
 export async function generateReportPdf({ project, checkboxState, reportId, timestamp }) {
  const images = getProjectImages(project);
  const inspection = getInspectionData(project);
@@ -442,7 +408,7 @@ export async function generateReportPdf({ project, checkboxState, reportId, time
 
  const blob = await pdf(doc).toBlob();
 
- // Generate dynamic filename
+
  const projectSlug = (project.nama || 'project')
  .replace(/[^a-zA-Z0-9\s]/g, '')
  .replace(/\s+/g, '-')

@@ -1,26 +1,8 @@
-/**
- * Pure logic layer for Project Detail Page.
- * All functions are side-effect free and testable.
- *
- * Feature: project-detail-page
- * Requirements: 1, 3, 4, 8, 9, 11, 12, 14, 15
- */
-
-/**
- * Find a project by ID.
- * @param {Array} projects
- * @param {string} projectId
- * @returns {object|null}
- */
 export function getProjectById(projects, projectId) {
  if (!projects || !projectId) return null;
  return projects.find((p) => p.id === projectId) || null;
 }
 
-/**
- * Derive display status from project data.
- * If deadline passed and status is 'open', returns 'expired'.
- */
 export function getProjectStatus(project, today = new Date()) {
  if (!project) return 'unknown';
  const { status, deadline } = project;
@@ -30,9 +12,6 @@ export function getProjectStatus(project, today = new Date()) {
  return status;
 }
 
-/**
- * Check if deadline has passed.
- */
 export function isDeadlinePassed(deadline, today = new Date()) {
  if (!deadline) return false;
  const d = new Date(deadline);
@@ -40,9 +19,6 @@ export function isDeadlinePassed(deadline, today = new Date()) {
  return today > d;
 }
 
-/**
- * Get visual config for status badge.
- */
 export function getStatusBadgeVisual(status) {
  const map = {
  open: { label: 'Open', color: '#00D2FF', cssClass: 'badge-open' },
@@ -59,9 +35,6 @@ export function getStatusBadgeVisual(status) {
  return { label: status || 'Unknown', color: '#8AA0B8', cssClass: 'badge-unknown' };
 }
 
-/**
- * Determine what each role can see.
- */
 export function getRoleVisibility(role, projectStatus, hasBid) {
  const isOpen = ['open', 'urgent', 'deadline_dekat'].includes(projectStatus);
  const isClosed = ['closed', 'completed', 'expired'].includes(projectStatus);
@@ -79,7 +52,6 @@ export function getRoleVisibility(role, projectStatus, hasBid) {
  };
  }
 
- // pilot
  return {
  showContractValue: false,
  showBidTable: false,
@@ -92,9 +64,6 @@ export function getRoleVisibility(role, projectStatus, hasBid) {
  };
 }
 
-/**
- * Get hero CTA config based on role, status, and bid state.
- */
 export function getHeroCTA(role, projectStatus, hasBid) {
  const isClosed = ['closed', 'completed', 'expired'].includes(projectStatus);
 
@@ -108,7 +77,6 @@ export function getHeroCTA(role, projectStatus, hasBid) {
  return { label: 'Lihat Bidding', action: 'scroll-bidding', disabled: false };
  }
 
- // pilot
  if (hasBid) {
  return { label: 'Bid Terkirim ✓', action: 'none', disabled: true };
  }
@@ -118,18 +86,12 @@ export function getHeroCTA(role, projectStatus, hasBid) {
  return { label: 'Bid Sekarang', action: 'scroll-bidding', disabled: false };
 }
 
-/**
- * Get dashboard path for role.
- */
 export function getDashboardPath(role) {
  if (role === 'client') return '/dashboard/client';
  if (role === 'pilot') return '/dashboard/pilot';
  return '/';
 }
 
-/**
- * Validate bid form data.
- */
 export function validateBidForm(formData) {
  const errors = {};
  if (!formData.harga || Number(formData.harga) <= 0) {
@@ -144,10 +106,6 @@ export function validateBidForm(formData) {
  };
 }
 
-/**
- * Get related projects for pilot view.
- * Prioritize same infrastructure, fallback same province. Max 3.
- */
 export function getRelatedProjects(currentProject, allProjects) {
  if (!currentProject || !allProjects) return [];
  const others = allProjects.filter((p) => p.id !== currentProject.id);
@@ -162,7 +120,7 @@ export function getRelatedProjects(currentProject, allProjects) {
  );
 
  const combined = [...sameInfra, ...sameProvince];
- // Deduplicate
+
  const seen = new Set();
  const unique = combined.filter((p) => {
  if (seen.has(p.id)) return false;
@@ -173,9 +131,6 @@ export function getRelatedProjects(currentProject, allProjects) {
  return unique.slice(0, 3);
 }
 
-/**
- * Format date to Indonesian format.
- */
 export function formatTanggalIndonesia(dateString) {
  if (!dateString) return '-';
  const months = [
@@ -187,17 +142,11 @@ export function formatTanggalIndonesia(dateString) {
  return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
 }
 
-/**
- * Format number to Rupiah.
- */
 export function formatRupiah(value) {
  if (value == null || isNaN(value)) return '-';
  return `Rp${Number(value).toLocaleString('id-ID')}`;
 }
 
-/**
- * Format compact Rupiah (e.g., 350jt, 1.2M).
- */
 export function formatCompactRupiah(value) {
  if (value == null || isNaN(value)) return '-';
  const num = Number(value);
@@ -210,9 +159,6 @@ export function formatCompactRupiah(value) {
  return formatRupiah(num);
 }
 
-/**
- * Get briefing summary data for cards.
- */
 export function getBriefingSummary(project, role) {
  if (!project) return [];
  const items = [
@@ -229,9 +175,6 @@ export function getBriefingSummary(project, role) {
  return items;
 }
 
-/**
- * Get bid intelligence metrics for client view.
- */
 export function getBidIntelligenceMetrics(project) {
  if (!project || !project.bids || project.bids.length === 0) {
  return { total: 0, verified: 0, lowestPrice: 0, fastestDays: 0, highestRating: 0 };
@@ -251,9 +194,6 @@ export function getBidIntelligenceMetrics(project) {
  };
 }
 
-/**
- * Check milestone consistency with project status.
- */
 export function isMilestoneConsistent(projectStatus, milestones) {
  if (!milestones || milestones.length === 0) return true;
  if (projectStatus === 'in_progress') {

@@ -1,16 +1,3 @@
-// Feature: auth-pages, Submit guard prevents double-trigger
-//
-// Validates: //
-// Property statement:
-// For ANY state where `isSubmitting === true`, dispatching another
-// `SUBMIT_START` action returns a state that is observationally identical
-// to the input state. Specifically:
-// - the returned state's `isSubmitting` is still true
-// - the returned state is deep-equal to the input state
-// The reducer is also expected to return the SAME reference (===) in this
-// guard branch, since the design contract for SUBMIT_START says "if already
-// submitting, return state unchanged."
-
 import { describe, test, expect } from 'vitest';
 import fc from 'fast-check';
 import {
@@ -18,11 +5,6 @@ import {
  initialRegisterState,
  ACTION_TYPES,
 } from './registerReducer.js';
-
-// ---------------------------------------------------------------------------
-// Generators for arbitrary RegisterFormState values where isSubmitting=true.
-// We vary every other field so the property is exercised across the space.
-// ---------------------------------------------------------------------------
 
 const roleArb = fc.constantFrom('client', 'pilot', null);
 
@@ -62,9 +44,6 @@ const globalErrorArb = fc.oneof(fc.constant(null), fc.string({ maxLength: 48 }))
 
 const stepArb = fc.constantFrom(1, 2, 3);
 
-// State arbitrary that ALWAYS has isSubmitting=true (the precondition of
-// the property). `inFlight` is also varied independently because the
-// SUBMIT_START guard is keyed on `isSubmitting`, not `inFlight`.
 const submittingStateArb = fc
  .record({
  step: stepArb,
@@ -83,17 +62,15 @@ describe('registerReducer — SUBMIT_START is idempotent while isSubmitting', ()
  test('SUBMIT_START on a submitting state returns the same state unchanged', () => {
  fc.assert(
  fc.property(submittingStateArb, (state) => {
- // Snapshot a deep clone of the input so we can detect any mutation
- // of the returned reference.
+
  const before = JSON.parse(JSON.stringify(state));
 
  const next = registerReducer(state, { type: ACTION_TYPES.SUBMIT_START });
 
- // The guard branch must return the SAME reference.
  expect(next).toBe(state);
- // isSubmitting must remain true.
+
  expect(next.isSubmitting).toBe(true);
- // Deep equality with the original snapshot — nothing observable changed.
+
  expect(JSON.parse(JSON.stringify(next))).toEqual(before);
  }),
  { numRuns: 100 },

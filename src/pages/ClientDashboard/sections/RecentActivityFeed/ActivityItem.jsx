@@ -1,15 +1,3 @@
-/**
- * ActivityItem — satu entri pada timeline aktivitas terbaru.
- *
- * Menampilkan ikon Lucide sesuai tipe aktivitas, deskripsi singkat,
- * dan timestamp relatif. Item dengan `is_new === true` mendapat class
- * `.activity-item--new` yang menjalankan pulse animation 1 siklus (1.4s)
- * lalu listener `animationend` menghapus class.
- *
- * Spec: .kiro/specs/client-dashboard
- * Validates: Requirements 8.2, 8.4
- */
-
 import { useRef, useEffect, useCallback } from 'react';
 import {
  Gavel,
@@ -20,9 +8,6 @@ import {
 } from 'lucide-react';
 import { relativeTime } from '../../utils/relativeTime.js';
 
-/**
- * Map activity type → Lucide icon component.
- */
 const ICON_MAP = {
  bid_received: Gavel,
  asset_alert: AlertTriangle,
@@ -31,9 +16,6 @@ const ICON_MAP = {
  project_completed: CheckCircle2,
 };
 
-/**
- * @param {{ activity: { id: string, type: string, description: string, timestamp: string, is_new: boolean } }} props
- */
 function ActivityItem({ activity }) {
  const itemRef = useRef(null);
  const Icon = ICON_MAP[activity.type] || Gavel;

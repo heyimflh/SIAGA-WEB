@@ -11,18 +11,6 @@ import {
 } from './registerReducer.js';
 import './RegisterPage.css';
 
-/* ──────────────────────────────────────────────────────────────
- * RegisterPage — Premium Green-Cyan Infrastructure Registration
- *
- * Top-level wrapper for the 3-step Register flow. Owns the
- * `useReducer(registerReducer, initialRegisterState)` instance
- * and forwards { state, dispatch } down to the step children.
- *
- * Layout: Form LEFT, Tower Visual RIGHT (via RegisterLayout)
- *
- * Validates: Requirements 1.9, 2.1–2.11, 9.4
- * ────────────────────────────────────────────────────────────── */
-
 export default function RegisterPage() {
  const [state, dispatch] = useReducer(
  registerReducer,
@@ -32,20 +20,16 @@ export default function RegisterPage() {
  return (
  <RegisterLayout>
  <div className="register-page">
- {/* Glass Register Card */}
  <div className="register-card">
- {/* Heading */}
  <h2 className="register-card__heading">Daftar SIAGA</h2>
 
- {/* Subheading */}
+
  <p className="register-card__subheading">
  Bangun akses inspeksi aerial untuk perusahaan, pilot, dan agensi profesional.
  </p>
 
- {/* Stepper */}
  <RegisterStepper currentStep={state.step} />
 
- {/* Step Content */}
  <div className="register-card__step">
  {state.step === 1 && (
  <RoleSelector state={state} dispatch={dispatch} />
@@ -58,7 +42,7 @@ export default function RegisterPage() {
  )}
  </div>
 
- {/* Login link */}
+
  <p className="register-card__login-link">
  Sudah punya akun? <Link to="/login">Masuk</Link>
  </p>

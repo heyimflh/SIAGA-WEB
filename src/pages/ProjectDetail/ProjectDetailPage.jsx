@@ -1,11 +1,3 @@
-/**
- * ProjectDetailPage — Premium Project Intelligence Briefing
- *
- * Route: /project/:projectId
- * Accessible by: client, pilot
- *
- * Feature: project-detail-page
- */
 import { useState, useEffect, useCallback, useMemo, lazy, Suspense } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../auth/AuthContext.jsx';
@@ -51,7 +43,7 @@ function getBidFromStorage(projectId) {
 function saveBidToStorage(projectId, bidData) {
  try {
  sessionStorage.setItem(`${BID_STORAGE_PREFIX}${projectId}`, JSON.stringify(bidData));
- } catch { /* ignore */ }
+ } catch {  }
 }
 
 export default function ProjectDetailPage() {
@@ -60,30 +52,24 @@ export default function ProjectDetailPage() {
  const { session } = useAuth();
  const role = session?.role || 'pilot';
 
- // Core state
  const project = useMemo(() => getProjectById(projectDetailData, projectId), [projectId]);
  const derivedStatus = useMemo(() => getProjectStatus(project), [project]);
  const [hasBid, setHasBid] = useState(false);
  const [submittedBid, setSubmittedBid] = useState(null);
 
- // Bid form state
  const [bidFormData, setBidFormData] = useState({ harga: '', estimasiHari: '', droneType: '', catatan: '' });
  const [bidFormErrors, setBidFormErrors] = useState({});
  const [isBidSubmitting, setIsBidSubmitting] = useState(false);
 
- // Modal/Drawer state
  const [isSelectionModalOpen, setIsSelectionModalOpen] = useState(false);
  const [selectedPilotId, setSelectedPilotId] = useState(null);
  const [isProfileDrawerOpen, setIsProfileDrawerOpen] = useState(false);
  const [drawerPilotId, setDrawerPilotId] = useState(null);
 
- // Toast
  const [toastMessage, setToastMessage] = useState(null);
 
- // Active section for sticky nav
  const [activeSectionId, setActiveSectionId] = useState('overview');
 
- // Load bid from sessionStorage on mount / projectId change
  useEffect(() => {
  const stored = getBidFromStorage(projectId);
  if (stored) {
@@ -98,7 +84,6 @@ export default function ProjectDetailPage() {
  setIsBidSubmitting(false);
  }, [projectId]);
 
- // Derived values
  const roleVisibility = useMemo(
  () => getRoleVisibility(role, derivedStatus, hasBid),
  [role, derivedStatus, hasBid]
@@ -109,7 +94,6 @@ export default function ProjectDetailPage() {
  [project]
  );
 
- // Handlers
  const showToast = useCallback((msg) => {
  setToastMessage(msg);
  setTimeout(() => setToastMessage(null), 4000);
@@ -172,7 +156,6 @@ export default function ProjectDetailPage() {
  setSelectedPilotId(null);
  }, []);
 
- // Not found
  if (!project) {
  return (
  <main className="project-detail-page">

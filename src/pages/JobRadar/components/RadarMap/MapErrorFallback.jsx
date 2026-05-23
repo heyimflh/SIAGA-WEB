@@ -1,9 +1,5 @@
 import { MapPinOff, RefreshCw } from 'lucide-react';
 
-/**
- * MapErrorFallback — Shown when Mapbox fails to load.
- * Displays friendly message + optional retry.
- */
 export default function MapErrorFallback({ onRetry }) {
  return (
  <div className="map-error-fallback">

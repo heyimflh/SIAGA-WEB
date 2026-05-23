@@ -1,8 +1,3 @@
-/**
- * Property tests for project-logic.js pure functions.
- * Feature: project-detail-page
- * Task 4: Tests for pure logic layer
- */
 import { describe, test, expect } from 'vitest';
 import fc from 'fast-check';
 import {
@@ -24,7 +19,6 @@ import {
 } from '../project-logic.js';
 import projectDetailData from '../project-detail-data.js';
 
-// --- Task 4.1: Project lookup is total and correct ---
 describe('getProjectById — Property: lookup is total and correct', () => {
  test('valid id returns the correct project', () => {
  projectDetailData.forEach((p) => {
@@ -57,7 +51,6 @@ describe('getProjectById — Property: lookup is total and correct', () => {
  });
 });
 
-// --- Task 4.2: Status badge visual mapping ---
 describe('getStatusBadgeVisual — Property: deterministic and complete', () => {
  const allStatuses = ['open', 'urgent', 'deadline_dekat', 'in_progress', 'completed', 'closed', 'expired'];
 
@@ -93,7 +86,6 @@ describe('getStatusBadgeVisual — Property: deterministic and complete', () => 
  });
 });
 
-// --- Task 4.3: Role-aware data isolation ---
 describe('getRoleVisibility — Property: pilot never sees bid table', () => {
  const statuses = ['open', 'urgent', 'deadline_dekat', 'in_progress', 'completed', 'closed', 'expired'];
 
@@ -125,7 +117,6 @@ describe('getRoleVisibility — Property: pilot never sees bid table', () => {
  });
 });
 
-// --- Task 4.4: Role visibility exhaustive ---
 describe('getRoleVisibility — Property: exhaustive combinations return complete object', () => {
  const roles = ['client', 'pilot'];
  const statuses = ['open', 'urgent', 'deadline_dekat', 'in_progress', 'completed', 'closed', 'expired'];
@@ -151,7 +142,6 @@ describe('getRoleVisibility — Property: exhaustive combinations return complet
  });
 });
 
-// --- Task 4.5: Expired status handling ---
 describe('getProjectStatus — Property: expired when deadline passed and status open', () => {
  test('open project with past deadline becomes expired', () => {
  fc.assert(
@@ -184,7 +174,6 @@ describe('getProjectStatus — Property: expired when deadline passed and status
  });
 });
 
-// --- Task 4.6: Bid form validation ---
 describe('validateBidForm — Property: valid iff harga > 0 and estimasiHari > 0', () => {
  test('valid form returns valid:true with no errors', () => {
  fc.assert(
@@ -227,7 +216,6 @@ describe('validateBidForm — Property: valid iff harga > 0 and estimasiHari > 0
  });
 });
 
-// --- Task 4.7: Related project filtering ---
 describe('getRelatedProjects — Property: filtering rules', () => {
  test('current project is always excluded', () => {
  projectDetailData.forEach((p) => {
@@ -245,10 +233,10 @@ describe('getRelatedProjects — Property: filtering rules', () => {
  });
 
  test('same infrastructure is prioritized', () => {
- const proj = projectDetailData.find((p) => p.id === 'proj-001'); // SUTET
+ const proj = projectDetailData.find((p) => p.id === 'proj-001');
  const related = getRelatedProjects(proj, projectDetailData);
  if (related.length > 0) {
- // At least the first result should be same infra if available
+
  const sameInfraCount = related.filter(
  (r) => r.jenis_infrastruktur === proj.jenis_infrastruktur
  ).length;
@@ -267,7 +255,6 @@ describe('getRelatedProjects — Property: filtering rules', () => {
  });
 });
 
-// --- Task 4.8: Hero CTA deterministic ---
 describe('getHeroCTA — Property: deterministic for same inputs', () => {
  const roles = ['client', 'pilot'];
  const statuses = ['open', 'urgent', 'deadline_dekat', 'in_progress', 'completed', 'closed', 'expired'];
@@ -296,7 +283,6 @@ describe('getHeroCTA — Property: deterministic for same inputs', () => {
  });
 });
 
-// --- Task 4.9: Milestone consistency ---
 describe('isMilestoneConsistent — Property: in_progress status needs in_progress milestone', () => {
  test('in_progress status with in_progress milestone is consistent', () => {
  const milestones = [
@@ -329,7 +315,6 @@ describe('isMilestoneConsistent — Property: in_progress status needs in_progre
  });
 });
 
-// --- Task 4.10: Mock data schema validation ---
 describe('projectDetailData — Property: schema validation', () => {
  const detailedIds = ['proj-001', 'proj-002', 'proj-003', 'proj-004', 'proj-005', 'proj-014'];
 
@@ -418,7 +403,6 @@ describe('projectDetailData — Property: schema validation', () => {
  });
 });
 
-// --- Formatting helpers ---
 describe('formatTanggalIndonesia', () => {
  test('formats valid date correctly', () => {
  expect(formatTanggalIndonesia('2026-03-15')).toBe('15 Maret 2026');

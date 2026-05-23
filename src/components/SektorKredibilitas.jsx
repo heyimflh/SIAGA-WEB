@@ -14,10 +14,6 @@ import {
 } from 'lucide-react';
 import './SektorKredibilitas.css';
 
-/* ════════════════════════════════════════════════════════
- DATA
- ════════════════════════════════════════════════════════ */
-
 const metrics = [
  { end: 500, suffix: '+', prefix: '', label: 'Pilot Bersertifikat' },
  { end: 99.2, suffix: '%', prefix: '', label: 'Akurasi Data Inspeksi', decimals: 1 },
@@ -74,20 +70,12 @@ const sectorsRow2 = [
  { label: 'Kawasan Industri', icon: Factory },
 ];
 
-/* ════════════════════════════════════════════════════════
- HELPERS
- ════════════════════════════════════════════════════════ */
-
 function easeOutExpo(t) {
  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
 
-/* ════════════════════════════════════════════════════════
- ANIMATED METRIC NUMBER
- ════════════════════════════════════════════════════════ */
-
 function AnimatedMetric({ end, decimals = 0, suffix = '', prefix = '', duration = 1400 }) {
- // Check reduced motion preference at initial render
+
  const prefersReduced =
  typeof window !== 'undefined' &&
  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -137,9 +125,6 @@ function AnimatedMetric({ end, decimals = 0, suffix = '', prefix = '', duration 
  return <span ref={ref}>{display}</span>;
 }
 
-/* ════════════════════════════════════════════════════════
- TESTIMONIAL ROTATOR
- ════════════════════════════════════════════════════════ */
 
 function TestimonialRotator() {
  const [activeIndex, setActiveIndex] = useState(0);
@@ -181,7 +166,7 @@ function TestimonialRotator() {
  if (index === activeIndex) return;
  clearInterval(intervalRef.current);
  goTo(index);
- // Restart auto-rotate after manual click
+
  resetInterval();
  };
 
@@ -211,7 +196,7 @@ function TestimonialRotator() {
  alt={`Avatar ${current.name}`}
  loading="lazy"
  onError={(e) => {
- // Fallback to monogram if image fails
+
  e.target.parentElement.style.display = 'none';
  e.target.parentElement.nextElementSibling.style.display = 'flex';
  }}
@@ -257,12 +242,8 @@ function TestimonialRotator() {
  );
 }
 
-/* ════════════════════════════════════════════════════════
- MARQUEE ROW
- ════════════════════════════════════════════════════════ */
-
 function MarqueeRow({ items, direction = 'left' }) {
- // Duplicate items for seamless loop
+
  const duplicated = [...items, ...items, ...items, ...items];
 
  return (
@@ -286,9 +267,6 @@ function MarqueeRow({ items, direction = 'left' }) {
  );
 }
 
-/* ════════════════════════════════════════════════════════
- MAIN SECTION COMPONENT
- ════════════════════════════════════════════════════════ */
 
 function SektorKredibilitas() {
  const metricBarRef = useRef(null);
@@ -318,20 +296,17 @@ function SektorKredibilitas() {
  className="sektor-section"
  aria-label="Sektor infrastruktur dan kredibilitas SIAGA"
  >
- {/* Ambient glow orbs for visible depth */}
+
  <div className="sektor-ambient-orb sektor-ambient-orb--1" aria-hidden="true" />
  <div className="sektor-ambient-orb sektor-ambient-orb--2" aria-hidden="true" />
  <div className="sektor-ambient-orb sektor-ambient-orb--3" aria-hidden="true" />
 
- {/* Subtle grid texture */}
  <div className="sektor-grid-texture" aria-hidden="true" />
 
- {/* Glass refraction highlights */}
  <div className="sektor-glass-highlight" aria-hidden="true" />
  <div className="sektor-glass-highlight sektor-glass-highlight-bottom" aria-hidden="true" />
 
  <div className="sektor-container">
- {/* ── Heading ── */}
  <div className="sektor-heading">
  <h2>
  Dirancang untuk Sektor
@@ -344,7 +319,7 @@ function SektorKredibilitas() {
  </p>
  </div>
 
- {/* ── Sub-Section A: Metric Bar ── */}
+
  <div className="sektor-metric-bar" ref={metricBarRef}>
  {metrics.map((metric, index) => (
  <div className="sektor-metric-item" key={index}>
@@ -362,10 +337,8 @@ function SektorKredibilitas() {
  ))}
  </div>
 
- {/* ── Sub-Section B: Testimonial ── */}
  <TestimonialRotator />
 
- {/* ── Sub-Section C: Dual Marquee ── */}
  <div className="sektor-marquee-section">
  <p className="sektor-marquee-heading">
  Menjangkau seluruh sektor infrastruktur kritis ↓

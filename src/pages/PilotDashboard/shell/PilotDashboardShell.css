@@ -1,8 +1,3 @@
-/**
- * PilotDashboardShell.css — Responsive grid layout for Pilot Dashboard.
- * Feature: pilot-dashboard
- */
-
 .pilot-shell__layout {
  display: grid;
  min-height: 100vh;
@@ -34,7 +29,6 @@
  "main";
 }
 
-/* Sidebar */
 .pilot-shell__sidebar {
  grid-area: sidebar;
  background: linear-gradient(180deg, #061A33 0%, #082747 100%);
@@ -87,7 +81,6 @@
  to { opacity: 1; }
 }
 
-/* Topbar */
 .pilot-shell__topbar {
  grid-area: topbar;
  display: flex;
@@ -104,7 +97,6 @@
  box-shadow: 0 1px 16px rgba(10, 25, 47, 0.04);
 }
 
-/* Main Content */
 .pilot-shell__main {
  grid-area: main;
  overflow-y: auto;

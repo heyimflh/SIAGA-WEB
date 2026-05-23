@@ -1,14 +1,3 @@
-/* ──────────────────────────────────────────────────────────────
- * AuthLayout.css — Premium Drone-Tech Glassmorphism Auth Shell
- * 
- * Breakpoints:
- * >= 1280px : Desktop premium split (45/55)
- * 1024–1279 : Tablet landscape split (42/58)
- * 768–1023 : Tablet portrait stacked
- * < 768px : Mobile stacked
- * ────────────────────────────────────────────────────────────── */
-
-/* ── Base Layout ──────────────────────────────────────────────── */
 .auth-layout-premium {
  display: flex;
  flex-direction: column;
@@ -18,9 +7,6 @@
  overflow: hidden;
 }
 
-/* ══════════════════════════════════════════════════════════════════
- * LEFT VISUAL PANEL
- * ══════════════════════════════════════════════════════════════════ */
 .auth-left-panel {
  position: relative;
  display: flex;
@@ -33,7 +19,6 @@
  overflow: hidden;
 }
 
-/* ── Background Effects ───────────────────────────────────────── */
 .auth-left-panel__bg-effects {
  position: absolute;
  inset: 0;
@@ -91,7 +76,6 @@
  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
 }
 
-/* ── Left Panel Content ───────────────────────────────────────── */
 .auth-left-panel__content {
  position: relative;
  z-index: 2;
@@ -112,7 +96,6 @@
  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
 }
 
-/* ── Branding ─────────────────────────────────────────────────── */
 .auth-left-panel__branding {
  margin-bottom: 16px;
 }
@@ -141,7 +124,6 @@
  max-width: 420px;
 }
 
-/* ── Drone Stage ──────────────────────────────────────────────── */
 .auth-left-panel__drone-stage {
  position: relative;
  width: 100%;
@@ -151,7 +133,6 @@
  overflow: visible;
 }
 
-/* ── Drone Placeholder ────────────────────────────────────────── */
 .auth-drone-placeholder {
  width: 100%;
  height: 100%;
@@ -185,9 +166,6 @@
  50% { transform: scale(1.2); opacity: 1; }
 }
 
-/* ══════════════════════════════════════════════════════════════════
- * FLOATING CARDS
- * ══════════════════════════════════════════════════════════════════ */
 .auth-floating-cards {
  position: absolute;
  inset: 0;
@@ -260,9 +238,6 @@
  50% { transform: translateY(-6px); }
 }
 
-/* ══════════════════════════════════════════════════════════════════
- * RIGHT AUTH PANEL
- * ══════════════════════════════════════════════════════════════════ */
 .auth-right-panel {
  position: relative;
  display: flex;
@@ -308,9 +283,6 @@
  max-width: 540px;
 }
 
-/* ══════════════════════════════════════════════════════════════════
- * RESPONSIVE: MOBILE (< 768px)
- * ══════════════════════════════════════════════════════════════════ */
 @media (max-width: 767px) {
  .auth-layout-premium {
  background: linear-gradient(180deg, #F4FAFF 0%, #EAF4FF 48%, #FFFFFF 100%);
@@ -369,7 +341,6 @@
  overflow: visible;
  }
 
- /* Keep the mobile hero decorative and form-focused. */
  .auth-floating-cards {
  display: none;
  }
@@ -389,7 +360,6 @@
  max-width: 100%;
  }
 
- /* Background effects smaller on mobile */
  .auth-left-panel__radial-glow {
  width: 300px;
  height: 300px;
@@ -421,9 +391,6 @@
  }
 }
 
-/* ══════════════════════════════════════════════════════════════════
- * RESPONSIVE: TABLET PORTRAIT (768px – 1023px)
- * ══════════════════════════════════════════════════════════════════ */
 @media (min-width: 768px) and (max-width: 1023px) {
  .auth-layout-premium {
  flex-direction: column;
@@ -459,7 +426,6 @@
  flex: none;
  }
 
- /* Show only 2 floating cards on tablet portrait */
  .auth-floating-card--top-left,
  .auth-floating-card--bottom-left {
  display: none;
@@ -476,9 +442,6 @@
  }
 }
 
-/* ══════════════════════════════════════════════════════════════════
- * RESPONSIVE: TABLET LANDSCAPE (1024px – 1279px)
- * ══════════════════════════════════════════════════════════════════ */
 @media (min-width: 1024px) and (max-width: 1279px) {
  .auth-layout-premium {
  flex-direction: row;
@@ -505,7 +468,6 @@
  min-height: 0;
  }
 
- /* Show max 2 floating cards */
  .auth-floating-card--top-left,
  .auth-floating-card--bottom-left {
  display: none;
@@ -525,9 +487,6 @@
  }
 }
 
-/* ══════════════════════════════════════════════════════════════════
- * RESPONSIVE: DESKTOP (>= 1280px)
- * ══════════════════════════════════════════════════════════════════ */
 @media (min-width: 1280px) {
  .auth-layout-premium {
  flex-direction: row;
@@ -578,9 +537,6 @@
  }
 }
 
-/* ══════════════════════════════════════════════════════════════════
- * LARGE DESKTOP (>= 1440px)
- * ══════════════════════════════════════════════════════════════════ */
 @media (min-width: 1440px) {
  .auth-left-panel {
  padding: 48px 56px;

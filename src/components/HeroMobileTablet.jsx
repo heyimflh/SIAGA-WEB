@@ -87,7 +87,6 @@ export default function HeroMobileTablet() {
 
  return (
  <section className="hmt-hero" ref={sectionRef} aria-label="Hero">
- {/* Soft background decoration — non-interactive, pointer-none */}
  <div className="hmt-bg" aria-hidden="true">
  <div className="hmt-bg-grid" />
  <div className="hmt-bg-glow hmt-bg-glow--1" />
@@ -95,13 +94,13 @@ export default function HeroMobileTablet() {
  </div>
 
  <div className="hmt-container">
- {/* 1. Badge / Eyebrow */}
+
  <p className="hmt-eyebrow">
  <span className="hmt-eyebrow-dot" />
  Platform Inspeksi Drone #1 Indonesia
  </p>
 
- {/* 2. Headline */}
+
  <h1 className="hmt-title">
  <span className="hmt-line">Infrastruktur Anda</span>
  <span className="hmt-line">Selalu dalam</span>
@@ -110,13 +109,12 @@ export default function HeroMobileTablet() {
  </span>
  </h1>
 
- {/* 3. Subheadline */}
  <p className="hmt-subtitle">
  Marketplace B2B inspeksi aerial untuk infrastruktur kritis — menara
  SUTET, jembatan, dan kilang minyak.
  </p>
 
- {/* 4. CTA Buttons */}
+
  <div className="hmt-cta-group">
  <Link to="/register?role=client" className="hmt-btn hmt-btn--primary">
  <span>Hire a Pilot</span>
@@ -127,7 +125,6 @@ export default function HeroMobileTablet() {
  </Link>
  </div>
 
- {/* 5. 3D Drone Stage — fully contained, drone cannot escape */}
  <div className="hmt-stage" aria-label="Interactive drone visualization">
  <div className="hmt-stage-grid" aria-hidden="true" />
  <div className="hmt-stage-glow" aria-hidden="true" />
@@ -144,7 +141,6 @@ export default function HeroMobileTablet() {
  </div>
  </div>
 
- {/* 6. Stats Grid */}
  <div className="hmt-stats">
  {stats.map((s) => {
  const Icon = s.icon;

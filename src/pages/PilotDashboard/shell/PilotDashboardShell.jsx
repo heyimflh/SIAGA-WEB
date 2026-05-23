@@ -1,11 +1,3 @@
-/**
- * PilotDashboardShell — Responsive grid layout (sidebar + topbar + main).
- *
- * Mirrors Client Dashboard shell pattern for consistency.
- * Feature: pilot-dashboard
- * Validates: Requirements 2, 3, 4, 16
- */
-
 import { useState, useEffect, useCallback } from 'react';
 import { useMediaQuery } from '../../../hooks/useMediaQuery';
 import PilotSidebar from './PilotSidebar';
@@ -26,7 +18,6 @@ function PilotDashboardShell({ pilotProfile, notifUnread, activeMissionCount, ch
  const handleDrawerOpen = useCallback(() => setDrawerOpen(true), []);
  const handleDrawerClose = useCallback(() => setDrawerOpen(false), []);
 
- // Close drawer on Escape
  useEffect(() => {
  if (!drawerOpen) return;
  const handleKey = (e) => {
@@ -48,7 +39,6 @@ function PilotDashboardShell({ pilotProfile, notifUnread, activeMissionCount, ch
 
  return (
  <div className={layoutClass}>
- {/* Sidebar */}
  {isMobile ? (
  <>
  {drawerOpen && (
@@ -86,7 +76,7 @@ function PilotDashboardShell({ pilotProfile, notifUnread, activeMissionCount, ch
  </aside>
  )}
 
- {/* Topbar */}
+
  <header className="pilot-shell__topbar">
  <PilotTopbar
  pilotName={pilotProfile.nama}
@@ -97,7 +87,7 @@ function PilotDashboardShell({ pilotProfile, notifUnread, activeMissionCount, ch
  />
  </header>
 
- {/* Main Content */}
+
  <main className="pilot-shell__main">
  {children}
  </main>

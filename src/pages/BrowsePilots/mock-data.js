@@ -1,9 +1,3 @@
-/**
- * Browse Pilots — Mock Data Module
- * Single source of truth for pilot data on the /pilots marketplace page.
- * Feature: browse-pilots
- */
-
 export const SPECIALIZATION_OPTIONS = [
  'Infrastruktur',
  'FPV',

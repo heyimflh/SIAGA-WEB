@@ -6,9 +6,6 @@ import StatusToggle from './StatusToggle.jsx';
 import { getActiveFilterCount, getLocationSuggestions } from '../../filters.js';
 import './FilterSection.css';
 
-/**
- * FilterSection — Compact glass filter controls.
- */
 export default function FilterSection({ filters, onFiltersChange, onResetFilters, projects }) {
  const activeCount = getActiveFilterCount(filters);
  const locationSuggestions = getLocationSuggestions(projects);

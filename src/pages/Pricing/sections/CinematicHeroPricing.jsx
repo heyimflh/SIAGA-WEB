@@ -8,7 +8,6 @@ const trustChips = [
  'No Hidden Fees',
 ];
 
-// Real project images for background slideshow
 const heroSlides = [
  '/images/projects/bendungan_gajahmungkur-cover-compressed.jpg',
  '/images/projects/tol_semarangsolo-cover-compressed.jpg',
@@ -27,7 +26,6 @@ export default function CinematicHeroPricing() {
  requestAnimationFrame(() => el.classList.add('ph--visible'));
  }, []);
 
- // Auto-slide every 5 seconds
  useEffect(() => {
  const interval = setInterval(() => {
  setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -43,7 +41,6 @@ export default function CinematicHeroPricing() {
 
  return (
  <section className="ph" ref={heroRef}>
- {/* Background slideshow */}
  <div className="ph__slideshow" aria-hidden="true">
  {heroSlides.map((src, i) => (
  <div
@@ -54,7 +51,7 @@ export default function CinematicHeroPricing() {
  ))}
  </div>
 
- {/* Blue sky overlay */}
+
  <div className="ph__overlay" aria-hidden="true" />
 
  <div className="ph__bg" aria-hidden="true">
@@ -92,7 +89,7 @@ export default function CinematicHeroPricing() {
  </div>
  </div>
 
- {/* Pricing Console Preview */}
+
  <div className="ph__preview" aria-hidden="true">
  <div className="ph__console">
  <div className="ph__console-header">
@@ -156,7 +153,7 @@ export default function CinematicHeroPricing() {
  </div>
  </div>
 
- {/* Slide indicators */}
+
  <div className="ph__indicators" aria-hidden="true">
  {heroSlides.map((_, i) => (
  <button

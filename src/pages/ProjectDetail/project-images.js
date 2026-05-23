@@ -1,11 +1,3 @@
-/**
- * Project Image Mapping
- * Maps infrastructure types to relevant images from public/images/services-categories.
- * Each project gets a contextual image based on its jenis_infrastruktur.
- *
- * Feature: project-detail-page
- */
-
 const infraImageMap = {
  SUTET: {
  src: '/images/services-categories/Tower_SUTET___Transmisi_300kb.jpg',
@@ -39,18 +31,12 @@ const infraImageMap = {
  },
 };
 
-// Fallback for unknown infrastructure types
 const fallbackImage = {
  src: '/images/services-categories/Konstruksi_Tinggi___Crane_300kb.jpg',
  alt: 'Inspeksi infrastruktur menggunakan drone',
  caption: 'Inspeksi Infrastruktur',
 };
 
-/**
- * Get the image config for a project based on its infrastructure type.
- * @param {string} jenisInfrastruktur
- * @returns {{ src: string, alt: string, caption: string }}
- */
 export function getProjectImage(jenisInfrastruktur) {
  return infraImageMap[jenisInfrastruktur] || fallbackImage;
 }

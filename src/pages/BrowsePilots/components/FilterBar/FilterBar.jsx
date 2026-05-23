@@ -34,10 +34,8 @@ export default function FilterBar({
 
  return (
  <div className="pilots-filter-bar">
- {/* Desktop Controls */}
  <div className="pilots-filter-bar__desktop">
  <div className="pilots-filter-bar__controls">
- {/* Specialization Chips */}
  <div className="pilots-filter-bar__specs" role="group"
  aria-label="Filter spesialisasi">
  {SPECIALIZATION_OPTIONS.map((spec) => (
@@ -53,7 +51,6 @@ export default function FilterBar({
  ))}
  </div>
 
- {/* Province Dropdown */}
  <select
  className="pilots-filter-bar__province"
  value={filters.province || ''}
@@ -66,7 +63,7 @@ export default function FilterBar({
  ))}
  </select>
 
- {/* Rating Toggle */}
+
  <div className="pilots-filter-bar__rating" role="radiogroup"
  aria-label="Filter rating minimum">
  {RATING_OPTIONS.map((opt) => (
@@ -82,7 +79,7 @@ export default function FilterBar({
  ))}
  </div>
 
- {/* Verified Toggle */}
+
  <button
  role="switch"
  aria-checked={filters.verifiedOnly}
@@ -92,7 +89,6 @@ export default function FilterBar({
  Verified Only
  </button>
 
- {/* Reset */}
  {activeFilterCount > 0 && (
  <button className="pilots-filter-reset" onClick={onReset}>
  <RotateCcw size={14} />
@@ -101,7 +97,6 @@ export default function FilterBar({
  )}
  </div>
 
- {/* Result Summary */}
  <div className="pilots-filter-bar__summary" aria-live="polite">
  <span className="pilots-filter-bar__count">{summary.total}</span>
  {summary.visible && (
@@ -110,7 +105,6 @@ export default function FilterBar({
  </div>
  </div>
 
- {/* Mobile Controls */}
  <div className="pilots-filter-bar__mobile">
  <button className="pilots-filter-mobile-btn" onClick={onOpenMobileFilter}>
  <SlidersHorizontal size={16} />

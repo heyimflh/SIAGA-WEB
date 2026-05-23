@@ -1,8 +1,5 @@
 import { Mountain } from 'lucide-react';
 
-/**
- * TerrainToggle — Glass button to enable/disable 3D terrain.
- */
 export default function TerrainToggle({ enabled, onToggle }) {
  return (
  <button

@@ -1,14 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-/**
- * ScrollToHash — handles hash-based scrolling on route changes.
- *
- * Behavior:
- * - If location has a hash (#section-id), scroll to that element smoothly.
- * - If no hash, scroll to top.
- * - Respects prefers-reduced-motion.
- */
 export default function ScrollToHash() {
  const { pathname, hash } = useLocation();
 
@@ -17,7 +9,7 @@ export default function ScrollToHash() {
  const behavior = prefersReduced ? 'auto' : 'smooth';
 
  if (hash) {
- // Small delay to allow DOM to render after route change
+
  const timer = setTimeout(() => {
  const el = document.getElementById(hash.slice(1));
  if (el) {
@@ -27,7 +19,6 @@ export default function ScrollToHash() {
  return () => clearTimeout(timer);
  }
 
- // No hash — scroll to top
  window.scrollTo({ top: 0, behavior: 'auto' });
  }, [pathname, hash]);
 

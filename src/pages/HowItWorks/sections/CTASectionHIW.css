@@ -1,10 +1,9 @@
-/* CTASectionHIW — Final conversion CTA (inside ClosingSection wrapper) */
 .cta-hiw {
  position: relative;
  overflow: hidden;
  padding: 5.5rem 1.5rem;
  text-align: center;
- /* No background — inherits from ClosingSection dark canvas */
+
 }
 
 .cta-hiw__bg { position: absolute; inset: 0; pointer-events: none; }

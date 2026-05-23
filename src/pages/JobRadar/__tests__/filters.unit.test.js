@@ -1,7 +1,3 @@
-/**
- * Unit tests for filters.js edge cases.
- * Validates: Requirements 6.3, 6.4, 6.6, 6.8, 7.4, 10.9
- */
 import { describe, it, expect } from 'vitest';
 import {
  applyFilters,
@@ -16,7 +12,6 @@ import {
 } from '../filters.js';
 import projects from '../mock-data.js';
 
-// Minimal test fixtures for edge cases
 const fixtureProjects = [
  {
  id: 'T-001',
@@ -106,7 +101,7 @@ describe('applyFilters', () => {
  });
 
  it('applies AND logic combining all filters', () => {
- // SUTET + value range that includes 500M + location Jakarta + status open (excludes closed)
+
  const result = applyFilters(fixtureProjects, {
  chips: ['SUTET'],
  valueRange: [400_000_000, 600_000_000],
@@ -257,19 +252,19 @@ describe('sortProjects', () => {
  });
 
  it('maintains stability when deadline values are equal', () => {
- // T-001 and T-002 have the same deadline '2026-04-01'
+
  const result = sortProjects(fixtureProjects, 'deadline_terdekat');
  const sameDeadline = result.filter((p) => p.deadline === '2026-04-01');
- // Original order: T-001 before T-002 — stable sort preserves this
+
  expect(sameDeadline[0].id).toBe('T-001');
  expect(sameDeadline[1].id).toBe('T-002');
  });
 
  it('maintains stability when nilai_kontrak values are equal', () => {
- // T-001 and T-004 both have nilai_kontrak 500_000_000
+
  const result = sortProjects(fixtureProjects, 'nilai_tertinggi');
  const sameValue = result.filter((p) => p.nilai_kontrak === 500_000_000);
- // Original order: T-001 before T-004 — stable sort preserves this
+
  expect(sameValue[0].id).toBe('T-001');
  expect(sameValue[1].id).toBe('T-004');
  });
@@ -322,10 +317,10 @@ describe('formatRupiah', () => {
 describe('getLocationSuggestions', () => {
  it('returns sorted unique values from mock data', () => {
  const suggestions = getLocationSuggestions(projects);
- // Should be sorted alphabetically
+
  const sorted = [...suggestions].sort();
  expect(suggestions).toEqual(sorted);
- // Should have no duplicates
+
  const unique = [...new Set(suggestions)];
  expect(suggestions).toEqual(unique);
  });
@@ -358,18 +353,18 @@ describe('computeStats', () => {
 
  it('counts aktif as non-closed projects', () => {
  const stats = computeStats(fixtureProjects);
- // T-001 open, T-002 urgent, T-004 deadline_dekat = 3 aktif; T-003 closed
+
  expect(stats.aktif).toBe(3);
  });
 
  it('counts open projects correctly', () => {
  const stats = computeStats(fixtureProjects);
- expect(stats.open).toBe(1); // Only T-001
+ expect(stats.open).toBe(1);
  });
 
  it('counts urgent projects correctly', () => {
  const stats = computeStats(fixtureProjects);
- expect(stats.urgent).toBe(1); // Only T-002
+ expect(stats.urgent).toBe(1);
  });
 
  it('computes correct stats from real mock data', () => {

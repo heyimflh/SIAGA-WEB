@@ -1,9 +1,3 @@
-/* ══════════════════════════════════════════════════════
- RadarSidebar — Job Radar Page (Full Dashboard)
- SCOPED under .job-radar-page to avoid conflicts with
- the landing page's .radar-sidebar in JobRadar.css
- ══════════════════════════════════════════════════════ */
-
 .job-radar-page .radar-sidebar {
  position: relative;
  width: 360px;
@@ -22,12 +16,11 @@
  box-shadow: 28px 0 90px rgba(0, 14, 35, 0.42);
  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
  opacity 0.35s ease;
- /* Reset landing page initial animation state */
+
  opacity: 1;
  transform: none;
 }
 
-/* Subtle radar grid */
 .job-radar-page .radar-sidebar::before {
  content: '';
  position: absolute;
@@ -41,14 +34,12 @@
  opacity: 0.45;
 }
 
-/* Hidden state (user collapsed) */
 .job-radar-page .radar-sidebar--hidden {
  transform: translateX(-100%);
  opacity: 0;
  pointer-events: none;
 }
 
-/* Overlay mode for tablet */
 .job-radar-page .radar-sidebar--overlay {
  position: fixed;
  top: 0;
@@ -60,7 +51,6 @@
  transform: translateX(-100%);
 }
 
-/* Toggle button on sidebar edge */
 .job-radar-page .radar-sidebar__toggle {
  position: absolute;
  top: 50%;
@@ -95,7 +85,6 @@
  outline-offset: 2px;
 }
 
-/* ── Scrollable content wrapper ── */
 .job-radar-page .radar-sidebar__content {
  position: relative;
  z-index: 1;
@@ -111,7 +100,6 @@
  scrollbar-color: rgba(0, 210, 255, 0.35) transparent;
 }
 
-/* Extra space after last item so it's never cropped */
 .job-radar-page .radar-sidebar__content::after {
  content: '';
  display: block;
@@ -132,7 +120,6 @@
  border-radius: 999px;
 }
 
-/* Override global heading/text colors inside sidebar */
 .job-radar-page .radar-sidebar h1,
 .job-radar-page .radar-sidebar h2,
 .job-radar-page .radar-sidebar h3,
@@ -143,7 +130,6 @@
  color: inherit;
 }
 
-/* Overlay backdrop for tablet */
 .job-radar-page .radar-sidebar-overlay-backdrop {
  position: fixed;
  inset: 0;
@@ -159,7 +145,6 @@
  pointer-events: auto;
 }
 
-/* ── Desktop >=1280px ── */
 @media (min-width: 1280px) {
  .job-radar-page .radar-sidebar {
  display: flex;
@@ -174,7 +159,6 @@
  }
 }
 
-/* ── Tablet 768-1279px ── */
 @media (min-width: 768px) and (max-width: 1279px) {
  .job-radar-page .radar-sidebar {
  position: fixed;
@@ -184,7 +168,6 @@
  }
 }
 
-/* ── Mobile <768px ── */
 @media (max-width: 767px) {
  .job-radar-page .radar-sidebar {
  display: none !important;

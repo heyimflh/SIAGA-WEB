@@ -51,7 +51,7 @@ export default function WorkflowNavigator() {
  <span className="wf-nav__step-label">{step.label}</span>
  </button>
  ))}
- {/* Progress line */}
+
  <div className="wf-nav__line" aria-hidden="true">
  <div
  className="wf-nav__line-fill"

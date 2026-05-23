@@ -1,15 +1,3 @@
-/**
- * CreateProjectComingSoon — placeholder page for route
- * `/dashboard/client/create-project`.
- *
- * Wrapped in DashboardShell for visual consistency (cursor, font, transition).
- * Content: Construction icon, heading, subtitle, and alternative CTAs.
- * Sidebar active item: null (no Create Project item in menu).
- *
- * Spec: .kiro/specs/client-dashboard
- * Provides a placeholder UI for the project creation flow.
- */
-
 import { Link } from 'react-router-dom';
 import { Construction } from 'lucide-react';
 import { useAuth } from '../../auth/AuthContext';

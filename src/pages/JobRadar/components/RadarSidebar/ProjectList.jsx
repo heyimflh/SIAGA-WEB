@@ -4,9 +4,6 @@ import SortControl from './SortControl.jsx';
 import ProjectCard from './ProjectCard.jsx';
 import './ProjectList.css';
 
-/**
- * ProjectList — Scrollable list of Mission Cards with sort control and empty state.
- */
 export default function ProjectList({
  projects,
  sortBy,
@@ -21,7 +18,6 @@ export default function ProjectList({
 }) {
  const listRef = useRef(null);
 
- // Scroll to highlighted card when pin is clicked
  useEffect(() => {
  if (highlightedCardId && listRef.current) {
  const cardEl = listRef.current.querySelector(`[data-project-id="${highlightedCardId}"]`);

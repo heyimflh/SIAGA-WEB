@@ -1,8 +1,3 @@
-/**
- * Browse Pilots — Pure filter/search logic
- * Feature: browse-pilots
- */
-
 export function matchesSearch(pilot, query) {
  if (!query || !query.trim()) return true;
  const q = query.toLowerCase().trim();
@@ -67,7 +62,6 @@ export function getAutocompleteSuggestions(pilots, query, maxResults = 5) {
  const suggestions = [];
  const seen = new Set();
 
- // Pilot names
  for (const p of pilots) {
  if (p.name.toLowerCase().includes(q) && !seen.has(p.name)) {
  suggestions.push({ text: p.name, type: 'pilot' });
@@ -76,7 +70,6 @@ export function getAutocompleteSuggestions(pilots, query, maxResults = 5) {
  if (suggestions.length >= maxResults) return suggestions;
  }
 
- // Locations (city + province)
  for (const p of pilots) {
  if (p.city.toLowerCase().includes(q) && !seen.has(p.city)) {
  suggestions.push({ text: p.city, type: 'location' });
@@ -90,7 +83,6 @@ export function getAutocompleteSuggestions(pilots, query, maxResults = 5) {
  if (suggestions.length >= maxResults) return suggestions;
  }
 
- // Specializations
  const allSpecs = new Set();
  for (const p of pilots) {
  for (const s of p.specializations || []) {
@@ -105,7 +97,6 @@ export function getAutocompleteSuggestions(pilots, query, maxResults = 5) {
  if (suggestions.length >= maxResults) return suggestions;
  }
 
- // Drone types
  for (const p of pilots) {
  if (p.drone_type && p.drone_type.toLowerCase().includes(q) && !seen.has(p.drone_type)) {
  suggestions.push({ text: p.drone_type, type: 'drone' });

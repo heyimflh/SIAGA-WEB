@@ -1,7 +1,3 @@
-/**
- * StepCustomize — Step 2: Select report content blocks + PDF preview.
- */
-
 import { FileText, MapPin, Image, Table, PenTool, Check } from 'lucide-react';
 import { REPORT_BLOCKS } from '../../report-logic.js';
 import './StepCustomize.css';
@@ -18,7 +14,6 @@ function StepCustomize({ checkboxState, onToggle, previewPages, totalPages, onBa
  return (
  <div className="step-customize">
  <div className="step-customize__layout">
- {/* Left: Report Blocks */}
  <div className="step-customize__blocks-panel">
  <div className="step-customize__header">
  <span className="step-customize__step-label">STEP 02</span>
@@ -69,7 +64,6 @@ function StepCustomize({ checkboxState, onToggle, previewPages, totalPages, onBa
  <p className="step-customize__warning">Pilih minimal satu bagian laporan.</p>
  )}
 
- {/* Navigation */}
  <div className="step-customize__nav">
  <button className="step-customize__btn-back" onClick={onBack} type="button">
  ← Kembali
@@ -85,7 +79,6 @@ function StepCustomize({ checkboxState, onToggle, previewPages, totalPages, onBa
  </div>
  </div>
 
- {/* Right: PDF Preview */}
  <div className="step-customize__preview-panel">
  <div className="step-customize__preview-header">
  <span className="step-customize__preview-label">Preview Dokumen</span>
@@ -99,7 +92,7 @@ function StepCustomize({ checkboxState, onToggle, previewPages, totalPages, onBa
  </div>
  ) : (
  previewPages.map((page, idx) => {
- // Determine which image to show based on page type
+
  let pageImage = null;
  if (page.id === 'cover' && projectImages?.coverImage) pageImage = projectImages.coverImage;
  else if (page.id === 'map' && projectImages?.mapPreviewImage) pageImage = projectImages.mapPreviewImage;

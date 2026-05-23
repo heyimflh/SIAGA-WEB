@@ -10,14 +10,12 @@ export default function Navbar() {
  const headerRef = useRef(null);
  const location = useLocation();
 
- // Determine if we're on the landing page (for section anchors)
  const isLanding = location.pathname === '/';
 
  useEffect(() => {
  const handleScroll = () => {
  setScrolled(window.scrollY > 60);
 
- // Detect if navbar logo overlaps a dark section
  const logoEl = document.querySelector('.brand-float__img');
  if (!logoEl) return;
  const logoRect = logoEl.getBoundingClientRect();
@@ -68,7 +66,6 @@ export default function Navbar() {
  return () => ctx.revert();
  }, []);
 
- // Close mobile menu on resize
  useEffect(() => {
  const handleResize = () => {
  if (window.innerWidth > 768) setMobileOpen(false);
@@ -77,7 +74,6 @@ export default function Navbar() {
  return () => window.removeEventListener('resize', handleResize);
  }, []);
 
- // Lock body scroll when mobile menu is open
  useEffect(() => {
  document.body.style.overflow = mobileOpen ? 'hidden' : '';
  return () => { document.body.style.overflow = ''; };
@@ -87,7 +83,6 @@ export default function Navbar() {
  setMobileOpen(false);
  };
 
- // Helper: section links use full path from non-landing pages
  const sectionHref = (hash) => isLanding ? `#${hash}` : `/#${hash}`;
 
  return (
@@ -97,7 +92,6 @@ export default function Navbar() {
  className={`site-header ${scrolled ? 'is-scrolled' : ''} ${onDark ? 'on-dark' : ''}`}
  >
  <div className="nav-container">
- {/* Left — Floating Logo */}
  <Link to={ROUTES.home} className="brand-float">
  <img
  src="/images/logo/siaga-full.png"
@@ -106,7 +100,7 @@ export default function Navbar() {
  />
  </Link>
 
- {/* Center — Floating Navigation Pill */}
+
  <nav className="nav-pill">
  <ul className="nav-pill__links">
  <li><a href={sectionHref('fitur')} className="nav-link">Fitur</a></li>
@@ -116,7 +110,7 @@ export default function Navbar() {
  </ul>
  </nav>
 
- {/* Right — Floating Actions */}
+
  <div className="nav-actions">
  <Link to={ROUTES.login} className="login-link">Masuk</Link>
  <Link to={getRegisterPath('client')} className="nav-cta">
@@ -127,7 +121,7 @@ export default function Navbar() {
  </Link>
  </div>
 
- {/* Mobile Toggle */}
+
  <button
  className={`nav-mobile-toggle ${mobileOpen ? 'nav-mobile-toggle--active' : ''}`}
  onClick={() => setMobileOpen(!mobileOpen)}
@@ -141,7 +135,7 @@ export default function Navbar() {
  </div>
  </header>
 
- {/* Mobile Menu Panel */}
+
  <div className={`nav-mobile-panel ${mobileOpen ? 'nav-mobile-panel--open' : ''}`}>
  <div className="nav-mobile-panel__inner">
  <ul className="nav-mobile-panel__links">

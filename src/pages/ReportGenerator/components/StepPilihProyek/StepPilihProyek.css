@@ -1,7 +1,3 @@
-/* ═══════════════════════════════════════════════════════
- Step Pilih Proyek — Premium Project Selection
- ═══════════════════════════════════════════════════════ */
-
 .step-pilih {
  background: rgba(255, 255, 255, 0.72);
  backdrop-filter: blur(16px);
@@ -38,7 +34,6 @@
  margin-top: 0.3rem;
 }
 
-/* ─── Dropdown ─── */
 .step-pilih__dropdown {
  position: relative;
  margin-bottom: 1.5rem;
@@ -146,7 +141,6 @@
  color: var(--text-tertiary, #8BA3BE);
 }
 
-/* ─── Preview Card ─── */
 .step-pilih__preview {
  background: rgba(255, 255, 255, 0.85);
  border: 1px solid rgba(0, 180, 216, 0.15);
@@ -158,7 +152,6 @@
  overflow: hidden;
 }
 
-/* Cover Image */
 .step-pilih__cover-image {
  position: relative;
  margin: -1.5rem -1.5rem 1.25rem -1.5rem;
@@ -283,7 +276,6 @@
  color: var(--text-tertiary, #8BA3BE);
 }
 
-/* Mini map mock */
 .step-pilih__minimap {
  position: relative;
  margin-top: 1rem;
@@ -350,7 +342,6 @@
  gap: 0.2rem;
 }
 
-/* ─── Navigation ─── */
 .step-pilih__nav {
  display: flex;
  justify-content: flex-end;
@@ -383,7 +374,6 @@
  box-shadow: none;
 }
 
-/* ─── Empty State ─── */
 .step-pilih__empty {
  text-align: center;
  padding: 4rem 2rem;
@@ -406,7 +396,6 @@
  color: var(--text-secondary, #4A6885);
 }
 
-/* ─── Responsive ─── */
 @media (max-width: 768px) {
  .step-pilih {
  padding: 1.5rem;

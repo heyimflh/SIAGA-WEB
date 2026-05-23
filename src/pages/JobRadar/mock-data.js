@@ -1,14 +1,3 @@
-/**
- * Mock Data Module — Single Source of Truth for Job Radar Page
- * 
- * Semua data proyek inspeksi UAV berasal dari file ini.
- * Jumlah pin, list proyek, stats HUD, dan filter results
- * semuanya dihitung dari array ini.
- * 
- * Feature: job-radar-page
- * Requirements: 10.1–10.26
- */
-
 const projects = [
  {
  id: 'proj-001',
@@ -228,10 +217,6 @@ const projects = [
  },
 ];
 
-/**
- * Compute stats from a given projects array.
- * Stats selalu dihitung dari data yang diberikan, bukan hardcoded.
- */
 export function computeStatsFromSource(projectList) {
  const aktif = projectList.filter(p => p.status !== 'closed').length;
  const open = projectList.filter(p => p.status === 'open').length;
@@ -239,16 +224,10 @@ export function computeStatsFromSource(projectList) {
  return { aktif, open, urgent };
 }
 
-/**
- * Get project by ID.
- */
 export function getProjectById(id) {
  return projects.find(p => p.id === id) || null;
 }
 
-/**
- * Get unique locations from projects for autocomplete.
- */
 export function getProjectLocations(projectList) {
  const locations = new Set();
  projectList.forEach(p => {

@@ -97,7 +97,7 @@ function Pricing() {
  if (prefersReduced) return;
 
  const ctx = gsap.context(() => {
- // Header
+
  gsap.fromTo(
  headerRef.current,
  { y: 30, opacity: 0 },
@@ -114,7 +114,7 @@ function Pricing() {
  }
  );
 
- // Left card from left
+
  gsap.fromTo(
  leftCardRef.current,
  { x: -40, opacity: 0 },
@@ -131,7 +131,7 @@ function Pricing() {
  }
  );
 
- // Right card from right
+
  gsap.fromTo(
  rightCardRef.current,
  { x: 40, opacity: 0 },
@@ -148,7 +148,7 @@ function Pricing() {
  }
  );
 
- // Negative chips
+
  if (chipsRef.current) {
  gsap.fromTo(
  chipsRef.current,
@@ -173,13 +173,13 @@ function Pricing() {
 
  return (
  <section className="pr-section" ref={sectionRef}>
- {/* Background */}
+
  <div className="pr-bg" aria-hidden="true">
  <div className="pr-bg-grid" />
  </div>
 
  <div className="pr-container">
- {/* Header */}
+
  <div className="pr-header" ref={headerRef}>
  <span className="pr-eyebrow">TRANSPARENT PRICING</span>
  <h2 className="pr-headline">
@@ -192,9 +192,9 @@ function Pricing() {
  </p>
  </div>
 
- {/* Pricing Cards */}
+
  <div className="pr-cards">
- {/* Enterprise Card */}
+
  <div className="pr-card pr-card--enterprise" ref={leftCardRef}>
  <div className="pr-card-header">
  <div className="pr-card-icon">
@@ -214,7 +214,6 @@ function Pricing() {
  <span>Rp 0</span> biaya posting
  </div>
 
- {/* Features */}
  <ul className="pr-card-features">
  {enterpriseFeatures.map((feature, i) => (
  <li key={i} className="pr-feature">
@@ -224,13 +223,13 @@ function Pricing() {
  ))}
  </ul>
 
- {/* CTA */}
+
  <Link to={getRegisterPath('client')} className="pr-card-cta pr-card-cta--primary">
  Posting Proyek
  <ArrowRight size={16} strokeWidth={2} />
  </Link>
 
- {/* Mini Tiers */}
+
  <div className="pr-tiers">
  {enterpriseTiers.map((tier, i) => (
  <div key={i} className="pr-tier">
@@ -244,7 +243,6 @@ function Pricing() {
  </div>
  </div>
 
- {/* Pilot Card */}
  <div className="pr-card pr-card--pilot" ref={rightCardRef}>
  <div className="pr-card-header">
  <div className="pr-card-icon pr-card-icon--cyan">
@@ -265,7 +263,7 @@ function Pricing() {
  Komisi <AnimatedPercent end={7} /> transparan
  </div>
 
- {/* Features */}
+
  <ul className="pr-card-features">
  {pilotFeatures.map((feature, i) => (
  <li key={i} className="pr-feature">
@@ -275,13 +273,13 @@ function Pricing() {
  ))}
  </ul>
 
- {/* CTA */}
+
  <Link to={getRegisterPath('pilot')} className="pr-card-cta pr-card-cta--secondary">
  Daftar Sebagai Pilot
  <ArrowRight size={16} strokeWidth={2} />
  </Link>
 
- {/* Mini Tiers */}
+
  <div className="pr-tiers">
  {pilotTiers.map((tier, i) => (
  <div key={i} className="pr-tier">
@@ -296,7 +294,7 @@ function Pricing() {
  </div>
  </div>
 
- {/* Negative Framing Chips */}
+
  <div className="pr-negative" ref={chipsRef}>
  <p className="pr-negative-title">Apa yang tidak kami biayakan</p>
  <div className="pr-negative-chips">

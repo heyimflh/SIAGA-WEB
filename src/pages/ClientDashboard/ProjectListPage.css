@@ -1,15 +1,9 @@
-/* ═══════════════════════════════════════════════════════════════
- ProjectListPage — Premium Project Grid (Light Theme)
- Consistent with Client Dashboard design system.
- ═══════════════════════════════════════════════════════════════ */
-
 .project-list {
  padding: 2rem 1.5rem;
  max-width: 1400px;
  margin: 0 auto;
 }
 
-/* ── Header ── */
 .project-list__header {
  display: flex;
  align-items: center;
@@ -75,7 +69,6 @@
  font-weight: 600;
 }
 
-/* ── Toolbar ── */
 .project-list__toolbar {
  display: flex;
  flex-direction: column;
@@ -161,14 +154,12 @@
  margin-bottom: 1rem;
 }
 
-/* ── Grid ── */
 .project-list__grid {
  display: grid;
  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
  gap: 1.25rem;
 }
 
-/* ── Project Card ── */
 .project-card {
  display: flex;
  flex-direction: column;
@@ -193,7 +184,6 @@
  outline-offset: 2px;
 }
 
-/* Card Image */
 .project-card__image {
  position: relative;
  height: 170px;
@@ -262,7 +252,6 @@
  border-radius: 5px;
 }
 
-/* Card Content */
 .project-card__content {
  display: flex;
  flex-direction: column;
@@ -336,7 +325,6 @@
 .project-card__bidders { color: #5A7A9E; }
 .project-card__bidders svg { color: #5A7A9E; }
 
-/* ── Empty State ── */
 .project-list__empty {
  display: flex;
  flex-direction: column;
@@ -366,7 +354,6 @@
 
 .project-list__reset-btn:hover { background: rgba(16, 109, 255, 0.15); }
 
-/* ── Responsive ── */
 @media (max-width: 1024px) {
  .project-list__grid {
  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));

@@ -1,14 +1,3 @@
-/**
- * AssetMonitoringMap.css — Premium glass map stage.
- *
- * Elevated glass wrapper with refined pin markers,
- * smooth overlay positioning, and premium depth.
- */
-
-/* =========================================================================
- Map Section Container — Premium glass stage
- ========================================================================= */
-
 .asset-monitoring-map {
  position: relative;
  width: 100%;
@@ -29,14 +18,9 @@
  border-radius: 24px;
 }
 
-/* Override Mapbox default canvas styles within our container */
 .asset-monitoring-map__container .mapboxgl-canvas {
  outline: none;
 }
-
-/* =========================================================================
- Asset Pin Markers
- ========================================================================= */
 
 .asset-pin {
  width: 18px;
@@ -59,7 +43,6 @@
  outline-offset: 3px;
 }
 
-/* Status colors */
 .asset-pin--aman {
  background-color: #10B981;
  box-shadow: 0 3px 12px rgba(16, 185, 129, 0.45);
@@ -74,10 +57,6 @@
  background-color: #EF4444;
  box-shadow: 0 3px 12px rgba(239, 68, 68, 0.45);
 }
-
-/* =========================================================================
- Pulse Animation (kritis status only)
- ========================================================================= */
 
 .asset-pin--pulse::after {
  content: '';
@@ -101,16 +80,11 @@
  }
 }
 
-/* Pause pulse animation for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
  .asset-pin--pulse::after {
  animation-play-state: paused;
  }
 }
-
-/* =========================================================================
- Overlay Positioning (Legend, Filter, FloatingStats)
- ========================================================================= */
 
 .asset-monitoring-map .map-legend {
  position: absolute;
@@ -134,17 +108,24 @@
  z-index: 5;
 }
 
-/* =========================================================================
- Responsive
- ========================================================================= */
-
 @media (max-width: 767px) {
  .asset-monitoring-map {
- height: 380px;
- border-radius: 20px;
+ height: 340px;
+ border-radius: 18px;
  }
 
  .asset-monitoring-map__container {
- border-radius: 20px;
+ border-radius: 18px;
+ }
+}
+
+@media (max-width: 400px) {
+ .asset-monitoring-map {
+ height: 280px;
+ border-radius: 16px;
+ }
+
+ .asset-monitoring-map__container {
+ border-radius: 16px;
  }
 }

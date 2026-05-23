@@ -1,8 +1,5 @@
 import { Radio } from 'lucide-react';
 
-/**
- * SidebarHeader — SIAGA Job Radar branding and live stats badge.
- */
 export default function SidebarHeader({ stats }) {
  return (
  <div className="sidebar-header">

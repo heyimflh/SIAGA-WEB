@@ -1,22 +1,3 @@
-/**
- * AssetDetailDrawer — slide-in panel dari kanan menampilkan detail aset.
- *
- * Spec: .kiro/specs/client-dashboard
- *
- * Props:
- * asset: object | null — aset yang dipilih (dari mock-data.assets[])
- * isOpen: boolean — apakah drawer terbuka
- * onClose: () => void — callback untuk menutup drawer
- *
- * Behavior:
- * - Slide-in dari kanan via Framer Motion `motion.aside` + AnimatePresence
- * - Variants: hidden { x: '100%' } → visible { x: 0 }, durasi 280ms easeOut
- * - On open: focus pertama focusable element
- * - On Escape: close
- * - Click overlay backdrop: close
- * - Slide-out kembali ke kanan saat close
- */
-
 import { useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, MapPin, Shield, Calendar, ExternalLink, FileText } from 'lucide-react';
@@ -37,9 +18,6 @@ const TRANSITION = {
  ease: 'easeOut',
 };
 
-/**
- * Map status value to human-readable label in Indonesian.
- */
 function getStatusLabel(status) {
  switch (status) {
  case 'aman':
@@ -57,7 +35,6 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  const drawerRef = useRef(null);
  const previousFocusRef = useRef(null);
 
- // Focus first focusable element on open; restore focus on close
  useEffect(() => {
  if (isOpen && drawerRef.current) {
  previousFocusRef.current = document.activeElement;
@@ -76,7 +53,6 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  }
  }, [isOpen]);
 
- // Listen for Escape key to close
  useEffect(() => {
  if (!isOpen) return;
 
@@ -91,7 +67,6 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  return () => document.removeEventListener('keydown', handleEscape);
  }, [isOpen, onClose]);
 
- // Focus trap: keep focus within drawer
  const handleKeyDown = useCallback(
  (e) => {
  if (e.key !== 'Tab' || !drawerRef.current) return;
@@ -119,7 +94,6 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  <AnimatePresence>
  {isOpen && asset && (
  <>
- {/* Overlay backdrop — click to close */}
  <motion.div
  className="asset-drawer-overlay"
  variants={overlayVariants}
@@ -131,7 +105,6 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  aria-hidden="true"
  />
 
- {/* Drawer panel */}
  <motion.aside
  ref={drawerRef}
  className="asset-detail-drawer"
@@ -145,7 +118,6 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  transition={TRANSITION}
  onKeyDown={handleKeyDown}
  >
- {/* Header with close button */}
  <div className="asset-detail-drawer__header">
  <h2 className="asset-detail-drawer__title">Detail Aset</h2>
  <button
@@ -158,7 +130,6 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  </button>
  </div>
 
- {/* Asset photo */}
  <div className="asset-detail-drawer__photo">
  <img
  src={asset.foto_url}
@@ -167,12 +138,11 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  />
  </div>
 
- {/* Asset info */}
+
  <div className="asset-detail-drawer__content">
- {/* Nama aset */}
+
  <h3 className="asset-detail-drawer__name">{asset.nama}</h3>
 
- {/* Lokasi */}
  <div className="asset-detail-drawer__info-row">
  <MapPin size={16} className="asset-detail-drawer__icon" />
  <span className="asset-detail-drawer__label">Lokasi:</span>
@@ -181,7 +151,7 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  </span>
  </div>
 
- {/* Status terakhir inspeksi */}
+
  <div className="asset-detail-drawer__info-row">
  <Shield size={16} className="asset-detail-drawer__icon" />
  <span className="asset-detail-drawer__label">Status:</span>
@@ -192,7 +162,7 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  </span>
  </div>
 
- {/* Tanggal inspeksi terakhir */}
+
  <div className="asset-detail-drawer__info-row">
  <Calendar size={16} className="asset-detail-drawer__icon" />
  <span className="asset-detail-drawer__label">Inspeksi Terakhir:</span>
@@ -201,7 +171,7 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  </span>
  </div>
 
- {/* Pilot inspeksi terakhir */}
+
  {asset.inspeksi_terakhir?.pilot_nama && (
  <div className="asset-detail-drawer__info-row">
  <span className="asset-detail-drawer__label" style={{ marginLeft: '24px' }}>
@@ -214,7 +184,7 @@ function AssetDetailDrawer({ asset, isOpen, onClose }) {
  )}
  </div>
 
- {/* Action links */}
+
  <div className="asset-detail-drawer__actions">
  <a
  href={`#/assets/${asset.id}`}

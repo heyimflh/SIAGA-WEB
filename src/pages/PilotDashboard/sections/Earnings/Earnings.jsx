@@ -1,9 +1,3 @@
-/**
- * Earnings — Revenue & Escrow Cockpit section.
- * Feature: pilot-dashboard
- * Validates: Requirements 11
- */
-
 import { lazy, Suspense } from 'react';
 import { TrendingUp, TrendingDown } from 'lucide-react';
 import { formatRupiah } from '../../utils/formatRupiah';

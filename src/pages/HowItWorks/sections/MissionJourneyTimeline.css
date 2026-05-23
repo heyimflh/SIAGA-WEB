@@ -1,9 +1,7 @@
-/* MissionJourneyTimeline — Product Simulation Workflow */
 .wf-simulation { padding: 5rem 1.5rem; }
 .wf-simulation__container { max-width: 1200px; margin: 0 auto; }
 .wf-simulation__steps { display: flex; flex-direction: column; gap: 6rem; margin-top: 3rem; }
 
-/* Step row */
 .wf-step {
  display: grid; grid-template-columns: 1fr 1.2fr; gap: 3.5rem; align-items: center;
  opacity: 0; transform: translateY(48px); transition: opacity 0.8s ease, transform 0.8s ease;
@@ -12,7 +10,6 @@
 .wf-step:nth-child(even) { direction: rtl; }
 .wf-step:nth-child(even) > * { direction: ltr; }
 
-/* Text side */
 .wf-step__text { display: flex; flex-direction: column; }
 .wf-step__number {
  font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 4.5rem;
@@ -46,7 +43,6 @@
 }
 .wf-step__cta:hover { color: #00D4FF; }
 
-/* Visual side — Mockup cards */
 .wf-step__visual { display: flex; justify-content: center; }
 
 .wf-mockup {
@@ -86,7 +82,6 @@
 
 .wf-mockup__body { padding: 1.25rem; }
 
-/* Form fields */
 .wf-field { margin-bottom: 0.75rem; }
 .wf-field label {
  display: block; font-family: 'Inter', sans-serif; font-size: 0.65rem;
@@ -105,7 +100,6 @@
 }
 .wf-field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
 
-/* Map field */
 .wf-field__map {
  position: relative; height: 64px; border-radius: 10px; overflow: hidden;
  background: #F4FAFF; border: 1px solid rgba(10,37,64,0.06);
@@ -125,7 +119,6 @@
  font-family: 'Inter', sans-serif; font-size: 0.62rem; color: #60758A;
 }
 
-/* Submit button */
 .wf-field__submit {
  display: flex; align-items: center; justify-content: center; gap: 0.4rem;
  width: 100%; margin-top: 0.75rem; padding: 0.7rem 1rem; border: none; border-radius: 10px;
@@ -137,7 +130,6 @@
 .wf-field__submit:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,212,255,0.35); }
 .wf-field__submit--report { background: linear-gradient(135deg, #0B7CFF, #062B5F); }
 
-/* Pilot cards */
 .wf-pilots { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 0.75rem; }
 .wf-pilot {
  position: relative; display: flex; align-items: center; gap: 0.7rem;
@@ -168,7 +160,6 @@
  font-family: 'Inter', sans-serif; font-size: 0.55rem; font-weight: 600; color: #00D4FF;
 }
 
-/* Monitor mockup */
 .wf-monitor__map {
  position: relative; height: 90px; border-radius: 10px; overflow: hidden;
  background: #031525; border: 1px solid rgba(0,212,255,0.1); margin-bottom: 0.75rem;
@@ -211,7 +202,6 @@
 .wf-monitor__feed-icon--pulse { animation: wf-pulse 1.5s ease-in-out infinite; }
 .wf-monitor__feed-time { margin-left: auto; font-size: 0.6rem; color: #8BA2B8; }
 
-/* Report mockup */
 .wf-report__preview { margin-bottom: 0.75rem; }
 .wf-report__cover {
  background: linear-gradient(135deg, #031525, #062B5F); border-radius: 12px;
@@ -248,11 +238,9 @@
 .wf-report__finding-dot--warning { background: #F5B942; }
 .wf-report__finding-dot--ok { background: #28CA41; }
 
-/* Animations */
 @keyframes wf-pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
 @keyframes wf-blink { 0%,100% { opacity:1; } 50% { opacity:0; } }
 
-/* Responsive */
 @media (max-width: 1024px) {
  .wf-step { grid-template-columns: 1fr; gap: 2rem; }
  .wf-step:nth-child(even) { direction: ltr; }

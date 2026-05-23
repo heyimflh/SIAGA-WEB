@@ -1,11 +1,9 @@
-/* DemoTheater — Interactive multi-view demo on bright blue background */
 .dt-section {
  padding: 5rem 1.5rem; position: relative; overflow: hidden;
  background: radial-gradient(circle at 50% 30%, rgba(255,255,255,0.06), transparent 50%), linear-gradient(180deg, #1589CC 0%, #1B8FD9 40%, #0D6AB8 100%);
 }
 .dt-section__container { max-width: 900px; margin: 0 auto; }
 
-/* Scenarios */
 .dt-scenarios { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; margin: 2rem 0 1.5rem; }
 .dt-scenario {
  font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600;
@@ -17,7 +15,6 @@
 .dt-scenario--active { color: #fff; background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.5); box-shadow: 0 2px 12px rgba(0,0,0,0.1); }
 .dt-scenario:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
-/* Frame — dark card for contrast against bright blue bg */
 .dt-frame {
  background: rgba(5,20,40,0.92); backdrop-filter: blur(16px);
  border: 1px solid rgba(255,255,255,0.15); border-radius: 16px;
@@ -39,7 +36,6 @@
  border-radius: 4px; padding: 0.25rem 0.6rem;
 }
 
-/* Tabs */
 .dt-tabs {
  display: flex; border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0 1rem;
 }
@@ -52,10 +48,8 @@
 .dt-tab--active { color: #5CE0FF; border-bottom-color: #5CE0FF; }
 .dt-tab:focus-visible { outline: 2px solid #5CE0FF; outline-offset: -2px; }
 
-/* Frame body */
 .dt-frame__body { padding: 1.5rem; min-height: 280px; }
 
-/* View shared styles */
 .dt-view { display: flex; flex-direction: column; gap: 0.75rem; }
 .dt-view__row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
 .dt-view__card {
@@ -68,7 +62,6 @@
 .dt-view__card-value--active { color: #5CE0FF; }
 .dt-view__card-value--alert { color: #F5B942; }
 
-/* Map in demo */
 .dt-view__map {
  position: relative; height: 80px; border-radius: 10px; overflow: hidden;
  background: rgba(0,30,60,0.5); border: 1px solid rgba(255,255,255,0.08);
@@ -85,7 +78,6 @@
  background: rgba(92,224,255,0.1); border-radius: 4px; padding: 0.15rem 0.4rem;
 }
 
-/* Checklist */
 .dt-view__checklist { display: flex; flex-direction: column; gap: 0.35rem; }
 .dt-view__checklist-title { font-family: 'Inter', sans-serif; font-size: 0.68rem; font-weight: 700; color: #fff; margin-bottom: 0.3rem; }
 .dt-view__check {
@@ -98,7 +90,6 @@
 .dt-view__check--active { color: #fff; }
 .dt-view__check--active span { color: #5CE0FF; }
 
-/* Report view */
 .dt-view__report-preview {
  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
  border-radius: 12px; padding: 1.25rem;
@@ -120,7 +111,6 @@
 }
 .dt-view__download:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(92,224,255,0.3); }
 
-/* Responsive */
 @media (max-width: 768px) {
  .dt-section { padding: 3.5rem 1rem; }
  .dt-view__row { grid-template-columns: 1fr; }

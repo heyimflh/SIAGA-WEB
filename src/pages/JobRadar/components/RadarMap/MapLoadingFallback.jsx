@@ -1,9 +1,5 @@
 import { Loader } from 'lucide-react';
 
-/**
- * MapLoadingFallback — Premium loading state while Mapbox loads.
- * Dark navy + radar grid + cyan spinner.
- */
 export default function MapLoadingFallback() {
  return (
  <div className="map-loading-fallback">

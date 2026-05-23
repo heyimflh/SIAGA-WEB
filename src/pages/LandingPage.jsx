@@ -23,21 +23,6 @@ import ClosingSection from '../components/ClosingSection';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/**
- * LandingPage — public marketing page mounted at the root route `/`.
- *
- * This component owns the Lenis smooth-scroll instance and the GSAP
- * ScrollTrigger plugin registration. They are scoped here (not at App level)
- * so that smooth scroll only runs on the landing page; auth pages and
- * dashboards stay on native scroll, which keeps form fields and route
- * transitions snappy.
- *
- * Notes:
- * - `CustomCursor` is intentionally NOT rendered here — it lives at the App
- * root so it stays mounted across route changes .
- * - The fixed background (`fixed-bg`) is rendered here because it's part of
- * the landing-page visual language and shouldn't bleed into auth screens.
- */
 export default function LandingPage() {
  const isDesktop = useMediaQuery('(min-width: 1024px)');
 
@@ -54,10 +39,8 @@ export default function LandingPage() {
  infinite: false,
  });
 
- // Sync Lenis ↔ GSAP ScrollTrigger
  lenis.on('scroll', ScrollTrigger.update);
 
- // Use requestAnimationFrame for buttery smooth performance
  let rafId;
  function raf(time) {
  lenis.raf(time);
@@ -74,7 +57,6 @@ export default function LandingPage() {
 
  return (
  <>
- {/* Fixed Background — grid + concentric circles, stays still while content scrolls */}
  <div className="fixed-bg" aria-hidden="true">
  <div className="fixed-bg__grid" />
  <div className="fixed-bg__circles" />

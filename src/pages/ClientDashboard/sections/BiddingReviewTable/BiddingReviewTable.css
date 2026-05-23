@@ -1,11 +1,3 @@
-/**
- * BiddingReviewTable.css — Premium glass card wrapper with refined table styling.
- *
- * Glassmorphism container, polished row hover, and mobile card layout.
- */
-
-/* ─── Section Container — Glass card ─── */
-
 .bidding-review {
  width: 100%;
  background: rgba(255, 255, 255, 0.7);
@@ -28,8 +20,6 @@
  letter-spacing: -0.01em;
 }
 
-/* ─── Controls (chips + sort) ─── */
-
 .bidding-review__controls {
  display: flex;
  flex-wrap: wrap;
@@ -37,8 +27,6 @@
  gap: 1rem;
  margin-bottom: 1.25rem;
 }
-
-/* ─── Table Wrapper ─── */
 
 .bidding-review__table-wrapper {
  width: 100%;
@@ -58,8 +46,6 @@
  background: rgba(16, 109, 255, 0.1);
  border-radius: 4px;
 }
-
-/* ─── Table ─── */
 
 .bid-table {
  width: 100%;
@@ -89,13 +75,10 @@
  text-align: right;
 }
 
-/* ─── BidRow ─── */
-
 .bid-row {
  transition: background 180ms ease;
 }
 
-/* Hover highlight */
 .bid-row:hover {
  background: rgba(16, 109, 255, 0.03);
 }
@@ -110,7 +93,6 @@
  text-align: right;
 }
 
-/* Avatar */
 .bid-row__avatar {
  width: 42px;
  height: 42px;
@@ -120,13 +102,11 @@
  box-shadow: 0 2px 8px rgba(16, 109, 255, 0.08);
 }
 
-/* Nama */
 .bid-row__nama {
  font-weight: 600;
  color: #071A34;
 }
 
-/* Badge Verified */
 .bid-badge {
  display: inline-flex;
  align-items: center;
@@ -147,7 +127,6 @@
  color: rgba(88, 112, 142, 0.45);
 }
 
-/* Rating stars */
 .bid-rating {
  display: inline-flex;
  align-items: center;
@@ -173,20 +152,17 @@
  color: #071A34;
 }
 
-/* Harga */
 .bid-row__harga {
  font-weight: 600;
  color: #071A34;
  white-space: nowrap;
 }
 
-/* Drone type */
 .bid-row__drone {
  font-size: 0.8125rem;
  color: #58708E;
 }
 
-/* Action buttons */
 .bid-row__actions {
  display: flex;
  gap: 0.5rem;
@@ -239,8 +215,6 @@
  box-shadow: 0 4px 14px rgba(16, 109, 255, 0.3);
  transform: translateY(-1px);
 }
-
-/* ─── Empty States ─── */
 
 .bidding-review__empty {
  display: flex;
@@ -314,12 +288,14 @@
  outline-offset: 2px;
 }
 
-/* ─── Responsive: <768px stacked card layout ─── */
-
 @media (max-width: 767px) {
  .bidding-review {
  padding: 1.25rem;
  border-radius: 20px;
+ }
+
+ .bidding-review__title {
+ font-size: 1.125rem;
  }
 
  .bidding-review__table-wrapper {
@@ -373,7 +349,7 @@
  text-transform: uppercase;
  letter-spacing: 0.04em;
  color: #58708E;
- min-width: 100px;
+ min-width: 80px;
  flex-shrink: 0;
  }
 
@@ -395,10 +371,35 @@
 
  .bid-row__actions {
  justify-content: flex-start;
+ flex-wrap: wrap;
  }
 }
 
-/* ─── Reduced motion ─── */
+@media (max-width: 400px) {
+ .bidding-review {
+ padding: 1rem 0.875rem;
+ border-radius: 18px;
+ }
+
+ .bidding-review__title {
+ font-size: 1rem;
+ }
+
+ .bid-row {
+ padding: 1rem;
+ border-radius: 16px;
+ }
+
+ .bid-row__cell::before {
+ min-width: 72px;
+ font-size: 0.625rem;
+ }
+
+ .bid-action-btn {
+ padding: 0.35rem 0.7rem;
+ font-size: 0.6875rem;
+ }
+}
 
 @media (prefers-reduced-motion: reduce) {
  .bid-row {
@@ -409,11 +410,6 @@
  transition: none;
  }
 }
-
-
-/* ═══════════════════════════════════════════════════════════════════════════
- PilotProfileDrawer — Premium glass slide-in
- ═══════════════════════════════════════════════════════════════════════════ */
 
 .client-pilot-drawer-overlay.pilot-drawer-overlay {
  position: fixed;
@@ -493,7 +489,6 @@
  flex: 1;
 }
 
-/* Identity block */
 .client-pilot-drawer .pilot-drawer__identity {
  display: flex;
  align-items: center;
@@ -533,7 +528,6 @@
  color: #106DFF;
 }
 
-/* Stats grid */
 .client-pilot-drawer .pilot-drawer__stats {
  display: flex;
  flex-direction: column;
@@ -568,7 +562,6 @@
  color: #071A34;
 }
 
-/* Sections */
 .client-pilot-drawer .pilot-drawer__section {
  margin-bottom: 1.75rem;
 }
@@ -591,7 +584,6 @@
  margin: 0;
 }
 
-/* Portfolio thumbnails */
 .client-pilot-drawer .pilot-drawer__portfolio {
  display: grid;
  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -610,10 +602,6 @@
 .client-pilot-drawer .pilot-drawer__portfolio-img:hover {
  transform: scale(1.03);
 }
-
-/* ═══════════════════════════════════════════════════════════════════════════
- PilotSelectionModal — Premium glass modal
- ═══════════════════════════════════════════════════════════════════════════ */
 
 .pilot-modal-overlay {
  position: fixed;
@@ -663,7 +651,6 @@
  margin: 0;
 }
 
-/* Pilot summary */
 .pilot-modal__summary {
  display: flex;
  align-items: center;
@@ -738,7 +725,6 @@
  margin: 0;
 }
 
-/* Warning */
 .pilot-modal__warning {
  display: flex;
  align-items: flex-start;
@@ -763,7 +749,6 @@
  margin: 0;
 }
 
-/* Actions */
 .pilot-modal__actions {
  display: flex;
  justify-content: flex-end;
@@ -809,8 +794,6 @@
  box-shadow: 0 6px 20px rgba(16, 109, 255, 0.35);
  transform: translateY(-1px);
 }
-
-/* ─── Reduced motion for drawer & modal ─── */
 
 @media (prefers-reduced-motion: reduce) {
  .client-pilot-drawer.pilot-drawer,

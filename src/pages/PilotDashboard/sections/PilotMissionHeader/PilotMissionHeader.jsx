@@ -1,9 +1,3 @@
-/**
- * PilotMissionHeader — Premium opening banner for Pilot Dashboard.
- * Feature: pilot-dashboard
- * Validates: Requirements 5
- */
-
 import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, Radio, Zap, Clock, Search } from 'lucide-react';
 import './PilotMissionHeader.css';

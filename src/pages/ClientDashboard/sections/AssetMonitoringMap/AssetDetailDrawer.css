@@ -1,27 +1,9 @@
-/**
- * AssetDetailDrawer — CSS styles for the slide-in asset detail panel.
- *
- * Spec: .kiro/specs/client-dashboard
- * Requirements: 5.13, 5.14, 5.15, 13.10, 13.11
- *
- * Uses Design_Tokens only: --color-primary, --color-accent, --color-surface,
- * --color-success, --color-warning, --color-danger.
- */
-
-/* =========================================================================
- Overlay Backdrop
- ========================================================================= */
-
 .asset-drawer-overlay {
  position: fixed;
  inset: 0;
  background: rgba(10, 25, 47, 0.5);
  z-index: 900;
 }
-
-/* =========================================================================
- Drawer Panel
- ========================================================================= */
 
 .asset-detail-drawer {
  position: fixed;
@@ -37,10 +19,6 @@
  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.15);
  overflow-y: auto;
 }
-
-/* =========================================================================
- Header
- ========================================================================= */
 
 .asset-detail-drawer__header {
  display: flex;
@@ -81,10 +59,6 @@
  outline-offset: 2px;
 }
 
-/* =========================================================================
- Photo
- ========================================================================= */
-
 .asset-detail-drawer__photo {
  width: 100%;
  height: 200px;
@@ -97,10 +71,6 @@
  height: 100%;
  object-fit: cover;
 }
-
-/* =========================================================================
- Content
- ========================================================================= */
 
 .asset-detail-drawer__content {
  padding: 20px 24px;
@@ -140,7 +110,6 @@
  font-weight: 500;
 }
 
-/* Status badge colors */
 .asset-detail-drawer__status {
  font-weight: 600;
  padding: 2px 10px;
@@ -162,10 +131,6 @@
  background: rgba(255, 76, 76, 0.12);
  color: var(--color-danger, #FF4C4C);
 }
-
-/* =========================================================================
- Action Links
- ========================================================================= */
 
 .asset-detail-drawer__actions {
  padding: 16px 24px 24px;
@@ -215,20 +180,12 @@
  background: rgba(10, 25, 47, 0.12);
 }
 
-/* =========================================================================
- Responsive
- ========================================================================= */
-
 @media (max-width: 480px) {
  .asset-detail-drawer {
  width: 100%;
  max-width: 100vw;
  }
 }
-
-/* =========================================================================
- Reduced Motion
- ========================================================================= */
 
 @media (prefers-reduced-motion: reduce) {
  .asset-detail-drawer__link {

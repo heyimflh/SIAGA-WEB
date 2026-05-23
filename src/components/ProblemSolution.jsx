@@ -5,7 +5,6 @@ import './ProblemSolution.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ─── Data ─── */
 const problems = [
  {
  id: '01',
@@ -72,8 +71,6 @@ const solutions = [
  },
 ];
 
-
-/* ─── Solution Showcase (Chainzoku Vision-style) ─── */
 function SolutionShowcase() {
  const [active, setActive] = useState(0);
  const cardRef = useRef(null);
@@ -88,7 +85,6 @@ function SolutionShowcase() {
  setActive((prev) => (prev - 1 + solutions.length) % solutions.length);
  }, []);
 
- // Animate on change
  useEffect(() => {
  if (!cardRef.current || !contentRef.current) return;
 
@@ -106,7 +102,6 @@ function SolutionShowcase() {
 
  return (
  <div className="psx-showcase">
- {/* Left: Visual Card */}
  <div className="psx-showcase-left">
  <div className="psx-vcard" ref={cardRef} style={{ '--accent': current.color }}>
  <div className="psx-vcard-bg" />
@@ -117,7 +112,6 @@ function SolutionShowcase() {
  <div className="psx-vcard-number">{current.id}</div>
  <div className="psx-vcard-label">{current.tag}</div>
 
- {/* Mobile-only inline title — appears inside card on small screens */}
  <div className="psx-vcard-mobile-title" aria-hidden="true">
  <span className="psx-vcard-mobile-eyebrow">THE SOLUTION</span>
  <span className="psx-vcard-mobile-name">
@@ -134,7 +128,7 @@ function SolutionShowcase() {
  <div className="psx-vcard-corner psx-vc-br" />
  </div>
 
- {/* Navigation Arrows */}
+
  <div className="psx-nav">
  <button className="psx-nav-btn" onClick={goPrev} aria-label="Previous solution">
  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -154,7 +148,6 @@ function SolutionShowcase() {
  </div>
  </div>
 
- {/* Right: Content */}
  <div className="psx-showcase-right" ref={contentRef}>
  <div className="psx-showcase-id">{current.id}</div>
  <h3 className="psx-showcase-title">
@@ -171,7 +164,6 @@ function SolutionShowcase() {
 }
 
 
-/* ─── Main Component ─── */
 function ProblemSolution() {
  const sectionRef = useRef(null);
 
@@ -181,7 +173,7 @@ function ProblemSolution() {
 
  const ctx = gsap.context(() => {
 
- /* ── Hero header ── */
+
  const hTl = gsap.timeline({
  scrollTrigger: { trigger: '.psx-header', start: 'top 82%', toggleActions: 'play none none reverse' },
  });
@@ -190,7 +182,7 @@ function ProblemSolution() {
  .fromTo('.psx-title', { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, '-=0.3')
  .fromTo('.psx-desc', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.4');
 
- /* ── Problem rows ── */
+
  const pRows = section.querySelectorAll('.psx-row-problem');
  pRows.forEach((row, i) => {
  gsap.fromTo(row,
@@ -203,7 +195,7 @@ function ProblemSolution() {
  );
  });
 
- /* ── Divider ── */
+
  gsap.fromTo('.psx-divider-inner',
  { scaleX: 0, opacity: 0 },
  {
@@ -219,7 +211,7 @@ function ProblemSolution() {
  }
  );
 
- /* ── Showcase entrance ── */
+
  gsap.fromTo('.psx-showcase',
  { y: 60, opacity: 0 },
  {
@@ -228,7 +220,7 @@ function ProblemSolution() {
  }
  );
 
- /* ── Bottom CTA ── */
+
  gsap.fromTo('.psx-cta',
  { y: 40, opacity: 0 },
  {
@@ -244,7 +236,7 @@ function ProblemSolution() {
 
  return (
  <section className="psx-section" ref={sectionRef} id="problem-solution">
- {/* ── BG ── */}
+
  <div className="psx-bg" aria-hidden="true">
  <div className="psx-bg-base" />
  <div className="psx-bg-grain" />
@@ -254,7 +246,7 @@ function ProblemSolution() {
  <div className="psx-bg-lines" />
  </div>
 
- {/* ── Header ── */}
+
  <header className="psx-header">
  <span className="psx-label">[ PROBLEM × SOLUTION ]</span>
  <h2 className="psx-title">
@@ -267,7 +259,6 @@ function ProblemSolution() {
  </p>
  </header>
 
- {/* ── PROBLEMS ── */}
  <div className="psx-problems">
  <div className="psx-section-tag">
  <span className="psx-section-tag-dot psx-dot-red" />
@@ -289,13 +280,12 @@ function ProblemSolution() {
  </div>
  </div>
 
- {/* ── DIVIDER ── */}
+
  <div className="psx-divider">
  <div className="psx-divider-inner" />
  <span className="psx-divider-text">SIAGA MENGUBAH SEGALANYA</span>
  </div>
 
- {/* ── SOLUTIONS (Chainzoku Vision-style Showcase) ── */}
  <div className="psx-solutions">
  <div className="psx-section-tag">
  <span className="psx-section-tag-dot psx-dot-blue" />
@@ -305,7 +295,7 @@ function ProblemSolution() {
  <SolutionShowcase />
  </div>
 
- {/* ── CTA ── */}
+
  <div className="psx-cta">
  <div className="psx-cta-line" />
  <p className="psx-cta-main">

@@ -38,7 +38,6 @@ const stats = [
  },
 ];
 
-// Custom easeOutExpo
 function easeOutExpo(t) {
  return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
 }
@@ -109,7 +108,7 @@ function StatsBar() {
  const decor = decorRef.current;
 
  const ctx = gsap.context(() => {
- // Main section entrance
+
  const tl = gsap.timeline({
  scrollTrigger: {
  trigger: section,
@@ -119,7 +118,7 @@ function StatsBar() {
  },
  });
 
- // Container slide up with glass effect
+
  tl.fromTo(
  container,
  {
@@ -136,7 +135,7 @@ function StatsBar() {
  }
  );
 
- // Decorative elements
+
  if (decor?.children?.length) {
  tl.fromTo(
  Array.from(decor.children),
@@ -152,7 +151,7 @@ function StatsBar() {
  );
  }
 
- // Stagger stat items
+
  if (items.length) {
  tl.fromTo(
  items,
@@ -171,7 +170,7 @@ function StatsBar() {
  );
  }
 
- // Separators draw in
+
  const seps = container?.querySelectorAll('.stats-separator');
  if (seps?.length) {
  tl.fromTo(
@@ -188,8 +187,6 @@ function StatsBar() {
  );
  }
 
- // NOTE: Removed parallax scrub on orbs — too costly per-frame during scroll.
- // The CSS keyframe animation on orbs is sufficient for visual interest.
 
  }, sectionRef);
 
@@ -198,14 +195,12 @@ function StatsBar() {
 
  return (
  <section className="stats-section" ref={sectionRef} id="stats-bar">
- {/* Decorative background elements */}
  <div className="stats-bg-decor" ref={decorRef}>
  <div className="stats-orb stats-orb-1" />
  <div className="stats-orb stats-orb-2" />
  <div className="stats-grid-pattern" />
  </div>
 
- {/* Top accent line */}
  <div className="stats-accent-line" />
 
  <div className="stats-container" ref={containerRef}>
@@ -213,7 +208,6 @@ function StatsBar() {
  const Icon = stat.icon;
  return (
  <div key={index} className="stats-wrapper">
- {/* Separator between items */}
  {index > 0 && (
  <div className="stats-separator">
  <div className="stats-separator-glow" />
@@ -224,13 +218,11 @@ function StatsBar() {
  className="stat-item"
  ref={(el) => (statRefs.current[index] = el)}
  >
- {/* Icon accent */}
  <div className="stat-icon-wrapper">
  <div className="stat-icon-bg" />
  <Icon size={20} strokeWidth={2} />
  </div>
 
- {/* Number */}
  <div className="stat-number-wrapper">
  <AnimatedNumber
  end={stat.end}
@@ -241,13 +233,10 @@ function StatsBar() {
  />
  </div>
 
- {/* Label */}
  <span className="stat-label">{stat.label}</span>
 
- {/* Subtle description */}
  <span className="stat-desc">{stat.description}</span>
 
- {/* Hover glow effect */}
  <div className="stat-hover-glow" />
  </div>
  </div>
@@ -255,7 +244,6 @@ function StatsBar() {
  })}
  </div>
 
- {/* Bottom accent line */}
  <div className="stats-accent-line stats-accent-line-bottom" />
  </section>
  );

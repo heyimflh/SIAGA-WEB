@@ -1,4 +1,3 @@
-/* SecurityTrustBadges — Security Certification Strip */
 .stb { padding: 5rem 1.5rem; }
 .stb__container { max-width: 1100px; margin: 0 auto; }
 .stb__grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; margin-top: 2rem; }

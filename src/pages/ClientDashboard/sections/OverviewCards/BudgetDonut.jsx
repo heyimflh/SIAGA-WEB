@@ -1,14 +1,3 @@
-/**
- * BudgetDonut — Recharts PieChart donut showing used vs remaining budget.
- *
- * Lazy-loaded via React.lazy() in OverviewCard (budget variant).
- * Only rendered when parent OverviewCard is visible in viewport AND
- * mock-data is ready.
- *
- * Spec: .kiro/specs/client-dashboard
- * Validates: Requirements 4.5, 11.2, 15.7, 15.7a
- */
-
 import { PieChart, Pie, Cell, ResponsiveContainer } from 'recharts';
 
 const COLORS = {

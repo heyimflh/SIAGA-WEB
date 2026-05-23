@@ -1,13 +1,6 @@
 import { Activity, Radio, AlertTriangle } from 'lucide-react';
 import './RadarHUD.css';
 
-/**
- * RadarHUD — Premium floating HUD overlay above the map.
- * Shows live stats computed from filtered projects.
- * 
- * Desktop: full HUD with title + subtitle + stats
- * Mobile: compact pill
- */
 export default function RadarHUD({ stats, activeFilterCount, isCompact }) {
  if (isCompact) {
  return (

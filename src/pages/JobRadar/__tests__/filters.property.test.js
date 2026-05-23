@@ -1,9 +1,3 @@
-/**
- * Property-based tests for Job Radar filters.js pure logic.
- * Uses fast-check for generative testing.
- * 
- * Feature: job-radar-page
- */
 import { describe, it, expect } from 'vitest';
 import fc from 'fast-check';
 import {
@@ -21,12 +15,10 @@ import {
 } from '../filters.js';
 import projects from '../mock-data.js';
 
-// ── Generators ──
 const statusGen = fc.constantFrom('open', 'urgent', 'deadline_dekat', 'closed');
 const infraGen = fc.constantFrom('SUTET', 'Jembatan', 'Kilang', 'Solar Panel', 'Bendungan', 'Tower');
 const sortGen = fc.constantFrom('terbaru', 'nilai_tertinggi', 'deadline_terdekat');
 
-// Feature: job-radar-page, Status-to-visual mapping is deterministic and correct
 describe('Status-to-visual mapping', () => {
  it('returns correct visual for every valid status', () => {
  fc.assert(
@@ -39,7 +31,6 @@ describe('Status-to-visual mapping', () => {
  expect(visual.opacity).toBeGreaterThan(0);
  expect(visual.opacity).toBeLessThanOrEqual(1);
 
- // Specific mappings
  if (status === 'open') {
  expect(visual.color).toBe('#00D2FF');
  expect(visual.pulse).toBe(true);
@@ -71,7 +62,6 @@ describe('Status-to-visual mapping', () => {
  });
 });
 
-// Feature: job-radar-page, Combined filter logic applies AND across categories and OR within infrastructure chips
 describe('Filter AND/OR logic', () => {
  it('all returned projects satisfy active filters', () => {
  fc.assert(
@@ -111,7 +101,6 @@ describe('Filter AND/OR logic', () => {
  });
 });
 
-// Feature: job-radar-page, Sort ordering invariant
 describe('Sort ordering', () => {
  it('output length equals input length', () => {
  fc.assert(
@@ -138,7 +127,6 @@ describe('Sort ordering', () => {
  });
 });
 
-// Feature: job-radar-page, Data consistency invariant — stats reflect filtered data
 describe('Stats consistency', () => {
  it('stats.aktif equals count of non-closed projects', () => {
  fc.assert(
@@ -165,7 +153,6 @@ describe('Stats consistency', () => {
  });
 });
 
-// Feature: job-radar-page, Mock data schema validation
 describe('Mock data schema', () => {
  it('all projects have required fields with valid values', () => {
  const validStatuses = ['open', 'urgent', 'deadline_dekat', 'closed'];
@@ -203,7 +190,6 @@ describe('Mock data schema', () => {
  });
 });
 
-// Formatter tests
 describe('Formatters', () => {
  it('formatRupiah handles valid numbers', () => {
  expect(formatRupiah(350000000)).toContain('350');
@@ -220,7 +206,6 @@ describe('Formatters', () => {
  });
 });
 
-// Utility tests
 describe('Utility functions', () => {
  it('resetFilters returns default state', () => {
  const defaults = resetFilters();

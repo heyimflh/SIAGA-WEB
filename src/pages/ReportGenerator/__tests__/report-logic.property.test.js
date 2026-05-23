@@ -1,10 +1,3 @@
-/**
- * Property-based tests for report-logic.js
- *
- * Feature: report-generator
- * Validates: Requirements 3.2, 3.7, 4.5, 4.7, 4.10, 6.3, 6.5, 7.10, 14.3
- */
-
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
 import {
@@ -24,7 +17,7 @@ import {
 import { getProjectImages, getInspectionData, getReportProjects } from '../report-data.js';
 
 describe('report-logic property tests', () => {
- // getCompletedProjects only returns completed projects
+
  describe('getCompletedProjects', () => {
  it('returns only projects where all milestones are completed', () => {
  fc.assert(
@@ -58,7 +51,6 @@ describe('report-logic property tests', () => {
  });
  });
 
- // getProgressStage always returns a non-empty string for 0-100
  describe('getProgressStage', () => {
  it('returns a non-empty string for any progress 0-100', () => {
  fc.assert(
@@ -71,7 +63,6 @@ describe('report-logic property tests', () => {
  });
  });
 
- // generateReportId matches RPT-YYYY-NNNN format
  describe('generateReportId', () => {
  it('always matches RPT-YYYY-NNNN format', () => {
  fc.assert(
@@ -88,12 +79,11 @@ describe('report-logic property tests', () => {
  for (let i = 0; i < 20; i++) {
  ids.add(generateReportId());
  }
- // With 9000 possible values, 20 calls should almost always produce at least 2 unique
+
  expect(ids.size).toBeGreaterThan(1);
  });
  });
 
- // canProceedFromStep(0) requires selectedProject
  describe('canProceedFromStep', () => {
  it('step 0 requires selectedProject !== null', () => {
  fc.assert(
@@ -129,7 +119,6 @@ describe('report-logic property tests', () => {
  });
  });
 
- // getPreviewPages matches checked checkboxes exactly
  describe('getPreviewPages', () => {
  it('returns pages matching exactly the checked checkboxes', () => {
  fc.assert(
@@ -154,7 +143,6 @@ describe('report-logic property tests', () => {
  });
  });
 
- // resetWizardState returns initial state
  describe('resetWizardState', () => {
  it('returns the same structure as getInitialWizardState', () => {
  const reset = resetWizardState();
@@ -179,7 +167,6 @@ describe('report-logic property tests', () => {
  });
  });
 
- // getTotalPages sums estimated pages of checked blocks
  describe('getTotalPages', () => {
  it('equals sum of estimatedPages for checked blocks', () => {
  fc.assert(
@@ -203,7 +190,6 @@ describe('report-logic property tests', () => {
  });
  });
 
- // formatFileSize returns a string with unit
  describe('formatFileSize', () => {
  it('returns a string ending with B, KB, or MB', () => {
  fc.assert(
@@ -215,7 +201,6 @@ describe('report-logic property tests', () => {
  });
  });
 
- // isValidProjectId
  describe('isValidProjectId', () => {
  it('returns false for null/undefined/empty projectId', () => {
  fc.assert(
@@ -235,7 +220,6 @@ describe('report-logic property tests', () => {
  });
  });
 });
-
 
 describe('report-data image and inspection functions', () => {
  describe('getReportProjects', () => {

@@ -1,18 +1,3 @@
-/**
- * AssetMapPage — Full-screen Asset Monitoring Map
- *
- * Route: /dashboard/client/asset-map
- * Role: client only
- *
- * Premium full-page map view with:
- * - Full-screen Mapbox map with dark style
- * - Floating HUD stats panel
- * - Asset filter chips
- * - Legend overlay
- * - Asset detail sidebar/drawer on pin click
- * - Responsive layout
- */
-
 import { useState, useCallback, useMemo, useEffect, useRef, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
 import mapboxgl from 'mapbox-gl';
@@ -66,7 +51,6 @@ export default function AssetMapPage() {
  const mapRef = useRef(null);
  const markersRef = useRef([]);
 
- // Stats
  const stats = useMemo(() => {
  const kritis = assets.filter((a) => a.status === 'kritis').length;
  const perhatian = assets.filter((a) => a.status === 'perlu_perhatian').length;
@@ -74,7 +58,6 @@ export default function AssetMapPage() {
  return { total: assets.length, kritis, perhatian, aman };
  }, [assets]);
 
- // Initialize map
  useEffect(() => {
  if (!mapContainerRef.current || mapRef.current) return;
 
@@ -126,7 +109,6 @@ export default function AssetMapPage() {
  };
  }, []);
 
- // Filter visibility
  useEffect(() => {
  markersRef.current.forEach(({ element, asset }) => {
  if (activeFilter === 'all') {
@@ -137,7 +119,6 @@ export default function AssetMapPage() {
  });
  }, [activeFilter]);
 
- // Fly to asset on select
  useEffect(() => {
  if (selectedAsset && mapRef.current) {
  mapRef.current.flyTo({
@@ -152,10 +133,8 @@ export default function AssetMapPage() {
 
  return (
  <div className="amap-page">
- {/* Full-screen Map */}
  <div className="amap-page__map" ref={mapContainerRef} />
 
- {/* Top Bar Overlay */}
  <div className="amap-page__topbar">
  <Link to={ROUTES.clientDashboard} className="amap-page__back">
  <ArrowLeft size={18} />
@@ -171,7 +150,7 @@ export default function AssetMapPage() {
  </div>
  </div>
 
- {/* Stats HUD */}
+
  <div className="amap-page__hud">
  <div className="amap-hud__item">
  <span className="amap-hud__value">{stats.total}</span>
@@ -191,7 +170,6 @@ export default function AssetMapPage() {
  </div>
  </div>
 
- {/* Filter Chips */}
  <div className="amap-page__filters">
  {FILTER_OPTIONS.map((opt) => (
  <button
@@ -211,7 +189,6 @@ export default function AssetMapPage() {
  ))}
  </div>
 
- {/* Legend */}
  <div className="amap-page__legend">
  <span className="amap-legend__title">Status</span>
  {Object.entries(STATUS_CONFIG).map(([key, cfg]) => (
@@ -222,7 +199,7 @@ export default function AssetMapPage() {
  ))}
  </div>
 
- {/* Asset Detail Drawer */}
+
  {selectedAsset && (
  <div className="amap-drawer">
  <div className="amap-drawer__header">

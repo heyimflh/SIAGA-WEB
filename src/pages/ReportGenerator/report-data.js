@@ -1,14 +1,4 @@
-/**
- * Report Data Module — data source for Report Generator Page.
- * Provides completed projects with enriched inspection data and images.
- * Local data layer — does NOT modify global project data.
- *
- * Feature: report-generator
- */
-
 import projectDetailData from '../ProjectDetail/project-detail-data.js';
-
-// ─── IMAGE MAPPING ───────────────────────────────────────────────────────────
 
 const PROJECT_IMAGES = {
  'proj-014': {
@@ -59,8 +49,6 @@ const DEFAULT_IMAGES = {
  mapPreviewImage: '/images/projects/barelang-map-compressed.jpg',
  galleryImages: ['/images/projects/barelang-gallery_1-compressed.jpg'],
 };
-
-// ─── LOCAL COMPLETED PROJECTS (for demo) ─────────────────────────────────────
 
 const LOCAL_COMPLETED_PROJECTS = [
  {
@@ -144,8 +132,6 @@ const LOCAL_COMPLETED_PROJECTS = [
  bids: [{ pilot_nama: 'Cahya Drone ID', drone_type: 'DJI Mavic 3T Enterprise' }],
  },
 ];
-
-// ─── INSPECTION DATA ─────────────────────────────────────────────────────────
 
 const INSPECTION_DATA = {
  'proj-014': {
@@ -276,24 +262,15 @@ const INSPECTION_DATA = {
  },
 };
 
-// ─── EXPORTED FUNCTIONS ──────────────────────────────────────────────────────
-
-/**
- * Get images for a project by ID. Falls back to default.
- */
 export function getProjectImages(project) {
  if (!project) return DEFAULT_IMAGES;
  return PROJECT_IMAGES[project.id] || DEFAULT_IMAGES;
 }
 
-/**
- * Get enriched inspection data for a project.
- */
 export function getInspectionData(project) {
  if (!project) return null;
  if (INSPECTION_DATA[project.id]) return INSPECTION_DATA[project.id];
 
- // Fallback for projects without specific data
  const pilotName = project.bids?.[0]?.pilot_nama || 'SIAGA Pilot';
  return {
  assetOwner: project.client_info?.nama || project.client_nama || 'N/A',
@@ -317,9 +294,6 @@ export function getInspectionData(project) {
  };
 }
 
-/**
- * Determine if a project is "completed".
- */
 function isProjectCompleted(project) {
  if (project.milestones && project.milestones.length > 0) {
  return project.milestones.every((m) => m.status === 'completed');
@@ -327,20 +301,14 @@ function isProjectCompleted(project) {
  return project.status === 'completed' || project.status === 'inspection_complete';
 }
 
-/**
- * Get all completed projects — merges global data + local demo projects.
- */
 export function getReportProjects() {
  const globalCompleted = projectDetailData.filter(isProjectCompleted);
- // Merge: global first, then local (avoid duplicates by id)
+
  const ids = new Set(globalCompleted.map(p => p.id));
  const localNew = LOCAL_COMPLETED_PROJECTS.filter(p => !ids.has(p.id));
  return [...globalCompleted, ...localNew];
 }
 
-/**
- * Get a single project by ID from completed projects.
- */
 export function getReportProjectById(projectId) {
  return getReportProjects().find((p) => p.id === projectId) || null;
 }

@@ -8,10 +8,6 @@ import './RadarMap.css';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 
-/**
- * RadarMap — Mapbox GL JS 3D terrain map with custom project pins.
- * Lazy-loaded via React.lazy() + Suspense.
- */
 export default function RadarMap({
  projects,
  selectedPinId,
@@ -33,7 +29,6 @@ export default function RadarMap({
  const [mapLoaded, setMapLoaded] = useState(false);
  const resizeTimeoutRef = useRef(null);
 
- // Initialize Mapbox
  useEffect(() => {
  if (!mapContainerRef.current) return;
 
@@ -48,7 +43,7 @@ export default function RadarMap({
  });
 
  map.on('load', () => {
- // Add terrain source
+
  map.addSource('mapbox-dem', {
  type: 'raster-dem',
  url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
@@ -56,14 +51,12 @@ export default function RadarMap({
  maxzoom: 14,
  });
 
- // Enable terrain
  try {
  map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
  } catch (terrainErr) {
  console.warn('[RadarMap] Terrain failed, using flat map:', terrainErr);
  }
 
- // Add fog/atmosphere
  map.setFog({
  color: 'rgb(10, 20, 40)',
  'high-color': 'rgb(20, 40, 80)',
@@ -76,7 +69,6 @@ export default function RadarMap({
  onMapReady?.();
  });
 
- // Handle terrain error gracefully
  map.on('error', (e) => {
  if (e.error?.message?.includes('terrain') || e.error?.message?.includes('dem')) {
  console.warn('[RadarMap] Terrain DEM error, disabling terrain');
@@ -84,17 +76,15 @@ export default function RadarMap({
  map.setTerrain(null);
  setTerrainEnabled(false);
  } catch (_) {
- // ignore
+
  }
  }
  });
 
- // Remove default controls, add minimal navigation
  map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
 
  mapRef.current = map;
 
- // ResizeObserver for responsive resize
  const resizeObserver = new ResizeObserver(() => {
  if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
  resizeTimeoutRef.current = setTimeout(() => {
@@ -108,10 +98,9 @@ export default function RadarMap({
  if (resizeTimeoutRef.current) clearTimeout(resizeTimeoutRef.current);
  map.remove();
  };
- // eslint-disable-next-line react-hooks/exhaustive-deps
+
  }, []);
 
- // Terrain toggle
  useEffect(() => {
  const map = mapRef.current;
  if (!map || !mapLoaded) return;
@@ -127,21 +116,17 @@ export default function RadarMap({
  }
  }, [terrainEnabled, mapLoaded]);
 
- // Render markers
  useEffect(() => {
  const map = mapRef.current;
  if (!map || !mapLoaded) return;
 
- // Remove old markers
  Object.values(markersRef.current).forEach(m => m.remove());
  markersRef.current = {};
 
- // Add new markers
  projects.forEach(project => {
  const statusVisual = getStatusVisual(project.status);
  const el = createPinElement(project, statusVisual);
 
- // Hover events
  el.addEventListener('mouseenter', () => onPinHover?.(project.id));
  el.addEventListener('mouseleave', () => onPinHover?.(null));
  el.addEventListener('click', (e) => {
@@ -157,7 +142,6 @@ export default function RadarMap({
  });
  }, [projects, mapLoaded, onPinClick, onPinHover]);
 
- // Highlight hovered pin
  useEffect(() => {
  Object.entries(markersRef.current).forEach(([id, marker]) => {
  const el = marker.getElement();
@@ -169,7 +153,6 @@ export default function RadarMap({
  });
  }, [hoveredPinId]);
 
- // Highlight selected pin
  useEffect(() => {
  Object.entries(markersRef.current).forEach(([id, marker]) => {
  const el = marker.getElement();
@@ -181,7 +164,6 @@ export default function RadarMap({
  });
  }, [selectedPinId]);
 
- // FlyTo animation
  useEffect(() => {
  const map = mapRef.current;
  if (!map || !flyToTarget) return;
@@ -201,7 +183,6 @@ export default function RadarMap({
  map.on('moveend', handleMoveEnd);
  }, [flyToTarget, onFlyToComplete]);
 
- // Close popup on map click
  useEffect(() => {
  const map = mapRef.current;
  if (!map || !mapLoaded) return;
@@ -220,13 +201,11 @@ export default function RadarMap({
  <div className="radar-map">
  <div ref={mapContainerRef} className="radar-map__container" />
 
- {/* Terrain Toggle */}
  <TerrainToggle
  enabled={terrainEnabled}
  onToggle={() => setTerrainEnabled(prev => !prev)}
  />
 
- {/* Pin Popup */}
  {popupProject && mapLoaded && (
  <PinPopup
  project={popupProject}
@@ -239,9 +218,7 @@ export default function RadarMap({
  );
 }
 
-/**
- * Create a custom SVG pin element for a project.
- */
+
 function createPinElement(project, statusVisual) {
  const el = document.createElement('div');
  el.className = 'radar-pin';

@@ -2,20 +2,6 @@ import { Suspense, lazy } from 'react';
 import { AuthDroneErrorBoundary } from './AuthDroneErrorBoundary';
 import './AuthLayout.css';
 
-/* ──────────────────────────────────────────────────────────────
- * AuthLayout — Premium Drone-Tech Glassmorphism Auth Shell
- *
- * Layout:
- * - >= 1280px : 45/55 split, interactive branding left, form right
- * - 1024–1279 : 42/58 split compact
- * - 768–1023 : stacked, top visual hero + login card overlap
- * - < 768px : stacked, brand header + mini drone hero + login card
- *
- * Visual:
- * - Left: navy glassmorphism + 3D drone + floating cards + branding
- * - Right: soft frosted background + glass auth card
- * ────────────────────────────────────────────────────────────── */
-
 const AuthDroneScene = lazy(() => import('./AuthDroneScene'));
 
 function DronePlaceholder() {
@@ -29,7 +15,7 @@ function DronePlaceholder() {
  );
 }
 
-/* Floating stat cards */
+
 function FloatingCards() {
  return (
  <div className="auth-floating-cards" aria-hidden="true">
@@ -56,7 +42,6 @@ function FloatingCards() {
 export default function AuthLayout({ children }) {
  return (
  <div className="auth-layout-premium">
- {/* ── Left Visual Panel ── */}
  <aside className="auth-left-panel">
  <div className="auth-left-panel__bg-effects" aria-hidden="true">
  <div className="auth-left-panel__grid" />
@@ -95,7 +80,7 @@ export default function AuthLayout({ children }) {
  </div>
  </aside>
 
- {/* ── Right Auth Area ── */}
+
  <section className="auth-right-panel">
  <div className="auth-right-panel__bg-effects" aria-hidden="true">
  <div className="auth-right-panel__orb" />

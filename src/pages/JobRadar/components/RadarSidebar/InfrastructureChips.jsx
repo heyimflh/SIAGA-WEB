@@ -1,9 +1,5 @@
 const INFRA_OPTIONS = ['SUTET', 'Jembatan', 'Kilang', 'Solar Panel', 'Bendungan', 'Tower'];
 
-/**
- * InfrastructureChips — Multi-select pill chips for infrastructure type filter.
- * OR logic within chips.
- */
 export default function InfrastructureChips({ activeChips, onChange }) {
  const handleToggle = (chip) => {
  if (activeChips.includes(chip)) {

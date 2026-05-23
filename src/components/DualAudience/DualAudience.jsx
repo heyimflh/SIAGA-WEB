@@ -87,7 +87,7 @@ function DualAudience() {
  },
  });
 
- // Headline
+
  tl.fromTo(
  headlineRef.current,
  { y: 30, opacity: 0 },
@@ -101,7 +101,7 @@ function DualAudience() {
  '-=0.4'
  );
 
- // Panels slide in
+
  tl.fromTo(
  leftPanelRef.current,
  { x: -40, opacity: 0 },
@@ -116,7 +116,7 @@ function DualAudience() {
  '-=0.7'
  );
 
- // Center node bounce
+
  tl.fromTo(
  centerNodeRef.current,
  { scale: 0, opacity: 0 },
@@ -129,7 +129,7 @@ function DualAudience() {
  '-=0.5'
  );
 
- // Bullet stagger - left
+
  const leftBullets = leftBulletsRef.current.filter(Boolean);
  if (leftBullets.length) {
  tl.fromTo(
@@ -140,7 +140,7 @@ function DualAudience() {
  );
  }
 
- // Bullet stagger - right
+
  const rightBullets = rightBulletsRef.current.filter(Boolean);
  if (rightBullets.length) {
  tl.fromTo(
@@ -157,13 +157,13 @@ function DualAudience() {
 
  return (
  <section className="da-section" id="fitur" ref={sectionRef}>
- {/* Background subtle pattern */}
+
  <div className="da-bg" aria-hidden="true">
  <div className="da-bg-grid" />
  </div>
 
  <div className="da-container">
- {/* Section Header */}
+
  <div className="da-header">
  <h2 className="da-headline" ref={headlineRef}>
  Satu Platform, Dua Sisi Infrastruktur
@@ -175,9 +175,7 @@ function DualAudience() {
  </p>
  </div>
 
- {/* Split Panels */}
  <div className="da-panels">
- {/* Left Panel - Enterprise */}
  <div className="da-panel da-panel--left" ref={leftPanelRef}>
  <div className="da-panel-inner">
  <div className="da-panel-icon">
@@ -212,7 +210,7 @@ function DualAudience() {
  </div>
  </div>
 
- {/* Center Divider + Node */}
+
  <div className="da-divider">
  <div className="da-divider-line" />
  <div className="da-center-node" ref={centerNodeRef}>
@@ -221,7 +219,7 @@ function DualAudience() {
  <div className="da-divider-line" />
  </div>
 
- {/* Right Panel - Pilots */}
+
  <div className="da-panel da-panel--right" ref={rightPanelRef}>
  <div className="da-panel-inner">
  <div className="da-panel-icon">

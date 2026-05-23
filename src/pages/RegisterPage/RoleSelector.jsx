@@ -3,30 +3,6 @@ import { useSearchParams } from 'react-router-dom';
 import { Building2, User } from 'lucide-react';
 import { ACTION_TYPES } from './registerReducer.js';
 
-/* ──────────────────────────────────────────────────────────────
- * RoleSelector — Step 1 of the Register flow
- *
- * Renders two large interactive cards (Perusahaan, Pilot/Agensi).
- * Cards are real <button> elements so the browser handles
- * Enter/Space activation and tab order natively .
- *
- * Hover effect: translateY(-6px) over 200ms ease-out .
- * Click: dispatch SET_ROLE then GO_TO_STEP(2) .
- *
- * Query parameter handling (Requirements 1.6, 1.7, 1.7a):
- * - Read ?role=client|pilot from useSearchParams ONCE on mount
- * (useEffect with empty deps).
- * - If valid AND state.role is still null → auto-set role and
- * advance to Step 2.
- * - If invalid (or absent) → stay at Step 1.
- * - Subsequent changes to the query string after mount are
- * deliberately ignored so an active user is never yanked
- * between roles.
- *
- * Validates: Requirements 1.4, 1.5, 1.6, 1.7, 1.7a, 6.2, 6.3, 6.4,
- * 6.6, 12.6
- * ────────────────────────────────────────────────────────────── */
-
 const ROLE_OPTIONS = [
  {
  role: 'client',
@@ -49,18 +25,13 @@ function isValidRole(value) {
 export default function RoleSelector({ state, dispatch }) {
  const [searchParams] = useSearchParams();
 
- // Mount-only effect: respect ?role= query exactly once.
- // Reading searchParams here is fine because we never re-run the
- // effect — the linter will flag the missing dep, but the empty
- // array is intentional per a.
- // eslint-disable-next-line react-hooks/exhaustive-deps
  useEffect(() => {
  const queryRole = searchParams.get('role');
  if (isValidRole(queryRole) && state.role === null) {
  dispatch({ type: ACTION_TYPES.SET_ROLE, payload: { role: queryRole } });
  dispatch({ type: ACTION_TYPES.GO_TO_STEP, payload: { step: 2 } });
  }
- // Invalid or missing query → user stays at Step 1, no action taken.
+
  }, []);
 
  function handleSelect(role) {

@@ -36,17 +36,14 @@ export default function BrowsePilotsPage() {
  const { session } = useAuth();
  const authRole = session?.role || null;
 
- // Search state
  const [searchQuery, setSearchQuery] = useState('');
  const [debouncedQuery, setDebouncedQuery] = useState('');
  const [showSuggestions, setShowSuggestions] = useState(false);
  const [suggestionIndex, setSuggestionIndex] = useState(-1);
 
- // Filter state
  const [filters, setFilters] = useState(DEFAULT_FILTERS);
  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
 
- // Pagination state
  const [visibleCount, setVisibleCount] = useState(
  typeof window !== 'undefined' && window.innerWidth < 768
  ? INITIAL_VISIBLE_MOBILE
@@ -54,7 +51,6 @@ export default function BrowsePilotsPage() {
  );
  const [isLoadingMore, setIsLoadingMore] = useState(false);
 
- // Drawer / Lightbox state
  const [selectedPilot, setSelectedPilot] = useState(null);
  const [drawerOpen, setDrawerOpen] = useState(false);
  const [lightboxState, setLightboxState] = useState({
@@ -63,13 +59,10 @@ export default function BrowsePilotsPage() {
  currentIndex: 0,
  });
 
- // Toast state
  const [toastMessage, setToastMessage] = useState(null);
 
- // Refs
  const viewProfileTriggerRef = useRef(null);
 
- // Debounce search
  useEffect(() => {
  const timer = setTimeout(() => {
  setDebouncedQuery(searchQuery);
@@ -77,7 +70,6 @@ export default function BrowsePilotsPage() {
  return () => clearTimeout(timer);
  }, [searchQuery]);
 
- // Reset visible count when filters/search change
  useEffect(() => {
  setVisibleCount(
  typeof window !== 'undefined' && window.innerWidth < 768
@@ -86,7 +78,6 @@ export default function BrowsePilotsPage() {
  );
  }, [debouncedQuery, filters]);
 
- // Computed data
  const filteredPilots = useMemo(
  () => applySearchAndFilters(pilots, debouncedQuery, filters),
  [debouncedQuery, filters]
@@ -112,7 +103,6 @@ export default function BrowsePilotsPage() {
  [filteredPilots.length, visiblePilots.length]
  );
 
- // Handlers
  const handleSearchChange = useCallback((value) => {
  setSearchQuery(value);
  setSuggestionIndex(-1);
@@ -223,7 +213,6 @@ export default function BrowsePilotsPage() {
  setToastMessage(null);
  }, []);
 
- // Show suggestions when typing
  useEffect(() => {
  if (searchQuery.trim().length >= 2 && suggestions.length > 0) {
  setShowSuggestions(true);
@@ -318,7 +307,6 @@ export default function BrowsePilotsPage() {
  onDismiss={handleDismissToast}
  />
 
- {/* Aria live region for result updates */}
  <div aria-live="polite" aria-atomic="true" className="sr-only">
  {resultSummary.total}. {resultSummary.visible}
  </div>

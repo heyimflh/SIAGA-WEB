@@ -1,7 +1,3 @@
-/* ══════════════════════════════════════════════════════
- RadarHUD — Premium Floating Command HUD
- ══════════════════════════════════════════════════════ */
-
 .radar-hud {
  position: absolute;
  top: 20px;
@@ -19,7 +15,6 @@
  max-width: 90vw;
 }
 
-/* Subtle top glow */
 .radar-hud::before {
  content: '';
  position: absolute;
@@ -83,7 +78,6 @@
  letter-spacing: 0.08em;
 }
 
-/* Stats Row */
 .radar-hud__stats {
  display: flex;
  align-items: center;
@@ -137,7 +131,6 @@
  white-space: nowrap;
 }
 
-/* ── Compact Mode (Mobile) ── */
 .radar-hud--compact {
  top: 12px;
  left: 50%;
@@ -157,7 +150,6 @@
  white-space: nowrap;
 }
 
-/* ── Tablet ── */
 @media (min-width: 768px) and (max-width: 1279px) {
  .radar-hud {
  min-width: 360px;
@@ -169,7 +161,6 @@
  }
 }
 
-/* ── Mobile ── */
 @media (max-width: 767px) {
  .radar-hud {
  top: 12px;

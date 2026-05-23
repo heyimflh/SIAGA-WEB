@@ -1,16 +1,3 @@
-/**
- * SettingsPage — Client Account Settings
- *
- * Route: /dashboard/client/settings
- * Role: client only
- *
- * Premium settings page with tabbed sections:
- * - Profil Perusahaan
- * - Notifikasi
- * - Keamanan
- * - Preferensi Platform
- */
-
 import { useState, useCallback } from 'react';
 import {
  Settings,
@@ -52,7 +39,6 @@ export default function SettingsPage() {
  const [saved, setSaved] = useState(false);
  const [showPassword, setShowPassword] = useState(false);
 
- // Form states (demo — not persisted)
  const [profile, setProfile] = useState({
  companyName: companyName,
  email: session?.email || 'hendra@pln.co.id',
@@ -106,7 +92,6 @@ export default function SettingsPage() {
  notifUnread={mockData.notifications.unread_count}
  >
  <div className="settings-page">
- {/* Header */}
  <div className="settings-page__header">
  <div className="settings-page__header-text">
  <h1 className="settings-page__title">
@@ -127,9 +112,9 @@ export default function SettingsPage() {
  </button>
  </div>
 
- {/* Layout: Tabs + Content */}
+
  <div className="settings-page__layout">
- {/* Tab Navigation */}
+
  <nav className="settings-tabs" aria-label="Pengaturan">
  {TABS.map((tab) => {
  const Icon = tab.icon;
@@ -147,7 +132,7 @@ export default function SettingsPage() {
  })}
  </nav>
 
- {/* Tab Content */}
+
  <div className="settings-content">
  {activeTab === 'profile' && (
  <div className="settings-section">
@@ -156,7 +141,7 @@ export default function SettingsPage() {
  Informasi perusahaan yang ditampilkan kepada pilot dan partner
  </p>
 
- {/* Avatar */}
+
  <div className="settings-avatar">
  <div className="settings-avatar__img">
  <img src="/images/avatars/Avatar 10.jpg" alt="Company" />
@@ -170,7 +155,7 @@ export default function SettingsPage() {
  </div>
  </div>
 
- {/* Form Fields */}
+
  <div className="settings-form">
  <div className="settings-field">
  <label className="settings-field__label">
@@ -492,7 +477,7 @@ export default function SettingsPage() {
  );
 }
 
-/* Toggle Row Component */
+
 function ToggleRow({ label, desc, checked, onChange }) {
  return (
  <div className="toggle-row">

@@ -3,14 +3,9 @@ import { X, MapPin, Building2, FileText, Zap } from 'lucide-react';
 import { formatRupiah, getStatusVisual } from '../../filters.js';
 import './ProjectDetailDrawer.css';
 
-/**
- * ProjectDetailDrawer — Right-side drawer (desktop) or bottom sheet (mobile)
- * showing full project details.
- */
 export default function ProjectDetailDrawer({ project, isOpen, onClose, onBidClick, isMobile }) {
  const drawerRef = useRef(null);
 
- // Focus management & Escape key
  useEffect(() => {
  if (!isOpen) return;
 
@@ -22,7 +17,6 @@ export default function ProjectDetailDrawer({ project, isOpen, onClose, onBidCli
 
  document.addEventListener('keydown', handleKeyDown);
 
- // Focus the drawer
  if (drawerRef.current) {
  drawerRef.current.focus();
  }
@@ -49,7 +43,6 @@ export default function ProjectDetailDrawer({ project, isOpen, onClose, onBidCli
 
  return (
  <>
- {/* Overlay */}
  <div
  className={`detail-drawer-overlay ${isOpen ? 'detail-drawer-overlay--visible' : ''}`}
  onClick={onClose}
@@ -63,7 +56,6 @@ export default function ProjectDetailDrawer({ project, isOpen, onClose, onBidCli
  aria-modal="true"
  tabIndex={-1}
  >
- {/* Header */}
  <div className="detail-drawer__header">
  <button
  className="detail-drawer__close"
@@ -74,9 +66,7 @@ export default function ProjectDetailDrawer({ project, isOpen, onClose, onBidCli
  </button>
  </div>
 
- {/* Content */}
  <div className="detail-drawer__content">
- {/* Status */}
  <div className="detail-drawer__status-row">
  <span
  className="detail-drawer__status"
@@ -88,16 +78,14 @@ export default function ProjectDetailDrawer({ project, isOpen, onClose, onBidCli
  <span className="detail-drawer__infra">{project.jenis_infrastruktur}</span>
  </div>
 
- {/* Name */}
+
  <h2 className="detail-drawer__name" id="detail-drawer-title">{project.nama}</h2>
 
- {/* Location */}
  <div className="detail-drawer__info-row">
  <MapPin size={14} className="detail-drawer__info-icon" />
  <span>{project.lokasi.kota}, {project.lokasi.provinsi}</span>
  </div>
 
- {/* Client */}
  {project.client_nama && (
  <div className="detail-drawer__info-row">
  <Building2 size={14} className="detail-drawer__info-icon" />
@@ -105,7 +93,6 @@ export default function ProjectDetailDrawer({ project, isOpen, onClose, onBidCli
  </div>
  )}
 
- {/* Stats Grid */}
  <div className="detail-drawer__stats">
  <div className="detail-drawer__stat-card">
  <span className="detail-drawer__stat-label">Nilai Kontrak</span>
@@ -123,7 +110,6 @@ export default function ProjectDetailDrawer({ project, isOpen, onClose, onBidCli
  </div>
  </div>
 
- {/* Description */}
  {project.deskripsi && (
  <div className="detail-drawer__description">
  <div className="detail-drawer__desc-header">
@@ -135,7 +121,7 @@ export default function ProjectDetailDrawer({ project, isOpen, onClose, onBidCli
  )}
  </div>
 
- {/* CTA */}
+
  <div className="detail-drawer__footer">
  <button
  className="detail-drawer__bid-btn"

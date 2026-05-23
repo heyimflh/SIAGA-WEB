@@ -1,9 +1,3 @@
-/**
- * ProjectImage — Premium visual image for project context.
- * Displays a relevant infrastructure image with overlay and caption.
- *
- * Feature: project-detail-page
- */
 import { getProjectImage } from '../../project-images.js';
 import './ProjectImage.css';
 

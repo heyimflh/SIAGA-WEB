@@ -1,22 +1,6 @@
-/**
- * BidRow.jsx — Single row in the Bidding Review Table (Section D).
- *
- * Spec: .kiro/specs/client-dashboard
- * Validates: Requirements 7.1, 7.3, 7.4, 7.11, 7.12, 12.5
- *
- * Renders one bid as a `<tr>` with columns:
- * Avatar Pilot | Nama Pilot | Badge SIAGA Verified | Rating | Harga Bid | Estimasi Hari | Drone Type | Aksi
- *
- * Each `<td>` carries `data-label` for responsive stacked card layout (<768px).
- */
-
 import { ShieldCheck, Star, Eye, UserCheck } from 'lucide-react';
 import { formatRupiah } from '../../utils/formatRupiah.js';
 
-/**
- * Renders star rating as filled/empty stars + numeric value.
- * @param {{ rating: number }} props
- */
 function StarRating({ rating }) {
  const fullStars = Math.floor(rating);
  const stars = [];
@@ -41,14 +25,7 @@ function StarRating({ rating }) {
  );
 }
 
-/**
- * BidRow — renders a single bid entry as a table row.
- *
- * Props:
- * - bid: object from mock-data bids array
- * - onViewProfile: (bid) => void — opens PilotProfileDrawer
- * - onSelectPilot: (bid) => void — opens PilotSelectionModal
- */
+
 function BidRow({ bid, onViewProfile, onSelectPilot }) {
  return (
  <tr className="bid-row">

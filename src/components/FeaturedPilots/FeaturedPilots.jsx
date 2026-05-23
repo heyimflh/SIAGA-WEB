@@ -25,7 +25,6 @@ function FeaturedPilots() {
  const [filteredPilots, setFilteredPilots] = useState(pilots);
  const [isAnimating, setIsAnimating] = useState(false);
 
- // Filter logic
  useEffect(() => {
  if (activeFilter === 'Semua') {
  setFilteredPilots(pilots);
@@ -39,7 +38,6 @@ function FeaturedPilots() {
  }
  }, [activeFilter]);
 
- // GSAP entrance animation
  useEffect(() => {
  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  if (prefersReduced) return;
@@ -81,7 +79,6 @@ function FeaturedPilots() {
  return () => ctx.revert();
  }, []);
 
- // Animate cards on filter change
  useEffect(() => {
  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  if (prefersReduced) return;
@@ -107,7 +104,6 @@ function FeaturedPilots() {
  }
  }, [filteredPilots]);
 
- // Drag to scroll
  useEffect(() => {
  const container = scrollContainerRef.current;
  if (!container) return;
@@ -162,7 +158,6 @@ function FeaturedPilots() {
  return (
  <section className="fp-section" ref={sectionRef}>
  <div className="fp-container">
- {/* Header */}
  <div className="fp-header" ref={headerRef}>
  <div className="fp-header-text">
  <h2 className="fp-headline">
@@ -179,7 +174,6 @@ function FeaturedPilots() {
  </a>
  </div>
 
- {/* Filter Chips */}
  <div className="fp-filters" ref={filtersRef}>
  {filterCategories.map((category) => (
  <button
@@ -194,20 +188,17 @@ function FeaturedPilots() {
  ))}
  </div>
 
- {/* Scroll Container */}
  <div className="fp-scroll-wrapper">
  <div className="fp-scroll-mask fp-scroll-mask--left" />
  <div className="fp-scroll-mask fp-scroll-mask--right" />
  <div className="fp-scroll" ref={scrollContainerRef}>
  {filteredPilots.map((pilot) => (
  <div key={pilot.id} className="fp-card">
- {/* Verified Badge */}
  <div className="fp-card-badge">
  <CheckCircle size={12} strokeWidth={2.5} />
  <span>Verified</span>
  </div>
 
- {/* Avatar Monogram */}
  <div
  className="fp-card-avatar"
  style={{ background: pilot.gradientBg }}
@@ -215,14 +206,12 @@ function FeaturedPilots() {
  <span>{pilot.initials}</span>
  </div>
 
- {/* Info */}
  <h4 className="fp-card-name">{pilot.name}</h4>
  <div className="fp-card-location">
  <MapPin size={12} strokeWidth={2} />
  <span>{pilot.location}</span>
  </div>
 
- {/* Specializations */}
  <div className="fp-card-specs">
  {pilot.specializations.slice(0, 2).map((spec, i) => (
  <span key={i} className="fp-spec-chip">
@@ -231,7 +220,6 @@ function FeaturedPilots() {
  ))}
  </div>
 
- {/* Stats */}
  <div className="fp-card-stats">
  <div className="fp-stat-rating">
  <Star size={13} strokeWidth={2} fill="#F59E0B" color="#F59E0B" />
@@ -241,19 +229,17 @@ function FeaturedPilots() {
  <span className="fp-stat-missions">{pilot.missions} misi</span>
  </div>
 
- {/* Drone */}
+
  <div className="fp-card-drone">
  <Navigation size={12} strokeWidth={2} />
  <span>{pilot.drone}</span>
  </div>
 
- {/* Price */}
  <div className="fp-card-price">
  <Wallet size={12} strokeWidth={2} />
  <span>Mulai {pilot.startingPrice}</span>
  </div>
 
- {/* CTA */}
  <Link to={ROUTES.pilots} className="fp-card-cta">
  Lihat Profil
  <ArrowRight size={13} strokeWidth={2} />
@@ -263,7 +249,6 @@ function FeaturedPilots() {
  </div>
  </div>
 
- {/* Bottom CTA (mobile) */}
  <div className="fp-bottom-cta">
  <a href="/pilots" className="fp-cta-btn">
  Lihat Semua Pilot

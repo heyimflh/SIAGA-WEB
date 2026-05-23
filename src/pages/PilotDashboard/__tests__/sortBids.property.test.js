@@ -1,8 +1,3 @@
-/**
- * Property test for sortBids.
- * Feature: pilot-dashboard
- */
-
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
 import { sortBids } from '../utils/sortBids.js';

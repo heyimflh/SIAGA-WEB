@@ -4,10 +4,6 @@ import FilterSection from '../RadarSidebar/FilterSection.jsx';
 import ProjectList from '../RadarSidebar/ProjectList.jsx';
 import './MobileBottomSheet.css';
 
-/**
- * MobileBottomSheet — Replaces desktop sidebar on mobile (<768px).
- * Has collapsed (60-80px) and expanded (60-70vh) states.
- */
 export default function MobileBottomSheet({
  state,
  onStateChange,
@@ -27,7 +23,6 @@ export default function MobileBottomSheet({
 }) {
  const isExpanded = state === 'expanded';
 
- // Escape to collapse
  useEffect(() => {
  const handleKeyDown = (e) => {
  if (e.key === 'Escape' && isExpanded) {
@@ -44,7 +39,6 @@ export default function MobileBottomSheet({
 
  return (
  <div className={`mobile-bottom-sheet ${isExpanded ? 'mobile-bottom-sheet--expanded' : ''}`}>
- {/* Drag Handle */}
  <button
  className="mobile-bottom-sheet__handle"
  onClick={handleToggle}
@@ -54,7 +48,7 @@ export default function MobileBottomSheet({
  <GripHorizontal size={20} className="mobile-bottom-sheet__grip" />
  </button>
 
- {/* Collapsed Summary */}
+
  {!isExpanded && (
  <div className="mobile-bottom-sheet__summary" onClick={handleToggle}>
  <span className="mobile-bottom-sheet__count">{projects.length} proyek tersedia</span>
@@ -68,7 +62,7 @@ export default function MobileBottomSheet({
  </div>
  )}
 
- {/* Expanded Content */}
+
  {isExpanded && (
  <div className="mobile-bottom-sheet__content">
  <div className="mobile-bottom-sheet__header">

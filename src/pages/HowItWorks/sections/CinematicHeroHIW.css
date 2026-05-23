@@ -1,4 +1,3 @@
-/* Mission Control Hero — with real project background slideshow + blue sky overlay */
 .mch {
  position: relative;
  overflow: hidden;
@@ -8,7 +7,6 @@
  align-items: center;
 }
 
-/* Background slideshow */
 .mch__slideshow {
  position: absolute;
  inset: 0;
@@ -29,7 +27,6 @@
  opacity: 1;
 }
 
-/* Blue sky overlay — tipis agar gambar project terlihat jelas */
 .mch__overlay {
  position: absolute;
  inset: 0;
@@ -45,7 +42,6 @@
  );
 }
 
-/* Background layers (on top of overlay) */
 .mch__bg { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
 .mch__grid {
  position: absolute; inset: 0;
@@ -61,14 +57,12 @@
 .mch__orb--1 { width: 600px; height: 600px; top: -20%; right: -8%; }
 .mch__orb--2 { width: 350px; height: 350px; bottom: -10%; left: -5%; background: radial-gradient(circle, rgba(33,150,243,0.1), transparent 70%); }
 
-/* Container */
 .mch__container {
  max-width: 1320px; margin: 0 auto; width: 100%;
  display: grid; grid-template-columns: 1fr 1.1fr; gap: 3.5rem; align-items: center;
  position: relative; z-index: 3;
 }
 
-/* Content column */
 .mch__content {
  opacity: 0; transform: translateY(28px);
  transition: opacity 0.8s ease, transform 0.8s ease;
@@ -131,7 +125,6 @@
  padding: 0.35rem 0.8rem; border-radius: 999px;
 }
 
-/* Slide indicators */
 .mch__indicators {
  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
  display: flex; gap: 0.5rem; z-index: 4;
@@ -146,7 +139,6 @@
  box-shadow: 0 0 8px rgba(0,212,255,0.4);
 }
 
-/* Preview column — Mission Control Card */
 .mch__preview {
  opacity: 0; transform: translateY(36px) scale(0.97);
  transition: opacity 1s ease 0.25s, transform 1s ease 0.25s;
@@ -177,7 +169,6 @@
 
 .mch__preview-body { padding: 1.25rem; display: flex; flex-direction: column; gap: 0.9rem; }
 
-/* Project info */
 .mch__preview-project { display: flex; flex-direction: column; gap: 0.3rem; }
 .mch__preview-project-name {
  font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.92rem; color: #fff;
@@ -197,7 +188,6 @@
  animation: mch-pulse 2s ease-in-out infinite;
 }
 
-/* Progress */
 .mch__preview-progress-header {
  display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;
 }
@@ -211,7 +201,6 @@
  background: linear-gradient(90deg, #00D4FF, #2196F3);
 }
 
-/* Mini map */
 .mch__preview-map {
  position: relative; height: 72px; border-radius: 10px; overflow: hidden;
  background: rgba(0,212,255,0.03); border: 1px solid rgba(0,212,255,0.08);
@@ -231,7 +220,6 @@
  animation: mch-pulse 2.5s ease-in-out infinite;
 }
 
-/* Pilot card */
 .mch__preview-pilot {
  display: flex; align-items: center; gap: 0.6rem;
  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06);
@@ -253,7 +241,6 @@
  padding: 0.2rem 0.5rem; border-radius: 999px;
 }
 
-/* Telemetry */
 .mch__preview-telemetry { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
 .mch__preview-tele-item {
  display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
@@ -264,7 +251,6 @@
 .mch__preview-tele-label { font-family: 'Inter', sans-serif; font-size: 0.55rem; color: rgba(255,255,255,0.4); }
 .mch__preview-tele-item--alert .mch__preview-tele-val { color: #F5B942; }
 
-/* Report status */
 .mch__preview-report {
  display: flex; align-items: center; gap: 0.5rem;
  font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.6);
@@ -277,7 +263,6 @@
  50% { opacity: 0.6; transform: scale(1.3); }
 }
 
-/* Responsive */
 @media (max-width: 1100px) {
  .mch__container { grid-template-columns: 1fr; gap: 2.5rem; }
  .mch__preview { max-width: 520px; }

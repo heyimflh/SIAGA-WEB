@@ -14,7 +14,6 @@ export default function SampleReportPreview() {
  />
 
  <div className="srp__content">
- {/* Report mockup */}
  <div className="srp__mockup">
  <div className="srp__page">
  <div className="srp__page-header">
@@ -71,7 +70,7 @@ export default function SampleReportPreview() {
  </div>
  </div>
 
- {/* Info side */}
+
  <div className="srp__info">
  <h3 className="srp__info-title">Apa yang ada di dalam laporan?</h3>
  <ul className="srp__info-list">

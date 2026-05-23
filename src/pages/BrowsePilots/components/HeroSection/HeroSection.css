@@ -1,8 +1,3 @@
-/* ════════════════════════════════════════════════════════
- HERO — Pilot Discovery Command Center
- Auto-sliding real project images + blue-sky overlay
- ════════════════════════════════════════════════════════ */
-
 .pilots-hero {
  position: relative;
  padding: 120px 24px 88px;
@@ -12,7 +7,6 @@
  min-height: 580px;
 }
 
-/* ── Slideshow background ── */
 .pilots-hero__slideshow {
  position: absolute;
  inset: 0;
@@ -48,7 +42,6 @@
  to { transform: scale(1.12); }
 }
 
-/* ── Blue-sky overlay — lighter so real project colors show through ── */
 .pilots-hero__overlay {
  position: absolute;
  inset: 0;
@@ -63,7 +56,6 @@
  );
 }
 
-/* ── Subtle dot-grid + route lines ── */
 .pilots-hero__bg-pattern {
  position: absolute;
  inset: 0;
@@ -76,7 +68,6 @@
  pointer-events: none;
 }
 
-/* ── Cyan glow behind search bar ── */
 .pilots-hero__glow {
  position: absolute;
  top: 52%;
@@ -89,7 +80,6 @@
  z-index: -2;
 }
 
-/* ── Floating glass badges ── */
 .pilots-hero__floating {
  position: absolute;
  inset: 0;
@@ -142,7 +132,6 @@
  50% { transform: translateY(-10px); opacity: 1; }
 }
 
-/* ── Slide indicators ── */
 .pilots-hero__indicators {
  position: absolute;
  bottom: 24px;
@@ -171,7 +160,6 @@
  box-shadow: 0 0 8px rgba(255,255,255,0.5);
 }
 
-/* ── Content ── */
 .pilots-hero__content {
  position: relative;
  z-index: 2;
@@ -224,7 +212,6 @@
  text-shadow: 0 1px 8px rgba(0,0,0,0.1);
 }
 
-/* ── Search Bar — Premium ── */
 .pilots-hero__search-wrapper {
  position: relative;
  max-width: 700px;
@@ -276,7 +263,6 @@
  color: var(--text-tertiary);
 }
 
-/* ── Autocomplete ── */
 .pilots-search__suggestions {
  position: absolute;
  top: calc(100% + 10px);
@@ -329,7 +315,6 @@
  font-weight: 600;
 }
 
-/* ── Trust Metrics — Glass Cards ── */
 .pilots-hero__metrics {
  display: flex;
  justify-content: center;
@@ -381,7 +366,6 @@
  line-height: 1.3;
 }
 
-/* ── Responsive ── */
 @media (max-width: 1024px) {
  .pilots-hero__float-badge--3,
  .pilots-hero__float-badge--4 {
@@ -425,7 +409,6 @@
  }
 }
 
-/* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
  .pilots-hero__float-badge {
  animation: none;

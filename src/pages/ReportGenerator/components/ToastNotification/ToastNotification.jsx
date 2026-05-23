@@ -1,7 +1,3 @@
-/**
- * ToastNotification — Glass notification for success/error/info.
- */
-
 import { useEffect } from 'react';
 import { CheckCircle, AlertCircle, Info, X } from 'lucide-react';
 import './ToastNotification.css';
@@ -15,7 +11,6 @@ const ICONS = {
 function ToastNotification({ message, type = 'success', onClose }) {
  const Icon = ICONS[type] || Info;
 
- // Auto-dismiss after 4 seconds
  useEffect(() => {
  const timer = setTimeout(onClose, 4000);
  return () => clearTimeout(timer);

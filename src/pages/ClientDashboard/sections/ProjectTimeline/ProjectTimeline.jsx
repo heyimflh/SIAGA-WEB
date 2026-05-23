@@ -1,20 +1,3 @@
-/**
- * ProjectTimeline — Section C (timeline horizontal 5 milestone).
- *
- * Spec: .kiro/specs/client-dashboard
- * Validates implementation
- *
- * Props:
- * - projects: ReadonlyArray<{ id, nama, milestones }>
- * - selectedProjectId: string | null
- * - onSelectProject: (id: string) => void
- *
- * Behavior:
- * - Renders horizontal timeline with 5 milestones for the selected project.
- * - Re-renders full timeline when selectedProjectId changes.
- * - Empty state when proyek_aktif is empty.
- */
-
 import { Link } from 'react-router-dom';
 import {
  Send,
@@ -28,11 +11,6 @@ import ProjectSelector from './ProjectSelector';
 import MilestoneNode from './MilestoneNode';
 import './ProjectTimeline.css';
 
-/**
- * Konstanta MILESTONES — 5 milestone dengan icon Lucide.
- * Urutan posted → bidding_open → pilot_selected →
- * inspection_in_progress → report_ready.
- */
 const MILESTONES = [
  { key: 'posted', label: 'Posted', icon: Send },
  { key: 'bidding_open', label: 'Bidding Open', icon: Megaphone },
@@ -41,15 +19,8 @@ const MILESTONES = [
  { key: 'report_ready', label: 'Report Ready', icon: FileCheck2 },
 ];
 
-/**
- * @param {{
- * projects: ReadonlyArray<{ id: string, nama: string, milestones: Record<string, { status: string, date: string }> }>,
- * selectedProjectId: string | null,
- * onSelectProject: (id: string) => void
- * }} props
- */
 function ProjectTimeline({ projects, selectedProjectId, onSelectProject }) {
- // Empty state: jika proyek_aktif kosong
+
  if (!projects || projects.length === 0) {
  return (
  <section className="project-timeline project-timeline--empty" aria-label="Timeline proyek">
@@ -67,19 +38,18 @@ function ProjectTimeline({ projects, selectedProjectId, onSelectProject }) {
  );
  }
 
- // Find the selected project
+
  const selectedProject = projects.find((p) => p.id === selectedProjectId) || projects[0];
 
  return (
  <section className="project-timeline" aria-label="Timeline proyek">
- {/* Project Selector */}
+
  <ProjectSelector
  projects={projects}
  selectedProjectId={selectedProjectId}
  onSelectProject={onSelectProject}
  />
 
- {/* Timeline horizontal */}
  <div
  className="project-timeline__track"
  role="tabpanel"

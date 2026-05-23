@@ -1,7 +1,3 @@
-/**
- * StatusToggle — Segmented control for status filter.
- * Options: "Bidding Terbuka" (open) | "Semua" (all)
- */
 export default function StatusToggle({ value, onChange }) {
  return (
  <div className="status-toggle" role="radiogroup" aria-label="Filter status proyek">

@@ -24,7 +24,6 @@ export default function FAQKnowledgeBase() {
  return (
  <section className="faq-kb" id="faq-section">
  <div className="faq-kb__container">
- {/* Help card (left on desktop) */}
  <aside className="faq-kb__help">
  <div className="faq-kb__help-card">
  <h2 className="faq-kb__help-title">Masih punya pertanyaan?</h2>
@@ -42,7 +41,7 @@ export default function FAQKnowledgeBase() {
  </div>
  </aside>
 
- {/* FAQ accordion (right on desktop) */}
+
  <div className="faq-kb__accordion" role="list">
  {faqItems.map((item) => {
  const isOpen = openId === item.id;

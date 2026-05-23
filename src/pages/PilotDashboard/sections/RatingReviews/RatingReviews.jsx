@@ -1,9 +1,3 @@
-/**
- * RatingReviews — Pilot Reputation Panel section.
- * Feature: pilot-dashboard
- * Validates: Requirements 12
- */
-
 import { Star } from 'lucide-react';
 import './RatingReviews.css';
 

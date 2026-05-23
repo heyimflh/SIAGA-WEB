@@ -4,10 +4,6 @@ import FilterSection from './FilterSection.jsx';
 import ProjectList from './ProjectList.jsx';
 import './RadarSidebar.css';
 
-/**
- * RadarSidebar — Dark glass command panel for Job Radar.
- * Contains header, filters, sort, and mission card list.
- */
 export default function RadarSidebar({
  isOpen,
  isOverlay,
@@ -34,7 +30,6 @@ export default function RadarSidebar({
 
  return (
  <>
- {/* Overlay backdrop for tablet */}
  {isOverlay && (
  <div
  className={`radar-sidebar-overlay-backdrop ${isOpen ? 'radar-sidebar-overlay-backdrop--visible' : ''}`}
@@ -43,7 +38,6 @@ export default function RadarSidebar({
  )}
 
  <aside className={sidebarClasses} aria-label="Radar Sidebar">
- {/* Toggle button */}
  <button
  className="radar-sidebar__toggle"
  onClick={onToggle}

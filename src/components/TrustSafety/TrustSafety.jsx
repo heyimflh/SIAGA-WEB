@@ -46,7 +46,6 @@ const pillars = [
  },
 ];
 
-/* ── Mini Visual: Escrow Flow ── */
 function EscrowVisual() {
  const nodesRef = useRef([]);
 
@@ -97,7 +96,7 @@ function EscrowVisual() {
  );
 }
 
-/* ── Mini Visual: Verified Badge ── */
+
 function VerifiedVisual() {
  const badgeRef = useRef(null);
  const barsRef = useRef([]);
@@ -138,7 +137,7 @@ function VerifiedVisual() {
  return (
  <div className="ts-visual ts-visual--verified">
  <div className="ts-verified-card">
- {/* Realistic avatar with image */}
+
  <div className="ts-verified-avatar">
  <img
  src="/images/avatars/Avatar 1.jpg"
@@ -150,7 +149,6 @@ function VerifiedVisual() {
  <BadgeCheck size={12} strokeWidth={2.5} />
  </div>
  </div>
- {/* Profile info skeleton */}
  <div className="ts-verified-info">
  <div className="ts-verified-name">Pilot Verified</div>
  <div className="ts-verified-credentials">
@@ -182,7 +180,7 @@ function VerifiedVisual() {
  );
 }
 
-/* ── Mini Visual: Two-Way Rating ── */
+
 function RatingVisual() {
  const starsLeftRef = useRef([]);
  const starsRightRef = useRef([]);
@@ -198,7 +196,7 @@ function RatingVisual() {
 
  const tl = gsap.timeline({ repeat: -1, repeatDelay: 2 });
 
- // Arrow pulse
+
  if (arrowRef.current) {
  tl.fromTo(
  arrowRef.current,
@@ -208,7 +206,7 @@ function RatingVisual() {
  );
  }
 
- // Left stars fill (company rates pilot)
+
  starsLeft.forEach((star, i) => {
  tl.fromTo(
  star,
@@ -218,7 +216,7 @@ function RatingVisual() {
  );
  });
 
- // Right stars fill (pilot rates company)
+
  starsRight.forEach((star, i) => {
  tl.fromTo(
  star,
@@ -242,7 +240,7 @@ function RatingVisual() {
  return (
  <div className="ts-visual ts-visual--rating">
  <div className="ts-rating-scene">
- {/* Left: Company */}
+
  <div className="ts-rating-profile">
  <div className="ts-rating-avatar ts-rating-avatar--company">
  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -266,7 +264,6 @@ function RatingVisual() {
  </div>
  </div>
 
- {/* Arrow bidirectional */}
  <div className="ts-rating-arrow" ref={arrowRef}>
  <svg width="32" height="16" viewBox="0 0 32 16" fill="none">
  <path d="M2 5h28M26 1l4 4-4 4" stroke="var(--brand-blue)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -274,7 +271,6 @@ function RatingVisual() {
  </svg>
  </div>
 
- {/* Right: Pilot */}
  <div className="ts-rating-profile">
  <div className="ts-rating-avatar ts-rating-avatar--pilot">
  <img
@@ -304,7 +300,7 @@ function RatingVisual() {
  );
 }
 
-/* ── Mini Visual: Encryption ── */
+
 function EncryptionVisual() {
  const blocksRef = useRef([]);
 
@@ -366,7 +362,7 @@ function TrustSafety() {
  if (prefersReduced) return;
 
  const ctx = gsap.context(() => {
- // Header fade-up
+
  gsap.fromTo(
  headerRef.current,
  { y: 30, opacity: 0 },
@@ -383,7 +379,7 @@ function TrustSafety() {
  }
  );
 
- // Pillar cards stagger
+
  const cards = pillarsRef.current.filter(Boolean);
  if (cards.length) {
  gsap.fromTo(
@@ -410,14 +406,13 @@ function TrustSafety() {
 
  return (
  <section className="ts-section" ref={sectionRef}>
- {/* Background */}
  <div className="ts-bg" aria-hidden="true">
  <div className="ts-bg-glow" />
  <div className="ts-bg-grid" />
  </div>
 
  <div className="ts-container">
- {/* Header */}
+
  <div className="ts-header" ref={headerRef}>
  <span className="ts-eyebrow">TRUST INFRASTRUCTURE</span>
  <h2 className="ts-headline">
@@ -430,7 +425,7 @@ function TrustSafety() {
  </p>
  </div>
 
- {/* Pillars */}
+
  <div className="ts-pillars">
  {pillars.map((pillar, index) => {
  const Icon = pillar.icon;
@@ -444,15 +439,13 @@ function TrustSafety() {
  >
  <div className="ts-pillar-border-top" />
 
- {/* Mini Visual */}
  <Visual />
 
- {/* Icon */}
  <div className="ts-pillar-icon">
  <Icon size={22} strokeWidth={1.8} />
  </div>
 
- {/* Text */}
+
  <h3 className="ts-pillar-headline">{pillar.headline}</h3>
  <p className="ts-pillar-body">{pillar.body}</p>
  </div>

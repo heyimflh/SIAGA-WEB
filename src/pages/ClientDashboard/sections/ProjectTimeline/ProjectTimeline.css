@@ -1,13 +1,3 @@
-/**
- * ProjectTimeline.css — Premium glass card wrapper with refined tabs and milestone nodes.
- *
- * Glassmorphism container, premium tab pills, and polished timeline track.
- */
-
-/* =========================================================================
- Section container — Glass card wrapper
- ========================================================================= */
-
 .project-timeline {
  padding: 2rem;
  width: 100%;
@@ -20,10 +10,6 @@
  0 8px 32px rgba(10, 40, 80, 0.06),
  0 2px 8px rgba(10, 40, 80, 0.02);
 }
-
-/* =========================================================================
- Project Selector — Premium tab pills
- ========================================================================= */
 
 .project-selector--tabs {
  display: flex;
@@ -95,10 +81,6 @@
  box-shadow: 0 0 0 3px rgba(16, 109, 255, 0.12);
 }
 
-/* =========================================================================
- Timeline track
- ========================================================================= */
-
 .project-timeline__track {
  overflow-x: auto;
  padding: 1rem 0;
@@ -125,10 +107,6 @@
  min-width: max-content;
 }
 
-/* =========================================================================
- Milestone Node — Premium styling
- ========================================================================= */
-
 .milestone-node {
  display: flex;
  flex-direction: column;
@@ -138,8 +116,6 @@
  min-width: 140px;
  padding: 0 0.5rem;
 }
-
-/* --- Connector line --- */
 
 .milestone-node__connector {
  position: absolute;
@@ -170,8 +146,6 @@
  background: rgba(16, 109, 255, 0.08);
 }
 
-/* --- Node circle --- */
-
 .milestone-node__circle {
  width: 42px;
  height: 42px;
@@ -184,27 +158,22 @@
  transition: transform 200ms ease, box-shadow 200ms ease;
 }
 
-/* Completed: success green */
 .milestone-node--completed .milestone-node__circle {
  background: linear-gradient(135deg, #10B981, #059669);
  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.35);
 }
 
-/* In progress: accent with pulse */
 .milestone-node--in_progress .milestone-node__circle {
  background: linear-gradient(135deg, #00BFEA, #106DFF);
  box-shadow: 0 4px 20px rgba(0, 191, 234, 0.4);
  animation: milestone-pulse 1.6s ease-in-out infinite;
 }
 
-/* Upcoming: muted */
 .milestone-node--upcoming .milestone-node__circle {
  background: rgba(16, 109, 255, 0.06);
  border: 2px solid rgba(16, 109, 255, 0.12);
  opacity: 0.6;
 }
-
-/* --- Icons --- */
 
 .milestone-node__icon {
  color: #fff;
@@ -218,8 +187,6 @@
 .milestone-node__icon--check {
  color: #fff;
 }
-
-/* --- Info (label + date) --- */
 
 .milestone-node__info {
  display: flex;
@@ -252,10 +219,6 @@
  opacity: 0.4;
 }
 
-/* =========================================================================
- Pulse animation
- ========================================================================= */
-
 @keyframes milestone-pulse {
  0% {
  box-shadow: 0 4px 20px rgba(0, 191, 234, 0.4);
@@ -276,10 +239,6 @@
  animation: none;
  }
 }
-
-/* =========================================================================
- Empty state
- ========================================================================= */
 
 .project-timeline--empty {
  display: flex;
@@ -331,18 +290,19 @@
  box-shadow: 0 8px 24px rgba(0, 191, 234, 0.35);
 }
 
-/* =========================================================================
- Responsive adjustments
- ========================================================================= */
-
 @media (max-width: 767px) {
  .project-timeline {
  padding: 1.25rem;
  border-radius: 20px;
+ overflow: hidden;
+ }
+
+ .project-timeline__track {
+ margin: 0 -0.25rem;
  }
 
  .milestone-node {
- min-width: 100px;
+ min-width: 90px;
  }
 
  .milestone-node__circle {
@@ -363,5 +323,36 @@
 
  .milestone-node__date {
  font-size: 0.625rem;
+ }
+}
+
+@media (max-width: 400px) {
+ .project-timeline {
+ padding: 1rem 0.875rem;
+ border-radius: 18px;
+ }
+
+ .milestone-node {
+ min-width: 84px;
+ padding: 0 0.25rem;
+ }
+
+ .milestone-node__circle {
+ width: 32px;
+ height: 32px;
+ }
+
+ .milestone-node__connector {
+ top: 16px;
+ left: calc(50% + 16px);
+ right: calc(-50% + 16px);
+ }
+
+ .milestone-node__label {
+ font-size: 0.625rem;
+ }
+
+ .milestone-node__date {
+ font-size: 0.5625rem;
  }
 }

@@ -1,17 +1,3 @@
-/**
- * Sidebar — navigasi vertikal kiri dengan tiga variant (full / icon / drawer).
- *
- * Props:
- * companyName — nama perusahaan (resolved dari session.email + mockData)
- * variant — 'full' | 'icon' | 'drawer'
- * drawerOpen — boolean (hanya relevan untuk variant drawer)
- * onDrawerClose — callback tutup drawer
- * onLogout — async callback logout
- *
- * Main navigation component supporting full, icon-only, and drawer display modes.
- * Spec: .kiro/specs/client-dashboard
- */
-
 import { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import {
@@ -27,9 +13,6 @@ import {
 import { useAuth } from '../../../auth/AuthContext';
 import './Sidebar.css';
 
-/**
- * Konstanta menu sidebar sesuai design.
- */
 const SIDEBAR_MENU = [
  { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, to: '/dashboard/client', exact: true },
  { id: 'proyek', label: 'Proyek', icon: FolderKanban, to: '/dashboard/client/projects' },
@@ -39,9 +22,6 @@ const SIDEBAR_MENU = [
  { id: 'pengaturan', label: 'Pengaturan', icon: Settings, to: '/dashboard/client/settings' },
 ];
 
-/**
- * Mengambil inisial dari nama perusahaan (maks 2 karakter).
- */
 function getInitials(name) {
  if (!name) return '?';
  const parts = name.trim().split(/\s+/);
@@ -58,7 +38,6 @@ function Sidebar({ companyName, variant = 'full', drawerOpen, onDrawerClose, onL
  const isIconOnly = variant === 'icon';
  const isDrawer = variant === 'drawer';
 
- // Determine which menu item is active based on current path
  function isItemActive(item) {
  if (item.exact) {
  return location.pathname === item.to;
@@ -70,19 +49,17 @@ function Sidebar({ companyName, variant = 'full', drawerOpen, onDrawerClose, onL
  setLogoutError('');
  try {
  logout();
- // Verify clearance before navigating
+
  if (window.sessionStorage.getItem('siaga_auth') !== null) {
  throw new Error('Logout failed: session still present');
  }
- // Use replace: true so dashboard is removed from history stack.
- // This ensures back button won't re-render sensitive data even momentarily.
+
  navigate('/login', { replace: true });
  } catch {
  setLogoutError('Logout gagal, silakan coba lagi');
  }
  }
 
- // Build class for the sidebar container
  const sidebarClass = [
  'sidebar',
  `sidebar--${variant}`,
@@ -91,7 +68,6 @@ function Sidebar({ companyName, variant = 'full', drawerOpen, onDrawerClose, onL
 
  return (
  <div className={sidebarClass}>
- {/* Logo SIAGA kecil */}
  <div className="sidebar__logo">
  <img
  src="/images/logo/siaga-icon.png"
@@ -101,7 +77,6 @@ function Sidebar({ companyName, variant = 'full', drawerOpen, onDrawerClose, onL
  {!isIconOnly && <span className="sidebar__logo-text">SIAGA</span>}
  </div>
 
- {/* Identity block */}
  {!isIconOnly && (
  <div className="sidebar__identity">
  <div className="sidebar__avatar" aria-hidden="true">
@@ -114,7 +89,7 @@ function Sidebar({ companyName, variant = 'full', drawerOpen, onDrawerClose, onL
  </div>
  )}
 
- {/* Tombol "Buat Proyek Baru" */}
+
  <Link
  to="/dashboard/client/create-project"
  className="sidebar__create-btn"
@@ -124,7 +99,6 @@ function Sidebar({ companyName, variant = 'full', drawerOpen, onDrawerClose, onL
  {!isIconOnly && <span>Buat Proyek Baru</span>}
  </Link>
 
- {/* Navigasi utama */}
  <nav aria-label="Navigasi utama" className="sidebar__nav">
  <ul className="sidebar__menu" role="list">
  {SIDEBAR_MENU.map((item) => {
@@ -148,10 +122,9 @@ function Sidebar({ companyName, variant = 'full', drawerOpen, onDrawerClose, onL
  </ul>
  </nav>
 
- {/* Spacer */}
+
  <div className="sidebar__spacer" />
 
- {/* Footer — Logout */}
  <div className="sidebar__footer">
  {logoutError && (
  <p className="sidebar__logout-error" role="alert">
@@ -169,7 +142,7 @@ function Sidebar({ companyName, variant = 'full', drawerOpen, onDrawerClose, onL
  </button>
  </div>
 
- {/* Close button for drawer variant (mobile) */}
+
  {isDrawer && drawerOpen && (
  <button
  type="button"

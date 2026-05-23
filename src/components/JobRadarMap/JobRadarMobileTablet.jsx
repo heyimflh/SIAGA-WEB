@@ -45,7 +45,6 @@ export default function JobRadarMobileTablet() {
  const [activeAlertIdx, setActiveAlertIdx] = useState(0);
  const [activePinId, setActivePinId] = useState(null);
 
- // Auto-cycle live activity
  useEffect(() => {
  const id = setInterval(() => {
  setActiveAlertIdx((i) => (i + 1) % liveAlerts.length);
@@ -53,7 +52,6 @@ export default function JobRadarMobileTablet() {
  return () => clearInterval(id);
  }, []);
 
- // Initialize Mapbox
  useEffect(() => {
  if (!mapContainerRef.current || mapRef.current) return;
 
@@ -73,7 +71,6 @@ export default function JobRadarMobileTablet() {
  dragRotate: false,
  });
 
- // Disable scroll-zoom to avoid hijacking page scroll on mobile
  map.scrollZoom.disable();
 
  map.on('style.load', () => {
@@ -87,7 +84,7 @@ export default function JobRadarMobileTablet() {
  });
 
  map.on('load', () => {
- // Add markers and store with their pin id for later activation
+
  pinData.forEach((pin) => {
  const el = document.createElement('div');
  el.className = `mrcc-marker ${pin.status === 'urgent' ? 'mrcc-marker--urgent' : 'mrcc-marker--active'}`;
@@ -96,7 +93,7 @@ export default function JobRadarMobileTablet() {
  <span class="mrcc-marker__pulse"></span>
  <span class="mrcc-marker__dot"></span>
  `;
- // Tap marker → also activate pin
+
  el.addEventListener('click', (e) => {
  e.stopPropagation();
  handlePinSelect(pin);
@@ -116,10 +113,9 @@ export default function JobRadarMobileTablet() {
  map.remove();
  mapRef.current = null;
  };
- // eslint-disable-next-line react-hooks/exhaustive-deps
+
  }, []);
 
- // Pin select handler — fly map to coordinates and mark active
  const handlePinSelect = (pin) => {
  setActivePinId(pin.id);
 
@@ -133,7 +129,6 @@ export default function JobRadarMobileTablet() {
  });
  }
 
- // Update marker classes for visual feedback
  markersRef.current.forEach(({ element, id }) => {
  if (id === pin.id) {
  element.classList.add('mrcc-marker--selected');
@@ -142,7 +137,6 @@ export default function JobRadarMobileTablet() {
  }
  });
 
- // Smooth scroll the map stage into view so user sees the result
  if (stageRef.current) {
  const rect = stageRef.current.getBoundingClientRect();
  const isVisible = rect.top >= 0 && rect.bottom <= window.innerHeight;
@@ -152,7 +146,6 @@ export default function JobRadarMobileTablet() {
  }
  };
 
- // Reset map view
  const handleResetView = () => {
  setActivePinId(null);
  if (mapRef.current) {
@@ -169,7 +162,6 @@ export default function JobRadarMobileTablet() {
  });
  };
 
- // GSAP entrance
  useEffect(() => {
  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
  if (prefersReduced) return;
@@ -271,7 +263,7 @@ export default function JobRadarMobileTablet() {
  </div>
 
  <div className="mrcc-container">
- {/* 1. Header */}
+
  <header className="mrcc-header">
  <div className="mrcc-eyebrow">
  <span className="mrcc-eyebrow-dot" />
@@ -288,7 +280,6 @@ export default function JobRadarMobileTablet() {
  </p>
  </header>
 
- {/* 2. Live Status Bar */}
  <div className="mrcc-status">
  <div className="mrcc-status-left">
  <span className="mrcc-status-dot" />
@@ -301,7 +292,7 @@ export default function JobRadarMobileTablet() {
  </div>
  </div>
 
- {/* 3. Mobile Map Stage */}
+
  <div className="mrcc-stage" ref={stageRef} aria-label="Indonesia inspection map">
  <div className="mrcc-stage-frame">
  <div className="mrcc-stage-map" ref={mapContainerRef} />
@@ -322,7 +313,6 @@ export default function JobRadarMobileTablet() {
  </div>
  </div>
 
- {/* 4. Quick Stats — 2x2 grid */}
  <div className="mrcc-stats">
  {statsData.map((s) => {
  const Icon = STAT_ICONS[s.icon];
@@ -343,7 +333,6 @@ export default function JobRadarMobileTablet() {
  })}
  </div>
 
- {/* 5. Job Radar Card */}
  <div className="mrcc-radar">
  <div className="mrcc-radar-header">
  <div className="mrcc-radar-title-group">
@@ -357,7 +346,6 @@ export default function JobRadarMobileTablet() {
  </div>
  </div>
 
- {/* Filter Chips — horizontal scroll fallback */}
  <div className="mrcc-filters">
  {FILTERS.map((f) => (
  <button
@@ -373,7 +361,6 @@ export default function JobRadarMobileTablet() {
  ))}
  </div>
 
- {/* Pin list — scrollable, all items */}
  <div className="mrcc-list" role="list">
  {filteredPins.map((pin) => (
  <button
@@ -423,14 +410,13 @@ export default function JobRadarMobileTablet() {
  ))}
  </div>
 
- {/* CTA */}
+
  <Link to={getRegisterPath('pilot')} className="mrcc-radar-cta">
  <span>Jelajahi Semua Proyek</span>
  <ArrowRight size={16} strokeWidth={2.2} />
  </Link>
  </div>
 
- {/* 6. Live Activity Card */}
  <div className="mrcc-activity">
  <div className="mrcc-activity-header">
  <span className="mrcc-activity-label">
@@ -456,7 +442,6 @@ export default function JobRadarMobileTablet() {
  </div>
  </div>
 
- {/* 7. Bottom system status */}
  <div className="mrcc-system">
  <div className="mrcc-system-chip">
  <span className="mrcc-system-dot" />

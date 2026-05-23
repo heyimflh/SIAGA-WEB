@@ -6,9 +6,6 @@ const SORT_OPTIONS = [
  { value: 'deadline_terdekat', label: 'Deadline Terdekat' },
 ];
 
-/**
- * SortControl — Pill-style sort selector.
- */
 export default function SortControl({ sortBy, onSortChange }) {
  return (
  <div className="sort-control" aria-label={`Urutan: ${SORT_OPTIONS.find(o => o.value === sortBy)?.label}`}>

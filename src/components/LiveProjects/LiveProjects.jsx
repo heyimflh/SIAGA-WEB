@@ -53,7 +53,7 @@ function LiveProjects() {
  if (prefersReduced) return;
 
  const ctx = gsap.context(() => {
- // Header animation
+
  gsap.fromTo(
  headerRef.current,
  { y: 30, opacity: 0 },
@@ -70,7 +70,7 @@ function LiveProjects() {
  }
  );
 
- // Cards stagger
+
  const cards = cardsRef.current.filter(Boolean);
  if (cards.length) {
  gsap.fromTo(
@@ -98,7 +98,7 @@ function LiveProjects() {
  return (
  <section className="lp-section" ref={sectionRef}>
  <div className="lp-container">
- {/* Header */}
+
  <div className="lp-header" ref={headerRef}>
  <div className="lp-live-badge">
  <span className="lp-live-dot" />
@@ -113,7 +113,7 @@ function LiveProjects() {
  </p>
  </div>
 
- {/* Project Grid */}
+
  <div className="lp-grid">
  {projects.map((project, index) => {
  const Icon = project.icon;
@@ -164,7 +164,7 @@ function LiveProjects() {
  })}
  </div>
 
- {/* Bottom CTA */}
+
  <div className="lp-bottom-cta">
  <Link to={getRegisterPath('client')} className="lp-cta-btn">
  Lihat Semua Proyek Aktif

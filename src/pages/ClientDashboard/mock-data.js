@@ -1,40 +1,3 @@
-/**
- * mock-data.js — single source of truth untuk seluruh data dummy
- * Client Dashboard.
- *
- * Spec: .kiro/specs/client-dashboard
- * Mock data for client dashboard features.
- *
- * Catatan invariant (dijaga manual, bukan runtime check karena data adalah
- * single source under our control):
- *
- * - perusahaan.email === email session login mock (auth-pages). Pak Hendra
- * dipakai sebagai persona A pada PRD; resolver `selectCompanyByEmail`
- * mencocokkan email session ke entry ini, dengan fallback ke email itu
- * sendiri jika tidak ditemukan.
- *
- * - Setiap project's `milestones` mengikuti aturan: paling banyak satu
- * milestone berstatus `in_progress`; semua milestone sebelumnya
- * `completed`; semua milestone sesudahnya `upcoming`.
- *
- * - `assets` berisi 7 entries dengan campuran status `aman`,
- * `perlu_perhatian`, dan `kritis`.
- *
- * - `bids` berisi 5-7 entries per `project_id`, dengan rating 0..5 dan
- * mencakup nilai di atas/bawah threshold rating 2
- * untuk memberikan demo material yang bermakna pada filter chip.
- *
- * - `activities` berisi 10 entries dengan timestamp ISO datetime.
- *
- * Module is deeply frozen to prevent mutation and ensure data integrity.
- */
-
-/**
- * deepFreeze — membekukan object beserta seluruh nested object/array.
- * @template T
- * @param {T} obj
- * @returns {Readonly<T>}
- */
 function deepFreeze(obj) {
  if (obj === null || typeof obj !== 'object' || Object.isFrozen(obj)) {
  return obj;
@@ -45,19 +8,11 @@ function deepFreeze(obj) {
  return Object.freeze(obj);
 }
 
-// ---------------------------------------------------------------------------
-// Perusahaan (Persona A — Pak Hendra, PT PLN)
-// ---------------------------------------------------------------------------
-
 const perusahaan = {
  nama: 'PT PLN (Persero)',
  email: 'hendra@pln.co.id',
  avatar: '/images/avatars/Avatar 10.jpg',
 };
-
-// ---------------------------------------------------------------------------
-// Overview Metrics
-// ---------------------------------------------------------------------------
 
 const overview_metrics = {
  proyek_aktif: { value: 12, trend_pct: 8 },
@@ -65,11 +20,6 @@ const overview_metrics = {
  budget: { used: 4_320_000_000, total: 6_000_000_000 },
  proyek_selesai_bulan_ini: { value: 7, delta_vs_last_month: 3 },
 };
-
-// ---------------------------------------------------------------------------
-// Assets — 7 entries (mix aman / perlu_perhatian / kritis)
-// Lokasi: tersebar di Pulau Jawa (kasus PT PLN).
-// ---------------------------------------------------------------------------
 
 const assets = [
  {
@@ -144,12 +94,6 @@ const assets = [
  },
 ];
 
-// ---------------------------------------------------------------------------
-// Proyek Aktif — 3 entries dengan 5 milestones tiap project.
-// Invariant: paling banyak satu `in_progress`; sebelumnya `completed`;
-// sesudahnya `upcoming`.
-// ---------------------------------------------------------------------------
-
 const proyek_aktif = [
  {
  id: 'P-001',
@@ -189,15 +133,8 @@ const proyek_aktif = [
  },
 ];
 
-// ---------------------------------------------------------------------------
-// Bids — 5-7 entries per project_id.
-// Mencakup nilai di atas/bawah threshold rating 2 agar
-// pre-filter `eligibleBids` punya material untuk demo. Mencakup juga nilai
-// rating < 4 dan >= 4, serta siaga_verified true/false untuk filter chip.
-// ---------------------------------------------------------------------------
-
 const bids = [
- // ---- Project P-001 (6 entries) -----------------------------------------
+
  {
  pilot_id: 'PIL-001',
  project_id: 'P-001',
@@ -274,7 +211,7 @@ const bids = [
  project_id: 'P-001',
  pilot_nama: 'Faisal Rahman',
  pilot_avatar: '/images/avatars/Avatar 6.jpg',
- // Below threshold rating < 2 — wajib selalu ter-hide oleh eligibleBids().
+
  siaga_verified: false,
  rating: 1.6,
  harga: 9_500_000,
@@ -285,7 +222,6 @@ const bids = [
  ],
  },
 
- // ---- Project P-002 (5 entries) -----------------------------------------
  {
  pilot_id: 'PIL-007',
  project_id: 'P-002',
@@ -358,7 +294,6 @@ const bids = [
  ],
  },
 
- // ---- Project P-003 (5 entries) -----------------------------------------
  {
  pilot_id: 'PIL-012',
  project_id: 'P-003',
@@ -430,10 +365,6 @@ const bids = [
  ],
  },
 ];
-
-// ---------------------------------------------------------------------------
-// Activities — 10 entries dengan timestamp ISO datetime.
-// ---------------------------------------------------------------------------
 
 const activities = [
  {
@@ -508,27 +439,15 @@ const activities = [
  },
 ];
 
-// ---------------------------------------------------------------------------
-// Quick Stats Footer
-// ---------------------------------------------------------------------------
-
 const quick_stats = {
  total_hemat_rp: 1_250_000_000,
  total_pilot_kerjasama: 47,
  rata_rata_waktu_bidding_hari: 5,
 };
 
-// ---------------------------------------------------------------------------
-// Notifications
-// ---------------------------------------------------------------------------
-
 const notifications = {
  unread_count: 3,
 };
-
-// ---------------------------------------------------------------------------
-// Export — deeply frozen single source of truth.
-// ---------------------------------------------------------------------------
 
 export const mockData = deepFreeze({
  perusahaan,

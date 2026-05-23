@@ -1,7 +1,3 @@
-/**
- * ReportStepper — Enhanced aerospace-tech stepper with 5 steps.
- */
-
 import { FolderSearch, SlidersHorizontal, Zap, Activity, FileCheck } from 'lucide-react';
 import './ReportStepper.css';
 
@@ -16,7 +12,6 @@ const STEPS = [
 function ReportStepper({ currentStep = 0 }) {
  return (
  <nav className="report-stepper" role="navigation" aria-label="Progress langkah">
- {/* Desktop stepper */}
  <div className="report-stepper__desktop">
  <div className="report-stepper__rail">
  {STEPS.map((step, index) => {
@@ -26,7 +21,6 @@ function ReportStepper({ currentStep = 0 }) {
 
  return (
  <div key={step.label} className="report-stepper__item">
- {/* Connector line */}
  {index > 0 && (
  <div
  className={`report-stepper__connector ${
@@ -35,7 +29,6 @@ function ReportStepper({ currentStep = 0 }) {
  />
  )}
 
- {/* Node */}
  <div
  className={`report-stepper__node ${
  isActive ? 'report-stepper__node--active' : ''
@@ -52,7 +45,7 @@ function ReportStepper({ currentStep = 0 }) {
  {isActive && <span className="report-stepper__pulse" />}
  </div>
 
- {/* Label */}
+
  <span
  className={`report-stepper__label ${
  isActive ? 'report-stepper__label--active' : ''
@@ -66,7 +59,7 @@ function ReportStepper({ currentStep = 0 }) {
  </div>
  </div>
 
- {/* Mobile compact stepper */}
+
  <div className="report-stepper__mobile">
  <span className="report-stepper__mobile-step">
  Step {currentStep + 1}/5

@@ -1,19 +1,3 @@
-// Feature: auth-pages, Login validation rejects invalid inputs and accepts valid ones
-//
-// Validates: Requirements 5.1, 5.2, 5.3, 5.4
-//
-// Property statement:
-// For ANY (email, password) pair, validateLogin({ email, password }) returns
-// { ok: true, errors: {} } iff
-// (typeof email === 'string' && email.trim() !== '' && EMAIL_RE.test(email))
-// AND
-// (typeof password === 'string' && password.trim() !== '' && password.length >= 8).
-// Otherwise, errors carry the EXACT messages required by the spec:
-// - empty email -> "Email wajib diisi"
-// - non-empty but malformed email -> "Format email tidak valid"
-// - empty password -> "Password wajib diisi"
-// - non-empty password shorter than 8 -> "Password minimal 8 karakter"
-
 import { describe, test, expect } from 'vitest';
 import fc from 'fast-check';
 import { validateLogin, EMAIL_RE } from './validators.js';
@@ -25,8 +9,6 @@ const MSG = {
  passwordTooShort: 'Password minimal 8 karakter',
 };
 
-// Mirror of the validators' isEmpty helper. Strings that are not strings
-// or whitespace-only count as empty.
 const isEmpty = (s) => typeof s !== 'string' || s.trim() === '';
 
 const expectedEmailError = (email) => {
@@ -41,27 +23,23 @@ const expectedPasswordError = (password) => {
  return undefined;
 };
 
-// A generator that biases toward interesting cases:
-// - empty strings, whitespace-only strings (treated as empty)
-// - arbitrary garbage strings (most won't match EMAIL_RE)
-// - near-miss emails that almost match the regex
 const emailLikeArb = fc.oneof(
  fc.constant(''),
  fc.constant(' '),
  fc.constant('\t\n'),
- fc.string(), // arbitrary text
+ fc.string(),
  fc.string({ minLength: 1, maxLength: 10 }).map((s) => `${s}@example.com`),
- fc.string({ minLength: 1, maxLength: 10 }).map((s) => `user@${s}`), // missing tld dot
- fc.string({ minLength: 1, maxLength: 10 }).map((s) => `${s}.com`), // missing @
- fc.constant('a@b.c'), // tld too short
- fc.constant('a@b.cd'), // valid
+ fc.string({ minLength: 1, maxLength: 10 }).map((s) => `user@${s}`),
+ fc.string({ minLength: 1, maxLength: 10 }).map((s) => `${s}.com`),
+ fc.constant('a@b.c'),
+ fc.constant('a@b.cd'),
 );
 
 const passwordLikeArb = fc.oneof(
  fc.constant(''),
  fc.constant(' '),
- fc.string({ maxLength: 7 }), // mostly too short
- fc.string({ minLength: 8, maxLength: 32 }), // mostly long enough (after trim)
+ fc.string({ maxLength: 7 }),
+ fc.string({ minLength: 8, maxLength: 32 }),
  fc.string(),
 );
 
@@ -93,10 +71,6 @@ describe('validateLogin — rejects invalid inputs and accepts valid ones', () =
  );
  });
 
- // Dedicated arbitrary that yields strings guaranteed to satisfy EMAIL_RE,
- // so the ok:true branch is exercised at least once per run. We build each
- // segment from a safe alphabet (no whitespace, no '@', no '.') so the
- // assembled `local@domain.tld` always matches the regex.
  const safeChar = fc.constantFrom(
  ...'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-+'.split(''),
  );

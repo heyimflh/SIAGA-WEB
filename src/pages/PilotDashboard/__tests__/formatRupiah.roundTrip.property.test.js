@@ -1,8 +1,3 @@
-/**
- * Round-trip property test for formatRupiah/parseRupiah.
- * Feature: pilot-dashboard
- */
-
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
 import { formatRupiah, parseRupiah } from '../utils/formatRupiah.js';

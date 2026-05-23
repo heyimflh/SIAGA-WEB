@@ -1,22 +1,8 @@
-/**
- * CommandHeader — Premium command center greeting section.
- *
- * Displays a large greeting with company name, descriptive subtitle,
- * project selector tabs, and a system status badge.
- *
- * Props:
- * companyName: string — resolved company name
- * projects: Array<{ id, nama }> — active projects for tab display
- * selectedProjectId: string | null — currently selected project
- * onSelectProject: (id: string) => void — project selection handler
- */
-
 import './CommandHeader.css';
 
 function CommandHeader({ companyName, projects = [], selectedProjectId, onSelectProject }) {
  return (
  <section className="command-header" aria-label="Command center header">
- {/* Top row: Greeting + Status */}
  <div className="command-header__top">
  <h1 className="command-header__greeting">
  Halo, <span className="command-header__greeting-accent">{companyName}</span>
@@ -27,12 +13,11 @@ function CommandHeader({ companyName, projects = [], selectedProjectId, onSelect
  </div>
  </div>
 
- {/* Subtitle */}
+
  <p className="command-header__subtitle">
  Command center inspeksi aerial perusahaan Anda. Pantau proyek, aset, bidding pilot, dan aktivitas inspeksi secara real-time.
  </p>
 
- {/* Project Tabs */}
  {projects.length > 0 && (
  <div className="command-header__tabs" role="tablist" aria-label="Pilih proyek">
  {projects.map((project) => (

@@ -1,10 +1,8 @@
-/* SampleReportPreview — Report output showcase */
 .srp { padding: 5rem 1.5rem; }
 .srp__container { max-width: 1100px; margin: 0 auto; }
 
 .srp__content { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 2.5rem; }
 
-/* Report mockup */
 .srp__mockup { display: flex; justify-content: center; }
 .srp__page {
  width: 100%; max-width: 360px; background: #fff;
@@ -47,7 +45,6 @@
 .srp__page-photos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem; margin-top: 1rem; }
 .srp__page-photo { aspect-ratio: 4/3; border-radius: 6px; background: linear-gradient(135deg, #F4FAFF, #E8F4FF); border: 1px solid rgba(10,37,64,0.05); }
 
-/* Info side */
 .srp__info { display: flex; flex-direction: column; }
 .srp__info-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.35rem; color: #071A2E; margin: 0 0 1.25rem; }
 .srp__info-list {

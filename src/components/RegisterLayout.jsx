@@ -2,20 +2,6 @@ import { Suspense, lazy } from 'react';
 import { AuthDroneErrorBoundary } from './AuthDroneErrorBoundary';
 import './RegisterLayout.css';
 
-/* ──────────────────────────────────────────────────────────────
- * RegisterLayout — Green-Cyan Infrastructure Registration Shell
- *
- * Layout (opposite of AuthLayout):
- * - >= 1280px : 55/45 split, form LEFT, tower visual RIGHT
- * - 1024–1279 : 58/42 split compact
- * - 768–1023 : stacked, top tower hero + register card
- * - < 768px : stacked, brand header + mini tower hero + register card
- *
- * Visual:
- * - Left: soft mint/white frosted background + glass register card
- * - Right: green-cyan-teal gradient + 3D Tower SUTET + floating cards
- * ────────────────────────────────────────────────────────────── */
-
 const RegisterTowerScene = lazy(() => import('./RegisterTowerScene'));
 
 function TowerPlaceholder() {
@@ -29,7 +15,7 @@ function TowerPlaceholder() {
  );
 }
 
-/* Floating insight cards */
+
 function FloatingInsightCards() {
  return (
  <div className="register-floating-cards" aria-hidden="true">
@@ -56,7 +42,6 @@ function FloatingInsightCards() {
 export default function RegisterLayout({ children }) {
  return (
  <div className="register-layout">
- {/* ── Left Form Area ── */}
  <section className="register-left-panel">
  <div className="register-left-panel__bg-effects" aria-hidden="true">
  <div className="register-left-panel__orb" />
@@ -67,7 +52,7 @@ export default function RegisterLayout({ children }) {
  </div>
  </section>
 
- {/* ── Right Tower Visual Panel ── */}
+
  <aside className="register-right-panel">
  <div className="register-right-panel__bg-effects" aria-hidden="true">
  <div className="register-right-panel__grid" />

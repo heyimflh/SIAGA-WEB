@@ -53,12 +53,11 @@ export default function PilotProfileDrawer({ pilot, isOpen, onClose, onHire, onG
  tabIndex={-1}
  onClick={(e) => e.stopPropagation()}
  >
- {/* Close */}
  <button className="pilot-drawer__close" onClick={onClose} aria-label="Tutup profil">
  <X size={20} />
  </button>
 
- {/* Cover */}
+
  <div className="pilot-drawer__cover">
  {pilot.cover_image ? (
  <img src={pilot.cover_image} alt="" className="pilot-drawer__cover-img" />
@@ -68,9 +67,9 @@ export default function PilotProfileDrawer({ pilot, isOpen, onClose, onHire, onG
  <div className="pilot-drawer__cover-gradient" />
  </div>
 
- {/* Content */}
+
  <div className="pilot-drawer__content">
- {/* Identity */}
+
  <div className="pilot-drawer__identity">
  <div className={`pilot-drawer__avatar ${pilot.siaga_verified ? 'pilot-drawer__avatar--verified' : ''}`}>
  {pilot.avatar ? (
@@ -93,7 +92,6 @@ export default function PilotProfileDrawer({ pilot, isOpen, onClose, onHire, onG
  </div>
  </div>
 
- {/* Trust Strip */}
  <div className="pilot-drawer__trust-strip">
  <div className="pilot-drawer__trust-item">
  <Briefcase size={14} />
@@ -113,7 +111,7 @@ export default function PilotProfileDrawer({ pilot, isOpen, onClose, onHire, onG
  </div>
  </div>
 
- {/* Overview */}
+
  <section className="pilot-drawer__section">
  <h4>Overview</h4>
  <p className="pilot-drawer__bio">{pilot.bio}</p>
@@ -129,7 +127,6 @@ export default function PilotProfileDrawer({ pilot, isOpen, onClose, onHire, onG
  )}
  </section>
 
- {/* Equipment */}
  {pilot.drones && pilot.drones.length > 0 && (
  <section className="pilot-drawer__section">
  <h4>Equipment</h4>
@@ -144,7 +141,6 @@ export default function PilotProfileDrawer({ pilot, isOpen, onClose, onHire, onG
  </section>
  )}
 
- {/* Certifications */}
  {pilot.certifications && pilot.certifications.length > 0 && (
  <section className="pilot-drawer__section">
  <h4>Sertifikasi</h4>
@@ -169,7 +165,7 @@ export default function PilotProfileDrawer({ pilot, isOpen, onClose, onHire, onG
  </section>
  )}
 
- {/* Portfolio */}
+
  {portfolioImages.length > 0 && (
  <section className="pilot-drawer__section">
  <h4>Portofolio</h4>
@@ -192,7 +188,6 @@ export default function PilotProfileDrawer({ pilot, isOpen, onClose, onHire, onG
  </section>
  )}
 
- {/* Reviews */}
  {pilot.reviews && pilot.reviews.length > 0 && (
  <section className="pilot-drawer__section">
  <h4>Review</h4>
@@ -214,7 +209,6 @@ export default function PilotProfileDrawer({ pilot, isOpen, onClose, onHire, onG
  )}
  </div>
 
- {/* Sticky CTA */}
  <div className="pilot-drawer__cta">
  <button
  className={`pilot-drawer__hire-btn ${hireDisabled ? 'pilot-drawer__hire-btn--disabled' : ''}`}

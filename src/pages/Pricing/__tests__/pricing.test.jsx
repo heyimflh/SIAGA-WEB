@@ -38,7 +38,7 @@ describe('Pricing Page', () => {
  it('renders exactly 3 pricing tiers', () => {
  renderPage();
  expect(pricingTiers).toHaveLength(3);
- // Use getAllByText since some labels appear in multiple places (e.g. FAQ chips)
+
  expect(screen.getAllByText('Basic').length).toBeGreaterThanOrEqual(1);
  expect(screen.getAllByText('Professional').length).toBeGreaterThanOrEqual(1);
  expect(screen.getAllByText('Enterprise').length).toBeGreaterThanOrEqual(1);
@@ -65,7 +65,7 @@ describe('Pricing Page', () => {
  renderPage();
  expect(trustBadges).toHaveLength(5);
  trustBadges.forEach((badge) => {
- // Some badge labels may appear in trust chips too, use getAllByText
+
  expect(screen.getAllByText(badge.label).length).toBeGreaterThanOrEqual(1);
  });
  });

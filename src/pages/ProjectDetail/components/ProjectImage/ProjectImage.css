@@ -76,7 +76,6 @@
  max-width: 60%;
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
  .pd-project-image__container {
  aspect-ratio: 16 / 7;
@@ -84,7 +83,6 @@
  }
 }
 
-/* Mobile */
 @media (max-width: 768px) {
  .pd-project-image {
  margin-bottom: 24px;

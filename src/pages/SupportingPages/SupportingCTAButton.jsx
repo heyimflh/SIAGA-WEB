@@ -1,7 +1,3 @@
-/**
- * SupportingCTAButton — reusable CTA button for Supporting Pages.
- * Variants: primary, secondary, outline
- */
 export default function SupportingCTAButton({
  variant = 'primary',
  href,

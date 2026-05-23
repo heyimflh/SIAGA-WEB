@@ -1,16 +1,3 @@
-/**
- * MapFloatingStats — Strip transparan di atas peta menampilkan jumlah aset.
- *
- * Spec: .kiro/specs/client-dashboard
- * Requirements: 5.12, 10.4, 10.5, 10.6
- *
- * Menampilkan: "[N] Aset Termonitor | [M] Kritis | [K] Perlu Perhatian"
- * dengan N, M, K diambil dari selectors (konsistensi cross-section by construction).
- *
- * Props:
- * mockData: object — full mock data module (passed through for selectors)
- */
-
 import { selectAssetCount, selectKritisCount, selectPerluPerhatianCount } from '../../utils/selectors.js';
 import './MapFloatingStats.css';
 

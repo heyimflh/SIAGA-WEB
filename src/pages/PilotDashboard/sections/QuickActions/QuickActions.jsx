@@ -1,9 +1,3 @@
-/**
- * QuickActions — Mission Shortcuts section.
- * Feature: pilot-dashboard
- * Validates: Requirements 13
- */
-
 import { useNavigate } from 'react-router-dom';
 import { Search, Upload, User } from 'lucide-react';
 import './QuickActions.css';

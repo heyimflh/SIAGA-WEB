@@ -1,25 +1,7 @@
-/**
- * RecentActivityFeed — Section E (timeline vertikal aktivitas terbaru).
- *
- * Renders `<aside aria-label="Aktivitas terbaru">` dengan 8-12 ActivityItem.
- * Max-height + internal scroll vertikal saat melebihi tinggi container.
- * Layout responsive:
- * - ≥1280px: kolom kanan grid Main Content (sticky top: 80px)
- * - <1280px: stacked di bawah BiddingReviewTable
- *
- * Empty state: activities kosong → "Belum ada aktivitas terbaru"
- *
- * Spec: .kiro/specs/client-dashboard
- * Validates implementation
- */
-
 import { Inbox } from 'lucide-react';
 import ActivityItem from './ActivityItem';
 import './RecentActivityFeed.css';
 
-/**
- * @param {{ activities: Array<{ id: string, type: string, description: string, timestamp: string, is_new: boolean }> }} props
- */
 function RecentActivityFeed({ activities = [] }) {
  if (activities.length === 0) {
  return (

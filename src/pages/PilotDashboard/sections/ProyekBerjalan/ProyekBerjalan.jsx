@@ -1,9 +1,3 @@
-/**
- * ProyekBerjalan — Active Inspection Missions section.
- * Feature: pilot-dashboard
- * Validates: Requirements 9
- */
-
 import { useNavigate } from 'react-router-dom';
 import { getDeadlineCountdown } from '../../utils/formatDate';
 import { isDeadlineUrgent } from '../../utils/deadlineUrgency';

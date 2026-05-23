@@ -1,8 +1,3 @@
-// Feature: auth-pages — Premium Green-Cyan Stepper
-// Three-step indicator for Register flow.
-// Active steps use emerald-cyan gradient; inactive steps use neutral gray.
-// Requirements: 6.1, 6.5
-
 const STEPS = [
  { number: 1, label: 'Pilih Peran' },
  { number: 2, label: 'Data Akun' },

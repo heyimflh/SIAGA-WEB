@@ -1,18 +1,5 @@
-/**
- * Project Detail Data Module
- * Extended from Job Radar mock-data.js with detail fields.
- * Single source of truth for Project Detail Page.
- *
- * Feature: project-detail-page
- * Requirements: 15
- */
-
 import jobRadarProjects from '../JobRadar/mock-data.js';
 
-/**
- * Extended detail fields for each project.
- * Keys match project `id` from Job Radar data.
- */
 const detailExtensions = {
  'proj-001': {
  luas_area: 14.2,
@@ -316,16 +303,12 @@ const detailExtensions = {
  },
 };
 
-/**
- * Merge Job Radar base data with detail extensions.
- * Projects without extensions get default empty detail fields.
- */
 const projectDetailData = jobRadarProjects.map((project) => {
  const ext = detailExtensions[project.id];
  if (ext) {
  return { ...project, ...ext };
  }
- // Projects without detail extensions get minimal defaults
+
  return {
  ...project,
  luas_area: null,

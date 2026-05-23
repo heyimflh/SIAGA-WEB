@@ -1,16 +1,3 @@
-/**
- * DashboardErrorBoundary — React class component error boundary for ClientDashboardPage.
- *
- * Wraps ClientDashboardPage inside <PageTransition>. When an error is caught
- * during render of any section, the boundary renders a plain DOM fallback
- * immediately — bypassing/ignoring the PageTransition exit animation.
- *
- * Fallback: "Terjadi kesalahan memuat dashboard" + reload button.
- *
- * Spec: .kiro/specs/client-dashboard
- * Ensures critical render failures are caught and handled gracefully.
- */
-
 import { Component } from 'react';
 
 class DashboardErrorBoundary extends Component {
@@ -24,7 +11,7 @@ class DashboardErrorBoundary extends Component {
  }
 
  componentDidCatch(error, errorInfo) {
- // Always log in development for debugging
+
  console.error(
  '[DashboardErrorBoundary] Caught error in dashboard subtree:',
  error,
@@ -38,8 +25,7 @@ class DashboardErrorBoundary extends Component {
 
  render() {
  if (this.state.hasError) {
- // Plain DOM fallback — no Framer Motion, no PageTransition animation.
- // Renders immediately without waiting for exit animation.
+
  return (
  <div
  style={{

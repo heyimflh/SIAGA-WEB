@@ -1,14 +1,3 @@
-/**
- * ProjectListPage — Daftar semua proyek inspeksi client.
- *
- * Route: /dashboard/client/projects
- * Role: client only
- *
- * Menampilkan semua proyek dari project-detail-data dalam grid card
- * dengan cover image, status badge, dan overview singkat.
- * Klik card → navigasi ke /project/:projectId
- */
-
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Calendar, Users, Wallet, Search, Filter } from 'lucide-react';
@@ -56,19 +45,16 @@ export default function ProjectListPage() {
  const [searchQuery, setSearchQuery] = useState('');
  const [activeFilter, setActiveFilter] = useState('Semua');
 
- // Resolve company name from session email (same logic as ClientDashboardPage)
  const company = selectCompanyByEmail(mockData, session?.email);
  const companyName = company.nama || session?.email || 'Client';
 
  const filteredProjects = useMemo(() => {
  let result = [...projectDetailData];
 
- // Filter by infrastructure type
  if (activeFilter !== 'Semua') {
  result = result.filter((p) => p.jenis_infrastruktur === activeFilter);
  }
 
- // Filter by search query
  if (searchQuery.trim()) {
  const q = searchQuery.toLowerCase();
  result = result.filter(
@@ -98,7 +84,6 @@ export default function ProjectListPage() {
  notifUnread={mockData.notifications.unread_count}
  >
  <div className="project-list">
- {/* Header */}
  <div className="project-list__header">
  <div className="project-list__header-text">
  <h1 className="project-list__title">Proyek Inspeksi</h1>
@@ -122,7 +107,6 @@ export default function ProjectListPage() {
  </div>
  </div>
 
- {/* Search & Filter Bar */}
  <div className="project-list__toolbar">
  <div className="project-list__search">
  <Search size={18} className="project-list__search-icon" />
@@ -149,12 +133,11 @@ export default function ProjectListPage() {
  </div>
  </div>
 
- {/* Results count */}
+
  <p className="project-list__results">
  Menampilkan {filteredProjects.length} dari {projectDetailData.length} proyek
  </p>
 
- {/* Project Grid */}
  <div className="project-list__grid">
  {filteredProjects.map((project) => {
  const image = getProjectImage(project.jenis_infrastruktur);
@@ -166,7 +149,6 @@ export default function ProjectListPage() {
  to={ROUTES.projectDetail(project.id)}
  className="project-card"
  >
- {/* Cover Image */}
  <div className="project-card__image">
  <img src={image.src} alt={image.alt} loading="lazy" />
  <div className="project-card__image-overlay" />
@@ -178,7 +160,7 @@ export default function ProjectListPage() {
  </span>
  </div>
 
- {/* Content */}
+
  <div className="project-card__content">
  <h3 className="project-card__name">{project.nama}</h3>
  <p className="project-card__desc">{project.deskripsi}</p>
@@ -210,7 +192,7 @@ export default function ProjectListPage() {
  })}
  </div>
 
- {/* Empty state */}
+
  {filteredProjects.length === 0 && (
  <div className="project-list__empty">
  <Search size={48} />

@@ -1,4 +1,3 @@
-/* PricingPage — SIAGA Transparent Pricing Console */
 .pricing-page {
  --pr-navy: #031525;
  --pr-deep-blue: #0D6AB8;
@@ -14,7 +13,6 @@
  overflow-x: hidden;
 }
 
-/* Light sections background */
 .pricing-page .pc,
 .pricing-page .prs,
 .pricing-page .fct,

@@ -1,8 +1,3 @@
-/**
- * Property tests for selector functions.
- * Feature: pilot-dashboard
- */
-
 import { describe, it, expect } from 'vitest';
 import * as fc from 'fast-check';
 import {
@@ -78,9 +73,9 @@ describe('selectUrgentDeadlineCount', () => {
  it('counts projects with deadline <= 3 days from now', () => {
  const now = new Date('2026-01-15');
  const projects = [
- { deadline: '2026-01-16' }, // 1 day - urgent
- { deadline: '2026-01-18' }, // 3 days - urgent
- { deadline: '2026-01-20' }, // 5 days - not urgent
+ { deadline: '2026-01-16' },
+ { deadline: '2026-01-18' },
+ { deadline: '2026-01-20' },
  ];
  expect(selectUrgentDeadlineCount(projects, now)).toBe(2);
  });

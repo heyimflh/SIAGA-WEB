@@ -1,9 +1,6 @@
 import { useState, useRef } from 'react';
 import { MapPin } from 'lucide-react';
 
-/**
- * LocationSearch — Autocomplete location filter from mock data.
- */
 export default function LocationSearch({ value, onChange, suggestions }) {
  const [inputValue, setInputValue] = useState(value || '');
  const [showSuggestions, setShowSuggestions] = useState(false);
@@ -29,7 +26,7 @@ export default function LocationSearch({ value, onChange, suggestions }) {
  };
 
  const handleBlur = () => {
- // Delay to allow click on suggestion
+
  setTimeout(() => setShowSuggestions(false), 200);
  };
 

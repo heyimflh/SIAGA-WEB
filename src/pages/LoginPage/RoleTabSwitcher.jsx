@@ -1,21 +1,5 @@
 import { useRef } from 'react';
 
-/**
- * RoleTabSwitcher — Premium Segmented Control
- *
- * Props:
- * - role: 'client' | 'pilot' (controlled value)
- * - onChange: (newRole) => void
- *
- * Implements:
- * - role="tablist" container, role="tab" buttons, aria-selected
- * - Keyboard: ArrowLeft/ArrowRight cycle + activate, Enter/Space activate
- * - Animated sliding background indicator
- * - Premium glassmorphism segmented control style
- *
- * Requirements: 4.1, 4.2, 4.3, 12.5
- */
-
 const TABS = [
  { value: 'client', label: 'Perusahaan', id: 'role-tab-client' },
  { value: 'pilot', label: 'Pilot', id: 'role-tab-pilot' },
@@ -79,7 +63,6 @@ export default function RoleTabSwitcher({ role = 'client', onChange }) {
  role="tablist"
  aria-label="Pilih peran login"
  >
- {/* Sliding background indicator */}
  <span
  className={`role-toggle__slider${safeActiveIndex === 1 ? ' role-toggle__slider--pilot' : ''}`}
  aria-hidden="true"

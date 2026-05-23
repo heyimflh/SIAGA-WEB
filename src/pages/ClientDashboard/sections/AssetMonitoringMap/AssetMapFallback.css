@@ -1,10 +1,3 @@
-/**
- * AssetMapFallback.css — Styles for the map fallback component.
- *
- * Requirements: 5.17, 5.18, 15.5, 15.5a
- * Uses dashboard-scoped CSS variables (--color-primary, --color-accent, --color-surface).
- */
-
 .asset-map-fallback {
  display: flex;
  flex-direction: column;
@@ -16,7 +9,6 @@
  width: 100%;
 }
 
-/* --- Loading variant --- */
 .asset-map-fallback--loading {
  background: var(--color-primary, #0A192F);
  gap: 1rem;
@@ -43,7 +35,6 @@
  margin: 0;
 }
 
-/* --- Error variant --- */
 .asset-map-fallback--error {
  background: var(--color-surface, #F4F7F6);
  border: 1px solid rgba(0, 0, 0, 0.08);
@@ -99,7 +90,6 @@
  color: var(--color-danger, #FF4C4C);
 }
 
-/* --- Bare variant --- */
 .asset-map-fallback--bare {
  background: var(--color-surface, #F4F7F6);
  color: var(--text-primary, #1a1a2e);

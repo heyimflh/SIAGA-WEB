@@ -1,14 +1,9 @@
-/* ════════════════════════════════════════════════════════
- SECTION — DUAL AUDIENCE
- Two-sided marketplace — Premium Glassmorphism
- ════════════════════════════════════════════════════════ */
-
 .da-section {
  position: relative;
  padding: 120px 0;
  overflow: hidden;
  isolation: isolate;
- /* Rich colored background so glass effect is clearly visible */
+
  background:
  radial-gradient(ellipse 70% 50% at 25% 20%, rgba(0, 98, 214, 0.14), transparent 50%),
  radial-gradient(ellipse 60% 50% at 75% 75%, rgba(0, 180, 216, 0.11), transparent 50%),
@@ -16,7 +11,6 @@
  linear-gradient(135deg, rgba(232, 244, 253, 0.85) 0%, rgba(241, 245, 249, 0.6) 40%, rgba(248, 252, 255, 0.5) 100%);
 }
 
-/* ── Ambient glow — large blue orb ── */
 .da-section::before {
  content: '';
  position: absolute;
@@ -32,7 +26,6 @@
  animation: daGlowFloat 14s ease-in-out infinite alternate;
 }
 
-/* ── Ambient glow — cyan orb ── */
 .da-section::after {
  content: '';
  position: absolute;
@@ -53,7 +46,6 @@
  100% { transform: translate(15px, -12px) scale(1.08); }
 }
 
-/* ── Background elements ── */
 .da-bg {
  position: absolute;
  inset: 0;
@@ -74,7 +66,6 @@
  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 20%, transparent 80%);
 }
 
-/* ── Container ── */
 .da-container {
  position: relative;
  z-index: 1;
@@ -83,7 +74,6 @@
  padding: 0 6%;
 }
 
-/* ── Header ── */
 .da-header {
  text-align: center;
  margin-bottom: 72px;
@@ -108,7 +98,6 @@
  margin: 0 auto;
 }
 
-/* ── Panels Layout ── */
 .da-panels {
  display: grid;
  grid-template-columns: 1fr auto 1fr;
@@ -116,7 +105,6 @@
  align-items: stretch;
 }
 
-/* ── Panel Base ── */
 .da-panel {
  position: relative;
  border-radius: 24px;
@@ -124,9 +112,6 @@
  opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ════════════════════════════════════════════════════════
- GLASSMORPHISM CARD — frosted glass panel
- ════════════════════════════════════════════════════════ */
 .da-panel-inner {
  position: relative;
  background: rgba(255, 255, 255, 0.28);
@@ -147,7 +132,6 @@
  overflow: hidden;
 }
 
-/* Top edge refraction */
 .da-panel-inner::before {
  content: '';
  position: absolute;
@@ -167,7 +151,6 @@
  z-index: 3;
 }
 
-/* Inner glow */
 .da-panel-inner::after {
  content: '';
  position: absolute;
@@ -190,7 +173,6 @@
  inset 0 -1px 0 rgba(255, 255, 255, 0.25);
 }
 
-/* Hover interaction */
 .da-panels:hover .da-panel {
  transform: scale(0.97);
  opacity: 0.85;
@@ -201,17 +183,14 @@
  opacity: 1;
 }
 
-/* ── Left panel tint ── */
 .da-panel--left .da-panel-inner {
  background: linear-gradient(160deg, rgba(255, 255, 255, 0.32) 0%, rgba(232, 244, 253, 0.2) 100%);
 }
 
-/* ── Right panel tint ── */
 .da-panel--right .da-panel-inner {
  background: linear-gradient(160deg, rgba(232, 244, 253, 0.25) 0%, rgba(255, 255, 255, 0.3) 100%);
 }
 
-/* ── Panel Icon ── */
 .da-panel-icon {
  width: 52px;
  height: 52px;
@@ -227,7 +206,6 @@
  z-index: 2;
 }
 
-/* ── Panel Label ── */
 .da-panel-label {
  font-family: var(--font-body);
  font-size: 11px;
@@ -240,7 +218,6 @@
  z-index: 2;
 }
 
-/* ── Panel Title ── */
 .da-panel-title {
  font-family: var(--font-display);
  font-size: clamp(20px, 2vw, 26px);
@@ -253,7 +230,6 @@
  z-index: 2;
 }
 
-/* ── Bullets ── */
 .da-panel-bullets {
  display: flex;
  flex-direction: column;
@@ -280,7 +256,6 @@
  flex-shrink: 0;
 }
 
-/* ── CTA Button ── */
 .da-panel-cta {
  display: inline-flex;
  align-items: center;
@@ -316,7 +291,6 @@
  transition: transform 0.3s var(--ease-out);
 }
 
-/* Alt CTA — glass button */
 .da-panel-cta--alt {
  background: rgba(255, 255, 255, 0.4);
  color: var(--brand-blue);
@@ -336,7 +310,6 @@
  inset 0 1px 0 rgba(255, 255, 255, 0.7);
 }
 
-/* ── Panel Stat ── */
 .da-panel-stat {
  display: flex;
  align-items: center;
@@ -362,7 +335,6 @@
  color: var(--text-tertiary);
 }
 
-/* ── Center Divider ── */
 .da-divider {
  display: flex;
  flex-direction: column;
@@ -398,9 +370,6 @@
  margin: 16px 0;
 }
 
-/* ════════════════════════════════════════════════════════
- FALLBACK
- ════════════════════════════════════════════════════════ */
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
  .da-panel-inner {
  background: rgba(255, 255, 255, 0.88) !important;
@@ -410,9 +379,6 @@
  }
 }
 
-/* ════════════════════════════════════════════════════════
- RESPONSIVE
- ════════════════════════════════════════════════════════ */
 @media (max-width: 1024px) {
  .da-section {
  padding: 96px 0;
@@ -500,9 +466,6 @@
  }
 }
 
-/* ════════════════════════════════════════════════════════
- REDUCED MOTION
- ════════════════════════════════════════════════════════ */
 @media (prefers-reduced-motion: reduce) {
  .da-panel,
  .da-panel-inner,
@@ -522,7 +485,6 @@
  }
 }
 
-/* ─── Extra small mobile (360px and below) ─── */
 @media (max-width: 360px) {
  .da-section {
  padding: 56px 0;
@@ -547,7 +509,6 @@
  line-height: 1.6;
  }
 
- /* Panel inner — tighter padding */
  .da-panel-inner {
  padding: 24px 18px;
  border-radius: 20px;
@@ -615,7 +576,6 @@
  font-size: 12px;
  }
 
- /* Center node smaller */
  .da-center-node {
  width: 44px;
  height: 44px;

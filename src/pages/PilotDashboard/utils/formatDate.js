@@ -1,11 +1,3 @@
-/**
- * formatDate.js — Indonesian date formatting and deadline countdown.
- *
- * Pure functions, no side effects.
- * Feature: pilot-dashboard
- * Validates: Requirements 15
- */
-
 const HARI = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
 const BULAN = [
  'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',

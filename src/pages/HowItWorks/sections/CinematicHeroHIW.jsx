@@ -10,7 +10,6 @@ const trustChips = [
  'PDF Report Otomatis',
 ];
 
-// Real project images for background slideshow
 const heroSlides = [
  '/images/projects/sutet_bandung-cover-compressed.jpg',
  '/images/projects/barelang-cover-compressed.jpg',
@@ -29,7 +28,6 @@ export default function CinematicHeroHIW() {
  requestAnimationFrame(() => el.classList.add('mch--visible'));
  }, []);
 
- // Auto-slide every 5 seconds
  useEffect(() => {
  const interval = setInterval(() => {
  setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -39,7 +37,6 @@ export default function CinematicHeroHIW() {
 
  return (
  <section className="mch" ref={heroRef}>
- {/* Background slideshow */}
  <div className="mch__slideshow" aria-hidden="true">
  {heroSlides.map((src, i) => (
  <div
@@ -50,10 +47,9 @@ export default function CinematicHeroHIW() {
  ))}
  </div>
 
- {/* Blue sky overlay */}
+
  <div className="mch__overlay" aria-hidden="true" />
 
- {/* Grid pattern */}
  <div className="mch__bg" aria-hidden="true">
  <div className="mch__grid" />
  <div className="mch__orb mch__orb--1" />
@@ -61,7 +57,7 @@ export default function CinematicHeroHIW() {
  </div>
 
  <div className="mch__container">
- {/* Left: Content */}
+
  <div className="mch__content">
  <nav className="mch__breadcrumb" aria-label="Breadcrumb">
  <Link to={ROUTES.home} className="mch__breadcrumb-link">Home</Link>
@@ -96,10 +92,8 @@ export default function CinematicHeroHIW() {
  </div>
  </div>
 
- {/* Right: Mission Control Preview */}
  <div className="mch__preview" aria-hidden="true">
  <div className="mch__preview-card">
- {/* Header */}
  <div className="mch__preview-header">
  <div className="mch__preview-dots">
  <span /><span /><span />
@@ -107,9 +101,9 @@ export default function CinematicHeroHIW() {
  <span className="mch__preview-title">Mission Control</span>
  </div>
 
- {/* Body */}
+
  <div className="mch__preview-body">
- {/* Project info */}
+
  <div className="mch__preview-project">
  <div className="mch__preview-project-name">Inspeksi Tower SUTET #47</div>
  <div className="mch__preview-project-loc">
@@ -122,7 +116,6 @@ export default function CinematicHeroHIW() {
  </div>
  </div>
 
- {/* Progress */}
  <div className="mch__preview-progress">
  <div className="mch__preview-progress-header">
  <span>Progress</span>
@@ -133,7 +126,6 @@ export default function CinematicHeroHIW() {
  </div>
  </div>
 
- {/* Mini map */}
  <div className="mch__preview-map">
  <div className="mch__preview-map-grid" />
  <svg className="mch__preview-map-route" viewBox="0 0 180 80" fill="none">
@@ -145,7 +137,7 @@ export default function CinematicHeroHIW() {
  <div className="mch__preview-map-pin" />
  </div>
 
- {/* Pilot card */}
+
  <div className="mch__preview-pilot">
  <div className="mch__preview-pilot-avatar">RP</div>
  <div className="mch__preview-pilot-info">
@@ -158,7 +150,7 @@ export default function CinematicHeroHIW() {
  </div>
  </div>
 
- {/* Telemetry */}
+
  <div className="mch__preview-telemetry">
  <div className="mch__preview-tele-item">
  <span className="mch__preview-tele-val">127m</span>
@@ -178,7 +170,6 @@ export default function CinematicHeroHIW() {
  </div>
  </div>
 
- {/* Report status */}
  <div className="mch__preview-report">
  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
  <span>Draft report generated</span>
@@ -188,7 +179,7 @@ export default function CinematicHeroHIW() {
  </div>
  </div>
 
- {/* Slide indicators */}
+
  <div className="mch__indicators" aria-hidden="true">
  {heroSlides.map((_, i) => (
  <button

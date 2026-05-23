@@ -1,7 +1,3 @@
-/**
- * Timeline data for How It Works page — SIAGA Mission Control Journey.
- * Each step represents a phase in the SIAGA inspection workflow.
- */
 export const timelineSteps = [
  {
  id: '01',

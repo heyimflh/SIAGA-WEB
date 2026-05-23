@@ -1,14 +1,9 @@
-/* ═══════════════════════════════════════════════════════════════
- BiddingPage — Premium Bidding Review Center (Light Theme)
- ═══════════════════════════════════════════════════════════════ */
-
 .bidding-page {
  padding: 2rem 1.5rem;
  max-width: 1200px;
  margin: 0 auto;
 }
 
-/* ── Header ── */
 .bidding-page__header {
  display: flex;
  align-items: center;
@@ -80,7 +75,6 @@
  font-weight: 600;
 }
 
-/* ── Project Tabs ── */
 .bidding-page__tabs {
  display: flex;
  gap: 0.5rem;
@@ -137,7 +131,6 @@
  color: #FFFFFF;
 }
 
-/* ── Toolbar ── */
 .bidding-page__toolbar {
  display: flex;
  align-items: center;
@@ -251,7 +244,6 @@
  margin-bottom: 0.75rem;
 }
 
-/* ── Bid Cards ── */
 .bidding-page__list {
  display: flex;
  flex-direction: column;
@@ -288,7 +280,6 @@
 
 .bid-card__main:hover { background: rgba(16, 109, 255, 0.02); }
 
-/* Avatar */
 .bid-card__avatar {
  position: relative;
  width: 44px;
@@ -319,7 +310,6 @@
  border: 2px solid #fff;
 }
 
-/* Info */
 .bid-card__info { min-width: 0; }
 
 .bid-card__name-row {
@@ -352,7 +342,6 @@
  margin-top: 0.15rem;
 }
 
-/* Price */
 .bid-card__price {
  display: flex;
  flex-direction: column;
@@ -373,7 +362,6 @@
  letter-spacing: 0.04em;
 }
 
-/* Duration */
 .bid-card__duration {
  display: flex;
  align-items: center;
@@ -388,7 +376,6 @@
 
 .bid-card__duration svg { color: #106DFF; }
 
-/* Expanded Detail */
 .bid-card__detail {
  padding: 0 1.25rem 1.25rem;
  border-top: 1px solid rgba(16, 109, 255, 0.06);
@@ -475,7 +462,6 @@
  box-shadow: 0 6px 20px rgba(16, 109, 255, 0.3);
 }
 
-/* ── Empty State ── */
 .bidding-page__empty {
  display: flex;
  flex-direction: column;
@@ -489,7 +475,6 @@
 .bidding-page__empty h3 { color: #071A34; margin: 0 0 0.5rem; font-size: 1.1rem; }
 .bidding-page__empty p { margin: 0; font-size: 0.85rem; }
 
-/* ── Responsive ── */
 @media (max-width: 768px) {
  .bidding-page { padding: 1rem; }
  .bidding-page__header { flex-direction: column; align-items: flex-start; padding: 1.25rem; }

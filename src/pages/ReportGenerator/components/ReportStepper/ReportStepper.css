@@ -1,12 +1,7 @@
-/* ═══════════════════════════════════════════════════════
- Report Stepper — Aerospace-Tech Glass Rail
- ═══════════════════════════════════════════════════════ */
-
 .report-stepper {
  margin-top: 1.5rem;
 }
 
-/* Desktop */
 .report-stepper__desktop {
  display: block;
 }
@@ -37,7 +32,6 @@
  flex: 1;
 }
 
-/* Connector */
 .report-stepper__connector {
  position: absolute;
  top: 18px;
@@ -53,7 +47,6 @@
  background: linear-gradient(90deg, var(--brand-cyan, #00B4D8), var(--brand-blue, #0062D6));
 }
 
-/* Node */
 .report-stepper__node {
  position: relative;
  z-index: 1;
@@ -82,7 +75,6 @@
  color: white;
 }
 
-/* Pulse ring */
 .report-stepper__pulse {
  position: absolute;
  inset: -4px;
@@ -97,7 +89,6 @@
  50% { opacity: 0.4; transform: scale(1.15); }
 }
 
-/* Label */
 .report-stepper__label {
  margin-top: 0.5rem;
  font-size: 0.7rem;
@@ -116,7 +107,6 @@
  color: var(--color-success, #00897B);
 }
 
-/* ─── Mobile ─── */
 @media (max-width: 768px) {
  .report-stepper__desktop {
  display: none;

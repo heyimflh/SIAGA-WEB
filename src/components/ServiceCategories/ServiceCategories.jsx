@@ -98,7 +98,7 @@ function ServiceCategories() {
 
  return (
  <section className="sc-section" ref={sectionRef}>
- {/* Background effects */}
+
  <div className="sc-bg" aria-hidden="true">
  <div className="sc-bg-grid" />
  <div className="sc-bg-glow sc-bg-glow--1" />
@@ -106,7 +106,7 @@ function ServiceCategories() {
  </div>
 
  <div className="sc-container">
- {/* Header */}
+
  <div className="sc-header" ref={headerRef}>
  <span className="sc-eyebrow">SERVICE MARKETPLACE</span>
  <h2 className="sc-headline">
@@ -118,7 +118,7 @@ function ServiceCategories() {
  </p>
  </div>
 
- {/* Bento Grid */}
+
  <div className="sc-bento">
  {categories.map((cat, index) => {
  const Icon = cat.icon;
@@ -130,7 +130,7 @@ function ServiceCategories() {
  ref={(el) => (cardsRef.current[index] = el)}
  style={{ '--card-accent': cat.accent }}
  >
- {/* Image */}
+
  <div className="sc-bento-img">
  <img
  src={cat.thumbnail}
@@ -139,24 +139,21 @@ function ServiceCategories() {
  />
  </div>
 
- {/* Dark overlay */}
+
  <div className="sc-bento-overlay" />
 
- {/* Content */}
  <div className="sc-bento-content">
- {/* Icon badge - top left */}
  <div className="sc-bento-icon">
  <Icon size={18} strokeWidth={2} />
  </div>
 
- {/* Info block at bottom */}
+
  <div className="sc-bento-info">
  <h3 className="sc-bento-title">{cat.name}</h3>
 
- {/* Description - only on large cards always visible, small cards on hover */}
  <p className="sc-bento-desc">{cat.description}</p>
 
- {/* Meta line - clean single row */}
+
  <div className="sc-bento-meta">
  <span className="sc-bento-pilots">
  <AnimatedCount end={cat.pilots} /> pilot
@@ -166,7 +163,7 @@ function ServiceCategories() {
  </div>
  </div>
 
- {/* Hover CTA arrow */}
+
  <Link to={getRegisterPath('client')} className="sc-bento-cta" aria-label={`Lihat detail ${cat.name}`}>
  <ArrowUpRight size={18} strokeWidth={2.5} />
  </Link>
@@ -176,7 +173,6 @@ function ServiceCategories() {
  })}
  </div>
 
- {/* Bottom CTA */}
  <div className="sc-bottom-cta">
  <Link to={getRegisterPath('client')} className="sc-cta-btn">
  Mulai Posting Inspeksi

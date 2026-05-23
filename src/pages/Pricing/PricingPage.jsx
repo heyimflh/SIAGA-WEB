@@ -12,11 +12,6 @@ import SecurityTrustBadges from './sections/SecurityTrustBadges';
 import CTASectionPricing from './sections/CTASectionPricing';
 import './PricingPage.css';
 
-/**
- * PricingPage — SIAGA Transparent Pricing Console
- * Route: /pricing
- * Public page, no ProtectedRoute, no API calls, fully static.
- */
 export default function PricingPage() {
  return (
  <>

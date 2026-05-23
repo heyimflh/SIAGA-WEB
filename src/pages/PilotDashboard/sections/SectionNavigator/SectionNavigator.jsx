@@ -1,10 +1,3 @@
-/**
- * SectionNavigator — Sticky pill navigation for single-page dashboard.
- * Styled to match ProjectDetail StickySectionNavigator.
- * Feature: pilot-dashboard
- * Validates: Requirements 6
- */
-
 import { useEffect, useRef, useCallback } from 'react';
 import './SectionNavigator.css';
 
@@ -21,7 +14,6 @@ const SECTIONS = [
 function SectionNavigator({ activeSection, onSectionClick }) {
  const navRef = useRef(null);
 
- // IntersectionObserver to auto-track active section on scroll
  useEffect(() => {
  const observer = new IntersectionObserver(
  (entries) => {

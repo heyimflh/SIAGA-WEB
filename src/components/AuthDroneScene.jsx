@@ -3,24 +3,8 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
-// Re-export for backward compatibility with test mocks
 export { AuthDroneErrorBoundary } from './AuthDroneErrorBoundary';
 
-/* ──────────────────────────────────────────────────────────────
- * AuthDroneScene — Premium Interactive 3D Drone Stage
- * 
- * Features:
- * - Loads drone2.glb from /models/drone2.glb
- * - Desktop: drone follows cursor smoothly (parallax)
- * - Mobile/Tablet: auto-rotate with optional touch drag
- * - Floating bob animation
- * - Propeller spin
- * - Soft glow lighting
- *
- * Validates: Requirements 2.5, 2.6, 10.1, 10.2, 10.3
- * ────────────────────────────────────────────────────────────── */
-
-/* ── Detect touch device ──────────────────────────────────────── */
 function isTouchDevice() {
  if (typeof window === 'undefined') return false;
  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -31,7 +15,6 @@ function isCompactViewport() {
  return window.matchMedia('(max-width: 767px)').matches;
 }
 
-/* ── Mouse tracker component ──────────────────────────────────── */
 function MouseTracker({ mouseRef }) {
  const { gl } = useThree();
 
@@ -44,12 +27,11 @@ function MouseTracker({ mouseRef }) {
  const handleMouseMove = (e) => {
  if (!parent) return;
  const rect = parent.getBoundingClientRect();
- // Normalize to -1 to 1
+
  mouseRef.current.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
  mouseRef.current.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
  };
 
- // Listen on window for smoother tracking
  window.addEventListener('mousemove', handleMouseMove);
  return () => window.removeEventListener('mousemove', handleMouseMove);
  }, [gl, mouseRef]);
@@ -57,7 +39,6 @@ function MouseTracker({ mouseRef }) {
  return null;
 }
 
-/* ── Drone model with interactive behavior ────────────────────── */
 function DroneModel({ mouseRef }) {
  const { scene } = useGLTF('/models/drone2.glb');
  const groupRef = useRef();
@@ -66,11 +47,9 @@ function DroneModel({ mouseRef }) {
  const modelScale = compact ? 0.48 : 0.48;
  const propellersRef = useRef([]);
 
- // Smooth target values
  const targetRotation = useRef({ x: 0, y: 0 });
  const currentRotation = useRef({ x: 0, y: 0 });
 
- // Collect propeller meshes once
  useEffect(() => {
  const props = [];
  scene.traverse((child) => {
@@ -94,27 +73,24 @@ function DroneModel({ mouseRef }) {
  if (!groupRef.current) return;
  const t = clock.elapsedTime;
 
- // Floating bob
  groupRef.current.position.y = Math.sin(t * 0.8) * 0.12;
 
  if (!isTouch) {
- // Desktop: follow cursor
+
  targetRotation.current.y = mouseRef.current.x * 0.35;
  targetRotation.current.x = mouseRef.current.y * 0.15;
 
- // Smooth lerp
  currentRotation.current.x += (targetRotation.current.x - currentRotation.current.x) * 0.04;
  currentRotation.current.y += (targetRotation.current.y - currentRotation.current.y) * 0.04;
 
  groupRef.current.rotation.x = currentRotation.current.x;
  groupRef.current.rotation.y = currentRotation.current.y + Math.sin(t * 0.2) * 0.05;
  } else {
- // Mobile/Tablet: auto-rotate
+
  groupRef.current.rotation.y = t * 0.3;
  groupRef.current.rotation.x = Math.sin(t * 0.5) * 0.05;
  }
 
- // Propeller spin
  const propellers = propellersRef.current;
  for (let i = 0; i < propellers.length; i++) {
  propellers[i].rotation.y += 0.5;
@@ -128,7 +104,7 @@ function DroneModel({ mouseRef }) {
  );
 }
 
-/* ── Glow ring beneath drone ──────────────────────────────────── */
+
 function GlowRing() {
  const ringRef = useRef();
 
@@ -156,7 +132,7 @@ function GlowRing() {
  );
 }
 
-/* ── Shadow plane ─────────────────────────────────────────────── */
+
 function ShadowPlane() {
  return (
  <mesh
@@ -170,10 +146,10 @@ function ShadowPlane() {
  );
 }
 
-// Preload model
+
 useGLTF.preload('/models/drone2.glb');
 
-/* ── Default export: the scene ────────────────────────────────── */
+
 export default function AuthDroneScene() {
  const mouseRef = useRef({ x: 0, y: 0 });
  const compact = isCompactViewport();
@@ -193,7 +169,6 @@ export default function AuthDroneScene() {
  >
  <MouseTracker mouseRef={mouseRef} />
 
- {/* Lighting setup for premium look */}
  <ambientLight intensity={0.8} />
  <directionalLight position={[5, 8, 5]} intensity={2.0} color="#ffffff" />
  <directionalLight position={[-3, 4, -2]} intensity={0.6} color="#106DFF" />

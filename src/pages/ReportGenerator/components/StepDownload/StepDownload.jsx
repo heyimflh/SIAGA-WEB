@@ -1,7 +1,3 @@
-/**
- * StepDownload — Step 5: Download Ready + PDF Preview Modal.
- */
-
 import { useEffect, useRef } from 'react';
 import { Download, Eye, RefreshCw, Shield, FileText, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { REPORT_BLOCKS } from '../../report-logic.js';
@@ -27,7 +23,6 @@ function StepDownload({
  const previewBtnRef = useRef(null);
  const modalRef = useRef(null);
 
- // Format timestamp
  const formattedTime = timestamp
  ? new Date(timestamp).toLocaleString('id-ID', {
  day: 'numeric', month: 'short', year: 'numeric',
@@ -35,10 +30,8 @@ function StepDownload({
  })
  : '';
 
- // Fake file size
  const fileSize = `${(1.8 + Math.random() * 1.2).toFixed(1)} MB`;
 
- // Focus trap for modal
  useEffect(() => {
  if (!isModalOpen) return;
 
@@ -67,7 +60,6 @@ function StepDownload({
  return () => document.removeEventListener('keydown', handleKeyDown);
  }, [isModalOpen, onCloseModal]);
 
- // Return focus after modal close
  useEffect(() => {
  if (!isModalOpen && previewBtnRef.current) {
  previewBtnRef.current.focus();
@@ -76,7 +68,6 @@ function StepDownload({
 
  return (
  <div className="step-download">
- {/* Download Card */}
  <div className="step-download__card">
  <div className="step-download__badge">
  <Shield size={14} />
@@ -85,7 +76,7 @@ function StepDownload({
 
  <h2 className="step-download__title">Report Ready!</h2>
 
- {/* Cover image thumbnail */}
+
  {projectImages?.coverImage ? (
  <div className="step-download__thumbnail step-download__thumbnail--image">
  <img
@@ -109,7 +100,6 @@ function StepDownload({
  </div>
  )}
 
- {/* Report info */}
  <div className="step-download__info">
  <div className="step-download__info-row">
  <span className="step-download__info-label">Project</span>
@@ -149,7 +139,6 @@ function StepDownload({
  )}
  </div>
 
- {/* Included sections */}
  <div className="step-download__sections">
  <span className="step-download__sections-label">Included:</span>
  <div className="step-download__sections-chips">
@@ -161,7 +150,6 @@ function StepDownload({
  </div>
  </div>
 
- {/* Actions */}
  <div className="step-download__actions">
  <button
  className="step-download__btn-primary"
@@ -189,7 +177,7 @@ function StepDownload({
  </div>
  </div>
 
- {/* PDF Preview Modal */}
+
  {isModalOpen && (
  <div className="step-download__modal-backdrop" onClick={onCloseModal}>
  <div
@@ -209,7 +197,7 @@ function StepDownload({
  <X size={20} />
  </button>
 
- {/* Page content */}
+
  <div className="step-download__modal-page">
  <div className="step-download__modal-page-header">
  <span className="step-download__modal-logo">SIAGA</span>
@@ -238,7 +226,6 @@ function StepDownload({
  }
  return <div className="step-download__modal-placeholder" />;
  })()}
- {/* Show findings info for table page */}
  {previewPages[modalCurrentPage]?.id === 'table' && inspectionData && (
  <div className="step-download__modal-findings">
  <p><strong>Critical:</strong> {inspectionData.criticalFindings} | <strong>Moderate:</strong> {inspectionData.moderateFindings} | <strong>Safe:</strong> {inspectionData.safePoints}</p>
@@ -253,7 +240,6 @@ function StepDownload({
  </div>
  </div>
 
- {/* Navigation */}
  <div className="step-download__modal-nav">
  <button
  className="step-download__modal-nav-btn"

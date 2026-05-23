@@ -20,7 +20,6 @@ export default function JobRadarSection() {
  const [activePin, setActivePin] = useState(null);
  const [mapLoaded, setMapLoaded] = useState(false);
 
- // Initialize Mapbox Globe
  useEffect(() => {
  if (!mapContainerRef.current || mapRef.current) return;
 
@@ -44,7 +43,7 @@ export default function JobRadarSection() {
  );
 
  map.on('style.load', () => {
- // Globe atmosphere
+
  map.setFog({
  color: 'rgba(220, 235, 255, 0.6)',
  'high-color': 'rgba(180, 210, 255, 0.4)',
@@ -55,7 +54,7 @@ export default function JobRadarSection() {
  });
 
  map.on('load', () => {
- // 3D terrain
+
  map.addSource('mapbox-dem', {
  type: 'raster-dem',
  url: 'mapbox://mapbox.mapbox-terrain-dem-v1',
@@ -64,7 +63,6 @@ export default function JobRadarSection() {
  });
  map.setTerrain({ source: 'mapbox-dem', exaggeration: 1.5 });
 
- // Sky layer
  map.addLayer({
  id: 'sky',
  type: 'sky',
@@ -76,7 +74,6 @@ export default function JobRadarSection() {
  },
  });
 
- // Connection lines between project hubs
  map.addSource('connections', {
  type: 'geojson',
  data: {
@@ -92,7 +89,6 @@ export default function JobRadarSection() {
  },
  });
 
- // Glow layer (wider, blurred)
  map.addLayer({
  id: 'connection-glow',
  type: 'line',
@@ -105,7 +101,6 @@ export default function JobRadarSection() {
  },
  });
 
- // Main connection line
  map.addLayer({
  id: 'connection-lines',
  type: 'line',
@@ -120,7 +115,6 @@ export default function JobRadarSection() {
 
  setMapLoaded(true);
 
- // Add custom markers
  pinData.forEach((pin, index) => {
  const el = document.createElement('div');
  el.className = `globe-marker ${pin.status === 'urgent' ? 'globe-marker--urgent' : 'globe-marker--active'}`;
@@ -172,7 +166,6 @@ export default function JobRadarSection() {
  };
  }, []);
 
- // GSAP scroll-triggered entrance
  useEffect(() => {
  if (!mapLoaded || !mapRef.current) return;
 
@@ -182,7 +175,7 @@ export default function JobRadarSection() {
  start: 'top 75%',
  once: true,
  onEnter: () => {
- // Globe fly-in to Indonesia
+
  mapRef.current.flyTo({
  center: mapConfig.center,
  zoom: mapConfig.zoom,
@@ -191,37 +184,30 @@ export default function JobRadarSection() {
  essential: true,
  });
 
- // Section heading
  gsap.to('.job-radar__heading', {
  y: 0, opacity: 1, duration: 0.8, delay: 0.1, ease: 'power3.out',
  });
 
- // Map container
  gsap.to('.job-radar__map-wrapper', {
  opacity: 1, y: 0, duration: 1, delay: 0.3, ease: 'power3.out',
  });
 
- // Sidebar
  gsap.to('.radar-sidebar', {
  x: 0, opacity: 1, duration: 0.9, delay: 0.8, ease: 'power3.out',
  });
 
- // Floating stats
  gsap.to('.floating-stats', {
  x: 0, opacity: 1, duration: 0.9, delay: 1.0, ease: 'power3.out',
  });
 
- // Live alert
  gsap.to('.live-alert-card', {
  y: 0, opacity: 1, duration: 0.7, delay: 1.3, ease: 'power3.out',
  });
 
- // Bottom bar
  gsap.to('.bottom-status-bar', {
  y: 0, opacity: 1, duration: 0.7, delay: 1.5, ease: 'power3.out',
  });
 
- // Markers stagger
  markersRef.current.forEach(({ element, delay }) => {
  gsap.to(element, {
  opacity: 1, scale: 1, duration: 0.7,
@@ -229,7 +215,6 @@ export default function JobRadarSection() {
  });
  });
 
- // Live badge
  gsap.to('.job-radar__live-badge', {
  opacity: 1, scale: 1, x: '-50%', duration: 0.5, delay: 1.8, ease: 'back.out(1.7)',
  });
@@ -263,7 +248,6 @@ export default function JobRadarSection() {
 
  return (
  <section className="job-radar" ref={sectionRef} id="job-radar">
- {/* Section heading */}
  <div className="job-radar__heading">
  <div className="job-radar__chip">
  <span className="job-radar__chip-dot"></span>
@@ -279,15 +263,13 @@ export default function JobRadarSection() {
  </p>
  </div>
 
- {/* Map dashboard */}
  <div className="job-radar__dashboard">
  <div className="job-radar__map-wrapper">
  <div className="job-radar__map" ref={mapContainerRef}></div>
 
- {/* Soft overlay edges */}
+
  <div className="job-radar__overlay"></div>
 
- {/* Sidebar */}
  <RadarSidebar
  pins={pinData}
  activePin={activePin}
@@ -295,13 +277,10 @@ export default function JobRadarSection() {
  onReset={handleResetView}
  />
 
- {/* Floating Stats (right side) */}
  <FloatingStats stats={statsData} />
 
- {/* Live Alert Card */}
  <LiveAlertCard alerts={liveAlerts} />
 
- {/* Active pin detail popup */}
  {activePin && (
  <div className="job-radar__popup">
  <div className="popup__header">
@@ -353,7 +332,6 @@ export default function JobRadarSection() {
  </div>
  )}
 
- {/* Live indicator */}
  <div className="job-radar__live-badge">
  <span className="live-badge__dot"></span>
  <span className="live-badge__text">LIVE</span>
@@ -361,7 +339,7 @@ export default function JobRadarSection() {
  </div>
  </div>
 
- {/* Bottom Status Bar */}
+
  <BottomStatusBar pins={pinData} />
  </div>
  </section>
